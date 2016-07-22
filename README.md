@@ -237,8 +237,7 @@ for Strain in SCRP249 SCRP324 SCRP333
 do
     for Assembly in $(ls assembly/discovar/*/$Strain/assembly/a.final/a.lines.renamed.fasta)
     do
-        Strain=$(echo $Assembly | rev | cut -d '/' -f3 | rev)
-        Organism=$(echo $Assembly | rev | cut -d '/' -f4 | rev)
+        Organism=P.rubi
         OutDir=assembly/discovar/$Organism/$Strain/assembly/a.final/QUAST
         qsub $ProgDir/sub_quast.sh $Assembly $OutDir
     done
