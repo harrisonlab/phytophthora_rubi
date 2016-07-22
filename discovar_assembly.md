@@ -50,11 +50,9 @@ DiscovarDeNovo \
   MEMORY_CHECK=True
 ```
 
-#-----------------------#
-#         Step 4        #
-#        Cleanup        #
-#-----------------------#
+#Cleanup
 
+```bash
 mkdir -p $CurPath/$OutDir
 rm $WorkDir/$F_Read
 rm $WorkDir/$R_Read
