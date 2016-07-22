@@ -2,6 +2,8 @@
 
 *Phytophthora rubi* genomes were also assembled using Discovar. These commands were run via an interactive job within a screen session as opposed to via the grid engine to more efficiently use cluster resources.
 
+All commands run in /home/groups/harrisonlab/project_files/phytophthora_rubi
+
 ```bash
 qlogin -pe smp 24 -l virtual_free=15.7G -l h=blacklace01.blacklace
 ```
@@ -12,20 +14,22 @@ Usage="sub_discovar.sh <F_read.fa> <R_read.fa> <output_directory>"
 
 #Collect inputs
 
-R1=$1
-R2=$2
-OutDir=$3
+```bash
+R1=qc_dna/paired/P.rubi/SCRP249/F/SCRP249_S1_L001_R1_001_trim.fq.gz
+R2=qc_dna/paired/P.rubi/SCRP249/R/SCRP249_S1_L001_R2_001_trim.fq.gz
+OutDir=assembly/discovar/P.rubi/SCRP249
 CurPath=$PWD
-WorkDir="$TMPDIR"
+WorkDir=tmp/discovar
 
 echo "Running Discovar with the following reads:"
 echo "$R1"
 echo "$R2"
 echo "Outputting to the following location:"
 echo "$CurPath/$OutDir "
+```
 
 #-----------------------#
-#       	Step 2        #
+#       	Step 2      #
 #       Copy files      #
 #-----------------------#
 
