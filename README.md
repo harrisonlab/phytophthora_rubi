@@ -265,11 +265,11 @@ Repeat masking was performed and used the following programs: Repeatmasker Repea
 
 The best assemblies were used to perform repeatmasking
 
-for BC-16 pacbio data:
+for discovar assembly:
 
 ```bash
 ProgDir=/home/adamst/git_repos/tools/seq_tools/repeat_masking
-for BestAss in $(ls assembly/merged_canu_spades/*/*/95m/filtered_contigs/Bc16_contigs_renamed.fasta)
+for BestAss in $(ls assembly/discovar/*/$Strain/assembly/a.final/a.lines.renamed.fasta)
 do
     qsub $ProgDir/rep_modeling.sh $BestAss
     qsub $ProgDir/transposonPSI.sh $BestAss
