@@ -107,7 +107,7 @@ Target coverage is 20.
 The ones at value 5 are errors from filtering of error kmers, estimate from plots follow in ().
 
 # Assembly
-Assembly was performed using: Spades
+Assembly was performed using: Spades and Discovar (Discovar detailed in discovar_assembly.md)
 
 ## Spades Assembly
 
