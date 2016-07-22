@@ -199,6 +199,20 @@ NOV-71: 7885
 NOV-9: 7655
 BC-1: 7504 **
 
+##Discovar
+
+```bash
+for Strain in SCRP249 SCRP324 SCRP333
+do
+    Organism=P.rubi
+    F_Read=qc_dna/paired/$Organism/$Strain/F/*.gz
+    R_Read=qc_dna/paired/$Organism/$Strain/R/*.gz
+    OutDir=assembly/discovar/$Organism/$Strain
+    ProgDir=/home/adamst/git_repos/tools/seq_tools/assemblers/discovar
+    qsub $ProgDir/sub_discovar.sh $F_Read $R_Read $OutDir
+done
+```
+
 #Repeatmasking
 
 Repeat masking was performed and used the following programs: Repeatmasker Repeatmodeler
