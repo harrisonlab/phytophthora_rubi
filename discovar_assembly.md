@@ -1,24 +1,16 @@
 #Discovar assembly
 
-*Phytophthora rubi* genomes were also assembled using Discovar. These commands were ru via an interactive job as opposed to via the grid engine to more efficiently use cluster resources.
+*Phytophthora rubi* genomes were also assembled using Discovar. These commands were run via an interactive job within a screen session as opposed to via the grid engine to more efficiently use cluster resources.
 
 ```bash
-#!/bin/bash
-#$ -S /bin/bash
-#$ -cwd
-#$ -pe smp 24
-#$ -l virtual_free=15.7G
-#$ -l h=blacklace11.blacklace
+qlogin -pe smp 24 -l virtual_free=15.7G -l h=blacklace01.blacklace
+```
 
 # Perform genome assembly of diploid organisms using discovar
 
 Usage="sub_discovar.sh <F_read.fa> <R_read.fa> <output_directory>"
-echo "$Usage"
 
-#-----------------------#
-#       Step 1          #
-#    Collect inputs     #
-#-----------------------#
+#Collect inputs
 
 R1=$1
 R2=$2
