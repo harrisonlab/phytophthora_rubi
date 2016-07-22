@@ -107,7 +107,7 @@ Target coverage is 20.
 The ones at value 5 are errors from filtering of error kmers, estimate from plots follow in ().
 
 # Assembly
-Assembly was performed using: Spades and Discovar (Discovar detailed in discovar_assembly.md)
+Assembly was performed using: Spades and Discovar
 
 ## Spades Assembly
 
@@ -212,6 +212,77 @@ do
     qsub $ProgDir/sub_discovar.sh $F_Read $R_Read $OutDir
 done
 ```
+
+### Quast
+
+```bash
+for Strain in A4 Bc1 Bc23 Nov27 Nov5 Nov71 Nov77 Nov9 ONT3 SCRP245_v2
+do
+    ProgDir=/home/adamst/git_repos/tools/seq_tools/assemblers/assembly_qc/remove_contaminants
+    OutDir=$(ls -d assembly/spades/*/$Strain/filtered_contigs)
+    AssFiltered=$OutDir/contigs_min_500bp.fasta
+    AssRenamed=$OutDir/contigs_min_500bp_renamed.fasta
+    echo $AssFiltered
+    printf '.\t.\t.\t.\n' > editfile.tab
+    $ProgDir/remove_contaminants.py --inp $AssFiltered --out $AssRenamed --coord_file editfile.tab
+    rm editfile.tab
+done
+```
+
+### QUAST used to summarise assembly statistics
+
+```bash
+ProgDir=/home/adamst/git_repos/tools/seq_tools/assemblers/assembly_qc/quast
+for Strain in A4 Bc1 Bc23 Nov27 Nov5 Nov71 Nov77 Nov9 ONT3 SCRP245_v2
+do
+    for Assembly in $(ls assembly/spades/*/$Strain/filtered_contigs/*_500bp_renamed.fasta)
+    do
+        Strain=$(echo $Assembly | rev | cut -d '/' -f3 | rev)
+        Organism=$(echo $Assembly | rev | cut -d '/' -f4 | rev)
+        OutDir=assembly/spades/$Organism/$Strain/filtered_contigs
+        qsub $ProgDir/sub_quast.sh $Assembly $OutDir
+    done
+done
+```
+
+** N50:
+A4: 18245
+BC-16: 437436
+BC-23: 18227
+NOV-27: 19406
+NOV-5: 17887
+NOV-77: 18909
+ONT-3: 22074
+SCRP245_v2: 20105
+NOV-71: 20226
+NOV-9: 21522
+BC-1: 21834 **
+
+** L50:
+A4: 1116
+BC-16: 59
+BC-23: 1119
+NOV-27: 1046
+NOV-5: 1134
+NOV-77: 1102
+ONT-3: 917
+SCRP245_v2: 994
+NOV-71: 1016
+NOV-9: 978
+BC-1: 954 **
+
+** Number of contigs > 1kb:
+A4: 8660
+BC-16: 406
+BC-23: 8556
+NOV-27: 8040
+NOV-5: 8760
+NOV-77: 8500
+ONT-3: 8540
+SCRP245_v2: 8584
+NOV-71: 7885
+NOV-9: 7655
+BC-1: 7504 **
 
 #Repeatmasking
 
