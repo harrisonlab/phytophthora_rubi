@@ -28,11 +28,9 @@ echo "Outputting to the following location:"
 echo "$CurPath/$OutDir "
 ```
 
-#-----------------------#
-#       	Step 2      #
-#       Copy files      #
-#-----------------------#
+#Copy files
 
+```bash
 F_Read=$(basename $R1)
 R_Read=$(basename $R2)
 
@@ -41,6 +39,7 @@ cd $WorkDir
 
 cp $CurPath/$R1 $WorkDir/$F_Read
 cp $CurPath/$R2 $WorkDir/$R_Read
+```
 
 #-----------------------#
 #         Step 3        #
