@@ -239,7 +239,7 @@ do
     do
         Strain=$(echo $Assembly | rev | cut -d '/' -f3 | rev)
         Organism=$(echo $Assembly | rev | cut -d '/' -f4 | rev)
-        OutDir=assembly/spades/$Organism/$Strain/filtered_contigs
+        OutDir=assembly/discovar/$Organism/$Strain/assembly/a.final/QUAST
         qsub $ProgDir/sub_quast.sh $Assembly $OutDir
     done
 done
