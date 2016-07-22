@@ -216,12 +216,12 @@ done
 ### Quast
 
 ```bash
-for Strain in A4 Bc1 Bc23 Nov27 Nov5 Nov71 Nov77 Nov9 ONT3 SCRP245_v2
+for Strain in SCRP249 SCRP324 SCRP333
 do
     ProgDir=/home/adamst/git_repos/tools/seq_tools/assemblers/assembly_qc/remove_contaminants
-    OutDir=$(ls -d assembly/spades/*/$Strain/filtered_contigs)
-    AssFiltered=$OutDir/contigs_min_500bp.fasta
-    AssRenamed=$OutDir/contigs_min_500bp_renamed.fasta
+    OutDir=$(ls -d assembly/discovar/*/$Strain/assembly/a.final)
+    AssFiltered=$OutDir/a.lines.fasta
+    AssRenamed=$OutDir/a.lines.renamed.fasta
     echo $AssFiltered
     printf '.\t.\t.\t.\n' > editfile.tab
     $ProgDir/remove_contaminants.py --inp $AssFiltered --out $AssRenamed --coord_file editfile.tab
