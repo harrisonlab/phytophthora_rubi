@@ -41,16 +41,14 @@ cp $CurPath/$R1 $WorkDir/$F_Read
 cp $CurPath/$R2 $WorkDir/$R_Read
 ```
 
-#-----------------------#
-#         Step 3        #
-#       Run Discovar    #
-#-----------------------#
+#Run Discovar
 
-
+```bash
 DiscovarDeNovo \
   READS=$F_Read,$R_Read \
   OUT_DIR=$WorkDir/assembly \
   MEMORY_CHECK=True
+```
 
 #-----------------------#
 #         Step 4        #
