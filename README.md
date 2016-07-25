@@ -247,7 +247,7 @@ for discovar assembly:
 
 ```bash
 ProgDir=/home/adamst/git_repos/tools/seq_tools/repeat_masking
-for Strain in SCRP249 SCRP324
+for Strain in SCRP249 SCRP324 SCRP333
 do
     for BestAss in $(ls assembly/discovar/*/$Strain/assembly/a.final/a.lines.renamed.fasta)
     do
