@@ -260,6 +260,7 @@ done
 for SPAdes assembly:
 
 ```bash
+ProgDir=/home/adamst/git_repos/tools/seq_tools/repeat_masking
 for Strain in SCRP249 SCRP324 SCRP333
 do
     for BestAss in $(ls assembly/spades/*/$Strain/filtered_contigs/*_500bp_renamed.fasta)
