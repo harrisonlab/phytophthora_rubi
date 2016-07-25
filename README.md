@@ -131,10 +131,10 @@ done
 ### Quast
 
 ```bash
-for Strain in A4 Bc1 Bc23 Nov27 Nov5 Nov71 Nov77 Nov9 ONT3 SCRP245_v2
+for Strain in SCRP249 SCRP324 SCRP333
 do
     ProgDir=/home/adamst/git_repos/tools/seq_tools/assemblers/assembly_qc/remove_contaminants
-    OutDir=$(ls -d assembly/spades/*/$Strain/filtered_contigs)
+    OutDir=$(ls -d assembly/spades/P.rubi/$Strain/filtered_contigs)
     AssFiltered=$OutDir/contigs_min_500bp.fasta
     AssRenamed=$OutDir/contigs_min_500bp_renamed.fasta
     echo $AssFiltered
@@ -231,6 +231,8 @@ done
 
 ### QUAST used to summarise assembly statistics
 
+Discovar assembly:
+
 ```bash
 ProgDir=/home/adamst/git_repos/tools/seq_tools/assemblers/assembly_qc/quast
 for Strain in SCRP249 SCRP324 SCRP333
@@ -279,10 +281,10 @@ do
 done
 ```
 
-for other isolates Illumina data:
+for SPAdes assembly:
 
 ```bash
-for Strain in A4 Bc1 Bc23 Nov27 Nov5 Nov71 Nov77 Nov9 ONT3 SCRP245_v2
+for Strain in SCRP249 SCRP324 SCRP333
 do
     for BestAss in $(ls assembly/spades/*/$Strain/filtered_contigs/*_500bp_renamed.fasta)
     do
