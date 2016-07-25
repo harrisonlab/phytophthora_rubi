@@ -269,10 +269,13 @@ for discovar assembly:
 
 ```bash
 ProgDir=/home/adamst/git_repos/tools/seq_tools/repeat_masking
-for BestAss in $(ls assembly/discovar/*/$Strain/assembly/a.final/a.lines.renamed.fasta)
+for Strain in SCRP249 SCRP324
 do
-    qsub $ProgDir/rep_modeling.sh $BestAss
-    qsub $ProgDir/transposonPSI.sh $BestAss
+    for BestAss in $(ls assembly/discovar/*/$Strain/assembly/a.final/a.lines.renamed.fasta)
+    do
+        qsub $ProgDir/rep_modeling.sh $BestAss
+        qsub $ProgDir/transposonPSI.sh $BestAss
+    done
 done
 ```
 
