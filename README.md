@@ -292,46 +292,50 @@ do
 done
 ```
 
-** A4
-The number of bases masked by RepeatMasker:	24836372
-The number of bases masked by TransposonPSI:	6237528
-The total number of masked bases are:	26598776
-Bc1
-The number of bases masked by RepeatMasker:	24254593
-The number of bases masked by TransposonPSI:	6219671
-The total number of masked bases are:	26154357
-Bc23
-The number of bases masked by RepeatMasker:	23771588
-The number of bases masked by TransposonPSI:	6101880
-The total number of masked bases are:	25516134
-Nov27
-The number of bases masked by RepeatMasker:	24653573
-The number of bases masked by TransposonPSI:	6209723
-The total number of masked bases are:	26343538
-Nov5
-The number of bases masked by RepeatMasker:	24011096
-The number of bases masked by TransposonPSI:	6242538
-The total number of masked bases are:	25856769
-Nov71
-The number of bases masked by RepeatMasker:	24200190
-The number of bases masked by TransposonPSI:	6080704
-The total number of masked bases are:	25824977
-Nov77
-The number of bases masked by RepeatMasker:	24253868
-The number of bases masked by TransposonPSI:	6250930
-The total number of masked bases are:	26117699
-Nov9
-The number of bases masked by RepeatMasker:	24774161
-The number of bases masked by TransposonPSI:	6290033
-The total number of masked bases are:	26664169
-ONT3
-The number of bases masked by RepeatMasker:	25224812
-The number of bases masked by TransposonPSI:	6238377
-The total number of masked bases are:	26981713
-SCRP245_v2
-The number of bases masked by RepeatMasker:	23381847
-The number of bases masked by TransposonPSI:	6037837
-The total number of masked bases are:	25248164 **
+** SCRP249
+The number of bases masked by RepeatMasker:	53632316
+The number of bases masked by TransposonPSI:	9072448
+The total number of masked bases are:	55262319
+SCRP324
+The number of bases masked by RepeatMasker:	52598215
+The number of bases masked by TransposonPSI:	9123758
+The total number of masked bases are:	54313575
+SCRP333
+The number of bases masked by RepeatMasker:	49285458
+The number of bases masked by TransposonPSI:	9172511
+The total number of masked bases are:	51115236 **
+
+for SPAdes assembly:
+
+```bash
+for RepDir in $(ls -d repeat_masked/spades/P.*/*/filtered_contigs_repmask)
+do
+    Strain=$(echo $RepDir | rev | cut -f2 -d '/' | rev)
+    Organism=$(echo $RepDir | rev | cut -f3 -d '/' | rev)  
+    RepMaskGff=$(ls $RepDir/"$Strain"_contigs_hardmasked.gff)
+    TransPSIGff=$(ls $RepDir/"$Strain"_contigs_unmasked.fa.TPSI.allHits.chains.gff3)
+    printf "$Organism\t$Strain\n"
+    printf "The number of bases masked by RepeatMasker:\t"
+    sortBed -i $RepMaskGff | bedtools merge | awk -F'\t' 'BEGIN{SUM=0}{ SUM+=$3-$2 }END{print SUM}'
+    printf "The number of bases masked by TransposonPSI:\t"
+    sortBed -i $TransPSIGff | bedtools merge | awk -F'\t' 'BEGIN{SUM=0}{ SUM+=$3-$2 }END{print SUM}'
+    printf "The total number of masked bases are:\t"
+    cat $RepMaskGff $TransPSIGff | sortBed | bedtools merge | awk -F'\t' 'BEGIN{SUM=0}{ SUM+=$3-$2 }END{print SUM}'
+done
+```
+
+** SCRP249
+The number of bases masked by RepeatMasker:	23482028
+The number of bases masked by TransposonPSI:	5953026
+The total number of masked bases are:	25419316
+SCRP324
+The number of bases masked by RepeatMasker:	23613201
+The number of bases masked by TransposonPSI:	5940852
+The total number of masked bases are:	25417379
+SCRP333
+The number of bases masked by RepeatMasker:	23158566
+The number of bases masked by TransposonPSI:	5961557
+The total number of masked bases are:	25028389 **
 
 #Gene Prediction
 Gene prediction followed three steps: Pre-gene prediction - Quality of genome assemblies were assessed using Cegma to see how many core eukaryotic genes can be identified. Gene model training - Gene models were trained using assembled RNAseq data as part of the Braker1 pipeline Gene prediction - Gene models were used to predict genes in genomes as part of the the Braker1 pipeline. This used RNAseq data as hints for gene models.
