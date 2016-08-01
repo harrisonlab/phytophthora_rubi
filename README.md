@@ -273,13 +273,15 @@ done
 
 The number of bases masked by transposonPSI and Repeatmasker were summarised using the following commands:
 
+for discovar assembly
+
 ```bash
-for RepDir in $(ls -d repeat_masked/P.*/*/filtered_contigs_repmask)
+for RepDir in $(ls -d repeat_masked/P.*/*/assembly/a.final_repmask)
 do
-    Strain=$(echo $RepDir | rev | cut -f2 -d '/' | rev)
-    Organism=$(echo $RepDir | rev | cut -f3 -d '/' | rev)  
-    RepMaskGff=$(ls $RepDir/"$Strain"_contigs_hardmasked.gff)
-    TransPSIGff=$(ls $RepDir/"$Strain"_contigs_unmasked.fa.TPSI.allHits.chains.gff3)
+    Strain=$(echo $RepDir | rev | cut -f3 -d '/' | rev)
+    Organism=$(echo $RepDir | rev | cut -f4 -d '/' | rev)  
+    RepMaskGff=$(ls $RepDir/assembly_contigs_hardmasked.gff)
+    TransPSIGff=$(ls $RepDir/assembly_contigs_unmasked.fa.TPSI.allHits.chains.gff3)
     printf "$Organism\t$Strain\n"
     printf "The number of bases masked by RepeatMasker:\t"
     sortBed -i $RepMaskGff | bedtools merge | awk -F'\t' 'BEGIN{SUM=0}{ SUM+=$3-$2 }END{print SUM}'
