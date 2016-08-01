@@ -388,18 +388,31 @@ done
 Outputs were summarised using the commands:
 
 ```bash
-for File in $(ls gene_pred/cegma/*/*/*_dna_cegma.completeness_report)
+for Strain in SCRP249 SCRP324 SCRP333
+do
+for File in $(ls gene_pred/cegma/$Strain/*/*_dna_cegma.completeness_report)
 do
     Strain=$(echo $File | rev | cut -f2 -d '/' | rev)
     Species=$(echo $File | rev | cut -f3 -d '/' | rev)
     printf "$Species\t$Strain\n"
     cat $File | head -n18 | tail -n+4;printf "\n"
-done >> gene_pred/cegma/cegma_results_dna_summary.txt
+done
+done >> gene_pred/cegma/discovar/cegma_results_dna_summary.txt
 
-less gene_pred/cegma/cegma_results_dna_summary.txt
+less gene_pred/cegma/discovar/cegma_results_dna_summary.txt
 ```
 
-**  **
+** SCRP249
+Complete: 93.55%
+Partial: 96.37%
+
+SCRP324:
+Complete: 94.76%
+Partial: 97.58%
+
+SCRP333:
+Complete: 94.35%
+Partial: 96.77% **
 
 for SPAdes assemblies:
 
@@ -426,7 +439,7 @@ done >> gene_pred/cegma/cegma_results_dna_summary.txt
 less gene_pred/cegma/cegma_results_dna_summary.txt
 ```
 
-**  **
+****
 
 #Gene prediction
 Gene prediction was performed for the P. fragariae genomes. Two gene prediction approaches were used:
