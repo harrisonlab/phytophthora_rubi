@@ -344,9 +344,11 @@ Gene prediction followed three steps: Pre-gene prediction - Quality of genome as
 
 Quality of genome assemblies was assessed by looking for the gene space in the assemblies.
 
+for discovar assemblies:
+
 ```bash
 ProgDir=/home/adamst/git_repos/tools/gene_prediction/cegma
-for Genome in $(ls repeat_masked/P.*/*/filtered_contigs_repmask/*_contigs_unmasked.fa)
+for Genome in $(ls repeat_masked/P.*/*/assembly/a.final_repmask/*_contigs_unmasked.fa)
 do
     echo $Genome
     qsub $ProgDir/sub_cegma.sh $Genome dna
@@ -410,6 +412,17 @@ Partial: 97.18%
 SCRP245_v2
 Complete: 95.16%
 Partial: 97.18% **
+
+for discovar assemblies:
+
+```bash
+ProgDir=/home/adamst/git_repos/tools/gene_prediction/cegma
+for Genome in $(ls repeat_masked/spades/P.*/*/filtered_contigs_repmask/*_contigs_unmasked.fa)
+do
+    echo $Genome
+    qsub $ProgDir/sub_cegma.sh $Genome dna
+done
+```
 
 #Gene prediction
 Gene prediction was performed for the P. fragariae genomes. Two gene prediction approaches were used:
