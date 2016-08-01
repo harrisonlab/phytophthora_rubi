@@ -471,8 +471,10 @@ FileR=qc_rna/genbank/P.cactorum/10300/R/SRR1206033_trim.fq.gz
 
 #Aligning
 
+for Discovar assemblies
+
 ```bash
-for Assembly in $(ls repeat_masked/*/*/filtered_contigs_repmask/*_contigs_unmasked.fa)
+for Assembly in $(ls repeat_masked/P.rubi/*/assembly/a.final_repmask/assembly_contigs_softmasked_repeatmasker_TPSI_appended.fa)
 do
     Strain=$(echo $Assembly| rev | cut -d '/' -f3 | rev)
     Organism=$(echo $Assembly | rev | cut -d '/' -f4 | rev)
