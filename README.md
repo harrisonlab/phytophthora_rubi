@@ -465,8 +465,8 @@ First, RNAseq data was aligned to P. fragariae genomes.
 qc of RNA seq data was performed as part of sequencing the 10300 genome:
 
 ```bash
-FileF=qc_rna/raw_rna/genbank/P.cactorum/F/SRR1206032_trim.fq.gz
-FileR=qc_rna/raw_rna/genbank/P.cactorum/R/SRR1206033_trim.fq.gz
+FileF=qc_rna/genbank/P.cactorum/10300/F/SRR1206032_trim.fq.gz
+FileR=qc_rna/genbank/P.cactorum/10300/R/SRR1206033_trim.fq.gz
 ```
 
 #Aligning
