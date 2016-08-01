@@ -305,6 +305,21 @@ The number of bases masked by RepeatMasker:	49285458
 The number of bases masked by TransposonPSI:	9172511
 The total number of masked bases are:	51115236 **
 
+#Merging RepeatMasker and TransposonPSI outputs
+
+```bash
+for File in $(ls repeat_masked/P.rubi/*/assembly/a.final_repmask/*_contigs_softmasked.fa)
+do
+OutDir=$(dirname $File)
+TPSI=$(ls $OutDir/*_contigs_unmasked.fa.TPSI.allHits.chains.gff3)
+OutFile=$(echo $File | sed 's/_contigs_softmasked.fa/_contigs_softmasked_repeatmasker_TPSI_appended.fa/g')
+bedtools maskfasta -soft -fi $File -bed $TPSI -fo $OutFile
+echo "$OutFile"
+echo "Number of masked bases:"
+cat $OutFile | grep -v '>' | tr -d '\n' | awk '{print $0, gsub("[a-z]", ".")}' | cut -f2 -d ' '
+done
+```
+
 for SPAdes assembly:
 
 ```bash
@@ -336,6 +351,21 @@ SCRP333
 The number of bases masked by RepeatMasker:	23158566
 The number of bases masked by TransposonPSI:	5961557
 The total number of masked bases are:	25028389 **
+
+#Merging RepeatMasker and TransposonPSI outputs
+
+```bash
+for File in $(ls repeat_masked/spades/*/*/filtered_contigs_repmask/*_contigs_softmasked.fa)
+do
+OutDir=$(dirname $File)
+TPSI=$(ls $OutDir/*_contigs_unmasked.fa.TPSI.allHits.chains.gff3)
+OutFile=$(echo $File | sed 's/_contigs_softmasked.fa/_contigs_softmasked_repeatmasker_TPSI_appended.fa/g')
+bedtools maskfasta -soft -fi $File -bed $TPSI -fo $OutFile
+echo "$OutFile"
+echo "Number of masked bases:"
+cat $OutFile | grep -v '>' | tr -d '\n' | awk '{print $0, gsub("[a-z]", ".")}' | cut -f2 -d ' '
+done
+```
 
 #Gene Prediction
 Gene prediction followed three steps: Pre-gene prediction - Quality of genome assemblies were assessed using Cegma to see how many core eukaryotic genes can be identified. Gene model training - Gene models were trained using assembled RNAseq data as part of the Braker1 pipeline Gene prediction - Gene models were used to predict genes in genomes as part of the the Braker1 pipeline. This used RNAseq data as hints for gene models.
@@ -369,49 +399,7 @@ done >> gene_pred/cegma/cegma_results_dna_summary.txt
 less gene_pred/cegma/cegma_results_dna_summary.txt
 ```
 
-** A4
-Complete: 95.16%
-Partial: 97.98%
-
-Bc16
-Complete: 94.35%
-Partial: 96.37%
-
-Bc1
-Complete: 95.16%
-Partial: 97.58%
-
-Bc23
-Complete: 95.16%
-Partial: 97.58%
-
-Nov27
-Complete: 94.76%
-Partial: 97.18%
-
-Nov5
-Complete: 94.76%
-Partial: 97.18%
-
-Nov71
-Complete: 95.16%
-Partial: 97.98%
-
-Nov77
-Complete: 94.76%
-Partial: 97.18%
-
-Nov9
-Complete: 94.35%
-Partial: 97.18%
-
-ONT3
-Complete: 95.16%
-Partial: 97.18%
-
-SCRP245_v2
-Complete: 95.16%
-Partial: 97.18% **
+**  **
 
 for SPAdes assemblies:
 
@@ -438,49 +426,7 @@ done >> gene_pred/cegma/cegma_results_dna_summary.txt
 less gene_pred/cegma/cegma_results_dna_summary.txt
 ```
 
-** A4
-Complete: 95.16%
-Partial: 97.98%
-
-Bc16
-Complete: 94.35%
-Partial: 96.37%
-
-Bc1
-Complete: 95.16%
-Partial: 97.58%
-
-Bc23
-Complete: 95.16%
-Partial: 97.58%
-
-Nov27
-Complete: 94.76%
-Partial: 97.18%
-
-Nov5
-Complete: 94.76%
-Partial: 97.18%
-
-Nov71
-Complete: 95.16%
-Partial: 97.98%
-
-Nov77
-Complete: 94.76%
-Partial: 97.18%
-
-Nov9
-Complete: 94.35%
-Partial: 97.18%
-
-ONT3
-Complete: 95.16%
-Partial: 97.18%
-
-SCRP245_v2
-Complete: 95.16%
-Partial: 97.18% **
+**  **
 
 #Gene prediction
 Gene prediction was performed for the P. fragariae genomes. Two gene prediction approaches were used:
