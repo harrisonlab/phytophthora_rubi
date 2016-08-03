@@ -264,7 +264,7 @@ for discovar assembly:
 ProgDir=/home/adamst/git_repos/tools/seq_tools/repeat_masking
 for Strain in SCRP249 SCRP324 SCRP333
 do
-    for BestAss in $(ls assembly/discovar/*/$Strain/assembly/a.final/a.lines.renamed.fasta)
+    for BestAss in $(ls assembly/discovar/*/$Strain/assembly/a.final/filtered_contigs/contigs_min_500bp_renamed.fasta)
     do
         qsub $ProgDir/rep_modeling.sh $BestAss
         qsub $ProgDir/transposonPSI.sh $BestAss
