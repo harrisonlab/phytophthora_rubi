@@ -647,9 +647,9 @@ done -->
 #4) Extract gff and amino acid sequences
 
 ```bash
-for Strain in A4 Bc1 Bc16 Bc23 Nov27 Nov5 Nov71 Nov77 Nov9 ONT3 SCRP245_v2
+for Strain in SCRP249 SCRP324 SCRP333
 do
-    for File in $(ls gene_pred/braker/*/"$Strain"_braker/*_braker/augustus.gff)
+    for File in $(ls gene_pred/braker/*/*/"$Strain"_braker/*_braker/augustus.gff)
     do
         getAnnoFasta.pl $File
         OutDir=$(dirname $File)
