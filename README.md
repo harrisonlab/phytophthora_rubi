@@ -553,7 +553,7 @@ do
 done
 ```
 
-#Supplementing Braker gene models with CodingQuarry genes
+<!-- #Supplementing Braker gene models with CodingQuarry genes
 
 Additional genes were added to Braker gene predictions, using CodingQuarry in pathogen mode to predict additional regions.
 
@@ -590,7 +590,7 @@ do
 done
 ```
 
-<!-- Then, additional transcripts were added to Braker1 gene models, when CodingQuarry genes were predicted in regions of the genome, not containing Braker1 gene models:
+Then, additional transcripts were added to Braker1 gene models, when CodingQuarry genes were predicted in regions of the genome, not containing Braker1 gene models:
 
 
     for BrakerGff in $(ls gene_pred/braker/F.*/*_braker_pacbio/*/augustus.gff3 | grep -e 'Fus2'); do
@@ -697,9 +697,11 @@ spades - SCRP333
 
 Open reading frame predictions were made using the atg.pl script as part of the path_pipe.sh pipeline. This pipeline also identifies open reading frames containing Signal peptide sequences and RxLRs. This pipeline was run with the following commands:
 
+for discovar assemblies:
+
 ```bash
 ProgDir=/home/adamst/git_repos/tools/gene_prediction/ORF_finder
-for Genome in $(ls repeat_masked/P.*/*/filtered_contigs_repmask/*_contigs_unmasked.fa)
+for Genome in $(ls repeat_masked/P.*/*/assembly/a.final_repmask/assembly_contigs_softmasked_repeatmasker_TPSI_appended.fa)
 do
     echo "$Genome"
     qsub $ProgDir/run_ORF_finder.sh $Genome
