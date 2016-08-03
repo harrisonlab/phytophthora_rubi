@@ -189,6 +189,22 @@ do
 done
 ```
 
+filter out contigs < 500 bp
+
+```bash
+for Strain in SCRP249 SCRP324 SCRP333
+do
+    for AssemblyDir in $(ls -d assembly/discovar/P.rubi/$Strain/assembly/a.final)
+    do
+        echo $Strain
+        echo "Filtering contigs smaller than 500bp"
+        mkdir -p $AssemblyDir/filtered_contigs
+        FilterDir=/home/adamst/git_repos/tools/seq_tools/assemblers/abyss
+        $FilterDir/filter_abyss_contigs.py $AssemblyDir/a.lines.fasta 500 > $AssemblyDir/filtered_contigs/contigs_min_500bp.fasta
+    done
+done
+```
+
 ### Quast
 
 ```bash
