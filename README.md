@@ -664,7 +664,7 @@ The final number of genes per isolate was observed using:
 ```bash
 for Strain in SCRP249 SCRP324 SCRP333
 do
-    for DirPath in $(ls -d gene_pred/braker/*/*/"$Strain"_braker/*_braker)
+    for DirPath in $(ls -d gene_pred/braker/*/*/"$Strain"_braker/P.rubi_*_braker)
     do
         echo $DirPath
         cat $DirPath/augustus.aa | grep '>' | wc -l
