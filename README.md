@@ -674,6 +674,23 @@ done
 ```
 
 ```
+discovar - SCRP249
+41458
+
+spades - SCRP249
+32732
+
+discovar - SCRP324
+46738
+
+spades - SCRP324
+38389
+
+discovar - SCRP333
+42875
+
+spades - SCRP333
+32770
 ```
 
 #Gene prediction 2 - atg.pl prediction of ORFs
