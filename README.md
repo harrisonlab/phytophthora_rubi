@@ -288,81 +288,54 @@ done
 
 The number of bases masked by transposonPSI and Repeatmasker were summarised using the following commands:
 
-for discovar assembly
-
 ```bash
-for RepDir in $(ls -d repeat_masked/P.*/*/assembly/a.final_repmask)
+for Assembler in discovar spades
 do
-    Strain=$(echo $RepDir | rev | cut -f3 -d '/' | rev)
-    Organism=$(echo $RepDir | rev | cut -f4 -d '/' | rev)  
-    RepMaskGff=$(ls $RepDir/assembly_contigs_hardmasked.gff)
-    TransPSIGff=$(ls $RepDir/assembly_contigs_unmasked.fa.TPSI.allHits.chains.gff3)
-    printf "$Organism\t$Strain\n"
-    printf "The number of bases masked by RepeatMasker:\t"
-    sortBed -i $RepMaskGff | bedtools merge | awk -F'\t' 'BEGIN{SUM=0}{ SUM+=$3-$2 }END{print SUM}'
-    printf "The number of bases masked by TransposonPSI:\t"
-    sortBed -i $TransPSIGff | bedtools merge | awk -F'\t' 'BEGIN{SUM=0}{ SUM+=$3-$2 }END{print SUM}'
-    printf "The total number of masked bases are:\t"
-    cat $RepMaskGff $TransPSIGff | sortBed | bedtools merge | awk -F'\t' 'BEGIN{SUM=0}{ SUM+=$3-$2 }END{print SUM}'
+    for RepDir in $(ls -d repeat_masked/$Assembler/P.*/*/filtered_contigs_repmask)
+    do
+        Strain=$(echo $RepDir | rev | cut -f2 -d '/' | rev)
+        Organism=$(echo $RepDir | rev | cut -f3 -d '/' | rev)  
+        RepMaskGff=$(ls $RepDir/"$Strain"_contigs_hardmasked.gff)
+        TransPSIGff=$(ls $RepDir/"$Strain"_contigs_unmasked.fa.TPSI.allHits.chains.gff3)
+        printf "$Assembler\n"
+        printf "$Organism\t$Strain\n"
+        printf "The number of bases masked by RepeatMasker:\t"
+        sortBed -i $RepMaskGff | bedtools merge | awk -F'\t' 'BEGIN{SUM=0}{ SUM+=$3-$2 }END{print SUM}'
+        printf "The number of bases masked by TransposonPSI:\t"
+        sortBed -i $TransPSIGff | bedtools merge | awk -F'\t' 'BEGIN{SUM=0}{ SUM+=$3-$2 }END{print SUM}'
+        printf "The total number of masked bases are:\t"
+        cat $RepMaskGff $TransPSIGff | sortBed | bedtools merge | awk -F'\t' 'BEGIN{SUM=0}{ SUM+=$3-$2 }END{print SUM}'
+    done
 done
 ```
 
-** SCRP249
-The number of bases masked by RepeatMasker:	53632316
-The number of bases masked by TransposonPSI:	9072448
-The total number of masked bases are:	55262319
-SCRP324
-The number of bases masked by RepeatMasker:	52598215
-The number of bases masked by TransposonPSI:	9123758
-The total number of masked bases are:	54313575
-SCRP333
-The number of bases masked by RepeatMasker:	49285458
-The number of bases masked by TransposonPSI:	9172511
-The total number of masked bases are:	51115236 **
-
-#Merging RepeatMasker and TransposonPSI outputs
-
-```bash
-for File in $(ls repeat_masked/P.rubi/*/assembly/a.final_repmask/*_contigs_softmasked.fa)
-do
-OutDir=$(dirname $File)
-TPSI=$(ls $OutDir/*_contigs_unmasked.fa.TPSI.allHits.chains.gff3)
-OutFile=$(echo $File | sed 's/_contigs_softmasked.fa/_contigs_softmasked_repeatmasker_TPSI_appended.fa/g')
-bedtools maskfasta -soft -fi $File -bed $TPSI -fo $OutFile
-echo "$OutFile"
-echo "Number of masked bases:"
-cat $OutFile | grep -v '>' | tr -d '\n' | awk '{print $0, gsub("[a-z]", ".")}' | cut -f2 -d ' '
-done
-```
-
-for SPAdes assembly:
-
-```bash
-for RepDir in $(ls -d repeat_masked/spades/P.*/*/filtered_contigs_repmask)
-do
-    Strain=$(echo $RepDir | rev | cut -f2 -d '/' | rev)
-    Organism=$(echo $RepDir | rev | cut -f3 -d '/' | rev)  
-    RepMaskGff=$(ls $RepDir/"$Strain"_contigs_hardmasked.gff)
-    TransPSIGff=$(ls $RepDir/"$Strain"_contigs_unmasked.fa.TPSI.allHits.chains.gff3)
-    printf "$Organism\t$Strain\n"
-    printf "The number of bases masked by RepeatMasker:\t"
-    sortBed -i $RepMaskGff | bedtools merge | awk -F'\t' 'BEGIN{SUM=0}{ SUM+=$3-$2 }END{print SUM}'
-    printf "The number of bases masked by TransposonPSI:\t"
-    sortBed -i $TransPSIGff | bedtools merge | awk -F'\t' 'BEGIN{SUM=0}{ SUM+=$3-$2 }END{print SUM}'
-    printf "The total number of masked bases are:\t"
-    cat $RepMaskGff $TransPSIGff | sortBed | bedtools merge | awk -F'\t' 'BEGIN{SUM=0}{ SUM+=$3-$2 }END{print SUM}'
-done
-```
-
-** SCRP249
+** discovar
+P.rubi	SCRP249
+The number of bases masked by RepeatMasker:	31215924
+The number of bases masked by TransposonPSI:	7577505
+The total number of masked bases are:	33062283
+discovar
+P.rubi	SCRP324
+The number of bases masked by RepeatMasker:	31949318
+The number of bases masked by TransposonPSI:	7607213
+The total number of masked bases are:	33859484
+discovar
+P.rubi	SCRP333
+The number of bases masked by RepeatMasker:	31597333
+The number of bases masked by TransposonPSI:	7644529
+The total number of masked bases are:	33426973
+spades
+P.rubi	SCRP249
 The number of bases masked by RepeatMasker:	23482028
 The number of bases masked by TransposonPSI:	5953026
 The total number of masked bases are:	25419316
-SCRP324
+spades
+P.rubi	SCRP324
 The number of bases masked by RepeatMasker:	23613201
 The number of bases masked by TransposonPSI:	5940852
 The total number of masked bases are:	25417379
-SCRP333
+spades
+P.rubi	SCRP333
 The number of bases masked by RepeatMasker:	23158566
 The number of bases masked by TransposonPSI:	5961557
 The total number of masked bases are:	25028389 **
@@ -370,15 +343,17 @@ The total number of masked bases are:	25028389 **
 #Merging RepeatMasker and TransposonPSI outputs
 
 ```bash
-for File in $(ls repeat_masked/spades/*/*/filtered_contigs_repmask/*_contigs_softmasked.fa)
+for File in $(ls -d repeat_masked/*/P.*/*/filtered_contigs_repmask/*_contigs_softmasked.fa)
 do
-OutDir=$(dirname $File)
-TPSI=$(ls $OutDir/*_contigs_unmasked.fa.TPSI.allHits.chains.gff3)
-OutFile=$(echo $File | sed 's/_contigs_softmasked.fa/_contigs_softmasked_repeatmasker_TPSI_appended.fa/g')
-bedtools maskfasta -soft -fi $File -bed $TPSI -fo $OutFile
-echo "$OutFile"
-echo "Number of masked bases:"
-cat $OutFile | grep -v '>' | tr -d '\n' | awk '{print $0, gsub("[a-z]", ".")}' | cut -f2 -d ' '
+    OutDir=$(dirname $File)
+    TPSI=$(ls $OutDir/*_contigs_unmasked.fa.TPSI.allHits.chains.gff3)
+    Assembler=$(echo $File | rev | cut -f5 -d '/' | rev)
+    OutFile=$(echo $File | sed 's/_contigs_softmasked.fa/_contigs_softmasked_repeatmasker_TPSI_appended.fa/g')
+    bedtools maskfasta -soft -fi $File -bed $TPSI -fo $OutFile
+    echo $Assembler
+    echo "$OutFile"
+    echo "Number of masked bases:"
+    cat $OutFile | grep -v '>' | tr -d '\n' | awk '{print $0, gsub("[a-z]", ".")}' | cut -f2 -d ' '
 done
 ```
 
