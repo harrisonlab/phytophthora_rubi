@@ -368,28 +368,35 @@ for discovar assemblies:
 
 ```bash
 ProgDir=/home/adamst/git_repos/tools/gene_prediction/cegma
-for Genome in $(ls repeat_masked/P.*/*/assembly/a.final_repmask/*_contigs_unmasked.fa)
+for Assembler in discovar spades
 do
-    echo $Genome
-    qsub $ProgDir/sub_cegma.sh $Genome dna
+    for Genome in $(ls repeat_masked/$Assembler/P.*/*/filtered_contigs_repmask/*_contigs_unmasked.fa)
+    do
+        echo $Assembler
+        echo $Genome
+        qsub $ProgDir/sub_cegma.sh $Genome dna
+    done
 done
 ```
 
 Outputs were summarised using the commands:
 
 ```bash
-for Strain in SCRP249 SCRP324 SCRP333
+for Assembler in discovar spades
 do
-for File in $(ls gene_pred/cegma/$Strain/*/*_dna_cegma.completeness_report)
-do
-    Strain=$(echo $File | rev | cut -f2 -d '/' | rev)
-    Species=$(echo $File | rev | cut -f3 -d '/' | rev)
-    printf "$Species\t$Strain\n"
-    cat $File | head -n18 | tail -n+4;printf "\n"
-done
-done >> gene_pred/cegma/discovar/cegma_results_dna_summary.txt
+    for Strain in SCRP249 SCRP324 SCRP333
+    do
+        for File in $(ls gene_pred/cegma/$Strain/*/*_dna_cegma.completeness_report)
+        do
+            Strain=$(echo $File | rev | cut -f2 -d '/' | rev)
+            Species=$(echo $File | rev | cut -f3 -d '/' | rev)
+            printf "$Species\t$Strain\n"
+            cat $File | head -n18 | tail -n+4;printf "\n"
+        done
+    done
+done >> gene_pred/cegma/$Assembler/cegma_results_dna_summary.txt
 
-less gene_pred/cegma/discovar/cegma_results_dna_summary.txt
+less gene_pred/cegma/$Assembler/cegma_results_dna_summary.txt
 ```
 
 ** SCRP249
@@ -399,43 +406,6 @@ Partial: 96.37%
 SCRP324:
 Complete: 94.76%
 Partial: 97.58%
-
-SCRP333:
-Complete: 94.35%
-Partial: 96.77% **
-
-for SPAdes assemblies:
-
-```bash
-ProgDir=/home/adamst/git_repos/tools/gene_prediction/cegma
-for Genome in $(ls repeat_masked/spades/P.*/*/filtered_contigs_repmask/*_contigs_unmasked.fa)
-do
-    echo $Genome
-    qsub $ProgDir/sub_cegma.sh $Genome dna
-done
-```
-
-Outputs were summarised using the commands:
-
-```bash
-for File in $(ls gene_pred/cegma/P.rubi/*/*_dna_cegma.completeness_report)
-do
-    Strain=$(echo $File | rev | cut -f2 -d '/' | rev)
-    Species=$(echo $File | rev | cut -f3 -d '/' | rev)
-    printf "$Species\t$Strain\n"
-    cat $File | head -n18 | tail -n+4;printf "\n"
-done >> gene_pred/cegma/spades/cegma_results_dna_summary.txt
-
-less gene_pred/cegma/spades/cegma_results_dna_summary.txt
-```
-
-** SCRP249
-Complete: 93.95%
-Partial: 96.77%
-
-SCRP324:
-Complete: 95.56%
-Partial: 97.98%
 
 SCRP333:
 Complete: 94.35%
