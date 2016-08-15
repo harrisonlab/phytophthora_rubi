@@ -459,7 +459,7 @@ do
         do
             Timepoint=$(echo $RNA | rev | cut -f1 -d '/' | rev | sed 's/_trim.*//g')
             echo "$Timepoint"
-            OutDir=alignment/$Organism/$Strain/$Timepoint
+            OutDir=alignment/$Assembler/$Organism/$Strain/$Timepoint
             ProgDir=/home/adamst/git_repos/tools/seq_tools/RNAseq
             qsub $ProgDir/tophat_alignment_unpaired.sh $Assembly $RNA $OutDir
         done
@@ -469,45 +469,25 @@ done
 
 #Braker prediction
 
-for SPAdes assemblies:
-
 ```bash
-for Assembly in $(ls repeat_masked/spades/*/*/filtered_contigs_repmask/*_contigs_softmasked_repeatmasker_TPSI_appended.fa)
+for Assembler in discovar spades
 do
-    Strain=$(echo $Assembly| rev | cut -d '/' -f3 | rev)
-    Organism=$(echo $Assembly | rev | cut -d '/' -f4 | rev)
-    echo "$Organism - $Strain"
-    mkdir -p alignment/spades/$Organism/$Strain/concatenated
-    samtools merge -f alignment/spades/$Organism/$Strain/concatenated/concatenated.bam \
-    alignment/spades/$Organism/$Strain/SRR1206032/accepted_hits.bam \
-    alignment/spades/$Organism/$Strain/SRR1206033/accepted_hits.bam
-    OutDir=gene_pred/braker/spades/$Organism/"$Strain"_braker
-    AcceptedHits=alignment/spades/$Organism/$Strain/concatenated/concatenated.bam
-    GeneModelName="$Organism"_"$Strain"_braker
-    rm -r /home/armita/prog/augustus-3.1/config/species/"$Organism"_"$Strain"_braker
-    ProgDir=/home/adamst/git_repos/tools/gene_prediction/braker1
-    qsub $ProgDir/sub_braker_fungi.sh $Assembly $OutDir $AcceptedHits $GeneModelName
-done
-```
-
-for discovar assemblies:
-
-```bash
-for Assembly in $(ls repeat_masked/P.rubi/*/assembly/a.final_repmask/assembly_contigs_softmasked_repeatmasker_TPSI_appended.fa)
-do
-    Strain=$(echo $Assembly| rev | cut -d '/' -f4 | rev)
-    Organism=$(echo $Assembly | rev | cut -d '/' -f5 | rev)
-    echo "$Organism - $Strain"
-    mkdir -p alignment/discovar/$Organism/$Strain/concatenated
-    samtools merge -f alignment/discovar/$Organism/$Strain/concatenated/concatenated.bam \
-    alignment/discovar/$Organism/$Strain/SRR1206032/accepted_hits.bam \
-    alignment/discovar/$Organism/$Strain/SRR1206033/accepted_hits.bam
-    OutDir=gene_pred/braker/discovar/$Organism/"$Strain"_braker
-    AcceptedHits=alignment/discovar/$Organism/$Strain/concatenated/concatenated.bam
-    GeneModelName="$Organism"_"$Strain"_braker
-    rm -r /home/armita/prog/augustus-3.1/config/species/"$Organism"_"$Strain"_braker
-    ProgDir=/home/adamst/git_repos/tools/gene_prediction/braker1
-    qsub $ProgDir/sub_braker_fungi.sh $Assembly $OutDir $AcceptedHits $GeneModelName
+    for Assembly in $(ls repeat_masked/$Assembler/*/*/filtered_contigs_repmask/*_contigs_softmasked_repeatmasker_TPSI_appended.fa)
+    do
+        Strain=$(echo $Assembly| rev | cut -d '/' -f3 | rev)
+        Organism=$(echo $Assembly | rev | cut -d '/' -f4 | rev)
+        echo "$Organism - $Strain"
+        mkdir -p alignment/$Assembler/$Organism/$Strain/concatenated
+        samtools merge -f alignment/$Assembler/$Organism/$Strain/concatenated/concatenated.bam \
+        alignment/$Assembler/$Organism/$Strain/SRR1206032/accepted_hits.bam \
+        alignment/$Assembler/$Organism/$Strain/SRR1206033/accepted_hits.bam
+        OutDir=gene_pred/braker/$Assembler/$Organism/"$Strain"_braker
+        AcceptedHits=alignment/$Assembler/$Organism/$Strain/concatenated/concatenated.bam
+        GeneModelName="$Organism"_"$Strain"_braker
+        rm -r /home/armita/prog/augustus-3.1/config/species/"$Organism"_"$Strain"_braker
+        ProgDir=/home/adamst/git_repos/tools/gene_prediction/braker1
+        qsub $ProgDir/sub_braker_fungi.sh $Assembly $OutDir $AcceptedHits $GeneModelName
+    done
 done
 ```
 
