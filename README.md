@@ -399,7 +399,9 @@ done >> gene_pred/cegma/$Assembler/cegma_results_dna_summary.txt
 less gene_pred/cegma/$Assembler/cegma_results_dna_summary.txt
 ```
 
-** SCRP249
+**Discovar:
+
+SCRP249:
 Complete: 93.55%
 Partial: 96.37%
 
@@ -409,7 +411,21 @@ Partial: 97.58%
 
 SCRP333:
 Complete: 94.35%
-Partial: 96.77% **
+Partial: 96.77%
+
+SPAdes:
+
+SCRP249:
+Complete: 93.95%
+Partial: 96.77%
+
+SCRP324:
+Complete: 95.56%
+Partial: 97.98%
+
+SCRP333:
+Complete: 94.35%
+Partial: 96.77%**
 
 #Gene prediction
 Gene prediction was performed for the P. fragariae genomes. Two gene prediction approaches were used:
