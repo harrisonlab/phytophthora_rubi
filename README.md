@@ -648,21 +648,13 @@ for discovar assemblies:
 
 ```bash
 ProgDir=/home/adamst/git_repos/tools/gene_prediction/ORF_finder
-for Genome in $(ls repeat_masked/P.*/*/assembly/a.final_repmask/assembly_contigs_softmasked_repeatmasker_TPSI_appended.fa)
+for Assembler in discovar spades
 do
-    echo "$Genome"
-    qsub $ProgDir/run_ORF_finder.sh $Genome
-done
-```
-
-for SPAdes assemblies:
-
-```bash
-ProgDir=/home/adamst/git_repos/tools/gene_prediction/ORF_finder
-for Genome in $(ls repeat_masked/spades/P.*/*/filtered_contigs_repmask/*_contigs_softmasked_repeatmasker_TPSI_appended.fa)
-do
-    echo "$Genome"
-    qsub $ProgDir/run_ORF_finder.sh $Genome
+    for Genome in $(ls repeat_masked/$Assembler/P.*/*/filtered_contigs_repmask/*_contigs_softmasked_repeatmasker_TPSI_appended.fa)
+    do
+        echo "$Genome"
+        qsub $ProgDir/run_ORF_finder.sh $Genome
+    done
 done
 ```
 
