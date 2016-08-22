@@ -603,13 +603,17 @@ done
 The final number of genes per isolate was observed using:
 
 ```bash
-for Strain in SCRP249 SCRP324 SCRP333
+for Assembler in discovar spades
 do
-    for DirPath in $(ls -d gene_pred/braker/*/*/"$Strain"_braker/P.rubi_*_braker)
+    echo $Assembler
+    for Strain in SCRP249 SCRP324 SCRP333
     do
-        echo $DirPath
-        cat $DirPath/augustus.aa | grep '>' | wc -l
-        echo ""
+        for DirPath in $(ls -d gene_pred/braker/$Assembler/*/"$Strain"_braker/P.rubi_*_braker)
+        do
+            echo $DirPath
+            cat $DirPath/augustus.aa | grep '>' | wc -l
+            echo ""
+        done
     done
 done
 ```
