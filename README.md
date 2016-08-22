@@ -644,7 +644,6 @@ SCRP333
 
 Open reading frame predictions were made using the atg.pl script as part of the path_pipe.sh pipeline. This pipeline also identifies open reading frames containing Signal peptide sequences and RxLRs. This pipeline was run with the following commands:
 
-for discovar assemblies:
 
 ```bash
 ProgDir=/home/adamst/git_repos/tools/gene_prediction/ORF_finder
