@@ -704,7 +704,7 @@ do
             SplitfileDir=/home/adamst/git_repos/tools/seq_tools/feature_annotation/signal_peptides
             ProgDir=/home/adamst/git_repos/tools/seq_tools/feature_annotation/signal_peptides
             Organism=P.fragariae
-            SplitDir=gene_pred/braker_split/$Organism/$Strain
+            SplitDir=gene_pred/braker_split/$Assembler/$Organism/$Strain
             mkdir -p $SplitDir
             BaseName="$Organism""_$Strain"_braker
             $SplitfileDir/splitfile_500.py --inp_fasta $Proteome --out_dir $SplitDir --out_base $BaseName
@@ -730,29 +730,32 @@ done
 The batch files of predicted secreted proteins needed to be combined into a single file for each strain. This was done with the following commands:
 
 ```bash
-for Strain in A4 Bc1 Bc16 Bc23 Nov27 Nov5 Nov71 Nov77 Nov9 ONT3 SCRP245_v2
+for Assembler in discovar spades
 do
-    for SplitDir in $(ls -d gene_pred/braker_split/P.*/$Strain)
+    for Strain in SCRP249 SCRP324 SCRP333
     do
-        Organism=P.fragariae
-        echo "$Organism - $Strain"
-        InStringAA=''
-        InStringNeg=''
-        InStringTab=''
-        InStringTxt=''
-        for SigpDir in $(ls -d gene_pred/braker_sig* | cut -f2 -d'/')
+        for SplitDir in $(ls -d gene_pred/braker_split/P.*/$Strain)
         do
-            for GRP in $(ls -l $SplitDir/*_braker_*.fa | rev | cut -d '_' -f1 | rev | sort -n)
-            do  
-                InStringAA="$InStringAA gene_pred/$SigpDir/$Organism/$Strain/split/"$Organism"_"$Strain"_braker_$GRP""_sp.aa"
-                InStringNeg="$InStringNeg gene_pred/$SigpDir/$Organism/$Strain/split/"$Organism"_"$Strain"_braker_$GRP""_sp_neg.aa"
-                InStringTab="$InStringTab gene_pred/$SigpDir/$Organism/$Strain/split/"$Organism"_"$Strain"_braker_$GRP""_sp.tab"
-                InStringTxt="$InStringTxt gene_pred/$SigpDir/$Organism/$Strain/split/"$Organism"_"$Strain"_braker_$GRP""_sp.txt"
+            Organism=P.fragariae
+            echo "$Organism - $Strain"
+            InStringAA=''
+            InStringNeg=''
+            InStringTab=''
+            InStringTxt=''
+            for SigpDir in $(ls -d gene_pred/braker_sig* | cut -f2 -d'/')
+            do
+                for GRP in $(ls -l $SplitDir/*_braker_*.fa | rev | cut -d '_' -f1 | rev | sort -n)
+                do  
+                    InStringAA="$InStringAA gene_pred/$SigpDir/$Organism/$Strain/split/"$Organism"_"$Strain"_braker_$GRP""_sp.aa"
+                    InStringNeg="$InStringNeg gene_pred/$SigpDir/$Organism/$Strain/split/"$Organism"_"$Strain"_braker_$GRP""_sp_neg.aa"
+                    InStringTab="$InStringTab gene_pred/$SigpDir/$Organism/$Strain/split/"$Organism"_"$Strain"_braker_$GRP""_sp.tab"
+                    InStringTxt="$InStringTxt gene_pred/$SigpDir/$Organism/$Strain/split/"$Organism"_"$Strain"_braker_$GRP""_sp.txt"
+                done
+                cat $InStringAA > gene_pred/$SigpDir/$Organism/$Strain/"$Strain"_aug_sp.aa
+                cat $InStringNeg > gene_pred/$SigpDir/$Organism/$Strain/"$Strain"_aug_neg_sp.aa
+                tail -n +2 -q $InStringTab > gene_pred/$SigpDir/$Organism/$Strain/"$Strain"_aug_sp.tab
+                cat $InStringTxt > gene_pred/$SigpDir/$Organism/$Strain/"$Strain"_aug_sp.txt
             done
-            cat $InStringAA > gene_pred/$SigpDir/$Organism/$Strain/"$Strain"_aug_sp.aa
-            cat $InStringNeg > gene_pred/$SigpDir/$Organism/$Strain/"$Strain"_aug_neg_sp.aa
-            tail -n +2 -q $InStringTab > gene_pred/$SigpDir/$Organism/$Strain/"$Strain"_aug_sp.tab
-            cat $InStringTxt > gene_pred/$SigpDir/$Organism/$Strain/"$Strain"_aug_sp.txt
         done
     done
 done
