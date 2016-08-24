@@ -734,7 +734,7 @@ for Assembler in discovar spades
 do
     for Strain in SCRP249 SCRP324 SCRP333
     do
-        for SplitDir in $(ls -d gene_pred/braker_split/P.*/$Strain)
+        for SplitDir in $(ls -d gene_pred/braker_split/$Assembler/P.*/$Strain)
         do
             Organism=P.fragariae
             echo "$Organism - $Strain"
@@ -742,7 +742,7 @@ do
             InStringNeg=''
             InStringTab=''
             InStringTxt=''
-            for SigpDir in $(ls -d gene_pred/braker_sig* | cut -f2 -d'/')
+            for SigpDir in $(ls -d gene_pred/"$Assembler"_sig* | cut -f2 -d'/')
             do
                 for GRP in $(ls -l $SplitDir/*_braker_*.fa | rev | cut -d '_' -f1 | rev | sort -n)
                 do  
