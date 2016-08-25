@@ -766,17 +766,20 @@ done
 Secreted proteins were also predicted using Phobius
 
 ```bash
-for Strain in SCRP249 SCRP324 SCRP333
+for Assembler in discovar spades
 do
-    for Proteome in $(ls gene_pred/braker/$Assembler/*/"$Strain"_braker/*/augustus.aa)
+    for Strain in SCRP249 SCRP324 SCRP333
     do
-        Organism=P.fragariae
-        echo "$Organism - $Strain"
-        OutDir=analysis/phobius/$Assembler/$Organism/$Strain
-        mkdir -p $OutDir
-        phobius.pl $Proteome > $OutDir/"$Strain"_phobius.txt
-        ProgDir=/home/adamst/git_repos/tools/seq_tools/feature_annotation/signal_peptides
-        $ProgDir/phobius_parser.py --inp_fasta $Proteome --phobius_txt $OutDir/"$Strain"_phobius.txt --out_fasta $OutDir/"$Strain"_phobius.fa
+        for Proteome in $(ls gene_pred/braker/$Assembler/*/"$Strain"_braker/*/augustus.aa)
+        do
+            Organism=P.fragariae
+            echo "$Organism - $Strain"
+            OutDir=analysis/phobius/$Assembler/$Organism/$Strain
+            mkdir -p $OutDir
+            phobius.pl $Proteome > $OutDir/"$Strain"_phobius.txt
+            ProgDir=/home/adamst/git_repos/tools/seq_tools/feature_annotation/signal_peptides
+            $ProgDir/phobius_parser.py --inp_fasta $Proteome --phobius_txt $OutDir/"$Strain"_phobius.txt --out_fasta $OutDir/"$Strain"_phobius.fa
+        done
     done
 done
 ```
