@@ -813,6 +813,7 @@ done
 
 ```
 discovar
+
 P.rubi - SCRP249
 The following number of sequences were predicted as secreted:
 10696
@@ -828,7 +829,9 @@ The following number of sequences were predicted as secreted:
 10397
 This represented the following number of unique genes:
 3714
+
 spades
+
 P.rubi - SCRP249
 The following number of sequences were predicted as secreted:
 10174
@@ -887,15 +890,53 @@ done
 ```
 
 ```
+discovar
 
+strain: SCRP249	species: P.rubi
+the total number of SigP gene is:	10696
+the number of unique SigP gene is:	3748
+the number of SigP-RxLR genes are:	379
+the number of SigP-RxLR-EER genes are:	200
+
+strain: SCRP324	species: P.rubi
+the total number of SigP gene is:	12476
+the number of unique SigP gene is:	4434
+the number of SigP-RxLR genes are:	377
+the number of SigP-RxLR-EER genes are:	192
+
+strain: SCRP333	species: P.rubi
+the total number of SigP gene is:	10397
+the number of unique SigP gene is:	3714
+the number of SigP-RxLR genes are:	354
+the number of SigP-RxLR-EER genes are:	179
+
+spades
+
+strain: SCRP249	species: P.rubi
+the total number of SigP gene is:	10174
+the number of unique SigP gene is:	3546
+the number of SigP-RxLR genes are:	346
+the number of SigP-RxLR-EER genes are:	176
+
+strain: SCRP324	species: P.rubi
+the total number of SigP gene is:	12309
+the number of unique SigP gene is:	4347
+the number of SigP-RxLR genes are:	378
+the number of SigP-RxLR-EER genes are:	191
+
+strain: SCRP333	species: P.rubi
+the total number of SigP gene is:	9722
+the number of unique SigP gene is:	3451
+the number of SigP-RxLR genes are:	341
+the number of SigP-RxLR-EER genes are:	171
 ```
 
 ####G) From Secreted gene models - Hmm evidence of RxLR effectors
 
 ```bash
-for Strain in A4 Bc16 Bc1 Bc23 Nov27 Nov5 Nov71 Nov77 Nov9 ONT3 SCRP245_v2
+for Strain in SCRP249 SCRP324 SCRP333
 do
-    for Proteome in $(ls gene_pred/braker/*/"$Strain"_braker/*/augustus.aa)
+    for Proteome in $(ls gene_pred/braker/*/*/"$Strain"_braker/*/augustus.aa)
     do
         ProgDir=/home/adamst/git_repos/scripts/phytophthora/pathogen/hmmer
         HmmModel=/home/armita/git_repos/emr_repos/SI_Whisson_et_al_2007/cropped.hmm
