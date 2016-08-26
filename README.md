@@ -988,84 +988,43 @@ Initial search space (Z):              32562  [actual number of targets]
 Domain search space  (domZ):             188  [number of targets reported over threshold]
 ```
 
-F) Combining RxLRs from Regex and hmm searches
+####F) Combining RxLRs from Regex and hmm searches
 
-The total RxLRs are
-
-for RegexRxLR in $(ls analysis/RxLR_effectors/RxLR_EER_regex_finder/*/*/*_RxLR_EER_regex.txt | grep -v -e 'Aug' -e '10300' | grep -e 'P.idaei' -e 'P.cactorum' | grep -v '414'); do
-Organism=$(echo $RegexRxLR | rev |  cut -d '/' -f3 | rev)
-Strain=$(echo $RegexRxLR | rev | cut -d '/' -f2 | rev)
-Gff=$(ls gene_pred/*/$Organism/$Strain/final/final_genes_appended.gff3)
-Proteome=$(ls gene_pred/codingquary/$Organism/$Strain/*/final_genes_combined.pep.fasta)
-HmmRxLR=analysis/RxLR_effectors/hmmer_RxLR/$Organism/$Strain/*_RxLR_hmmer_headers.txt
-echo "$Organism - $Strain"
-echo "Number of RxLRs identified by Regex:"
-cat $RegexRxLR | sort | uniq | wc -l
-echo "Number of RxLRs identified by Hmm:"
-cat $HmmRxLR | sort | uniq | wc -l
-echo "Number of RxLRs in combined dataset:"
-cat $RegexRxLR $HmmRxLR | sort | uniq | wc -l
-# echo "Number of RxLRs in both datasets:"
-# cat $RegexRxLR $HmmRxLR | sort | uniq -d | wc -l
-echo ""
-# echo "Extracting RxLRs from datasets"
-OutDir=analysis/RxLR_effectors/combined_evidence/$Organism/$Strain
-mkdir -p $OutDir
-cat $RegexRxLR $HmmRxLR | sort | uniq > $OutDir/"$Strain"_total_RxLR_headers.txt
-Gff=$(ls gene_pred/*/$Organism/$Strain/final/final_genes_appended.gff3)
-cat $Gff | grep -w -f $OutDir/"$Strain"_total_RxLR_headers.txt > $OutDir/"$Strain"_total_RxLR.gff
-echo "Number of genes in the extracted gff file:"
-cat $OutDir/"$Strain"_total_RxLR.gff | grep -w 'gene' | wc -l
+```bash
+for Assembler in discovar spades
+do
+    echo $Assembler
+    for RegexRxLR in $(ls analysis/RxLR_effectors/RxLR_EER_regex_finder/$Assembler/*/*/*_RxLR_EER_regex.txt)
+    do
+        Organism=$(echo $RegexRxLR | rev |  cut -d '/' -f3 | rev)
+        Strain=$(echo $RegexRxLR | rev | cut -d '/' -f2 | rev)
+        Gff=$(ls gene_pred/braker/$Assembler/$Organism/$Strain/*/augustus_extracted.gff)
+        Proteome=$(ls gene_pred/braker/$Assembler/$Organism/$Strain/*/augustus.aa)
+        HmmRxLR=analysis/RxLR_effectors/hmmer_RxLR/$Assembler/$Organism/$Strain/*_RxLR_hmmer_headers.txt
+        echo "$Organism - $Strain"
+        echo "Number of RxLRs identified by Regex:"
+        cat $RegexRxLR | sort | uniq | wc -l
+        echo "Number of RxLRs identified by Hmm:"
+        cat $HmmRxLR | sort | uniq | wc -l
+        echo "Number of RxLRs in combined dataset:"
+        cat $RegexRxLR $HmmRxLR | sort | uniq | wc -l
+        # echo "Number of RxLRs in both datasets:"
+        # cat $RegexRxLR $HmmRxLR | sort | uniq -d | wc -l
+        echo ""
+        # echo "Extracting RxLRs from datasets"
+        OutDir=analysis/RxLR_effectors/combined_evidence/$Assembler/$Organism/$Strain
+        mkdir -p $OutDir
+        cat $RegexRxLR $HmmRxLR | sort | uniq > $OutDir/"$Strain"_total_RxLR_headers.txt
+        cat $Gff | grep -w -f $OutDir/"$Strain"_total_RxLR_headers.txt > $OutDir/"$Strain"_total_RxLR.gff
+        echo "Number of genes in the extracted gff file:"
+        cat $OutDir/"$Strain"_total_RxLR.gff | grep -w 'gene' | wc -l
+    done
 done
-  P.cactorum - 404
-  Number of RxLRs identified by Regex:
-  118
-  Number of RxLRs identified by Hmm:
-  127
-  Number of RxLRs in combined dataset:
-  149
-  P.cactorum - 414
-  Number of RxLRs identified by Regex:
-  146
-  Number of RxLRs identified by Hmm:
-  145
-  Number of RxLRs in combined dataset:
-  173
-  P.cactorum - 415
-  Number of RxLRs identified by Regex:
-  125
-  Number of RxLRs identified by Hmm:
-  132
-  Number of RxLRs in combined dataset:
-  159
-  P.cactorum - 416
-  Number of RxLRs identified by Regex:
-  122
-  Number of RxLRs identified by Hmm:
-  129
-  Number of RxLRs in combined dataset:
-  155
-  P.cactorum - 62471
-  Number of RxLRs identified by Regex:
-  134
-  Number of RxLRs identified by Hmm:
-  142
-  Number of RxLRs in combined dataset:
-  169
-  P.idaei - 371
-  Number of RxLRs identified by Regex:
-  112
-  Number of RxLRs identified by Hmm:
-  107
-  Number of RxLRs in combined dataset:
-  136
-  P.idaei - SCRP370
-  Number of RxLRs identified by Regex:
-  111
-  Number of RxLRs identified by Hmm:
-  105
-  Number of RxLRs in combined dataset:
-  137
+```
+
+```
+
+```
 
 D) From Augustus gene models - Hmm evidence of CRN effectors
 
