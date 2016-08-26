@@ -955,7 +955,7 @@ do
             $ProgDir/hmmer2fasta.pl $OutDir/$HmmResults $Proteome > $OutDir/$HmmFasta
             Headers="$Strain"_RxLR_hmmer_headers.txt
             cat $OutDir/$HmmFasta | grep '>' | cut -f1 | tr -d '>' | sed -r 's/\.t.*//' | tr -d ' ' | sort | uniq > $OutDir/$Headers
-            Gff=$(ls gene_pred/braker/$Organism/"$Strain"_braker/*/augustus_extracted.gff)
+            Gff=$(ls gene_pred/braker/$Assembler/$Organism/"$Strain"_braker/*/augustus_extracted.gff)
             cat $Gff | grep -w -f $OutDir/$Headers > $OutDir/"$Strain"_Aug_RxLR_regex.gff3
         done
     done
