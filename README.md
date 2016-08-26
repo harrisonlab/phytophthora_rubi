@@ -961,27 +961,33 @@ do
     done
 done
 ```
-  P.cactorum 404
-  Initial search space (Z):              27775  [actual number of targets]
-  Domain search space  (domZ):             127  [number of targets reported over threshold]
-  P.cactorum 414
-  Initial search space (Z):              32832  [actual number of targets]
-  Domain search space  (domZ):             146  [number of targets reported over threshold]
-  P.cactorum 415
-  Initial search space (Z):              31944  [actual number of targets]
-  Domain search space  (domZ):             132  [number of targets reported over threshold]
-  P.cactorum 416
-  Initial search space (Z):              32780  [actual number of targets]
-  Domain search space  (domZ):             129  [number of targets reported over threshold]
-  P.cactorum 62471
-  Initial search space (Z):              27191  [actual number of targets]
-  Domain search space  (domZ):             142  [number of targets reported over threshold]
-  P.idaei 371
-  Initial search space (Z):              27253  [actual number of targets]
-  Domain search space  (domZ):             107  [number of targets reported over threshold]
-  P.idaei SCRP370
-  Initial search space (Z):              26983  [actual number of targets]
-  Domain search space  (domZ):             105  [number of targets reported over threshold]
+
+```
+discovar
+
+P.rubi SCRP249
+Initial search space (Z):              36943  [actual number of targets]
+Domain search space  (domZ):             202  [number of targets reported over threshold]
+P.rubi SCRP324
+Initial search space (Z):              42604  [actual number of targets]
+Domain search space  (domZ):             207  [number of targets reported over threshold]
+P.rubi SCRP333
+Initial search space (Z):              36843  [actual number of targets]
+Domain search space  (domZ):             189  [number of targets reported over threshold]
+
+spades
+
+P.rubi SCRP249
+Initial search space (Z):              32541  [actual number of targets]
+Domain search space  (domZ):             195  [number of targets reported over threshold]
+P.rubi SCRP324
+Initial search space (Z):              38842  [actual number of targets]
+Domain search space  (domZ):             202  [number of targets reported over threshold]
+P.rubi SCRP333
+Initial search space (Z):              32562  [actual number of targets]
+Domain search space  (domZ):             188  [number of targets reported over threshold]
+```
+
 F) Combining RxLRs from Regex and hmm searches
 
 The total RxLRs are
