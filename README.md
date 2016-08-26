@@ -998,8 +998,8 @@ do
     do
         Organism=$(echo $RegexRxLR | rev |  cut -d '/' -f3 | rev)
         Strain=$(echo $RegexRxLR | rev | cut -d '/' -f2 | rev)
-        Gff=$(ls gene_pred/braker/$Assembler/$Organism/$Strain/*/augustus_extracted.gff)
-        Proteome=$(ls gene_pred/braker/$Assembler/$Organism/$Strain/*/augustus.aa)
+        Gff=$(ls gene_pred/braker/$Assembler/$Organism/"$Strain"_braker/*/augustus_extracted.gff)
+        Proteome=$(ls gene_pred/braker/$Assembler/$Organism/"$Strain"_braker/*/augustus.aa)
         HmmRxLR=analysis/RxLR_effectors/hmmer_RxLR/$Assembler/$Organism/$Strain/*_RxLR_hmmer_headers.txt
         echo "$Organism - $Strain"
         echo "Number of RxLRs identified by Regex:"
