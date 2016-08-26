@@ -772,7 +772,7 @@ do
     do
         for Proteome in $(ls gene_pred/braker/$Assembler/*/"$Strain"_braker/*/augustus.aa)
         do
-            Organism=P.fragariae
+            Organism=P.rubi
             echo "$Organism - $Strain"
             OutDir=analysis/phobius/$Assembler/$Organism/$Strain
             mkdir -p $OutDir
@@ -789,6 +789,7 @@ Secreted proteins from different sources were combined into a single file:
 ```bash
 for Assembler in discovar spades
 do
+    echo $Assembler
     for Strain in SCRP249 SCRP324 SCRP333
     do
         for Proteome in $(ls gene_pred/braker/$Assembler/*/"$Strain"_braker/*/augustus.aa)
@@ -811,61 +812,38 @@ done
 ```
 
 ```
-P.fragariae - A4
+discovar
+P.rubi - SCRP249
 The following number of sequences were predicted as secreted:
-10668
+10696
 This represented the following number of unique genes:
-3850
-P.fragariae - Bc16
+3748
+P.rubi - SCRP324
 The following number of sequences were predicted as secreted:
-11984
+12476
 This represented the following number of unique genes:
-4207
-P.fragariae - Bc1
+4434
+P.rubi - SCRP333
 The following number of sequences were predicted as secreted:
-10432
-This represented the following number of unique genes:
-3700
-P.fragariae - Bc23
-The following number of sequences were predicted as secreted:
-10399
-This represented the following number of unique genes:
-3706
-P.fragariae - Nov27
-The following number of sequences were predicted as secreted:
-10414
+10397
 This represented the following number of unique genes:
 3714
-P.fragariae - Nov5
+spades
+P.rubi - SCRP249
 The following number of sequences were predicted as secreted:
-10151
+10174
 This represented the following number of unique genes:
-3689
-P.fragariae - Nov71
+3546
+P.rubi - SCRP324
 The following number of sequences were predicted as secreted:
-10767
+12309
 This represented the following number of unique genes:
-3850
-P.fragariae - Nov77
+4347
+P.rubi - SCRP333
 The following number of sequences were predicted as secreted:
-10436
+9722
 This represented the following number of unique genes:
-3754
-P.fragariae - Nov9
-The following number of sequences were predicted as secreted:
-10523
-This represented the following number of unique genes:
-3772
-P.fragariae - ONT3
-The following number of sequences were predicted as secreted:
-13273
-This represented the following number of unique genes:
-4736
-P.fragariae - SCRP245_v2
-The following number of sequences were predicted as secreted:
-11414
-This represented the following number of unique genes:
-4158
+3451
 ```
 
 The regular expression R.LR.{,40}[ED][ED][KR] has previously been used to identify RxLR effectors. The addition of an EER motif is significant as it has been shown as required for host uptake of the protein.
