@@ -994,7 +994,7 @@ Domain search space  (domZ):             188  [number of targets reported over t
 for Assembler in discovar spades
 do
     echo $Assembler
-    for RegexRxLR in $(ls analysis/RxLR_effectors/RxLR_EER_regex_finder/$Assembler/*/*/*_RxLR_EER_regex.txt)
+    for RegexRxLR in $(ls analysis/RxLR_effectors/RxLR_EER_regex_finder/$Assembler/P.rubi/*/*_RxLR_EER_regex.txt)
     do
         Organism=$(echo $RegexRxLR | rev |  cut -d '/' -f3 | rev)
         Strain=$(echo $RegexRxLR | rev | cut -d '/' -f2 | rev)
