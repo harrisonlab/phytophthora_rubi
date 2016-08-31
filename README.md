@@ -1180,15 +1180,19 @@ Identify the genes detected in both models:     121
 Extract gff annotations for Crinklers:
 
 ```bash
-for CRNlist in $(ls analysis/CRN_effectors/hmmer_CRN/*/*/*_pub_CRN_LFLAK_DWL.txt | grep -e 'P.idaei' -e 'P.cactorum' | grep -v -e '10300'); do
-    Strain=$(echo $CRNlist | rev | cut -f2 -d '/' | rev)
-    Organism=$(echo $CRNlist | rev | cut -f3 -d '/' | rev)
-    OutName=$(echo $CRNlist | sed 's/.txt/.gff/g')
-    echo "$Organism - $Strain"
-    Gff=$(ls gene_pred/*/$Organism/$Strain/final/final_genes_appended.gff3)
-    cat $CRNlist | sed -r 's/\.t.$//g' > tmp.txt
-    cat $Gff | grep -w -f tmp.txt > $OutName
-    rm tmp.txt
+for Assembler in discovar spades
+do
+    for CRNlist in $(ls analysis/CRN_effectors/hmmer_CRN/$Assembler/P.rubi/*/*_pub_CRN_LFLAK_DWL.txt)
+    do
+        Strain=$(echo $CRNlist | rev | cut -f2 -d '/' | rev)
+        Organism=$(echo $CRNlist | rev | cut -f3 -d '/' | rev)
+        OutName=$(echo $CRNlist | sed 's/.txt/.gff/g')
+        echo "$Organism - $Strain"
+        Gff=$(ls gene_pred/braker/$Assembler/$Organism/"$Strain"_braker/*/augustus_extracted.gff)
+        cat $CRNlist | sed -r 's/\.t.$//g' > tmp.txt
+        cat $Gff | grep -w -f tmp.txt > $OutName
+        rm tmp.txt
+    done
 done
 ```
 
