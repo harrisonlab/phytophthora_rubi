@@ -620,6 +620,7 @@ done
 
 ```
 discovar
+
 SCRP249
 36943
 
@@ -630,6 +631,7 @@ SCRP333
 36843
 
 spades
+
 SCRP249
 32541
 
@@ -667,6 +669,48 @@ do
     OrfGffMod=$(echo $OrfGff | sed 's/.gff/.gff3/g')
     $ProgDir/gff_corrector.pl $OrfGff > $OrfGffMod
 done
+```
+
+The final number of genes per isolate were determined using
+
+```bash
+for Assembler in discovar spades
+do
+    echo $Assembler
+    for Strain in SCRP249 SCRP324 SCRP333
+    do
+        for DirPath in $(ls -d gene_pred/ORF_finder/$Assembler/*/$Strain)
+        do
+            echo $DirPath
+            cat $DirPath/"$Strain".aa_cat.fa | grep '>' | wc -l
+            echo ""
+        done
+    done
+done
+```
+
+```
+discovar
+
+SCRP249
+716788
+
+SCRP324
+795934
+
+SCRP333
+720807
+
+spades
+
+SCRP249
+645937
+
+SCRP324
+725179
+
+SCRP333
+646243
 ```
 
 #Genomic analysis
