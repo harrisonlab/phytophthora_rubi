@@ -1088,37 +1088,46 @@ Number of genes in the extracted gff file:
 224
 ```
 
-D) From Augustus gene models - Hmm evidence of CRN effectors
+####D) From Augustus gene models - Hmm evidence of CRN effectors
 
 A hmm model relating to crinkler domains was used to identify putative crinklers in Augustus gene models. This was done with the following commands:
 
-  HmmDir=/home/groups/harrisonlab/project_files/idris/analysis/CRN_effectors/hmmer_models
-  LFLAK_hmm=$(ls $HmmDir/Pinf_Pram_Psoj_Pcap_LFLAK.hmm)
-  DWL_hmm=$(ls $HmmDir/Pinf_Pram_Psoj_Pcap_DWL.hmm)
-  for Proteome in $(ls gene_pred/codingquary/*/*/*/final_genes_combined.pep.fasta | grep -w -e '414' -e 'P.idaei'); do
-    Strain=$(echo $Proteome | rev | cut -f3 -d '/' | rev)
-    Organism=$(echo $Proteome | rev | cut -f4 -d '/' | rev)
-    OutDir=analysis/CRN_effectors/hmmer_CRN/$Organism/$Strain
-    mkdir -p $OutDir
-    echo "$Organism - $Strain"
-    # Run hmm searches LFLAK domains
-    CrinklerProts_LFLAK=$OutDir/"$Strain"_pub_CRN_LFLAK_hmm.txt
-    hmmsearch -T0 $LFLAK_hmm $Proteome > $CrinklerProts_LFLAK
-    cat $CrinklerProts_LFLAK | grep 'Initial search space'
-    cat $CrinklerProts_LFLAK | grep 'number of targets reported over threshold'
-    ProgDir=/home/armita/git_repos/emr_repos/scripts/phytophthora/pathogen/hmmer
-    $ProgDir/hmmer2fasta.pl $CrinklerProts_LFLAK $Proteome > $OutDir/"$Strain"_pub_CRN_LFLAK_hmm.fa
-    # Run hmm searches DWL domains
-    CrinklerProts_DWL=$OutDir/"$Strain"_pub_CRN_DWL_hmm.txt
-    hmmsearch -T0 $DWL_hmm $Proteome > $CrinklerProts_DWL
-    cat $CrinklerProts_DWL | grep 'Initial search space'
-    cat $CrinklerProts_DWL | grep 'number of targets reported over threshold'
-    ProgDir=/home/armita/git_repos/emr_repos/scripts/phytophthora/pathogen/hmmer
-    $ProgDir/hmmer2fasta.pl $CrinklerProts_DWL $Proteome > $OutDir/"$Strain"_pub_CRN_DWL_hmm.fa
-    # Identify the genes detected in both models
-    cat $OutDir/"$Strain"_pub_CRN_LFLAK_hmm.fa $OutDir/"$Strain"_pub_CRN_DWL_hmm.fa | grep '>' | cut -f1 | tr -d '>' | sort | uniq -d > $OutDir/"$Strain"_pub_CRN_LFLAK_DWL.txt
-    cat $OutDir/"$Strain"_pub_CRN_LFLAK_DWL.txt | wc -l
-  done
+```bash
+HmmDir=/home/groups/harrisonlab/project_files/idris/analysis/CRN_effectors/hmmer_models
+LFLAK_hmm=$(ls $HmmDir/Pinf_Pram_Psoj_Pcap_LFLAK.hmm)
+DWL_hmm=$(ls $HmmDir/Pinf_Pram_Psoj_Pcap_DWL.hmm)
+for Assembler in discovar spades
+do
+    for Strain in SCRP249 SCRP324 SCRP333
+    do
+        for Proteome in $(ls gene_pred/braker/$Assembler/P.rubi/"$Strain"_braker/*/augustus.aa)
+        do
+            Organism=$(echo $Proteome | rev | cut -f4 -d '/' | rev)
+            OutDir=analysis/CRN_effectors/hmmer_CRN/$Assembler/$Organism/$Strain
+            mkdir -p $OutDir
+            echo "$Organism - $Strain"
+            # Run hmm searches LFLAK domains
+            CrinklerProts_LFLAK=$OutDir/"$Strain"_pub_CRN_LFLAK_hmm.txt
+            hmmsearch -T0 $LFLAK_hmm $Proteome > $CrinklerProts_LFLAK
+            cat $CrinklerProts_LFLAK | grep 'Initial search space'
+            cat $CrinklerProts_LFLAK | grep 'number of targets reported over threshold'
+            ProgDir=/home/armita/git_repos/emr_repos/scripts/phytophthora/pathogen/hmmer
+            $ProgDir/hmmer2fasta.pl $CrinklerProts_LFLAK $Proteome > $OutDir/"$Strain"_pub_CRN_LFLAK_hmm.fa
+            # Run hmm searches DWL domains
+            CrinklerProts_DWL=$OutDir/"$Strain"_pub_CRN_DWL_hmm.txt
+            hmmsearch -T0 $DWL_hmm $Proteome > $CrinklerProts_DWL
+            cat $CrinklerProts_DWL | grep 'Initial search space'
+            cat $CrinklerProts_DWL | grep 'number of targets reported over threshold'
+            ProgDir=/home/armita/git_repos/emr_repos/scripts/phytophthora/pathogen/hmmer
+            $ProgDir/hmmer2fasta.pl $CrinklerProts_DWL $Proteome > $OutDir/"$Strain"_pub_CRN_DWL_hmm.fa
+            # Identify the genes detected in both models
+            cat $OutDir/"$Strain"_pub_CRN_LFLAK_hmm.fa $OutDir/"$Strain"_pub_CRN_DWL_hmm.fa | grep '>' | cut -f1 | tr -d '>' | sort | uniq -d > $OutDir/"$Strain"_pub_CRN_LFLAK_DWL.txt
+            cat $OutDir/"$Strain"_pub_CRN_LFLAK_DWL.txt | wc -l
+        done
+    done
+done
+```
+
   P.cactorum - 404
   Initial search space (Z):              27775  [actual number of targets]
   Domain search space  (domZ):             156  [number of targets reported over threshold]
