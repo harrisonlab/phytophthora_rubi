@@ -1239,6 +1239,8 @@ do
 done
 ```
 
+---progress to here---
+
 The batch files of predicted secreted proteins needed to be combined into a single file for each strain. This was done with the following commands:
 
 for SplitDir in $(ls -d gene_pred/ORF_split/*/* | grep -w -e 'P.cactorum' -e 'P.idaei' | grep -v -e '10300' -e '414_v2'); do
