@@ -652,7 +652,7 @@ do
     for Genome in $(ls repeat_masked/$Assembler/P.*/*/filtered_contigs_repmask/*_contigs_softmasked_repeatmasker_TPSI_appended.fa)
     do
         echo "$Genome"
-        qsub $ProgDir/run_ORF_finder.sh $Genome
+        qsub $ProgDir/run_ORF_finder2.sh $Genome
     done
 done
 ```
@@ -1196,18 +1196,21 @@ do
 done
 ```
 
-E) From ORF gene models - Signal peptide & RxLR motif
+####E) From ORF gene models - Signal peptide & RxLR motif
 
 Required programs:
 
 SigP
 Phobius
 biopython
-E.1) Prediction using SignalP
+
+#####E.1) Prediction using SignalP
 
 Proteins that were predicted to contain signal peptides were identified using the following commands:
 
-    for Proteome in $(ls gene_pred/ORF_finder/P.*/*/*.aa_cat.fa | grep -e 'P.cactorum' -e 'P.idaei' | grep -v -e '10300'); do
+```bash
+for Proteome in $(ls gene_pred/ORF_finder/P.*/*/*.aa_cat.fa)
+do
     SplitfileDir=/home/armita/git_repos/emr_repos/tools/seq_tools/feature_annotation/signal_peptides
     ProgDir=/home/armita/git_repos/emr_repos/tools/seq_tools/feature_annotation/signal_peptides
     Strain=$(echo $Proteome | rev | cut -f2 -d '/' | rev)
@@ -1216,9 +1219,11 @@ Proteins that were predicted to contain signal peptides were identified using th
     mkdir -p $SplitDir
     BaseName="$Organism""_$Strain"_ORF_preds
     $SplitfileDir/splitfile_500.py --inp_fasta $Proteome --out_dir $SplitDir --out_base $BaseName
-    for File in $(ls $SplitDir/*_ORF_preds_*); do
+    for File in $(ls $SplitDir/*_ORF_preds_*)
+    do
         Jobs=$(qstat | grep 'pred_sigP' | grep 'qw' | wc -l)
-        while [ $Jobs -gt 6 ]; do
+        while [ $Jobs -gt 6 ]
+        do
             sleep 1
             printf "."
             Jobs=$(qstat | grep 'pred_sigP' | grep 'qw' | wc -l)
@@ -1228,7 +1233,9 @@ Proteins that were predicted to contain signal peptides were identified using th
         qsub $ProgDir/pred_sigP.sh $File
         qsub $ProgDir/pred_sigP.sh $File signalp-4.1
     done
-  done
+done
+```
+
 The batch files of predicted secreted proteins needed to be combined into a single file for each strain. This was done with the following commands:
 
 for SplitDir in $(ls -d gene_pred/ORF_split/*/* | grep -w -e 'P.cactorum' -e 'P.idaei' | grep -v -e '10300' -e '414_v2'); do
