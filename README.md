@@ -1010,7 +1010,6 @@ do
         cat $RegexRxLR $HmmRxLR | sort | uniq | wc -l
         # echo "Number of RxLRs in both datasets:"
         # cat $RegexRxLR $HmmRxLR | sort | uniq -d | wc -l
-        echo ""
         # echo "Extracting RxLRs from datasets"
         OutDir=analysis/RxLR_effectors/combined_evidence/$Assembler/$Organism/$Strain
         mkdir -p $OutDir
@@ -1018,12 +1017,75 @@ do
         cat $Gff | grep -w -f $OutDir/"$Strain"_total_RxLR_headers.txt > $OutDir/"$Strain"_total_RxLR.gff
         echo "Number of genes in the extracted gff file:"
         cat $OutDir/"$Strain"_total_RxLR.gff | grep -w 'gene' | wc -l
+        echo ""
     done
 done
 ```
 
 ```
+discovar
 
+P.rubi - SCRP249
+Number of RxLRs identified by Regex:
+200
+Number of RxLRs identified by Hmm:
+202
+Number of RxLRs in combined dataset:
+245
+Number of genes in the extracted gff file:
+245
+
+P.rubi - SCRP324
+Number of RxLRs identified by Regex:
+192
+Number of RxLRs identified by Hmm:
+207
+Number of RxLRs in combined dataset:
+246
+Number of genes in the extracted gff file:
+246
+
+P.rubi - SCRP333
+Number of RxLRs identified by Regex:
+179
+Number of RxLRs identified by Hmm:
+189
+Number of RxLRs in combined dataset:
+229
+Number of genes in the extracted gff file:
+229
+
+spades
+
+P.rubi - SCRP249
+Number of RxLRs identified by Regex:
+176
+Number of RxLRs identified by Hmm:
+195
+Number of RxLRs in combined dataset:
+231
+Number of genes in the extracted gff file:
+231
+
+P.rubi - SCRP324
+Number of RxLRs identified by Regex:
+191
+Number of RxLRs identified by Hmm:
+202
+Number of RxLRs in combined dataset:
+242
+Number of genes in the extracted gff file:
+242
+
+P.rubi - SCRP333
+Number of RxLRs identified by Regex:
+171
+Number of RxLRs identified by Hmm:
+188
+Number of RxLRs in combined dataset:
+224
+Number of genes in the extracted gff file:
+224
 ```
 
 D) From Augustus gene models - Hmm evidence of CRN effectors
