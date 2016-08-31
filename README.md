@@ -1209,29 +1209,32 @@ biopython
 Proteins that were predicted to contain signal peptides were identified using the following commands:
 
 ```bash
-for Proteome in $(ls gene_pred/ORF_finder/P.*/*/*.aa_cat.fa)
+for Assembler in discovar spades
 do
-    SplitfileDir=/home/armita/git_repos/emr_repos/tools/seq_tools/feature_annotation/signal_peptides
-    ProgDir=/home/armita/git_repos/emr_repos/tools/seq_tools/feature_annotation/signal_peptides
-    Strain=$(echo $Proteome | rev | cut -f2 -d '/' | rev)
-    Organism=$(echo $Proteome | rev | cut -f3 -d '/' | rev)
-    SplitDir=gene_pred/ORF_split/$Organism/$Strain
-    mkdir -p $SplitDir
-    BaseName="$Organism""_$Strain"_ORF_preds
-    $SplitfileDir/splitfile_500.py --inp_fasta $Proteome --out_dir $SplitDir --out_base $BaseName
-    for File in $(ls $SplitDir/*_ORF_preds_*)
+    for Proteome in $(ls gene_pred/ORF_finder/$Assembler/P.*/*/*.aa_cat.fa)
     do
-        Jobs=$(qstat | grep 'pred_sigP' | grep 'qw' | wc -l)
-        while [ $Jobs -gt 6 ]
+        SplitfileDir=/home/adamst/git_repos/tools/seq_tools/feature_annotation/signal_peptides
+        ProgDir=/home/adamst/git_repos/tools/seq_tools/feature_annotation/signal_peptides
+        Strain=$(echo $Proteome | rev | cut -f2 -d '/' | rev)
+        Organism=$(echo $Proteome | rev | cut -f3 -d '/' | rev)
+        SplitDir=gene_pred/ORF_split/$Assembler/$Organism/$Strain
+        mkdir -p $SplitDir
+        BaseName="$Organism""_$Strain"_ORF_preds
+        $SplitfileDir/splitfile_500.py --inp_fasta $Proteome --out_dir $SplitDir --out_base $BaseName
+        for File in $(ls $SplitDir/*_ORF_preds_*)
         do
-            sleep 1
-            printf "."
-            Jobs=$(qstat | grep 'pred_sigP' | grep 'qw' | wc -l)
-        done        
-        printf "\n"
-        echo $File
-        qsub $ProgDir/pred_sigP.sh $File
-        qsub $ProgDir/pred_sigP.sh $File signalp-4.1
+            Jobs=$(qstat | grep 'pred_sigP' | wc -l)
+            while [ $Jobs -gt 20 ]
+            do
+                sleep 1
+                printf "."
+                Jobs=$(qstat | grep 'pred_sigP' | wc -l)
+            done        
+            printf "\n"
+            echo $File
+            qsub $ProgDir/pred_sigP.sh $File
+            qsub $ProgDir/pred_sigP.sh $File signalp-4.1
+        done
     done
 done
 ```
