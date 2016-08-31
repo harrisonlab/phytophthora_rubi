@@ -1098,6 +1098,7 @@ LFLAK_hmm=$(ls $HmmDir/Pinf_Pram_Psoj_Pcap_LFLAK.hmm)
 DWL_hmm=$(ls $HmmDir/Pinf_Pram_Psoj_Pcap_DWL.hmm)
 for Assembler in discovar spades
 do
+    echo $Assembler
     for Strain in SCRP249 SCRP324 SCRP333
     do
         for Proteome in $(ls gene_pred/braker/$Assembler/P.rubi/"$Strain"_braker/*/augustus.aa)
@@ -1120,7 +1121,7 @@ do
             cat $CrinklerProts_DWL | grep 'number of targets reported over threshold'
             ProgDir=/home/armita/git_repos/emr_repos/scripts/phytophthora/pathogen/hmmer
             $ProgDir/hmmer2fasta.pl $CrinklerProts_DWL $Proteome > $OutDir/"$Strain"_pub_CRN_DWL_hmm.fa
-            # Identify the genes detected in both models
+            echo "Identify the genes detected in both models:"
             cat $OutDir/"$Strain"_pub_CRN_LFLAK_hmm.fa $OutDir/"$Strain"_pub_CRN_DWL_hmm.fa | grep '>' | cut -f1 | tr -d '>' | sort | uniq -d > $OutDir/"$Strain"_pub_CRN_LFLAK_DWL.txt
             cat $OutDir/"$Strain"_pub_CRN_LFLAK_DWL.txt | wc -l
         done
@@ -1128,51 +1129,58 @@ do
 done
 ```
 
-  P.cactorum - 404
-  Initial search space (Z):              27775  [actual number of targets]
-  Domain search space  (domZ):             156  [number of targets reported over threshold]
-  Initial search space (Z):              27775  [actual number of targets]
-  Domain search space  (domZ):             129  [number of targets reported over threshold]
-  113
-  P.cactorum - 414
-  Initial search space (Z):              32832  [actual number of targets]
-  Domain search space  (domZ):             218  [number of targets reported over threshold]
-  Initial search space (Z):              32832  [actual number of targets]
-  Domain search space  (domZ):             189  [number of targets reported over threshold]
-  170
-  P.cactorum - 415
-  Initial search space (Z):              31944  [actual number of targets]
-  Domain search space  (domZ):             201  [number of targets reported over threshold]
-  Initial search space (Z):              31944  [actual number of targets]
-  Domain search space  (domZ):             169  [number of targets reported over threshold]
-  147
-  P.cactorum - 416
-  Initial search space (Z):              32780  [actual number of targets]
-  Domain search space  (domZ):             206  [number of targets reported over threshold]
-  Initial search space (Z):              32780  [actual number of targets]
-  Domain search space  (domZ):             182  [number of targets reported over threshold]
-  155
-  P.cactorum - 62471
-  Initial search space (Z):              27191  [actual number of targets]
-  Domain search space  (domZ):             154  [number of targets reported over threshold]
-  Initial search space (Z):              27191  [actual number of targets]
-  Domain search space  (domZ):             132  [number of targets reported over threshold]
-  112
-  P.idaei - 371
-  Initial search space (Z):              27253  [actual number of targets]
-  Domain search space  (domZ):             127  [number of targets reported over threshold]
-  Initial search space (Z):              27253  [actual number of targets]
-  Domain search space  (domZ):              98  [number of targets reported over threshold]
-  87
-  P.idaei - SCRP370
-  Initial search space (Z):              26983  [actual number of targets]
-  Domain search space  (domZ):             129  [number of targets reported over threshold]
-  Initial search space (Z):              26983  [actual number of targets]
-  Domain search space  (domZ):             103  [number of targets reported over threshold]
-  92
+```
+discovar
+
+P.rubi - SCRP249
+Initial search space (Z):              36943  [actual number of targets]
+Domain search space  (domZ):             161  [number of targets reported over threshold]
+Initial search space (Z):              36943  [actual number of targets]
+Domain search space  (domZ):             152  [number of targets reported over threshold]
+Identify the genes detected in both models:     135
+
+P.rubi - SCRP324
+Initial search space (Z):              42604  [actual number of targets]
+Domain search space  (domZ):             159  [number of targets reported over threshold]
+Initial search space (Z):              42604  [actual number of targets]
+Domain search space  (domZ):             151  [number of targets reported over threshold]
+Identify the genes detected in both models:     135
+
+P.rubi - SCRP333
+Initial search space (Z):              36843  [actual number of targets]
+Domain search space  (domZ):             145  [number of targets reported over threshold]
+Initial search space (Z):              36843  [actual number of targets]
+Domain search space  (domZ):             136  [number of targets reported over threshold]
+Identify the genes detected in both models:     123
+
+spades
+
+P.rubi - SCRP249
+Initial search space (Z):              32541  [actual number of targets]
+Domain search space  (domZ):             149  [number of targets reported over threshold]
+Initial search space (Z):              32541  [actual number of targets]
+Domain search space  (domZ):             137  [number of targets reported over threshold]
+Identify the genes detected in both models:     126
+
+P.rubi - SCRP324
+Initial search space (Z):              38842  [actual number of targets]
+Domain search space  (domZ):             154  [number of targets reported over threshold]
+Initial search space (Z):              38842  [actual number of targets]
+Domain search space  (domZ):             140  [number of targets reported over threshold]
+Identify the genes detected in both models:     124
+
+P.rubi - SCRP333
+Initial search space (Z):              32562  [actual number of targets]
+Domain search space  (domZ):             141  [number of targets reported over threshold]
+Initial search space (Z):              32562  [actual number of targets]
+Domain search space  (domZ):             136  [number of targets reported over threshold]
+Identify the genes detected in both models:     121
+```
+
 Extract gff annotations for Crinklers:
 
-  for CRNlist in $(ls analysis/CRN_effectors/hmmer_CRN/*/*/*_pub_CRN_LFLAK_DWL.txt | grep -e 'P.idaei' -e 'P.cactorum' | grep -v -e '10300'); do
+```bash
+for CRNlist in $(ls analysis/CRN_effectors/hmmer_CRN/*/*/*_pub_CRN_LFLAK_DWL.txt | grep -e 'P.idaei' -e 'P.cactorum' | grep -v -e '10300'); do
     Strain=$(echo $CRNlist | rev | cut -f2 -d '/' | rev)
     Organism=$(echo $CRNlist | rev | cut -f3 -d '/' | rev)
     OutName=$(echo $CRNlist | sed 's/.txt/.gff/g')
@@ -1181,7 +1189,9 @@ Extract gff annotations for Crinklers:
     cat $CRNlist | sed -r 's/\.t.$//g' > tmp.txt
     cat $Gff | grep -w -f tmp.txt > $OutName
     rm tmp.txt
-  done
+done
+```
+
 E) From ORF gene models - Signal peptide & RxLR motif
 
 Required programs:
