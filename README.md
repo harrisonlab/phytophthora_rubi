@@ -428,7 +428,7 @@ Complete: 94.35%
 Partial: 96.77%**
 
 #Gene prediction
-Gene prediction was performed for the P. fragariae genomes. Two gene prediction approaches were used:
+Gene prediction was performed for the P. rubi genomes. Two gene prediction approaches were used:
 
 Gene prediction using Braker1 and Prediction of all putative ORFs in the genome using the ORF finder (atg.pl) approach.
 
@@ -436,7 +436,7 @@ Gene prediction using Braker1 and Prediction of all putative ORFs in the genome 
 
 Gene prediction was performed using Braker1.
 
-First, RNAseq data was aligned to P. fragariae genomes.
+First, RNAseq data was aligned to P. rubi genomes.
 
 qc of RNA seq data was performed as part of sequencing the 10300 genome:
 
@@ -1282,8 +1282,6 @@ do
     done
 done
 ```
-
----progress to here---
 
 The batch files of predicted secreted proteins needed to be combined into a single file for each strain. This was done with the following commands:
 
