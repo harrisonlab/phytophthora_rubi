@@ -1297,7 +1297,7 @@ do
         InStringNeg=''
         InStringTab=''
         InStringTxt=''
-        for SigpDir in $(ls -d gene_pred/ORF_sig* | cut -f2 -d'/')
+        for SigpDir in $(ls -d gene_pred/"$Assembler"_sig* | cut -f2 -d'/')
         do
             for GRP in $(ls -l $SplitDir/*_ORF_*.fa | rev | cut -d '_' -f1 | rev | sort -n)
             do
@@ -1306,6 +1306,7 @@ do
                 InStringTab="$InStringTab gene_pred/$SigpDir/$Organism/$Strain/split/"$Organism"_"$Strain"_ORF_preds_$GRP""_sp.tab"
                 InStringTxt="$InStringTxt gene_pred/$SigpDir/$Organism/$Strain/split/"$Organism"_"$Strain"_ORF_preds_$GRP""_sp.txt"
             done
+            SigPDir=gene_pred/ORF_sig*/$Assembler/$Organism/$Strain
             cat $InStringAA > gene_pred/$SigpDir/$Assembler/$Organism/$Strain/"$Strain"_aug_sp.aa
             cat $InStringNeg > gene_pred/$SigpDir/$Assembler/$Organism/$Strain/"$Strain"_aug_neg_sp.aa
             tail -n +2 -q $InStringTab > gene_pred/$SigpDir/$Assembler/$Organism/$Strain/"$Strain"_aug_sp.tab
