@@ -1290,8 +1290,8 @@ for Assembler in discovar spades
 do
     for SplitDir in $(ls -d gene_pred/ORF_split/$Assembler/*/*)
     do
-        Strain=$(echo $SplitDir | cut -d '/' -f4)
-        Organism=$(echo $SplitDir | cut -d '/' -f3)
+        Strain=$(echo $SplitDir | cut -d '/' -f5)
+        Organism=$(echo $SplitDir | cut -d '/' -f4)
         echo "$Organism - $Strain"
         InStringAA=''
         InStringNeg=''
@@ -1320,15 +1320,20 @@ E.2) Prediction using Phobius
 
 Secreted proteins were also predicted using Phobius
 
-    for Proteome in $(ls gene_pred/ORF_finder/P.*/*/*.aa_cat.fa | grep -e 'P.cactorum' -e 'P.idaei' | grep -v '10300' | grep -w -e '404' -e '414' -e '415' -e '416'); do
+```bash
+for Proteome in $(ls gene_pred/ORF_finder/*/P.*/*/*.aa_cat.fa)
+do
     Strain=$(echo $Proteome | rev | cut -f2 -d '/' | rev)
     Organism=$(echo $Proteome | rev | cut -f3 -d '/' | rev)
+    Assembler=$(echo $Proteome | rev | cut -f4 -d '/' | rev)
     echo "$Organism - $Strain"
-    OutDir=analysis/phobius/$Organism/$Strain
+    OutDir=analysis/phobius/$Assembler/$Organism/$Strain
     mkdir -p $OutDir
     phobius.pl $Proteome > $OutDir/"$Strain"_phobius_ORF.txt
     cat $OutDir/"$Strain"_phobius_ORF.txt | grep -B1 'SIGNAL' | grep 'ID' | sed s'/ID.*g/g/g' > $OutDir/"$Strain"_phobius_headers_ORF.txt
-  done
+done
+```
+
 Secreted proteins from different sources were combined into a single file:
 
   for Proteome in $(ls gene_pred/ORF_finder/P.*/*/*.aa_cat.fa | grep -e 'P.cactorum' -e 'P.idaei' | grep -v -e '10300' -e '414_v2' | grep -w -e '404' -e '414' -e '415' -e '416'); do
