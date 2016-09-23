@@ -1408,31 +1408,37 @@ done
 
 Due to the nature of predicting ORFs, some features overlapped with one another. A single ORF was selected from each set of overlapped ORFs. This was was selected on the basis of its SignalP Hmm score. Biopython was used to identify overlaps and identify the ORF with the best signalP score.
 
-  for ORF_Gff in $(ls gene_pred/ORF_finder/*/*/*_ORF.gff3 | grep -v -e 'atg' | grep -e 'P.cactorum' -e 'P.idaei' | grep -v -e '10300' -e '414_v2' | grep -v -w -e '404' -e '414' -e '415' -e '416'); do
-    Organism=$(echo $ORF_Gff | rev |  cut -d '/' -f3 | rev) ;
-    Strain=$(echo $ORF_Gff | rev | cut -d '/' -f2 | rev);
-    OutDir=$(ls -d gene_pred/combined_sigP_ORF/$Organism/$Strain)
+```bash
+for ORF_Gff in $(ls gene_pred/ORF_finder/*/*/*/*_ORF.gff3)
+do
+    Organism=$(echo $ORF_Gff | rev |  cut -d '/' -f3 | rev)
+    Strain=$(echo $ORF_Gff | rev | cut -d '/' -f2 | rev)
+    Assembler=$(echo $ORF_Gff | rev | cut -d '/' -f4 | rev)
+    OutDir=$(ls -d gene_pred/combined_sigP_ORF/$Assembler/$Organism/$Strain)
     echo "$Organism - $Strain"
-    # SigP_fasta=$(ls $OutDir/"$Strain"_all_secreted.fa)
     SigP_headers=$(ls $OutDir/"$Strain"_all_secreted_headers.txt)
-    ORF_fasta=$(ls gene_pred/ORF_finder/$Organism/$Strain/"$Strain".aa_cat.fa)
+    SigP_fasta=$(ls $OutDir/"$Strain"_all_secreted.fa)
+    ORF_fasta=$(ls gene_pred/ORF_finder/$Assembler/$Organism/$Strain/"$Strain".aa_cat.fa)
 
     SigP_Gff=$OutDir/"$Strain"_all_secreted_unmerged.gff
     SigP_Merged_Gff=$OutDir/"$Strain"_all_secreted_merged.gff
     SigP_Merged_txt=$OutDir/"$Strain"_all_secreted_merged.txt
     SigP_Merged_AA=$OutDir/"$Strain"_all_secreted_merged.aa
 
-    ProgDir=/home/armita/git_repos/emr_repos/tools/gene_prediction/ORF_finder
+    ProgDir=/home/adamst/git_repos/tools/gene_prediction/ORF_finder
     $ProgDir/extract_gff_for_sigP_hits.pl $SigP_headers $ORF_Gff SigP Name > $SigP_Gff
-    ProgDir=~/git_repos/emr_repos/scripts/phytophthora/pathogen/merge_gff
+    echo "done"
+    ProgDir=/home/adamst/git_repos/scripts/phytophthora/pathogen/merge_gff
     $ProgDir/make_gff_database.py --inp $SigP_Gff --db sigP_ORF.db
-    ProgDir=/home/armita/git_repos/emr_repos/tools/gene_prediction/ORF_finder
+    echo "done"
+    ProgDir=/home/adamst/git_repos/tools/gene_prediction/ORF_finder
     $ProgDir/merge_sigP_ORFs.py --inp sigP_ORF.db --id sigP_ORF --out sigP_ORF_merged.db --gff > $SigP_Merged_Gff
+    echo "done"
     cat $SigP_Merged_Gff | grep 'transcript' | rev | cut -f1 -d'=' | rev > $SigP_Merged_txt
-    # $ProgDir/extract_from_fasta.py --fasta $SigP_fasta --headers $SigP_Merged_txt > $SigP_Merged_AA
-    $ProgDir/extract_from_fasta.py --fasta $ORF_fasta --headers $SigP_Merged_txt > $SigP_Merged_AA
-  done
-<--- Progress up to here
+    $ProgDir/extract_from_fasta.py --fasta $SigP_fasta --headers $SigP_Merged_txt > $SigP_Merged_AA
+    echo "done"
+done
+```
 
 The regular expression R.LR.{,40}[ED][ED][KR] has previously been used to identify RxLR effectors. The addition of an EER motif is significant as it has been shown as required for host uptake of the protein.
 
