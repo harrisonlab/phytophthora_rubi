@@ -1358,41 +1358,39 @@ do
 done
 ```
 
-  P.cactorum - 404
-  The following number of sequences were predicted as secreted:
-  55547
-  This represented the following number of unique genes:
-  26231
-  P.cactorum - 414
-  The following number of sequences were predicted as secreted:
-  70912
-  This represented the following number of unique genes:
-  33601
-  P.cactorum - 415
-  The following number of sequences were predicted as secreted:
-  60266
-  This represented the following number of unique genes:
-  28714
-  P.cactorum - 416
-  The following number of sequences were predicted as secreted:
-  61712
-  This represented the following number of unique genes:
-  29425
-  P.cactorum - 62471
-  The following number of sequences were predicted as secreted:
-  55686
-  This represented the following number of unique genes:
-  26324
-  P.idaei - 371
-  The following number of sequences were predicted as secreted:
-  54493
-  This represented the following number of unique genes:
-  25750
-  P.idaei - SCRP370
-  The following number of sequences were predicted as secreted:
-  54601
-  This represented the following number of unique genes:
-  25802
+```
+discovar - P.rubi - SCRP249
+The following number of sequences were predicted as secreted:
+148381
+This represented the following number of unique genes:
+75852
+discovar - P.rubi - SCRP324
+The following number of sequences were predicted as secreted:
+162960
+This represented the following number of unique genes:
+83073
+discovar - P.rubi - SCRP333
+The following number of sequences were predicted as secreted:
+148910
+This represented the following number of unique genes:
+76148
+spades - P.rubi - SCRP249
+The following number of sequences were predicted as secreted:
+135809
+This represented the following number of unique genes:
+69080
+spades - P.rubi - SCRP324
+The following number of sequences were predicted as secreted:
+150784
+This represented the following number of unique genes:
+76495
+spades - P.rubi - SCRP333
+The following number of sequences were predicted as secreted:
+135638
+This represented the following number of unique genes:
+69065
+```
+
 E.3) Prediction of RxLRs
 
 Names of ORFs containing signal peptides were extracted from fasta files. This included information on the position and hmm score of RxLRs.
