@@ -1351,7 +1351,7 @@ do
     cat $OutDir/"$Strain"_all_secreted.fa | grep '>' | tr -d '>' | tr -d ' ' | sed "s/HMM_score\t/HMM_score=\t/g" > $OutDir/"$Strain"_all_secreted_headers.txt
     cat $OutDir/"$Strain"_all_secreted_headers.txt | wc -l
     echo "This represented the following number of unique genes:"
-    cat gene_pred/ORF_sig*/$Assembler/$Organism/$Strain/*_aug_sp.aa analysis/phobius/$Organism/$Strain/"$Strain"_phobius_ORF.fa | grep '>' | cut -f1 | tr -d ' >' | sort -g | uniq > $OutDir/"$Strain"_secreted.txt
+    cat gene_pred/"$Assembler"_sig*/$Organism/$Strain/*_aug_sp.aa analysis/phobius/$Assembler/$Organism/$Strain/"$Strain"_phobius_ORF.fa | grep '>' | cut -f1 | tr -d ' >' | sort -g | uniq > $OutDir/"$Strain"_secreted.txt
     ProgDir=/home/armita/git_repos/emr_repos/tools/gene_prediction/ORF_finder
     $ProgDir/extract_from_fasta.py --fasta $Proteome --headers $OutDir/"$Strain"_secreted.txt > $OutDir/"$Strain"_secreted.fa
     cat $OutDir/"$Strain"_secreted.fa | grep '>' | wc -l
