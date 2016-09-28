@@ -1261,6 +1261,7 @@ do
         ProgDir=/home/adamst/git_repos/tools/seq_tools/feature_annotation/signal_peptides
         Strain=$(echo $Proteome | rev | cut -f2 -d '/' | rev)
         Organism=$(echo $Proteome | rev | cut -f3 -d '/' | rev)
+        echo "$Organism - $Strain"
         SplitDir=gene_pred/ORF_split/$Assembler/$Organism/$Strain
         mkdir -p $SplitDir
         BaseName="$Organism""_$Strain"_ORF_preds
