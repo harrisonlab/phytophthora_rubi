@@ -438,14 +438,11 @@ Gene prediction was performed using Braker1.
 
 First, RNAseq data was aligned to P. rubi genomes.
 
-qc of RNA seq data was performed as part of sequencing the 10300 genome:
-
-```bash
-FileF=qc_rna/genbank/P.cactorum/10300/F/SRR1206032_trim.fq.gz
-FileR=qc_rna/genbank/P.cactorum/10300/R/SRR1206033_trim.fq.gz
-```
+RNAseq data was obtained from the phytophthora sequencing consortium, mean fragment size and insert length determined in README.md in the phytophthora_fragariae directory.
 
 #Aligning
+
+First pair
 
 ```bash
 for Assembler in discovar spades
@@ -454,14 +451,60 @@ do
     do
         Strain=$(echo $Assembly| rev | cut -d '/' -f3 | rev)
         Organism=$(echo $Assembly | rev | cut -d '/' -f4 | rev)
-        echo "$Organism - $Strain"
-        for RNA in $(ls qc_rna/genbank/P.cactorum/10300/*/*_trim.fq.gz)
+        echo "$Assembler - $Organism - $Strain"
+        for RNADir in $(ls -d qc_rna/raw_rna/consortium/P.frag)
         do
-            Timepoint=$(echo $RNA | rev | cut -f1 -d '/' | rev | sed 's/_trim.*//g')
-            echo "$Timepoint"
-            OutDir=alignment/$Assembler/$Organism/$Strain/$Timepoint
+            Species=$(echo $RNADir | rev | cut -f1 -d '/' | rev)
+            echo "$Species"
+            FileF=$(ls $RNADir/F/4*_trim.fq.gz)
+            FileR=$(ls $RNADir/R/4*_trim.fq.gz)
+            OutDir=alignment/$Organism/$Strain/$Species/1
+            InsertGap='25'
+            InsertStdDev='28'
+            Jobs=$(qstat | grep 'tophat' | grep 'qw' | wc -l)
+            while [ $Jobs -gt 1 ]
+            do
+                sleep 10
+                printf "."
+                Jobs=$(qstat | grep 'tophat' | grep 'qw' | wc -l)
+            done
+            printf "\n"
             ProgDir=/home/adamst/git_repos/tools/seq_tools/RNAseq
-            qsub $ProgDir/tophat_alignment_unpaired.sh $Assembly $RNA $OutDir
+            qsub $ProgDir/tophat_alignment.sh $Assembly $FileF $FileR $OutDir $InsertGap $InsertStdDev
+        done
+    done
+done
+```
+
+Second pair
+
+```bash
+for Assembler in discovar spades
+do
+    for Assembly in $(ls repeat_masked/$Assembler/P.rubi/*/filtered_contigs_repmask/*_contigs_softmasked_repeatmasker_TPSI_appended.fa)
+    do
+        Strain=$(echo $Assembly| rev | cut -d '/' -f3 | rev)
+        Organism=$(echo $Assembly | rev | cut -d '/' -f4 | rev)
+        echo "$Assembler - $Organism - $Strain"
+        for RNADir in $(ls -d qc_rna/raw_rna/consortium/P.frag)
+        do
+            Species=$(echo $RNADir | rev | cut -f1 -d '/' | rev)
+            echo "$Species"
+            FileF=$(ls $RNADir/F/P*_trim.fq.gz)
+            FileR=$(ls $RNADir/R/P*_trim.fq.gz)
+            OutDir=alignment/$Organism/$Strain/$Species/2
+            InsertGap='23'
+            InsertStdDev='29'
+            Jobs=$(qstat | grep 'tophat' | grep 'qw' | wc -l)
+            while [ $Jobs -gt 1 ]
+            do
+                sleep 10
+                printf "."
+                Jobs=$(qstat | grep 'tophat' | grep 'qw' | wc -l)
+            done
+            printf "\n"
+            ProgDir=/home/adamst/git_repos/tools/seq_tools/RNAseq
+            qsub $ProgDir/tophat_alignment.sh $Assembly $FileF $FileR $OutDir $InsertGap $InsertStdDev
         done
     done
 done
