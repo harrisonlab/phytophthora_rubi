@@ -452,7 +452,7 @@ do
         Strain=$(echo $Assembly| rev | cut -d '/' -f3 | rev)
         Organism=$(echo $Assembly | rev | cut -d '/' -f4 | rev)
         echo "$Assembler - $Organism - $Strain"
-        for RNADir in $(ls -d qc_rna/raw_rna/consortium/P.frag)
+        for RNADir in $(ls -d qc_rna/qc_rna/raw_rna/consortium/P.frag)
         do
             Species=$(echo $RNADir | rev | cut -f1 -d '/' | rev)
             echo "$Species"
@@ -486,7 +486,7 @@ do
         Strain=$(echo $Assembly| rev | cut -d '/' -f3 | rev)
         Organism=$(echo $Assembly | rev | cut -d '/' -f4 | rev)
         echo "$Assembler - $Organism - $Strain"
-        for RNADir in $(ls -d qc_rna/raw_rna/consortium/P.frag)
+        for RNADir in $(ls -d qc_rna/qc_rna/raw_rna/consortium/P.frag)
         do
             Species=$(echo $RNADir | rev | cut -f1 -d '/' | rev)
             echo "$Species"
