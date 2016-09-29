@@ -458,7 +458,7 @@ do
             echo "$Species"
             FileF=$(ls $RNADir/F/4*_trim.fq.gz)
             FileR=$(ls $RNADir/R/4*_trim.fq.gz)
-            OutDir=alignment/$Organism/$Strain/$Species/1
+            OutDir=alignment/$Assembler/$Organism/$Strain/$Species/1
             InsertGap='25'
             InsertStdDev='28'
             Jobs=$(qstat | grep 'tophat' | grep 'qw' | wc -l)
@@ -492,7 +492,7 @@ do
             echo "$Species"
             FileF=$(ls $RNADir/F/P*_trim.fq.gz)
             FileR=$(ls $RNADir/R/P*_trim.fq.gz)
-            OutDir=alignment/$Organism/$Strain/$Species/2
+            OutDir=alignment/$Assembler/$Organism/$Strain/$Species/2
             InsertGap='23'
             InsertStdDev='29'
             Jobs=$(qstat | grep 'tophat' | grep 'qw' | wc -l)
@@ -526,7 +526,7 @@ do
             echo "$Species"
             FileF=$(ls $RNADir/F/4*_trim.fq.gz)
             FileR=$(ls $RNADir/R/4*_trim.fq.gz)
-            OutDir=alignment/$Organism/$Strain/$Species/1
+            OutDir=alignment/$Assembler/$Organism/$Strain/$Species/1
             InsertGap='24'
             InsertStdDev='28'
             Jobs=$(qstat | grep 'tophat' | grep 'qw' | wc -l)
@@ -560,7 +560,7 @@ do
             echo "$Species"
             FileF=$(ls $RNADir/F/P*_trim.fq.gz)
             FileR=$(ls $RNADir/R/P*_trim.fq.gz)
-            OutDir=alignment/$Organism/$Strain/$Species/2
+            OutDir=alignment/$Assembler/$Organism/$Strain/$Species/2
             InsertGap='15'
             InsertStdDev='27'
             Jobs=$(qstat | grep 'tophat' | grep 'qw' | wc -l)
@@ -583,15 +583,25 @@ done
 ```bash
 for Assembler in discovar spades
 do
-    for Assembly in $(ls repeat_masked/$Assembler/*/*/filtered_contigs_repmask/*_contigs_softmasked_repeatmasker_TPSI_appended.fa)
+    for Assembly in $(ls repeat_masked/$Assembler/P.rubi/*/filtered_contigs_repmask/*_contigs_softmasked_repeatmasker_TPSI_appended.fa)
     do
+        Jobs=$(qstat | grep 'braker' | grep -w 'r' | wc -l)
+        while [ $Jobs -gt 1 ]
+        do
+            sleep 10
+            printf "."
+            Jobs=$(qstat | grep 'braker' | grep -w 'r' | wc -l)
+        done
+        printf "\n"
         Strain=$(echo $Assembly| rev | cut -d '/' -f3 | rev)
         Organism=$(echo $Assembly | rev | cut -d '/' -f4 | rev)
-        echo "$Organism - $Strain"
+        echo "$Assembler - $Organism - $Strain"
         mkdir -p alignment/$Assembler/$Organism/$Strain/concatenated
         samtools merge -f alignment/$Assembler/$Organism/$Strain/concatenated/concatenated.bam \
-        alignment/$Assembler/$Organism/$Strain/SRR1206032/accepted_hits.bam \
-        alignment/$Assembler/$Organism/$Strain/SRR1206033/accepted_hits.bam
+        alignment/$Assembler/$Organism/$Strain/P.frag/1/accepted_hits.bam \
+        alignment/$Assembler/$Organism/$Strain/P.frag/2/accepted_hits.bam \
+        alignment/$Assembler/$Organism/$Strain/P.rubi/1/accepted_hits.bam \
+        alignment/$Assembler/$Organism/$Strain/P.frag/2/accepted_hits.bam
         OutDir=gene_pred/braker/$Assembler/$Organism/"$Strain"_braker
         AcceptedHits=alignment/$Assembler/$Organism/$Strain/concatenated/concatenated.bam
         GeneModelName="$Organism"_"$Strain"_braker
