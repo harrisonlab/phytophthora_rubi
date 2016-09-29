@@ -699,12 +699,13 @@ done
 The final number of genes per isolate was observed using:
 
 ```bash
-for DirPath in $(ls -d gene_pred/codingquary/F.*/*/final | grep -w -e'Fus2'); do
-echo $DirPath;
-cat $DirPath/final_genes_Braker.pep.fasta | grep '>' | wc -l;
-cat $DirPath/final_genes_CodingQuary.pep.fasta | grep '>' | wc -l;
-cat $DirPath/final_genes_combined.pep.fasta | grep '>' | wc -l;
-echo "";
+for DirPath in $(ls -d gene_pred/codingquary/*/P.*/*/final)
+do
+echo $DirPath
+cat $DirPath/final_genes_Braker.pep.fasta | grep '>' | wc -l
+cat $DirPath/final_genes_CodingQuary.pep.fasta | grep '>' | wc -l
+cat $DirPath/final_genes_combined.pep.fasta | grep '>' | wc -l
+echo ""
 done
 ```
 
