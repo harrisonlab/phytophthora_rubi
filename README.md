@@ -621,14 +621,15 @@ Firstly, aligned RNAseq data was assembled into transcripts using Cufflinks.
 Note - cufflinks doesn't always predict direction of a transcript and therefore features can not be restricted by strand when they are intersected.
 
 ```bash
-for Assembly in $(ls repeat_masked/*/*/filtered_contigs_repmask/*_contigs_unmasked.fa)
+for Assembly in $(ls repeat_masked/*/*/*/filtered_contigs_repmask/*_contigs_unmasked.fa)
 do
     Strain=$(echo $Assembly| rev | cut -d '/' -f3 | rev)
     Organism=$(echo $Assembly | rev | cut -d '/' -f4 | rev)
-    echo "$Organism - $Strain"
-    OutDir=gene_pred/cufflinks/$Organism/$Strain/concatenated
+    Assembler=$(echo $Assembly | rev | cut -d '/' -f5 | rev)
+    echo "$Assembler - $Organism - $Strain"
+    OutDir=gene_pred/cufflinks/$Assembler/$Organism/$Strain/concatenated
     mkdir -p $OutDir
-    AcceptedHits=alignment/$Organism/$Strain/concatenated/concatenated.bam
+    AcceptedHits=alignment/$Assembler/$Organism/$Strain/concatenated/concatenated.bam
     ProgDir=/home/adamst/git_repos/tools/seq_tools/RNAseq
     qsub $ProgDir/sub_cufflinks.sh $AcceptedHits $OutDir
 done
