@@ -600,8 +600,8 @@ do
         samtools merge -f alignment/$Assembler/$Organism/$Strain/concatenated/concatenated.bam \
         alignment/$Assembler/$Organism/$Strain/P.frag/1/accepted_hits.bam \
         alignment/$Assembler/$Organism/$Strain/P.frag/2/accepted_hits.bam \
-        alignment/$Assembler/$Organism/$Strain/P.rubi/1/accepted_hits.bam \
-        alignment/$Assembler/$Organism/$Strain/P.frag/2/accepted_hits.bam
+        alignment/$Assembler/$Organism/$Strain/SRR1206032/accepted_hits.bam \
+        alignment/$Assembler/$Organism/$Strain/SRR1206033/accepted_hits.bam
         OutDir=gene_pred/braker/$Assembler/$Organism/"$Strain"_braker
         AcceptedHits=alignment/$Assembler/$Organism/$Strain/concatenated/concatenated.bam
         GeneModelName="$Organism"_"$Strain"_braker
