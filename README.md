@@ -510,6 +510,40 @@ do
 done
 ```
 
+Third pair
+
+```bash
+for Assembler in discovar spades
+do
+    for Assembly in $(ls repeat_masked/$Assembler/P.rubi/*/filtered_contigs_repmask/*_contigs_softmasked_repeatmasker_TPSI_appended.fa)
+    do
+        Strain=$(echo $Assembly| rev | cut -d '/' -f3 | rev)
+        Organism=$(echo $Assembly | rev | cut -d '/' -f4 | rev)
+        echo "$Assembler - $Organism - $Strain"
+        for RNADir in $(ls -d qc_rna/qc_rna/raw_rna/consortium/P.frag)
+        do
+            Species=$(echo $RNADir | rev | cut -f1 -d '/' | rev)
+            echo "$Species"
+            FileF=$(ls $RNADir/F/4*_trim.fq.gz)
+            FileR=$(ls $RNADir/R/4*_trim.fq.gz)
+            OutDir=alignment/$Organism/$Strain/$Species/1
+            InsertGap='24'
+            InsertStdDev='28'
+            Jobs=$(qstat | grep 'tophat' | grep 'qw' | wc -l)
+            while [ $Jobs -gt 1 ]
+            do
+                sleep 10
+                printf "."
+                Jobs=$(qstat | grep 'tophat' | grep 'qw' | wc -l)
+            done
+            printf "\n"
+            ProgDir=/home/adamst/git_repos/tools/seq_tools/RNAseq
+            qsub $ProgDir/tophat_alignment.sh $Assembly $FileF $FileR $OutDir $InsertGap $InsertStdDev
+        done
+    done
+done
+```
+
 #Braker prediction
 
 ```bash
