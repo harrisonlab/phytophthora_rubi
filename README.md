@@ -654,17 +654,17 @@ done
 Then, additional transcripts were added to Braker1 gene models, when CodingQuarry genes were predicted in regions of the genome, not containing Braker1 gene models:
 
 ```bash
-for BrakerGff in $(ls gene_pred/braker/F.*/*_braker_pacbio/*/augustus.gff3 | grep -e 'Fus2')
+for BrakerGff in $(ls gene_pred/braker/*/P.*/*_braker/*/augustus.gff3)
 do
-    Strain=$(echo $BrakerGff| rev | cut -d '/' -f3 | rev | sed 's/_braker_new//g' | sed 's/_braker_pacbio//g')
+    Strain=$(echo $BrakerGff| rev | cut -d '/' -f3 | rev | sed 's/_braker//g' | sed 's/_braker_pacbio//g')
     Organism=$(echo $BrakerGff | rev | cut -d '/' -f4 | rev)
-    echo "$Organism - $Strain"
-    # BrakerGff=gene_pred/braker/$Organism/$Strain/F.oxysporum_fsp_cepae_Fus2_braker/augustus_extracted.gff
-    Assembly=$(ls repeat_masked/$Organism/$Strain/*/"$Strain"_contigs_softmasked.fa)
-    CodingQuaryGff=gene_pred/codingquary/$Organism/$Strain/out/PredictedPass.gff3
-    PGNGff=gene_pred/codingquary/$Organism/$Strain/out/PGN_predictedPass.gff3
-    AddDir=gene_pred/codingquary/$Organism/$Strain/additional
-    FinalDir=gene_pred/codingquary/$Organism/$Strain/final
+    Assembler=$(echo $BrakerGff | rev | cut -d '/' -f5 | rev)
+    echo "$Assembler - $Organism - $Strain"
+    Assembly=$(ls repeat_masked/$Assembler/$Organism/$Strain/*/"$Strain"_contigs_softmasked_repeatmasker_TPSI_appended.fa)
+    CodingQuaryGff=gene_pred/codingquary/$Assembler/$Organism/$Strain/out/PredictedPass.gff3
+    PGNGff=gene_pred/codingquary/$Assembler/$Organism/$Strain/out/PGN_predictedPass.gff3
+    AddDir=gene_pred/codingquary/$Assembler/$Organism/$Strain/additional
+    FinalDir=gene_pred/codingquary/$Assembler/$Organism/$Strain/final
     AddGenesList=$AddDir/additional_genes.txt
     AddGenesGff=$AddDir/additional_genes.gff
     FinalGff=$AddDir/combined_genes.gff
@@ -693,8 +693,6 @@ do
     GffQuary=$FinalDir/final_genes_Braker.gff3
     GffAppended=$FinalDir/final_genes_appended.gff3
     cat $GffBraker $GffQuary > $GffAppended
-
-    # cat $BrakerGff $AddDir/additional_gene_parsed.gff3 | bedtools sort > $FinalGff
 done
 ```
 
