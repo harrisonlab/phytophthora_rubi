@@ -709,66 +709,6 @@ echo ""
 done
 ```
 
-#4) Extract gff and amino acid sequences
-
-```bash
-for Assembler in discovar spades
-do
-    for Strain in SCRP249 SCRP324 SCRP333
-    do
-        for File in $(ls gene_pred/braker/$Assembler/*/"$Strain"_braker/*_braker/augustus.gff)
-        do
-            getAnnoFasta.pl $File
-            OutDir=$(dirname $File)
-            echo "##gff-version 3" > $OutDir/augustus_extracted.gff
-            cat $File | grep -v '#' >> $OutDir/augustus_extracted.gff
-        done
-    done
-done
-```
-
-The final number of genes per isolate was observed using:
-
-```bash
-for Assembler in discovar spades
-do
-    echo $Assembler
-    for Strain in SCRP249 SCRP324 SCRP333
-    do
-        for DirPath in $(ls -d gene_pred/braker/$Assembler/*/"$Strain"_braker/P.rubi_*_braker)
-        do
-            echo $DirPath
-            cat $DirPath/augustus.aa | grep '>' | wc -l
-            echo ""
-        done
-    done
-done
-```
-
-```
-discovar
-
-SCRP249
-36943
-
-SCRP324
-42604
-
-SCRP333
-36843
-
-spades
-
-SCRP249
-32541
-
-SCRP324
-38842
-
-SCRP333
-32562
-```
-
 #Gene prediction 2 - atg.pl prediction of ORFs
 
 Open reading frame predictions were made using the atg.pl script as part of the path_pipe.sh pipeline. This pipeline also identifies open reading frames containing Signal peptide sequences and RxLRs. This pipeline was run with the following commands:
