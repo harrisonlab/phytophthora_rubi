@@ -1404,8 +1404,6 @@ do
 done
 ```
 
---progress here--
-
 The batch files of predicted secreted proteins needed to be combined into a single file for each strain. This was done with the following commands:
 
 ```bash
@@ -1438,6 +1436,8 @@ do
     done
 done
 ```
+
+--progress here--
 
 E.2) Prediction using Phobius
 
