@@ -702,8 +702,11 @@ The final number of genes per isolate was observed using:
 for DirPath in $(ls -d gene_pred/codingquary/*/P.*/*/final)
 do
     echo $DirPath
+    echo Braker:
     cat $DirPath/final_genes_Braker.pep.fasta | grep '>' | wc -l
+    echo CodingQuarry:
     cat $DirPath/final_genes_CodingQuary.pep.fasta | grep '>' | wc -l
+    echo Total:
     cat $DirPath/final_genes_combined.pep.fasta | grep '>' | wc -l
     echo ""
 done
