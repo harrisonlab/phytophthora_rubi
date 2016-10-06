@@ -1437,8 +1437,6 @@ do
 done
 ```
 
---progress here--
-
 E.2) Prediction using Phobius
 
 Secreted proteins were also predicted using Phobius
@@ -1489,9 +1487,9 @@ This represented the following number of unique genes:
 75852
 discovar - P.rubi - SCRP324
 The following number of sequences were predicted as secreted:
-162960
+162938
 This represented the following number of unique genes:
-83073
+83071
 discovar - P.rubi - SCRP333
 The following number of sequences were predicted as secreted:
 148910
