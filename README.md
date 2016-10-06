@@ -712,6 +712,56 @@ do
 done
 ```
 
+```
+discovar - P.rubi - SCRP249
+Braker:
+33629
+CodingQuarry:
+2490
+Total:
+36119
+
+discovar - P.rubi - SCRP324
+Braker:
+39285
+CodingQuarry:
+2909
+Total:
+42194
+
+discovar - P.rubi - SCRP333
+Braker:
+34276
+CodingQuarry:
+3236
+Total:
+37512
+
+spades - P.rubi - SCRP249
+Braker:
+29919
+CodingQuarry:
+1947
+Total:
+31866
+
+spades - P.rubi - SCRP324
+Braker:
+34668
+CodingQuarry:
+2353
+Total:
+37021
+
+spades - P.rubi - SCRP333
+Braker:
+29669
+CodingQuarry:
+2069
+Total:
+31738
+```
+
 #Gene prediction 2 - atg.pl prediction of ORFs
 
 Open reading frame predictions were made using the atg.pl script as part of the path_pipe.sh pipeline. This pipeline also identifies open reading frames containing Signal peptide sequences and RxLRs. This pipeline was run with the following commands:
