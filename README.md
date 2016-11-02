@@ -1539,7 +1539,7 @@ do
     Strain=$(echo $ORF_Gff | rev | cut -d '/' -f2 | rev)
     Assembler=$(echo $ORF_Gff | rev | cut -d '/' -f4 | rev)
     OutDir=$(ls -d gene_pred/combined_sigP_ORF/$Assembler/$Organism/$Strain)
-    echo "$Organism - $Strain"
+    echo "$Assembler - $Organism - $Strain"
     SigP_headers=$(ls $OutDir/"$Strain"_all_secreted_headers.txt)
     SigP_fasta=$(ls $OutDir/"$Strain"_all_secreted.fa)
     ORF_fasta=$(ls gene_pred/ORF_finder/$Assembler/$Organism/$Strain/"$Strain".aa_cat.fa)
@@ -1551,16 +1551,16 @@ do
 
     ProgDir=/home/adamst/git_repos/tools/gene_prediction/ORF_finder
     $ProgDir/extract_gff_for_sigP_hits.pl $SigP_headers $ORF_Gff SigP Name > $SigP_Gff
-    echo "done"
+    echo "Extracting Gff done"
     ProgDir=/home/adamst/git_repos/scripts/phytophthora/pathogen/merge_gff
     $ProgDir/make_gff_database.py --inp $SigP_Gff --db sigP_ORF.db
-    echo "done"
+    echo "Gff database made"
     ProgDir=/home/adamst/git_repos/tools/gene_prediction/ORF_finder
     $ProgDir/merge_sigP_ORFs.py --inp sigP_ORF.db --id sigP_ORF --out sigP_ORF_merged.db --gff > $SigP_Merged_Gff
-    echo "done"
+    echo "Merging complete"
     cat $SigP_Merged_Gff | grep 'transcript' | rev | cut -f1 -d'=' | rev > $SigP_Merged_txt
     $ProgDir/extract_from_fasta.py --fasta $SigP_fasta --headers $SigP_Merged_txt > $SigP_Merged_AA
-    echo "done"
+    echo "$Assembler $Strain complete"
 done
 ```
 
