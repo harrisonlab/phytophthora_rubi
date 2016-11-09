@@ -1688,25 +1688,10 @@ do
 done
 ```
 
-  P.cactorum 404
-  Initial search space (Z):              55547  [actual number of targets]
-  Domain search space  (domZ):             417  [number of targets reported over threshold]
-  Merged RxLR-EER Hmm proteins: 129
-  P.cactorum 414
-  Initial search space (Z):              70912  [actual number of targets]
-  Domain search space  (domZ):             495  [number of targets reported over threshold]
-  Merged RxLR-EER Hmm proteins: 154
-  P.cactorum 415
-  Initial search space (Z):              60266  [actual number of targets]
-  Domain search space  (domZ):             421  [number of targets reported over threshold]
-  Merged RxLR-EER Hmm proteins: 129
-  P.cactorum 416
-  Initial search space (Z):              61712  [actual number of targets]
-  Domain search space  (domZ):             412  [number of targets reported over threshold]
-  Merged RxLR-EER Hmm proteins: 128
-P.cactorum 10300
-Initial search space (Z): 14767 [actual number of targets]
-Domain search space (domZ): 144 [number of targets reported over threshold]
+```
+
+```
+
 E7) Combining RxLRs from Regex and hmm searches
 
 The total RxLRs are
