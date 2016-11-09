@@ -1610,29 +1610,10 @@ do
 done
 ```
 
-strain: 414 species: P.cactorum
-the number of SigP gene is: 70912
-the number of SigP-RxLR genes are:  1876
-the number of SigP-RxLR-EER genes are:  220
-Merged RxLR-EER regex proteins:197
+```
 
-strain: 404 species: P.cactorum
-the number of SigP gene is: 55547
-the number of SigP-RxLR genes are:  1519
-the number of SigP-RxLR-EER genes are:  194
-Merged RxLR-EER regex proteins: 170
+```
 
-strain: 415 species: P.cactorum
-the number of SigP gene is: 60266
-the number of SigP-RxLR genes are:  1591
-the number of SigP-RxLR-EER genes are:  192
-Merged RxLR-EER regex proteins: 168
-
-strain: 416 species: P.cactorum
-the number of SigP gene is: 61712
-the number of SigP-RxLR genes are:  1621
-the number of SigP-RxLR-EER genes are:  192
-Merged RxLR-EER regex proteins: 168
 E5) From ORF gene models - Hmm evidence of WY domains
 
 Hmm models for the WY domain contained in many RxLRs were used to search ORFs predicted with atg.pl. These were run with the following commands:
