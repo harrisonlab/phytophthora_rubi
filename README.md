@@ -1786,50 +1786,10 @@ do
 done
 ```
 
-  P.cactorum - 404
-  The number of ORF RxLRs overlapping Augustus RxLRs:
-  129
-  The number of Augustus RxLRs overlapping ORF RxLRs:
-  129
-  The number of RxLRs unique to ORF models:
-  58
-  The number of RxLRs unique to Augustus models:
-  20
-  The total number of putative RxLRs are:
-  207
-  P.cactorum - 414
-  The number of ORF RxLRs overlapping Augustus RxLRs:
-  153
-  The number of Augustus RxLRs overlapping ORF RxLRs:
-  153
-  The number of RxLRs unique to ORF models:
-  62
-  The number of RxLRs unique to Augustus models:
-  20
-  The total number of putative RxLRs are:
-  235
-  P.cactorum - 415
-  The number of ORF RxLRs overlapping Augustus RxLRs:
-  134
-  The number of Augustus RxLRs overlapping ORF RxLRs:
-  134
-  The number of RxLRs unique to ORF models:
-  52
-  The number of RxLRs unique to Augustus models:
-  25
-  The total number of putative RxLRs are:
-  211
-  P.cactorum - 416
-  The number of ORF RxLRs overlapping Augustus RxLRs:
-  130
-  The number of Augustus RxLRs overlapping ORF RxLRs:
-  130
-  The number of RxLRs unique to ORF models:
-  55
-  The number of RxLRs unique to Augustus models:
-  25
-  The total number of putative RxLRs are:
-  210
+```
+
+```
+
 H) From ORF gene models - Hmm evidence of CRN effectors
 
 A hmm model relating to crinkler domains was used to identify putative crinklers in ORF gene models. This was done with the following commands:
