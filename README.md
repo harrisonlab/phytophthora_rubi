@@ -1644,9 +1644,10 @@ do
 done
 ```
 
-P.cactorum 10300
-Initial search space (Z): 14767 [actual number of targets]
-Domain search space (domZ): 113 [number of targets reported over threshold]
+```
+
+```
+
 E6) From ORF gene models - Hmm evidence of RxLR effectors
 
 for Secretome in $(ls gene_pred/combined_sigP_ORF/*/*/*_all_secreted.fa | grep -w -e '414' | grep -v -w -e '404' -e '415' -e '416'); do
