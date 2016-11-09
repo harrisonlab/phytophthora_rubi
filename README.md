@@ -1555,6 +1555,19 @@ do
 done
 ```
 
+Due to errors in spades SCRP333 fasta file, script was modified to look the same as those produced above
+
+```bash
+for FastaFile in $(ls gene_pred/combined_sigP_ORF/spades/*/SCRP333/SCRP333_all_secreted.fa)
+do
+    Strain=$(echo $Proteome | rev | cut -f2 -d '/' | rev)
+    Organism=$(echo $Proteome | rev | cut -f3 -d '/' | rev)
+    Assembler=$(echo $Proteome | rev | cut -f4 -d '/' | rev)
+    SigP_headers=gene_pred/combined_sigP_ORF/$Assembler/$Organism/$Strain/"$Strain"_all_secreted_headers.txt
+    cat $FastaFile | grep '>' | sed -r 's/>//g' | sed "s/HMM_score\t/HMM_score=\t/g" | sed -r 's/\s+/\t/g' > $SigP_headers
+done
+```
+
 Due to the nature of predicting ORFs, some features overlapped with one another. A single ORF was selected from each set of overlapped ORFs. This was was selected on the basis of its SignalP Hmm score. Biopython was used to identify overlaps and identify the ORF with the best signalP score.
 
 ```bash
