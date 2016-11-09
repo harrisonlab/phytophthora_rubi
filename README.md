@@ -1482,6 +1482,31 @@ do
 done
 ```
 
+For spades assembly of SCRP333, the production of all_secreted_headers.txt required the removal of one tr step shown below:
+
+```bash
+for Proteome in $(ls gene_pred/ORF_finder/spades/P.*/SCRP333/*.aa_cat.fa)
+do
+    Strain=$(echo $Proteome | rev | cut -f2 -d '/' | rev)
+    Organism=$(echo $Proteome | rev | cut -f3 -d '/' | rev)
+    Assembler=$(echo $Proteome | rev | cut -f4 -d '/' | rev)
+    echo "$Assembler - $Organism - $Strain"
+    OutDir=gene_pred/combined_sigP_ORF/$Assembler/$Organism/$Strain
+    mkdir -p $OutDir
+    echo "The following number of sequences were predicted as secreted:"
+    # cat gene_pred/"$Assembler"_sig*/$Organism/$Strain/*_aug_sp.aa analysis/phobius/$Assembler/$Organism/$Strain/"$Strain"_phobius_ORF.fa > $OutDir/"$Strain"_all_secreted.fa
+    cat gene_pred/"$Assembler"_sig*/$Organism/$Strain/*_aug_sp.aa > $OutDir/"$Strain"_all_secreted.fa
+    cat $OutDir/"$Strain"_all_secreted.fa | grep '>' | tr -d '>' | sed "s/HMM_score\t/HMM_score=\t/g" > $OutDir/"$Strain"_all_secreted_headers.txt
+    cat $OutDir/"$Strain"_all_secreted_headers.txt | wc -l
+    echo "This represented the following number of unique genes:"
+    # cat gene_pred/"$Assembler"_sig*/$Organism/$Strain/*_aug_sp.aa analysis/phobius/$Assembler/$Organism/$Strain/"$Strain"_phobius_ORF.fa | grep '>' | cut -f1 | tr -d ' >' | sort -g | uniq > $OutDir/"$Strain"_secreted.txt
+    cat gene_pred/"$Assembler"_sig*/$Organism/$Strain/*_aug_sp.aa | grep '>' | cut -f1 | tr -d ' >' | sort -g | uniq > $OutDir/"$Strain"_secreted.txt
+    ProgDir=/home/armita/git_repos/emr_repos/tools/gene_prediction/ORF_finder
+    $ProgDir/extract_from_fasta.py --fasta $Proteome --headers $OutDir/"$Strain"_secreted.txt > $OutDir/"$Strain"_secreted.fa
+    cat $OutDir/"$Strain"_secreted.fa | grep '>' | wc -l
+done
+```
+
 ```
 discovar - P.rubi - SCRP249
 The following number of sequences were predicted as secreted:
