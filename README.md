@@ -1950,12 +1950,89 @@ do
     $ProgDir/extract_from_fasta.py --fasta $ORFsFa --headers $TotalRxLRsTxt >> $RxLRsFa
     echo "The number of sequences extracted is" >> report.txt
     cat $RxLRsFa | grep '>' | wc -l >> report.txt
-    echo "$Strain done"
+    echo "$Assembler $Strain done"
 done
 ```
 
 ```
-
+discovar - P.rubi - SCRP249
+The number of ORF RxLRs overlapping Augustus RxLRs:
+50
+The number of Augustus RxLRs overlapping ORF RxLRs:
+50
+The number of RxLRs unique to ORF models:
+34
+The number of RxLRs unique to Augustus models:
+195
+The total number of putative RxLRs are:
+279
+The number of sequences extracted is
+276
+discovar - P.rubi - SCRP324
+The number of ORF RxLRs overlapping Augustus RxLRs:
+211
+The number of Augustus RxLRs overlapping ORF RxLRs:
+210
+The number of RxLRs unique to ORF models:
+98
+The number of RxLRs unique to Augustus models:
+36
+The total number of putative RxLRs are:
+344
+The number of sequences extracted is
+339
+discovar - P.rubi - SCRP333
+The number of ORF RxLRs overlapping Augustus RxLRs:
+196
+The number of Augustus RxLRs overlapping ORF RxLRs:
+195
+The number of RxLRs unique to ORF models:
+102
+The number of RxLRs unique to Augustus models:
+34
+The total number of putative RxLRs are:
+331
+The number of sequences extracted is
+329
+spades - P.rubi - SCRP249
+The number of ORF RxLRs overlapping Augustus RxLRs:
+198
+The number of Augustus RxLRs overlapping ORF RxLRs:
+197
+The number of RxLRs unique to ORF models:
+102
+The number of RxLRs unique to Augustus models:
+34
+The total number of putative RxLRs are:
+333
+The number of sequences extracted is
+317
+spades - P.rubi - SCRP324
+The number of ORF RxLRs overlapping Augustus RxLRs:
+212
+The number of Augustus RxLRs overlapping ORF RxLRs:
+211
+The number of RxLRs unique to ORF models:
+87
+The number of RxLRs unique to Augustus models:
+31
+The total number of putative RxLRs are:
+329
+The number of sequences extracted is
+291
+spades - P.rubi - SCRP333
+The number of ORF RxLRs overlapping Augustus RxLRs:
+188
+The number of Augustus RxLRs overlapping ORF RxLRs:
+187
+The number of RxLRs unique to ORF models:
+104
+The number of RxLRs unique to Augustus models:
+37
+The total number of putative RxLRs are:
+328
+The number of sequences extracted is
+304
 ```
 
 H) From ORF gene models - Hmm evidence of CRN effectors
