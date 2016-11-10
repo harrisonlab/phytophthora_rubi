@@ -1619,7 +1619,7 @@ do
     printf "the number of SigP genes is:\t" >> report.txt
     cat $Secretome | grep '>' | wc -l >> report.txt
     printf "the number of SigP-RxLR genes are:\t" >> report.txt
-    $ProgDir/RxLR_EER_regex_finder.py $Secretome > $OutDir/"$Strain"_ORF_RxLR_EER_regex_unmerged.fa >> report.txt
+    $ProgDir/RxLR_EER_regex_finder.py $Secretome > $OutDir/"$Strain"_ORF_RxLR_EER_regex_unmerged.fa
     cat $OutDir/"$Strain"_ORF_RxLR_EER_regex_unmerged.fa | grep '>' | cut -f1 | tr -d '>' | sed -r 's/\.t.*//' | tr -d ' ' > $OutDir/"$Strain"_ORF_RxLR_regex_unmerged.txt
     cat $OutDir/"$Strain"_ORF_RxLR_regex_unmerged.txt | tr -d ' ' | sort | uniq | wc -l >> report.txt
     printf "the number of SigP-RxLR-EER genes are:\t" >> report.txt
