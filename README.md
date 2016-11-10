@@ -2207,57 +2207,75 @@ do
     $ProgDir/extract_from_fasta.py --fasta $ORFsFa --headers $TotalCRNsTxt >> $CRNsFa
     echo "The number of sequences extracted is" >> report.txt
     cat $CRNsFa | grep '>' | wc -l >> report.txt
-    echo "$Strain done"
+    echo "$Assembler $Strain done"
 done
 ```
 
-P.cactorum - 404
+```
+discovar - P.rubi - SCRP249
 The number of ORF CRNs overlapping Augustus CRNs:
-93
+132
 The number of Augustus CRNs overlapping ORF CRNs:
-93
+132
 The number of CRNs unique to ORF models:
-4
+9
 The number of CRNs unique to Augustus models:
-19
+3
 The number of sequences extracted is
-113
-P.cactorum - 414
+132
+discovar - P.rubi - SCRP324
 The number of ORF CRNs overlapping Augustus CRNs:
-151
+132
 The number of Augustus CRNs overlapping ORF CRNs:
-151
+132
 The number of CRNs unique to ORF models:
-4
+8
 The number of CRNs unique to Augustus models:
-17
+3
 The number of sequences extracted is
-173
-P.cactorum - 415
+133
+discovar - P.rubi - SCRP333
 The number of ORF CRNs overlapping Augustus CRNs:
+121
+The number of Augustus CRNs overlapping ORF CRNs:
+121
+The number of CRNs unique to ORF models:
+11
+The number of CRNs unique to Augustus models:
+2
+The number of sequences extracted is
+129
+spades - P.rubi - SCRP249
+The number of ORF CRNs overlapping Augustus CRNs:
+123
+The number of Augustus CRNs overlapping ORF CRNs:
+123
+The number of CRNs unique to ORF models:
+8
+The number of CRNs unique to Augustus models:
+3
+The number of sequences extracted is
 126
-The number of Augustus CRNs overlapping ORF CRNs:
-126
-The number of CRNs unique to ORF models:
-4
-The number of CRNs unique to Augustus models:
-20
-The number of sequences extracted is
-147
-P.cactorum - 416
+spades - P.rubi - SCRP324
 The number of ORF CRNs overlapping Augustus CRNs:
-137
+120
 The number of Augustus CRNs overlapping ORF CRNs:
-137
+120
 The number of CRNs unique to ORF models:
-4
+6
 The number of CRNs unique to Augustus models:
-17
+4
 The number of sequences extracted is
-155
-
-4. 2 Ananlysis of RxLR effectors
-
-Due to RxLR effectors being predicted from a number of sources the number of unique RxLRs were identified from motif and Hmm searches within gene models.
-
-Details on the commands run to identify this can be found within this repository in 10300_analysis/effector_charactisation.md -->
+117
+spades - P.rubi - SCRP333
+The number of ORF CRNs overlapping Augustus CRNs:
+120
+The number of Augustus CRNs overlapping ORF CRNs:
+120
+The number of CRNs unique to ORF models:
+9
+The number of CRNs unique to Augustus models:
+1
+The number of sequences extracted is
+119
+```
