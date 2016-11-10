@@ -1642,7 +1642,7 @@ do
     printf "Merged RxLR-EER regex proteins:\t" >> report.txt
     cat $RxLR_Merged_AA | grep '>' | wc -l >> report.txt
     printf "\n" >> report.txt
-    echo "$Strain done"
+    echo "$Assembler $Strain done"
 done
 ```
 
