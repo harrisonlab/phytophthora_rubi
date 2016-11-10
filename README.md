@@ -1710,12 +1710,29 @@ do
     SigP_Merged_Gff=gene_pred/combined_sigP_ORF/$Assembler/$Organism/$Strain/"$Strain"_all_secreted_merged.gff
     ProgDir=/home/adamst/git_repos/tools/seq_tools/feature_annotation
     $ProgDir/gene_list_to_gff.pl $OutDir/$Headers $SigP_Merged_Gff $HmmModel Name Augustus > $OutDir/"$Strain"_ORF_WY_hmmer.gff
-    echo "$Strain done"
+    echo "$Assembler $Strain done"
 done
 ```
 
 ```
-
+discovar P.rubi SCRP249
+Initial search space (Z):              81145  [actual number of targets]
+Domain search space  (domZ):             416  [number of targets reported over threshold]
+discovar P.rubi SCRP324
+Initial search space (Z):              89423  [actual number of targets]
+Domain search space  (domZ):             419  [number of targets reported over threshold]
+discovar P.rubi SCRP333
+Initial search space (Z):              81434  [actual number of targets]
+Domain search space  (domZ):             387  [number of targets reported over threshold]
+spades P.rubi SCRP249
+Initial search space (Z):              74633  [actual number of targets]
+Domain search space  (domZ):             404  [number of targets reported over threshold]
+spades P.rubi SCRP324
+Initial search space (Z):              83177  [actual number of targets]
+Domain search space  (domZ):             413  [number of targets reported over threshold]
+spades P.rubi SCRP333
+Initial search space (Z):              74477  [actual number of targets]
+Domain search space  (domZ):             390  [number of targets reported over threshold]
 ```
 
 E6) From ORF gene models - Hmm evidence of RxLR effectors
