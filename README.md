@@ -175,6 +175,133 @@ SCRP249: 9215
 SCRP324: 9110
 SCRP333: 8986 **
 
+####Run Deconseq to remove contaminents
+
+Contigs were identified that had BLAST hits to non-phytophthora genomes
+
+```bash
+for Assembly in $(ls assembly/spades/*/*/filtered_contigs/contigs_min_500bp_renamed.fasta | grep -v 'Bc16')
+do
+    Strain=$(echo $Assembly | rev | cut -f3 -d '/' | rev)
+    Organism=$(echo $Assembly | rev | cut -f4 -d '/' | rev)
+    echo "$Organism - $Strain"
+    # Exclude_db="bact,virus,hsref"
+    Exclude_db="paenibacillus"
+    Good_db="phytoph"
+    AssemblyDir=$(dirname $Assembly)
+    # OutDir=$AssemblyDir/../deconseq
+    OutDir=$AssemblyDir/../deconseq_Paen
+    ProgDir=/home/adamst/git_repos/tools/seq_tools/assemblers/assembly_qc/remove_contaminants
+    qsub $ProgDir/sub_deconseq.sh $Assembly $Exclude_db $Good_db $OutDir
+done
+```
+
+Results were summarised using the following commands
+
+```bash
+# for File in $(ls assembly/spades/P.*/*/deconseq/log.txt); do
+for File in $(ls assembly/spades/P.*/*/deconseq_Paen/log.txt)
+do
+    Name=$(echo $File | rev | cut -f3 -d '/' | rev)
+    Good=$(cat $File |cut -f2 | head -n1 | tail -n1)
+    Both=$(cat $File |cut -f2 | head -n2 | tail -n1)
+    Bad=$(cat $File |cut -f2 | head -n3 | tail -n1)
+    printf "$Name\t$Good\t$Both\t$Bad\n"
+done
+```
+
+```
+A4	13445	1	1
+Bc1	11555	1	1
+Bc23	13189	2	1
+Nov27	12487	2	1
+Nov5	13526	2	1
+Nov71	12211	2	1
+Nov77	13319	2	1
+Nov9	11801	1	1
+ONT3	13290	2	54
+SCRP245_v2	13247	2	10
+```
+
+Contaminent organisms identified by NCBI BLAST
+
+```bash
+A4:
+PhiX
+
+BC-1:
+PhiX
+
+BC-23:
+PhiX
+
+NOV-27:
+PhiX
+
+NOV-5:
+PhiX
+
+NOV-71:
+PhiX
+
+NOV-77:
+PhiX
+
+NOV-9:
+PhiX
+
+ONT-3:
+Paenibacillus
+Thermobacillus compostii
+Brevibacillus brevis
+Bacillus simplex (poor hit)
+PhiX
+
+SCRP245_v2:
+PhiX
+Bacillus oceanisediminis
+Staphylococcus spp
+```
+
+Assembly stats were collected on filtered assemblies
+
+```bash
+for Assembly in $(ls assembly/spades/P.*/*/deconseq_Paen/contigs_min_500bp_filtered_renamed.fasta)
+do
+    Strain=$(echo $Assembly | rev | cut -f3 -d '/' | rev)
+    Organism=$(echo $Assembly | rev | cut -f4 -d '/' | rev)
+    OutDir=$(dirname $Assembly)
+    ProgDir=/home/adamst/git_repos/tools/seq_tools/assemblers/assembly_qc/quast
+    qsub $ProgDir/sub_quast.sh $Assembly $OutDir
+done
+```
+
+Assembly stats were summarised and compared to previous assembly results
+
+```bash
+for Assembly in $(ls assembly/spades/P.*/*/deconseq_Paen/report.tsv)
+do  
+    Strain=$(echo $Assembly | rev | cut -f3 -d '/'| rev)
+    Size=$(cat $Assembly | grep 'Total length' | head -n1 | cut -f2)
+    OldAssembly=$(ls assembly/spades/P.*/$Strain/filtered_contigs*/report.tsv)
+    OldSize=$(cat $OldAssembly | grep 'Total length' | head -n1 | cut -f2)
+    printf "$Strain\t$Size\t$OldSize\n"
+done
+```
+
+```
+A4	79079019	79084532
+Bc1	79098893	79104406
+Bc23	78255805	78261318
+Nov27	78749363	78754876
+Nov5	78992821	78998334
+Nov71	78371685	78377198
+Nov77	78804247	78809760
+Nov9	79429452	79434965
+ONT3	84322417	88587983
+SCRP245_v2	83127441	83317162
+```
+
 ##Discovar
 
 ```bash
