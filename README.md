@@ -217,41 +217,7 @@ done
 Contaminent organisms identified by NCBI BLAST
 
 ```bash
-A4:
-PhiX
 
-BC-1:
-PhiX
-
-BC-23:
-PhiX
-
-NOV-27:
-PhiX
-
-NOV-5:
-PhiX
-
-NOV-71:
-PhiX
-
-NOV-77:
-PhiX
-
-NOV-9:
-PhiX
-
-ONT-3:
-Paenibacillus
-Thermobacillus compostii
-Brevibacillus brevis
-Bacillus simplex (poor hit)
-PhiX
-
-SCRP245_v2:
-PhiX
-Bacillus oceanisediminis
-Staphylococcus spp
 ```
 
 Assembly stats were collected on filtered assemblies
