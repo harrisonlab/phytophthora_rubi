@@ -233,7 +233,7 @@ do
 done
 ```
 
-Assembly stats were summarised and compared to previous assembly results
+Assembly size was summarised and compared to previous assembly results
 
 ```bash
 for Assembly in $(ls assembly/spades/P.*/*/deconseq_Paen/report.tsv)
@@ -247,16 +247,7 @@ done
 ```
 
 ```
-A4	79079019	79084532
-Bc1	79098893	79104406
-Bc23	78255805	78261318
-Nov27	78749363	78754876
-Nov5	78992821	78998334
-Nov71	78371685	78377198
-Nov77	78804247	78809760
-Nov9	79429452	79434965
-ONT3	84322417	88587983
-SCRP245_v2	83127441	83317162
+
 ```
 
 ##Discovar
