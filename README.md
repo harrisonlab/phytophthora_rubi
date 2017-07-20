@@ -180,7 +180,7 @@ SCRP333: 8986 **
 Contigs were identified that had BLAST hits to non-phytophthora genomes
 
 ```bash
-for Assembly in $(ls assembly/spades/*/*/filtered_contigs/contigs_min_500bp_renamed.fasta | grep -v 'Bc16')
+for Assembly in $(ls assembly/spades/P.rubi/*/filtered_contigs/contigs_min_500bp_renamed.fasta)
 do
     Strain=$(echo $Assembly | rev | cut -f3 -d '/' | rev)
     Organism=$(echo $Assembly | rev | cut -f4 -d '/' | rev)
