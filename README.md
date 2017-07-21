@@ -1102,7 +1102,7 @@ echo "$Organism complete"
 ```
 
 ```
-discovar
+discovar:
 
 P.rubi - SCRP249
 Number of RxLRs identified by Regex:
@@ -1134,7 +1134,7 @@ Number of RxLRs in combined dataset:
 Number of genes in the extracted gff file:
 229
 
-spades
+SPAdes:
 
 P.rubi - SCRP249
 Number of RxLRs identified by Regex:
