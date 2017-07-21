@@ -486,8 +486,6 @@ Gene prediction followed three steps: Pre-gene prediction - Quality of genome as
 
 Quality of genome assemblies was assessed by looking for the gene space in the assemblies.
 
-for discovar assemblies:
-
 ```bash
 for Assembly in $(ls assembly/spades/P.rubi/*/deconseq_Paen/contigs_min_500bp_filtered_renamed.fasta)
 do
@@ -516,9 +514,12 @@ RNAseq data was obtained from the phytophthora sequencing consortium - Nick Grü
 RNA-Seq data aligned using STAR
 
 ```bash
-for Assembly in $(ls /home/groups/harrisonlab/project_files/phytophthora_rubi/repeat_masked/spades/P.rubi/*/filtered_contigs_repmask/*_contigs_unmasked.fa)
+for Assembly in $(ls repeat_masked/P.rubi/*/deconseq_Paen_repmask/"$Strain"_contigs_softmasked_repeatmasker_TPSI_appended.fa)
 do
-    for AlignDir in $(ls -d /home/groups/harrisonlab/project_files/phytophthora_rubi/qc_rna/qc_rna/raw_rna/consortium/P.rubi/*)
+    Strain=$(echo $Assembly | rev | cut -d '/' -f3 | rev)
+    Organism=$(echo $Assembly | rev | cut -d '/' -f4 | rev)
+    echo "$Organism - $Strain"
+    for FileF in $(ls qc_rna/qc_rna/raw_rna/consortium/P.rubi/F/*_trim.fq.gz)
     do
         Jobs=$(qstat | grep 'sub_sta' | grep 'qw'| wc -l)
         while [ $Jobs -gt 1 ]
@@ -528,17 +529,13 @@ do
             Jobs=$(qstat | grep 'sub_sta' | grep 'qw'| wc -l)
         done
         printf "\n"
-        File1=$AlignDir/star_aligmentUnmapped.out.mate1.fq.gz
-        File2=$AlignDir/star_aligmentUnmapped.out.mate2.fq.gz
-        echo $File1
-        echo $File2
-        Timepoint=$(echo $AlignDir | rev | cut -d '/' -f2 | rev)
-        echo "$Timepoint"
-        Sample_Name=$(echo $AlignDir | rev | cut -d '/' -f1 | rev)
-        Strain=$(echo $Assembly | rev | cut -d '/' -f3 | rev)
-        OutDir=alignment/star/P.fragariae/$Strain/$Timepoint/$Sample_Name
-        ProgDir=/home/adamst/git_repos/scripts/popgen/rnaseq
-        qsub $ProgDir/sub_star_sensitive.sh $Assembly $File1 $File2 $OutDir
+        FileR=$(echo $FileF | sed 's&/F/&/R/&g'| sed 's/_1/_2/g')
+        echo $FileF
+        echo $FileR
+        Sample_Name=$(echo $FileF | rev | cut -d '/' -f1 | rev | sed 's/_1_trim.fq.gz//g')
+        OutDir=alignment/star/$Organism/$Strain/$Sample_Name
+        ProgDir=/home/adamst/git_repos/tools/seq_tools/RNAseq
+        qsub $ProgDir/sub_star.sh $Assembly $FileF $FileR $OutDir
     done
 done
 ```
