@@ -1043,28 +1043,28 @@ echo "$Organism complete"
 ```
 
 ```
-discovar
+discovar:
 
 P.rubi SCRP249
-Initial search space (Z):              36943  [actual number of targets]
+Initial search space (Z):             36,943  [actual number of targets]
 Domain search space  (domZ):             202  [number of targets reported over threshold]
 P.rubi SCRP324
-Initial search space (Z):              42604  [actual number of targets]
+Initial search space (Z):             42,604  [actual number of targets]
 Domain search space  (domZ):             207  [number of targets reported over threshold]
 P.rubi SCRP333
-Initial search space (Z):              36843  [actual number of targets]
+Initial search space (Z):             36,843  [actual number of targets]
 Domain search space  (domZ):             189  [number of targets reported over threshold]
 
-spades
+SPAdes:
 
 P.rubi SCRP249
-Initial search space (Z):              32541  [actual number of targets]
+Initial search space (Z):             32,541  [actual number of targets]
 Domain search space  (domZ):             195  [number of targets reported over threshold]
 P.rubi SCRP324
-Initial search space (Z):              38842  [actual number of targets]
+Initial search space (Z):             38,842  [actual number of targets]
 Domain search space  (domZ):             202  [number of targets reported over threshold]
 P.rubi SCRP333
-Initial search space (Z):              32562  [actual number of targets]
+Initial search space (Z):             32,562  [actual number of targets]
 Domain search space  (domZ):             188  [number of targets reported over threshold]
 ```
 
