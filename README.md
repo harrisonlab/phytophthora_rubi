@@ -766,17 +766,16 @@ SCRP333
 
 #Genomic analysis
 
-##RxLR genes
+##Effector genes
 
-Putative RxLR genes were identified within Augustus gene models using a number of approaches:
+Putative effector genes were identified within Augustus gene models and ORF fragments using a number of approaches:
 
-A) From Augustus gene models - Signal peptide & RxLR motif
-B) From Augustus gene models - Hmm evidence of WY domains
-C) From Augustus gene models - Hmm evidence of RxLR effectors
-D) From Augustus gene models - Hmm evidence of CRN effectors
-E) From ORF fragments - Signal peptide & RxLR motif
-F) From ORF fragments - Hmm evidence of WY domains
-G) From ORF fragments - Hmm evidence of RxLR effectors
+A) From Augustus gene models - Signal peptide & RxLR motif Regex search
+B) From Augustus gene models - HMM evidence of RxLR effectors
+C) From Augustus gene models - HMM evidence of CRN effectors
+D) From ORF fragments - Signal peptide & RxLR motif Regex search
+E) From ORF fragments - HMM evidence of RxLR effectors
+F) From ORF fragments - HMM evidence of CRN effectors
 
 ##A) From Augustus gene models - Signal peptide & RxLR motif
 
