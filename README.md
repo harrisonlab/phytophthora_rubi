@@ -219,7 +219,15 @@ SCRP333	13677	2	1
 Contaminent organisms identified by NCBI BLAST
 
 ```bash
+SCRP249
+PhiX
 
+SCRP324
+Paenibacillus spp (inc. Paenibacillus xylanexedens - PAMC 22703 https://www.ncbi.nlm.nih.gov/nucleotide/1120692005?report=genbank&log$=nuclalign&blast_rank=1&RID=R3JYNVSY014)
+PhiX
+
+SCRP333
+PhiX
 ```
 
 Assembly stats were collected on filtered assemblies
