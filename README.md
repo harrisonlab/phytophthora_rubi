@@ -1068,7 +1068,7 @@ Initial search space (Z):             32,562  [actual number of targets]
 Domain search space  (domZ):             188  [number of targets reported over threshold]
 ```
 
-####F) Combining RxLRs from Regex and hmm searches
+####A.5) Combining RxLRs from Regex and hmm searches
 
 ```bash
 for RegexRxLR in $(ls analysis/RxLR_effectors/RxLR_EER_regex_finder/*/*/*_RxLR_EER_regex.txt)
