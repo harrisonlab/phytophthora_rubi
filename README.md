@@ -810,16 +810,16 @@ Proteins that were predicted to contain signal peptides were identified using th
 ```bash
 for Strain in SCRP249 SCRP324 SCRP333
 do
-    for Proteome in $(ls gene_pred/braker/*/"$Strain"_braker/*/augustus.aa)
+    for Proteome in $(ls gene_pred/codingquarry/*/$Strain/final/final_genes_combined.pep.fasta)
     do
         SplitfileDir=/home/adamst/git_repos/tools/seq_tools/feature_annotation/signal_peptides
         ProgDir=/home/adamst/git_repos/tools/seq_tools/feature_annotation/signal_peptides
         Organism=P.rubi
-        SplitDir=gene_pred/braker_split/$Assembler/$Organism/$Strain
+        SplitDir=gene_pred/final_split/$Organism/$Strain
         mkdir -p $SplitDir
-        BaseName="$Organism""_$Strain"_braker
+        BaseName="$Organism""_$Strain"
         $SplitfileDir/splitfile_500.py --inp_fasta $Proteome --out_dir $SplitDir --out_base $BaseName
-        for File in $(ls $SplitDir/*_braker_*)
+        for File in $(ls $SplitDir/*_"$Strain"_*)
         do
             Jobs=$(qstat | grep 'pred_sigP' | wc -l)
             while [ $Jobs -gt 20 ]
@@ -840,32 +840,29 @@ done
 The batch files of predicted secreted proteins needed to be combined into a single file for each strain. This was done with the following commands:
 
 ```bash
-for Assembler in discovar spades
+for Strain in SCRP249 SCRP324 SCRP333
 do
-    for Strain in SCRP249 SCRP324 SCRP333
+    for SplitDir in $(ls -d gene_pred/final_split/P.*/$Strain)
     do
-        for SplitDir in $(ls -d gene_pred/braker_split/$Assembler/P.*/$Strain)
+        Organism=P.rubi
+        echo "$Organism - $Strain"
+        InStringAA=''
+        InStringNeg=''
+        InStringTab=''
+        InStringTxt=''
+        for SigpDir in $(ls -d gene_pred/final_sig* | cut -f2 -d'/')
         do
-            Organism=P.fragariae
-            echo "$Organism - $Strain"
-            InStringAA=''
-            InStringNeg=''
-            InStringTab=''
-            InStringTxt=''
-            for SigpDir in $(ls -d gene_pred/"$Assembler"_sig* | cut -f2 -d'/')
-            do
-                for GRP in $(ls -l $SplitDir/*_braker_*.fa | rev | cut -d '_' -f1 | rev | sort -n)
-                do  
-                    InStringAA="$InStringAA gene_pred/$SigpDir/$Organism/$Strain/split/"$Organism"_"$Strain"_braker_$GRP""_sp.aa"
-                    InStringNeg="$InStringNeg gene_pred/$SigpDir/$Organism/$Strain/split/"$Organism"_"$Strain"_braker_$GRP""_sp_neg.aa"
-                    InStringTab="$InStringTab gene_pred/$SigpDir/$Organism/$Strain/split/"$Organism"_"$Strain"_braker_$GRP""_sp.tab"
-                    InStringTxt="$InStringTxt gene_pred/$SigpDir/$Organism/$Strain/split/"$Organism"_"$Strain"_braker_$GRP""_sp.txt"
-                done
-                cat $InStringAA > gene_pred/$SigpDir/$Organism/$Strain/"$Strain"_aug_sp.aa
-                cat $InStringNeg > gene_pred/$SigpDir/$Organism/$Strain/"$Strain"_aug_neg_sp.aa
-                tail -n +2 -q $InStringTab > gene_pred/$SigpDir/$Organism/$Strain/"$Strain"_aug_sp.tab
-                cat $InStringTxt > gene_pred/$SigpDir/$Organism/$Strain/"$Strain"_aug_sp.txt
+            for GRP in $(ls -l $SplitDir/*_"$Strain"_*.fa | rev | cut -d '_' -f1 | rev | sort -n)
+            do  
+                InStringAA="$InStringAA gene_pred/$SigpDir/$Organism/$Strain/split/"$Organism"_"$Strain"_$GRP""_sp.aa"
+                InStringNeg="$InStringNeg gene_pred/$SigpDir/$Organism/$Strain/split/"$Organism"_"$Strain"_$GRP""_sp_neg.aa"
+                InStringTab="$InStringTab gene_pred/$SigpDir/$Organism/$Strain/split/"$Organism"_"$Strain"_$GRP""_sp.tab"
+                InStringTxt="$InStringTxt gene_pred/$SigpDir/$Organism/$Strain/split/"$Organism"_"$Strain"_$GRP""_sp.txt"
             done
+            cat $InStringAA > gene_pred/$SigpDir/$Organism/$Strain/"$Strain"_aug_sp.aa
+            cat $InStringNeg > gene_pred/$SigpDir/$Organism/$Strain/"$Strain"_aug_neg_sp.aa
+            tail -n +2 -q $InStringTab > gene_pred/$SigpDir/$Organism/$Strain/"$Strain"_aug_sp.tab
+            cat $InStringTxt > gene_pred/$SigpDir/$Organism/$Strain/"$Strain"_aug_sp.txt
         done
     done
 done
