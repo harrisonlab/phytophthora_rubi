@@ -741,27 +741,27 @@ done
 ```
 
 ```
-discovar
+discovar:
 
 SCRP249
-716788
+716,788
 
 SCRP324
-795934
+795,934
 
 SCRP333
-720807
+720,807
 
-spades
+SPAdes:
 
 SCRP249
-645937
+645,937
 
 SCRP324
-725179
+725,179
 
 SCRP333
-646243
+646,243
 ```
 
 #Genomic analysis
