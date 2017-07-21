@@ -489,15 +489,14 @@ Quality of genome assemblies was assessed by looking for the gene space in the a
 for discovar assemblies:
 
 ```bash
-ProgDir=/home/adamst/git_repos/tools/gene_prediction/cegma
-for Assembler in discovar spades
+for Assembly in $(ls assembly/spades/P.rubi/*/deconseq_Paen/contigs_min_500bp_filtered_renamed.fasta)
 do
-    for Genome in $(ls repeat_masked/$Assembler/P.*/*/filtered_contigs_repmask/*_contigs_unmasked.fa)
-    do
-        echo $Assembler
-        echo $Genome
-        qsub $ProgDir/sub_cegma.sh $Genome dna
-    done
+    Strain=$(echo $Assembly | rev |cut -d '/' -f3 | rev)
+    echo "$Strain"
+    ProgDir=/home/adamst/git_repos/tools/gene_prediction/busco
+    BuscoDB=Eukaryotic
+    OutDir=assembly/spades/P.rubi/$Strain/deconseq_Paen/
+    qsub $ProgDir/sub_busco2.sh $Assembly $BuscoDB $OutDir
 done
 ```
 
