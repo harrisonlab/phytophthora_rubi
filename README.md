@@ -1400,7 +1400,7 @@ do
 done
 ```
 
-For spades assembly of SCRP333, the production of all_secreted_headers.txt required the removal of one tr step shown below:
+<!-- For spades assembly of SCRP333, the production of all_secreted_headers.txt required the removal of one tr step shown below:
 
 ```bash
 for Proteome in $(ls gene_pred/ORF_finder/spades/P.*/SCRP333/*.aa_cat.fa)
@@ -1423,7 +1423,7 @@ do
     $ProgDir/extract_from_fasta.py --fasta $Proteome --headers $OutDir/"$Strain"_secreted.txt > $OutDir/"$Strain"_secreted.fa
     cat $OutDir/"$Strain"_secreted.fa | grep '>' | wc -l
 done
-```
+``` -->
 
 ```
 discovar - P.rubi - SCRP249
