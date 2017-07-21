@@ -2197,3 +2197,222 @@ The number of CRNs unique to Augustus models:
 The number of sequences extracted is
 119
 ```
+
+#Functional annotation
+
+##A)Interproscan
+Interproscan was used to give gene models functional annotations.
+
+```bash
+ProgDir=/home/adamst/git_repos/tools/seq_tools/feature_annotation/interproscan/
+for Genes in $(ls gene_pred/codingquarry/P.rubi/*/final/final_genes_combined.pep.fasta)
+do
+    $ProgDir/sub_interproscan.sh $Genes
+done
+```
+
+Following this, split files were combined as follows:
+
+```bash
+ProgDir=/home/adamst/git_repos/tools/seq_tools/feature_annotation/interproscan
+for Proteome in $(ls gene_pred/codingquarry/P.rubi/*/final/final_genes_combined.pep.fasta)
+do
+    Strain=$(echo $Proteome | rev | cut -d '/' -f3 | rev)
+    Organism=$(echo $Proteome | rev | cut -d '/' -f4 | rev)
+    echo "$Organism - $Strain"
+    echo $Strain
+    InterProRaw=gene_pred/interproscan/$Organism/$Strain/raw
+    $ProgDir/append_interpro.sh $Proteome $InterProRaw
+done
+```
+
+##B)Swissprot
+
+```bash
+for Proteome in $(ls gene_pred/codingquarry/P.rubi/*/final/final_genes_combined.pep.fasta)
+do
+    Strain=$(echo $Proteome | rev | cut -f3 -d '/' | rev)
+    Organism=$(echo $Proteome | rev | cut -f4 -d '/' | rev)
+    OutDir=gene_pred/swissprot/$Organism/$Strain
+    SwissDbDir=../../uniprot/swissprot
+    SwissDbName=uniprot_sprot
+    ProgDir=/home/adamst/git_repos/tools/seq_tools/feature_annotation/swissprot
+    qsub $ProgDir/sub_swissprot.sh $Proteome $OutDir $SwissDbDir $SwissDbName
+done
+```
+
+##C)Identify genes with transmembrane domains
+WARNING: This has a high false positive rate
+
+```bash
+for Proteome in $(ls gene_pred/codingquarry/P.rubi/*/final/final_genes_combined.pep.fasta)
+do
+    Strain=$(echo $Proteome | rev | cut -f3 -d '/' | rev)
+    Organism=$(echo $Proteome | rev | cut -f4 -d '/' | rev)
+    ProgDir=/home/adamst/git_repos/tools/seq_tools/feature_annotation/transmembrane_helices
+    qsub $ProgDir/submit_TMHMM.sh $Proteome
+done
+```
+
+Summarise numbers of TM Proteins
+
+```bash
+for TM in $(ls gene_pred/trans_mem/P.rubi/*/*_TM_genes_pos.txt)
+do
+    Strain=$(echo $TM | rev | cut -f2 -d '/' | rev)
+    echo $Strain
+    echo "The number of proteins scoring positive for a transmembrane helix is:"
+    cat $TM | wc -l
+    echo ""
+done
+```
+
+```
+A4
+The number of proteins scoring positive for a transmembrane helix is:
+4,260
+
+Bc16
+The number of proteins scoring positive for a transmembrane helix is:
+4,268
+
+Bc1
+The number of proteins scoring positive for a transmembrane helix is:
+4,252
+
+Bc23
+The number of proteins scoring positive for a transmembrane helix is:
+4,261
+
+Nov27
+The number of proteins scoring positive for a transmembrane helix is:
+4,270
+
+Nov5
+The number of proteins scoring positive for a transmembrane helix is:
+4,313
+
+Nov71
+The number of proteins scoring positive for a transmembrane helix is:
+4,272
+
+Nov77
+The number of proteins scoring positive for a transmembrane helix is:
+4,266
+
+Nov9
+The number of proteins scoring positive for a transmembrane helix is:
+4,250
+
+ONT3
+The number of proteins scoring positive for a transmembrane helix is:
+6,035
+
+SCRP245_v2
+The number of proteins scoring positive for a transmembrane helix is:
+5,248
+```
+
+Create a headers file
+
+```bash
+for PosFile in $(ls gene_pred/trans_mem/*/*/*_TM_genes_pos.txt)
+do
+    TmHeaders=$(echo $PosFile | sed 's/.txt/_headers.txt/g')
+    cat $PosFile | cut -f1 > $TmHeaders
+done
+```
+
+##D)Identify genes with GPI anchors
+
+Proteins were identified by submitting the combined protein file to webserver at http://gpi.unibe.ch
+
+Output directory made
+
+```bash
+for Proteome in $(ls gene_pred/codingquarry/P.rubi/*/final/final_genes_combined.gene.fasta)
+do
+    Strain=$(echo $Proteome | rev | cut -f3 -d '/' | rev)
+    Organism=$(echo $Proteome | rev | cut -f4 -d '/' | rev)
+    echo "$Organism - $Strain"
+    OutDir=gene_pred/trans_mem/$Organism/$Strain/GPIsom
+    mkdir -p $OutDir
+done
+```
+
+Results were parsed to the file
+
+```bash
+nano gene_pred/trans_mem/P.rubi/SCRP249/GPIsom/GPI_pos.fa
+nano gene_pred/trans_mem/P.rubi/SCRP324/GPIsom/GPI_pos.fa
+nano gene_pred/trans_mem/P.rubi/SCRP333/GPIsom/GPI_pos.fa
+```
+
+Create a file just listing gene names
+
+```bash
+for PosFile in $(ls gene_pred/trans_mem/*/*/GPIsom/GPI_pos.fa)
+do
+    GPIHeaders=$(echo $PosFile | sed 's/.fa/.txt/g')
+    cat $PosFile | grep -e ">" | cut -f1 -d ' ' | sed 's/>//g' > $GPIHeaders
+done
+```
+
+Summarise numbers of GPI Proteins
+
+```bash
+for GPI in $(ls gene_pred/trans_mem/P.rubi/*/GPIsom/*.txt)
+do
+    Strain=$(echo $GPI | rev | cut -f3 -d '/' | rev)
+    echo $Strain
+    echo "The number of proteins scoring positive for being GPI anchored is:"
+    cat $GPI | wc -l
+    echo ""
+done
+```
+
+```
+A4
+The number of proteins scoring positive for being GPI anchored is:
+574
+
+Bc16
+The number of proteins scoring positive for being GPI anchored is:
+598
+
+Bc1
+The number of proteins scoring positive for being GPI anchored is:
+554
+
+Bc23
+The number of proteins scoring positive for being GPI anchored is:
+575
+
+Nov27
+The number of proteins scoring positive for being GPI anchored is:
+569
+
+Nov5
+The number of proteins scoring positive for being GPI anchored is:
+561
+
+Nov71
+The number of proteins scoring positive for being GPI anchored is:
+583
+
+Nov77
+The number of proteins scoring positive for being GPI anchored is:
+563
+
+Nov9
+The number of proteins scoring positive for being GPI anchored is:
+590
+
+ONT3
+The number of proteins scoring positive for being GPI anchored is:
+687
+
+SCRP245_v2
+The number of proteins scoring positive for being GPI anchored is:
+614
+```
