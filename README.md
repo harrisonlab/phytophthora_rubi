@@ -1528,16 +1528,15 @@ The regular expression R.LR.{,40}[ED][ED][KR] has previously been used to identi
 The RxLR_EER_regex_finder.py script was used to search for this regular expression and annotate the EER domain where present.
 
 ```bash
-for Secretome in $(ls gene_pred/combined_sigP_ORF/*/*/*/*_all_secreted.fa)
+for Secretome in $(ls gene_pred/combined_sigP_ORF/*/*/*_all_secreted.fa)
 do
     ProgDir=/home/adamst/git_repos/tools/pathogen/RxLR_effectors
     Strain=$(echo $Secretome | rev | cut -d '/' -f2 | rev)
     Organism=$(echo $Secretome | rev |  cut -d '/' -f3 | rev)
-    Assembler=$(echo $Secretome | rev | cut -d '/' -f4 | rev)
-    OutDir=analysis/RxLR_effectors/RxLR_EER_regex_finder/"$Assembler"/"$Organism"/"$Strain"
+    OutDir=analysis/RxLR_effectors/RxLR_EER_regex_finder/"$Organism"/"$Strain"
     mkdir -p $OutDir
-    printf "\nassembler: $Assembler\tstrain: $Strain\tspecies: $Organism\n" >> report.txt
-    printf "the number of SigP genes is:\t" >> report.txt
+    printf "\nstrain: $Strain\tspecies: $Organism\n" >> report.txt
+    printf "the number of SigP gene is:\t" >> report.txt
     cat $Secretome | grep '>' | wc -l >> report.txt
     printf "the number of SigP-RxLR genes are:\t" >> report.txt
     $ProgDir/RxLR_EER_regex_finder.py $Secretome > $OutDir/"$Strain"_ORF_RxLR_EER_regex_unmerged.fa
@@ -1547,9 +1546,8 @@ do
     cat $OutDir/"$Strain"_ORF_RxLR_EER_regex_unmerged.fa | grep '>' | grep 'EER_motif_start' | cut -f1 | tr -d '>' | sed -r 's/\.t.*//' | tr -d ' '> $OutDir/"$Strain"_ORF_RxLR_EER_regex_unmerged.txt
     cat $OutDir/"$Strain"_ORF_RxLR_EER_regex_unmerged.txt | tr -d ' ' | sort | uniq | wc -l >> report.txt
     ProgDir=/home/adamst/git_repos/tools/seq_tools/feature_annotation
-    SigP_Gff=gene_pred/combined_sigP_ORF/$Assembler/$Organism/$Strain/"$Strain"_all_secreted_unmerged.gff
-    ORF_fasta=$(ls gene_pred/ORF_finder/$Assembler/$Organism/$Strain/"$Strain".aa_cat.fa)
-    ProgDir=/home/adamst/git_repos/tools/seq_tools/feature_annotation
+    SigP_Gff=gene_pred/combined_sigP_ORF/$Organism/$Strain/"$Strain"_all_secreted_unmerged.gff
+    ORF_fasta=$(ls gene_pred/ORF_finder/$Organism/$Strain/"$Strain".aa_cat.fa)
     $ProgDir/gene_list_to_gff.pl $OutDir/"$Strain"_ORF_RxLR_EER_regex_unmerged.txt  $SigP_Gff   RxLR_EER_regex_finder.py Name Augustus > $OutDir/"$Strain"_ORF_RxLR_regex_unmerged.gff
     RxLR_Merged_Gff=$OutDir/"$Strain"_ORF_RxLR_EER_regex_merged.gff
     RxLR_Merged_txt=$OutDir/"$Strain"_ORF_RxLR_EER_regex_merged.txt
@@ -1563,8 +1561,9 @@ do
     printf "Merged RxLR-EER regex proteins:\t" >> report.txt
     cat $RxLR_Merged_AA | grep '>' | wc -l >> report.txt
     printf "\n" >> report.txt
-    echo "$Assembler $Strain done"
+    echo "$Strain done"
 done
+echo "$Organism done"
 ```
 
 ```
