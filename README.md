@@ -1821,17 +1821,16 @@ Intersection between the coodinates of putative RxLRs from gene models and ORFs 
 The RxLR effectors from both Gene models and ORF finding approaches were combined into a single file.
 
 ```bash
-for MergeDir in $(ls -d analysis/RxLR_effectors/combined_evidence/*/*/*)
+for MergeDir in $(ls -d analysis/RxLR_effectors/combined_evidence/*/*)
 do
     Strain=$(echo "$MergeDir" | rev | cut -f1 -d '/' | rev)
     Species=$(echo "$MergeDir" | rev | cut -f2 -d '/' | rev)
-    Assembler=$(echo "$MergeDir" | rev | cut -f3 -d '/' | rev)
     AugGff=$MergeDir/"$Strain"_total_RxLR.gff
     AugTxt=$MergeDir/"$Strain"_total_RxLR_headers.txt
-    AugFa=$(ls gene_pred/codingquary/"$Assembler"/"$Species"/"$Strain"/final/final_genes_combined.pep.fasta)
+    AugFa=$(ls gene_pred/codingquarry/"$Species"/"$Strain"/final/final_genes_combined.pep.fasta)
 
     ORFGff=$(ls $MergeDir/"$Strain"_total_ORF_RxLR.gff)
-    ORFsFa=$(ls gene_pred/ORF_finder/"$Assembler"/"$Species"/"$Strain"/"$Strain".aa_cat.fa)
+    ORFsFa=$(ls gene_pred/ORF_finder/"$Species"/"$Strain"/"$Strain".aa_cat.fa)
     ORFsTxt=$(ls $MergeDir/"$Strain"_total_ORF_RxLR_headers.txt)
 
     ORFsInAug=$MergeDir/"$Strain"_ORFsInAug_RxLR_EER_motif_hmm.gff
@@ -1846,7 +1845,7 @@ do
     bedtools intersect -v -wa -a $ORFGff -b $AugGff > $ORFsUniq
     bedtools intersect -v -wa -a $AugGff -b $ORFGff > $AugUniq
 
-    echo "$Assembler - $Species - $Strain" >> report.txt
+    echo "$Species - $Strain" >> report.txt
     echo "The number of ORF RxLRs overlapping Augustus RxLRs:" >> report.txt
     cat $ORFsInAug | grep -w 'gene' | wc -l >> report.txt
     echo "The number of Augustus RxLRs overlapping ORF RxLRs:" >> report.txt
@@ -1868,8 +1867,9 @@ do
     $ProgDir/extract_from_fasta.py --fasta $ORFsFa --headers $TotalRxLRsTxt >> $RxLRsFa
     echo "The number of sequences extracted is" >> report.txt
     cat $RxLRsFa | grep '>' | wc -l >> report.txt
-    echo "$Assembler $Strain done"
+    echo "$Strain done"
 done
+echo "$Organism done"
 ```
 
 ```
