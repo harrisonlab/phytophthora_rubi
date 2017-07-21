@@ -400,7 +400,7 @@ for SPAdes assembly:
 ProgDir=/home/adamst/git_repos/tools/seq_tools/repeat_masking
 for Strain in SCRP249 SCRP324 SCRP333
 do
-    for BestAss in $(ls assembly/spades/*/$Strain/filtered_contigs/*_500bp_renamed.fasta)
+    for BestAss in $(ls assembly/spades/*/$Strain/deconseq_Paen/*_500bp_filtered_renamed.fasta)
     do
         qsub $ProgDir/rep_modeling.sh $BestAss
         qsub $ProgDir/transposonPSI.sh $BestAss
