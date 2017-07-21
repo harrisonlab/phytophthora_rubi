@@ -264,22 +264,6 @@ SCRP324	78256282	84618946
 SCRP333	77817047	77822560
 ```
 
-### QUAST used to summarise assembly statistics
-
-```bash
-ProgDir=/home/adamst/git_repos/tools/seq_tools/assemblers/assembly_qc/quast
-for Strain in SCRP249 SCRP324 SCRP333
-do
-    for Assembly in $(ls assembly/spades/P.rubi/$Strain/deconseq_Paen/*_500bp_filtered_renamed.fasta)
-    do
-        Strain=$(echo $Assembly | rev | cut -d '/' -f3 | rev)
-        Organism=$(echo $Assembly | rev | cut -d '/' -f4 | rev)
-        OutDir=assembly/spades/$Organism/$Strain/filtered_contigs
-        qsub $ProgDir/sub_quast.sh $Assembly $OutDir
-    done
-done
-```
-
 ```
 N50:
 SCRP249: 16,620
