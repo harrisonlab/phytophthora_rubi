@@ -160,20 +160,22 @@ do
 done
 ```
 
-** N50:
+```
+N50:
 SCRP249: 16613
 SCRP324: 19133
-SCRP333: 16946 **
+SCRP333: 16946
 
-** L50:
+L50:
 SCRP249: 1233
 SCRP324: 1057
-SCRP333: 1210 **
+SCRP333: 1210
 
-** Number of contigs > 1kb:
+Number of contigs > 1kb:
 SCRP249: 9215
 SCRP324: 9110
-SCRP333: 8986 **
+SCRP333: 8986
+```
 
 ####Run Deconseq to remove contaminents
 
@@ -257,7 +259,58 @@ done
 ```
 
 ```
+SCRP249	77788370	77793883
+SCRP324	78256282	84618946
+SCRP333	77817047	77822560
+```
 
+### Quast
+
+```bash
+for Strain in SCRP249 SCRP324 SCRP333
+do
+    ProgDir=/home/adamst/git_repos/tools/seq_tools/assemblers/assembly_qc/remove_contaminants
+    OutDir=$(ls -d assembly/spades/P.rubi/$Strain/filtered_contigs)
+    AssFiltered=$OutDir/contigs_min_500bp.fasta
+    AssRenamed=$OutDir/contigs_min_500bp_renamed.fasta
+    echo $AssFiltered
+    printf '.\t.\t.\t.\n' > editfile.tab
+    $ProgDir/remove_contaminants.py --inp $AssFiltered --out $AssRenamed --coord_file editfile.tab
+    rm editfile.tab
+done
+```
+
+### QUAST used to summarise assembly statistics
+
+```bash
+ProgDir=/home/adamst/git_repos/tools/seq_tools/assemblers/assembly_qc/quast
+for Strain in SCRP249 SCRP324 SCRP333
+do
+    for Assembly in $(ls assembly/spades/P.rubi/$Strain/filtered_contigs/*_500bp_renamed.fasta)
+    do
+        Strain=$(echo $Assembly | rev | cut -d '/' -f3 | rev)
+        Organism=$(echo $Assembly | rev | cut -d '/' -f4 | rev)
+        OutDir=assembly/spades/$Organism/$Strain/filtered_contigs
+        qsub $ProgDir/sub_quast.sh $Assembly $OutDir
+    done
+done
+```
+
+```
+N50:
+SCRP249: 16613
+SCRP324: 19133
+SCRP333: 16946
+
+L50:
+SCRP249: 1233
+SCRP324: 1057
+SCRP333: 1210
+
+Number of contigs > 1kb:
+SCRP249: 9215
+SCRP324: 9110
+SCRP333: 8986
 ```
 
 ##Discovar
