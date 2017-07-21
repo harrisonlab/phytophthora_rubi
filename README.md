@@ -264,22 +264,6 @@ SCRP324	78256282	84618946
 SCRP333	77817047	77822560
 ```
 
-### Quast
-
-```bash
-for Strain in SCRP249 SCRP324 SCRP333
-do
-    ProgDir=/home/adamst/git_repos/tools/seq_tools/assemblers/assembly_qc/remove_contaminants
-    OutDir=$(ls -d assembly/spades/P.rubi/$Strain/filtered_contigs)
-    AssFiltered=$OutDir/contigs_min_500bp.fasta
-    AssRenamed=$OutDir/contigs_min_500bp_renamed.fasta
-    echo $AssFiltered
-    printf '.\t.\t.\t.\n' > editfile.tab
-    $ProgDir/remove_contaminants.py --inp $AssFiltered --out $AssRenamed --coord_file editfile.tab
-    rm editfile.tab
-done
-```
-
 ### QUAST used to summarise assembly statistics
 
 ```bash
