@@ -747,17 +747,13 @@ done
 The final number of genes per isolate were determined using
 
 ```bash
-for Assembler in discovar spades
+for Strain in SCRP249 SCRP324 SCRP333
 do
-    echo $Assembler
-    for Strain in SCRP249 SCRP324 SCRP333
+    for DirPath in $(ls -d gene_pred/ORF_finder/*/$Strain)
     do
-        for DirPath in $(ls -d gene_pred/ORF_finder/$Assembler/*/$Strain)
-        do
-            echo $DirPath
-            cat $DirPath/"$Strain".aa_cat.fa | grep '>' | wc -l
-            echo ""
-        done
+        echo $DirPath
+        cat $DirPath/"$Strain".aa_cat.fa | grep '>' | wc -l
+        echo ""
     done
 done
 ```
