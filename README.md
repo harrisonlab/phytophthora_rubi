@@ -1116,7 +1116,7 @@ do
     cat $OutDir/"$Strain"_total_RxLR.gff | grep -w 'gene' | wc -l >> report.txt
     echo "$Strain complete"
 done
-ech "$Organism complete"
+echo "$Organism complete"
 ```
 
 ```
