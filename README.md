@@ -891,26 +891,22 @@ done
 Secreted proteins from different sources were combined into a single file:
 
 ```bash
-for Assembler in discovar spades
+for Strain in SCRP249 SCRP324 SCRP333
 do
-    echo $Assembler
-    for Strain in SCRP249 SCRP324 SCRP333
+    for Proteome in $(ls gene_pred/codingquarry/*/$Strain/final/final_genes_combined.pep.fasta)
     do
-        for Proteome in $(ls gene_pred/braker/$Assembler/*/"$Strain"_braker/*/augustus.aa)
-        do
-            Organism=$(echo $Proteome | rev | cut -f4 -d '/' | rev)
-            echo "$Organism - $Strain"
-            OutDir=gene_pred/combined_sigP/$Assembler/$Organism/$Strain
-            mkdir -p $OutDir
-            echo "The following number of sequences were predicted as secreted:"
-            cat gene_pred/braker_sig*/$Assembler/$Organism/$Strain/*_aug_sp.aa analysis/phobius/$Assembler/$Organism/$Strain/"$Strain"_phobius.fa > $OutDir/"$Strain"_all_secreted.fa
-            cat $OutDir/"$Strain"_all_secreted.fa | grep '>' | wc -l
-            echo "This represented the following number of unique genes:"
-            cat gene_pred/braker_sig*/$Assembler/$Organism/$Strain/*_aug_sp.aa analysis/phobius/$Assembler/$Organism/$Strain/"$Strain"_phobius.fa | grep '>' | cut -f1 | tr -d ' >' | sort -g | uniq > $OutDir/"$Strain"_secreted.txt
-            ProgDir=/home/adamst/git_repos/tools/gene_prediction/ORF_finder
-            $ProgDir/extract_from_fasta.py --fasta $Proteome --headers $OutDir/"$Strain"_secreted.txt > $OutDir/"$Strain"_secreted.fa
-            cat $OutDir/"$Strain"_secreted.fa | grep '>' | wc -l
-        done
+        Organism=$(echo $Proteome | rev | cut -f4 -d '/' | rev)
+        echo "$Organism - $Strain"
+        OutDir=gene_pred/combined_sigP_CQ/$Organism/$Strain
+        mkdir -p $OutDir
+        echo "The following number of sequences were predicted as secreted:"
+        cat gene_pred/final_sig*/$Organism/$Strain/*_aug_sp.aa analysis/phobius_CQ/$Organism/$Strain/"$Strain"_phobius.fa > $OutDir/"$Strain"_all_secreted.fa
+        cat $OutDir/"$Strain"_all_secreted.fa | grep '>' | wc -l
+        echo "This represented the following number of unique genes:"
+        cat gene_pred/final_sig*/$Organism/$Strain/*_aug_sp.aa analysis/phobius_CQ/$Organism/$Strain/"$Strain"_phobius.fa | grep '>' | cut -f1 | tr -d ' >' | sort -g | uniq > $OutDir/"$Strain"_secreted.txt
+        ProgDir=/home/adamst/git_repos/tools/gene_prediction/ORF_finder
+        $ProgDir/extract_from_fasta.py --fasta $Proteome --headers $OutDir/"$Strain"_secreted.txt > $OutDir/"$Strain"_secreted.fa
+        cat $OutDir/"$Strain"_secreted.fa | grep '>' | wc -l
     done
 done
 ```
