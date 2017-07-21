@@ -220,7 +220,7 @@ SCRP333	13677	2	1
 
 Contaminent organisms identified by NCBI BLAST
 
-```bash
+```
 SCRP249
 PhiX
 
