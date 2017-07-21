@@ -1330,32 +1330,28 @@ done
 The batch files of predicted secreted proteins needed to be combined into a single file for each strain. This was done with the following commands:
 
 ```bash
-for Assembler in discovar spades
+for SplitDir in $(ls -d gene_pred/ORF_split/*/*)
 do
-    for SplitDir in $(ls -d gene_pred/ORF_split/$Assembler/*/*)
+    Strain=$(echo $SplitDir | cut -d '/' -f4)
+    Organism=$(echo $SplitDir | cut -d '/' -f3)
+    echo "$Organism - $Strain"
+    InStringAA=''
+    InStringNeg=''
+    InStringTab=''
+    InStringTxt=''
+    for SigpDir in $(ls -d gene_pred/ORF_sig* | cut -f2 -d'/')
     do
-        Strain=$(echo $SplitDir | cut -d '/' -f5)
-        Organism=$(echo $SplitDir | cut -d '/' -f4)
-        echo "$Organism - $Strain"
-        InStringAA=''
-        InStringNeg=''
-        InStringTab=''
-        InStringTxt=''
-        for SigpDir in $(ls -d gene_pred/"$Assembler"_sig* | cut -f2 -d'/')
-        do
-            for GRP in $(ls -l $SplitDir/*_ORF_*.fa | rev | cut -d '_' -f1 | rev | sort -n)
-            do
-                InStringAA="$InStringAA gene_pred/$SigpDir/$Organism/$Strain/split/"$Organism"_"$Strain"_ORF_preds_$GRP""_sp.aa"
-                InStringNeg="$InStringNeg gene_pred/$SigpDir/$Organism/$Strain/split/"$Organism"_"$Strain"_ORF_preds_$GRP""_sp_neg.aa"
-                InStringTab="$InStringTab gene_pred/$SigpDir/$Organism/$Strain/split/"$Organism"_"$Strain"_ORF_preds_$GRP""_sp.tab"
-                InStringTxt="$InStringTxt gene_pred/$SigpDir/$Organism/$Strain/split/"$Organism"_"$Strain"_ORF_preds_$GRP""_sp.txt"
-            done
-            SigPDir=gene_pred/ORF_sig*/$Assembler/$Organism/$Strain
-            cat $InStringAA > gene_pred/$SigpDir/$Organism/$Strain/"$Strain"_aug_sp.aa
-            cat $InStringNeg > gene_pred/$SigpDir/$Organism/$Strain/"$Strain"_aug_neg_sp.aa
-            tail -n +2 -q $InStringTab > gene_pred/$SigpDir/$Organism/$Strain/"$Strain"_aug_sp.tab
-            cat $InStringTxt > gene_pred/$SigpDir/$Organism/$Strain/"$Strain"_aug_sp.txt
+        for GRP in $(ls -l $SplitDir/*_ORF_*.fa | rev | cut -d '_' -f1 | rev | sort -n)
+        do  
+            InStringAA="$InStringAA gene_pred/$SigpDir/$Organism/$Strain/split/"$Organism"_"$Strain"_ORF_preds_$GRP""_sp.aa"
+            InStringNeg="$InStringNeg gene_pred/$SigpDir/$Organism/$Strain/split/"$Organism"_"$Strain"_ORF_preds_$GRP""_sp_neg.aa"
+            InStringTab="$InStringTab gene_pred/$SigpDir/$Organism/$Strain/split/"$Organism"_"$Strain"_ORF_preds_$GRP""_sp.tab"
+            InStringTxt="$InStringTxt gene_pred/$SigpDir/$Organism/$Strain/split/"$Organism"_"$Strain"_ORF_preds_$GRP""_sp.txt"
         done
+        cat $InStringAA > gene_pred/$SigpDir/$Organism/$Strain/"$Strain"_aug_sp.aa
+        cat $InStringNeg > gene_pred/$SigpDir/$Organism/$Strain/"$Strain"_aug_neg_sp.aa
+        tail -n +2 -q $InStringTab > gene_pred/$SigpDir/$Organism/$Strain/"$Strain"_aug_sp.tab
+        cat $InStringTxt > gene_pred/$SigpDir/$Organism/$Strain/"$Strain"_aug_sp.txt
     done
 done
 ```
