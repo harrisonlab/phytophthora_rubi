@@ -211,7 +211,9 @@ done
 ```
 
 ```
-
+SCRP249	14020	3	1
+SCRP324	13943	4	36
+SCRP333	13677	2	1
 ```
 
 Contaminent organisms identified by NCBI BLAST
