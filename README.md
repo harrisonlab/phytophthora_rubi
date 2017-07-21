@@ -1463,13 +1463,13 @@ E.3) Prediction of RxLRs
 Names of ORFs containing signal peptides were extracted from fasta files. This included information on the position and hmm score of RxLRs.
 
 ```bash
-for FastaFile in $(ls gene_pred/combined_sigP_ORF/*/*/*/*_all_secreted.fa)
+for FastaFile in $(ls gene_pred/combined_sigP_ORF/*/*/*_all_secreted.fa)
 do
-    Strain=$(echo $Proteome | rev | cut -f2 -d '/' | rev)
-    Organism=$(echo $Proteome | rev | cut -f3 -d '/' | rev)
-    Assembler=$(echo $Proteome | rev | cut -f4 -d '/' | rev)
-    SigP_headers=gene_pred/combined_sigP_ORF/$Assembler/$Organism/$Strain/"$Strain"_all_secreted_headers.txt
+    Strain=$(echo $FastaFile | rev | cut -f2 -d '/' | rev)
+    Organism=$(echo $FastaFile | rev | cut -f3 -d '/' | rev)
+    SigP_headers=gene_pred/ORF_sigP/$Organism/$Strain/"$Strain"_ORF_sp_names.txt
     cat $FastaFile | grep '>' | sed -r 's/>//g' | sed -r 's/\s+/\t/g'| sed 's/=\t/=/g' | sed 's/--//g' > $SigP_headers
+    echo "$Strain done"
 done
 ```
 
