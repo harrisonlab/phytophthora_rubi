@@ -808,33 +808,30 @@ biopython
 Proteins that were predicted to contain signal peptides were identified using the following commands:
 
 ```bash
-for Assembler in discovar spades
+for Strain in SCRP249 SCRP324 SCRP333
 do
-    for Strain in SCRP249 SCRP324 SCRP333
+    for Proteome in $(ls gene_pred/braker/*/"$Strain"_braker/*/augustus.aa)
     do
-        for Proteome in $(ls gene_pred/braker/$Assembler/*/"$Strain"_braker/*/augustus.aa)
+        SplitfileDir=/home/adamst/git_repos/tools/seq_tools/feature_annotation/signal_peptides
+        ProgDir=/home/adamst/git_repos/tools/seq_tools/feature_annotation/signal_peptides
+        Organism=P.rubi
+        SplitDir=gene_pred/braker_split/$Assembler/$Organism/$Strain
+        mkdir -p $SplitDir
+        BaseName="$Organism""_$Strain"_braker
+        $SplitfileDir/splitfile_500.py --inp_fasta $Proteome --out_dir $SplitDir --out_base $BaseName
+        for File in $(ls $SplitDir/*_braker_*)
         do
-            SplitfileDir=/home/adamst/git_repos/tools/seq_tools/feature_annotation/signal_peptides
-            ProgDir=/home/adamst/git_repos/tools/seq_tools/feature_annotation/signal_peptides
-            Organism=P.rubi
-            SplitDir=gene_pred/braker_split/$Assembler/$Organism/$Strain
-            mkdir -p $SplitDir
-            BaseName="$Organism""_$Strain"_braker
-            $SplitfileDir/splitfile_500.py --inp_fasta $Proteome --out_dir $SplitDir --out_base $BaseName
-            for File in $(ls $SplitDir/*_braker_*)
+            Jobs=$(qstat | grep 'pred_sigP' | wc -l)
+            while [ $Jobs -gt 20 ]
             do
+                sleep 1
+                printf "."
                 Jobs=$(qstat | grep 'pred_sigP' | wc -l)
-                while [ $Jobs -gt 20 ]
-                do
-                    sleep 1
-                    printf "."
-                    Jobs=$(qstat | grep 'pred_sigP' | wc -l)
-                done  
-                printf "\n"
-                echo $File
-                qsub $ProgDir/pred_sigP.sh $File
-                qsub $ProgDir/pred_sigP.sh $File signalp-4.1
-            done
+            done  
+            printf "\n"
+            echo $File
+            qsub $ProgDir/pred_sigP.sh $File
+            qsub $ProgDir/pred_sigP.sh $File signalp-4.1
         done
     done
 done
