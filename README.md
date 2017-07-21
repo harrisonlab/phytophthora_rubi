@@ -412,7 +412,33 @@ done
 ```
 
 ```
+discovar:
+P.rubi	SCRP249
+The number of bases masked by RepeatMasker:	31215924
+The number of bases masked by TransposonPSI:	7577505
+The total number of masked bases are:	33062283
+P.rubi	SCRP324
+The number of bases masked by RepeatMasker:	31949318
+The number of bases masked by TransposonPSI:	7607213
+The total number of masked bases are:	33859484
+P.rubi	SCRP333
+The number of bases masked by RepeatMasker:	31597333
+The number of bases masked by TransposonPSI:	7644529
+The total number of masked bases are:	33426973
 
+SPAdes:
+P.rubi	SCRP249
+The number of bases masked by RepeatMasker:	23482028
+The number of bases masked by TransposonPSI:	5953026
+The total number of masked bases are:	25419316
+P.rubi	SCRP324
+The number of bases masked by RepeatMasker:	23613201
+The number of bases masked by TransposonPSI:	5940852
+The total number of masked bases are:	25417379
+P.rubi	SCRP333
+The number of bases masked by RepeatMasker:	23158566
+The number of bases masked by TransposonPSI:	5961557
+The total number of masked bases are:	25028389
 ```
 
 #Merging RepeatMasker and TransposonPSI outputs
