@@ -281,7 +281,7 @@ SCRP324: 9,081
 SCRP333: 8,985
 ```
 
-##Discovar
+<!-- ##Discovar
 
 ```bash
 for Strain in SCRP249 SCRP324 SCRP333
@@ -356,7 +356,7 @@ SCRP333: 1321 **
 ** Number of contigs > 1kb:
 SCRP249: 10353
 SCRP324: 10480
-SCRP333: 10260 **
+SCRP333: 10260 ** -->
 
 #Repeatmasking
 
