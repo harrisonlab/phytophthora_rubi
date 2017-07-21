@@ -459,7 +459,7 @@ done
 ```
 
 #Gene Prediction
-Gene prediction followed three steps: Pre-gene prediction - Quality of genome assemblies were assessed using Cegma to see how many core eukaryotic genes can be identified. Gene model training - Gene models were trained using assembled RNAseq data as part of the Braker1 pipeline Gene prediction - Gene models were used to predict genes in genomes as part of the the Braker1 pipeline. This used RNAseq data as hints for gene models.
+Gene prediction followed three steps: Pre-gene prediction - Quality of genome assemblies were assessed using BUSOC to see how many eukaryotic single copy orthologs are present, and quantify levels of duplication in the assembly. Gene model training - Gene models were trained using assembled RNAseq data as part of the Braker1 pipeline Gene prediction - Gene models were used to predict genes in genomes as part of the the Braker1 pipeline. This used RNAseq data as hints for gene models.
 
 ##Pre-gene prediction
 
