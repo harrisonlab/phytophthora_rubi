@@ -2083,14 +2083,13 @@ Number of CRN ORFs after merging:
 Extract crinklers from published gene models
 
 ```bash
-for MergeDir in $(ls -d analysis/CRN_effectors/hmmer_CRN/*/*/*)
+for MergeDir in $(ls -d analysis/CRN_effectors/hmmer_CRN/*/*)
 do
     Strain=$(echo "$MergeDir" | rev | cut -f1 -d '/' | rev)
     Species=$(echo "$MergeDir" | rev | cut -f2 -d '/' | rev)
-    Assembler=$(echo "$MergeDir" | rev | cut -f3 -d '/' | rev)
     AugGff=$(ls $MergeDir/"$Strain"_pub_CRN_LFLAK_DWL.gff)
-    AugFa=$(ls gene_pred/codingquary/"$Assembler"/"$Species"/"$Strain"/final/final_genes_combined.pep.fasta)
-    ORFsFa=$(ls gene_pred/ORF_finder/"$Assembler"/"$Species"/"$Strain"/"$Strain".aa_cat.fa)
+    AugFa=$(ls gene_pred/codingquarry/"$Species"/"$Strain"/final/final_genes_combined.pep.fasta)
+    ORFsFa=$(ls gene_pred/ORF_finder/"$Species"/"$Strain"/"$Strain".aa_cat.fa)
     ORFGff=$MergeDir/"$Strain"_CRN_merged_hmmer.gff3
     ORFsInAug=$MergeDir/"$Strain"_ORFsInAug_CRN_hmmer.bed
     AugInORFs=$MergeDir/"$Strain"_AugInORFs_CRN_hmmer.bed
@@ -2103,7 +2102,7 @@ do
     bedtools intersect -wa -u -a $AugGff -b $ORFGff > $AugInORFs
     bedtools intersect -v -wa -a $ORFGff -b $AugGff > $ORFsUniq
     bedtools intersect -v -wa -a $AugGff -b $ORFGff > $AugUniq
-    echo "$Assembler - $Species - $Strain" >> report.txt
+    echo "$Species - $Strain" >> report.txt
 
     echo "The number of ORF CRNs overlapping Augustus CRNs:" >> report.txt
     cat $ORFsInAug | grep -w -e 'transcript' -e 'mRNA' | wc -l >> report.txt
@@ -2125,8 +2124,9 @@ do
     $ProgDir/extract_from_fasta.py --fasta $ORFsFa --headers $TotalCRNsTxt >> $CRNsFa
     echo "The number of sequences extracted is" >> report.txt
     cat $CRNsFa | grep '>' | wc -l >> report.txt
-    echo "$Assembler $Strain done"
+    echo "$Strain done"
 done
+echo "$Organism done"
 ```
 
 ```
