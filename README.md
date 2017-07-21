@@ -270,7 +270,7 @@ SCRP333	77817047	77822560
 ProgDir=/home/adamst/git_repos/tools/seq_tools/assemblers/assembly_qc/quast
 for Strain in SCRP249 SCRP324 SCRP333
 do
-    for Assembly in $(ls assembly/spades/P.rubi/$Strain/filtered_contigs/*_500bp_renamed.fasta)
+    for Assembly in $(ls assembly/spades/P.rubi/$Strain/deconseq_Paen/*_500bp_filtered_renamed.fasta)
     do
         Strain=$(echo $Assembly | rev | cut -d '/' -f3 | rev)
         Organism=$(echo $Assembly | rev | cut -d '/' -f4 | rev)
