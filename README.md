@@ -931,7 +931,7 @@ This represented the following number of unique genes:
 3,451
 ```
 
-The regular expression R.LR.{,40}[ED][ED][KR] has previously been used to identify RxLR effectors. The addition of an EER motif is significant as it has been shown as required for host uptake of the protein.
+####A.3The regular expression R.LR.{,40}[ED][ED][KR] has previously been used to identify RxLR effectors. The addition of an EER motif is significant as it has been shown as required for host uptake of the protein.
 
 The RxLR_EER_regex_finder.py script was used to search for this regular expression and annotate the EER domain where present.
 
@@ -1013,7 +1013,7 @@ the number of SigP-RxLR genes are:	341
 the number of SigP-RxLR-EER genes are:	171
 ```
 
-####G) From Secreted gene models - Hmm evidence of RxLR effectors
+####A.4) From Secreted gene models - HMM evidence of RxLR effectors
 
 ```bash
 for Strain in SCRP249 SCRP324 SCRP333
