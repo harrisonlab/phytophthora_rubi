@@ -491,7 +491,7 @@ for discovar assemblies:
 ```bash
 for Assembly in $(ls assembly/spades/P.rubi/*/deconseq_Paen/contigs_min_500bp_filtered_renamed.fasta)
 do
-    Strain=$(echo $Assembly | rev |cut -d '/' -f3 | rev)
+    Strain=$(echo $Assembly | rev | cut -d '/' -f3 | rev)
     echo "$Strain"
     ProgDir=/home/adamst/git_repos/tools/gene_prediction/busco
     BuscoDB=Eukaryotic
