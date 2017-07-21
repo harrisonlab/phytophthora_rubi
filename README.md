@@ -850,7 +850,7 @@ do
 done
 ```
 
-####B.2) Prediction using Phobius
+####A.2) Prediction using Phobius
 
 Secreted proteins were also predicted using Phobius
 
