@@ -594,14 +594,13 @@ done
 Secondly, genes were predicted using CodingQuarry:
 
 ```bash
-for Assembly in $(ls repeat_masked/*/*/*/*/*_contigs_softmasked_repeatmasker_TPSI_appended.fa)
+for Assembly in $(ls repeat_masked/*/*/*/*_contigs_softmasked_repeatmasker_TPSI_appended.fa)
 do
     Strain=$(echo $Assembly| rev | cut -d '/' -f3 | rev)
     Organism=$(echo $Assembly | rev | cut -d '/' -f4 | rev)
-    Assembler=$(echo $Assembly | rev | cut -d '/' -f5 | rev)
-    echo "$Assembler - $Organism - $Strain"
-    OutDir=gene_pred/codingquary/$Assembler/$Organism/$Strain
-    CufflinksGTF=gene_pred/cufflinks/$Assembler/$Organism/$Strain/concatenated/transcripts.gtf
+    echo "$Organism - $Strain"
+    OutDir=gene_pred/codingquarry/$Organism/$Strain
+    CufflinksGTF=gene_pred/cufflinks/$Organism/$Strain/concatenated/transcripts.gtf
     ProgDir=/home/adamst/git_repos/tools/gene_prediction/codingquary
     qsub $ProgDir/sub_CodingQuary.sh $Assembly $CufflinksGTF $OutDir
 done
