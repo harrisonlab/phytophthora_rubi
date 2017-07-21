@@ -1726,22 +1726,21 @@ E7) Combining RxLRs from Regex and hmm searches
 The total RxLRs are
 
 ```bash
-for RegexRxLR in $(ls analysis/RxLR_effectors/RxLR_EER_regex_finder/*/*/*/*_ORF_RxLR_EER_regex_merged.txt)
+for RegexRxLR in $(ls analysis/RxLR_effectors/RxLR_EER_regex_finder/*/*/*_ORF_RxLR_EER_regex_merged.txt)
 do
     Organism=$(echo $RegexRxLR | rev |  cut -d '/' -f3 | rev)
     Strain=$(echo $RegexRxLR | rev | cut -d '/' -f2 | rev)
-    Assembler=$(echo $RegexRxLR | rev | cut -d '/' -f4 | rev)
-    Gff=$(ls gene_pred/ORF_finder/$Assembler/$Organism/$Strain/"$Strain"_ORF.gff3)
-    Proteome=$(ls gene_pred/ORF_finder/$Assembler/$Organism/$Strain/"$Strain".aa_cat.fa)
-    HmmRxLR=$(ls analysis/RxLR_effectors/hmmer_RxLR/$Assembler/$Organism/$Strain/"$Strain"_ORF_RxLR_hmm_merged.txt)
-    echo "$Assembler - $Organism - $Strain" >> report.txt
+    Gff=$(ls gene_pred/ORF_finder/$Organism/$Strain/"$Strain"_ORF.gff3)
+    Proteome=$(ls gene_pred/ORF_finder/$Organism/$Strain/"$Strain".aa_cat.fa)
+    HmmRxLR=$(ls analysis/RxLR_effectors/hmmer_RxLR/$Organism/$Strain/"$Strain"_ORF_RxLR_hmm_merged.txt)
+    echo "$Organism - $Strain" >> report.txt
     echo "Number of RxLRs identified by Regex:" >> report.txt
     cat $RegexRxLR | sort | uniq | wc -l >> report.txt
     echo "Number of RxLRs identified by Hmm:" >> report.txt
     cat $HmmRxLR | sort | uniq | wc -l >> report.txt
     echo "Number of RxLRs in combined dataset:" >> report.txt
     cat $RegexRxLR $HmmRxLR | sort | uniq | wc -l >> report.txt
-    OutDir=analysis/RxLR_effectors/combined_evidence/$Assembler/$Organism/$Strain
+    OutDir=analysis/RxLR_effectors/combined_evidence/$Organism/$Strain
     mkdir -p $OutDir
     cat $RegexRxLR $HmmRxLR | sort | uniq > $OutDir/"$Strain"_total_ORF_RxLR_headers.txt
     ProgDir=/home/adamst/git_repos/tools/seq_tools/feature_annotation
@@ -1749,7 +1748,7 @@ do
     echo "Number of genes in the extracted gff file:" >> report.txt
     cat $OutDir/"$Strain"_total_ORF_RxLR.gff | grep -w 'gene' | wc -l >> report.txt
     echo "" >> report.txt
-    echo "$Assembler $Strain done"
+    echo "$Strain done"
 done
 ```
 
