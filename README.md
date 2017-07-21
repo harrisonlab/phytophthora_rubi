@@ -972,43 +972,43 @@ echo "$Organism complete"
 ```
 
 ```
-discovar
+discovar:
 
 strain: SCRP249	species: P.rubi
-the total number of SigP gene is:	10696
-the number of unique SigP gene is:	3748
+the total number of SigP gene is:	10,696
+the number of unique SigP gene is:	3,748
 the number of SigP-RxLR genes are:	379
 the number of SigP-RxLR-EER genes are:	200
 
 strain: SCRP324	species: P.rubi
-the total number of SigP gene is:	12476
-the number of unique SigP gene is:	4434
+the total number of SigP gene is:	12,476
+the number of unique SigP gene is:	4,434
 the number of SigP-RxLR genes are:	377
 the number of SigP-RxLR-EER genes are:	192
 
 strain: SCRP333	species: P.rubi
-the total number of SigP gene is:	10397
-the number of unique SigP gene is:	3714
+the total number of SigP gene is:	10,397
+the number of unique SigP gene is:	3,714
 the number of SigP-RxLR genes are:	354
 the number of SigP-RxLR-EER genes are:	179
 
-spades
+SPAdes:
 
 strain: SCRP249	species: P.rubi
-the total number of SigP gene is:	10174
-the number of unique SigP gene is:	3546
+the total number of SigP gene is:	10,174
+the number of unique SigP gene is:	3,546
 the number of SigP-RxLR genes are:	346
 the number of SigP-RxLR-EER genes are:	176
 
 strain: SCRP324	species: P.rubi
-the total number of SigP gene is:	12309
-the number of unique SigP gene is:	4347
+the total number of SigP gene is:	12,309
+the number of unique SigP gene is:	4,347
 the number of SigP-RxLR genes are:	378
 the number of SigP-RxLR-EER genes are:	191
 
 strain: SCRP333	species: P.rubi
-the total number of SigP gene is:	9722
-the number of unique SigP gene is:	3451
+the total number of SigP gene is:	9,722
+the number of unique SigP gene is:	3,451
 the number of SigP-RxLR genes are:	341
 the number of SigP-RxLR-EER genes are:	171
 ```
