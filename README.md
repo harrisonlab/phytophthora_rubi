@@ -1958,13 +1958,12 @@ H) From ORF gene models - Hmm evidence of CRN effectors
 A hmm model relating to crinkler domains was used to identify putative crinklers in ORF gene models. This was done with the following commands:
 
 ```bash
-for Proteome in $(ls gene_pred/ORF_finder/*/*/*/*.aa_cat.fa)
+for Proteome in $(ls gene_pred/ORF_finder/*/*/*.aa_cat.fa)
 do
     # Setting variables
     Strain=$(echo $Proteome | rev | cut -f2 -d '/' | rev)
     Organism=$(echo $Proteome | rev | cut -f3 -d '/' | rev)
-    Assembler=$(echo $Proteome | rev | cut -f4 -d '/' | rev)
-    OutDir=analysis/CRN_effectors/hmmer_CRN/$Assembler/$Organism/$Strain
+    OutDir=analysis/CRN_effectors/hmmer_CRN/$Organism/$Strain
     mkdir -p $OutDir
     # Hmmer variables
     ProgDir=/home/adamst/git_repos/scripts/phytophthora/pathogen/hmmer
@@ -1997,13 +1996,13 @@ do
     Headers=$OutDir/"$Strain"_CRN_hmmer_unmerged_headers.txt
     cat $OutDir/$HmmFastaDWL | grep '>' | grep -w -f $CommonHeaders | tr -d '>' | sed -r 's/\s+/\t/g'| sed 's/=\t/=/g' | tr -d '-' | sed 's/hmm_score/HMM_score/g' > $Headers
     # As we are dealing with JGI and Broad sequences, some features need formatting:
-    ORF_Gff=$(ls gene_pred/ORF_finder/$Assembler/$Organism/$Strain/*_ORF.gff3)
+    ORF_Gff=$(ls gene_pred/ORF_finder/$Organism/$Strain/*_ORF.gff3)
     # Gff features were extracted for each header
     CRN_unmerged_Gff=$OutDir/"$Strain"_CRN_unmerged_hmmer.gff3
     ProgDir=/home/adamst/git_repos/tools/gene_prediction/ORF_finder
     $ProgDir/extract_gff_for_sigP_hits.pl $Headers $ORF_Gff CRN_HMM Name > $CRN_unmerged_Gff
     # Gff features were merged based upon the DWL hmm score
-    DbDir=analysis/databases/$Assembler/$Organism/$Strain
+    DbDir=analysis/databases/$Organism/$Strain
     mkdir -p $DbDir
     ProgDir=/home/adamst/git_repos/scripts/phytophthora/pathogen/merge_gff
     $ProgDir/make_gff_database.py --inp $CRN_unmerged_Gff --db $DbDir/CRN_ORF.db
@@ -2013,8 +2012,9 @@ do
     # Final results are reported:
     echo "Number of CRN ORFs after merging:" >> report.txt
     cat $CRN_Merged_Gff | grep 'gene' | wc -l >> report.txt
-    echo "$Assembler $Strain done"
+    echo "$Strain done"
 done
+echo "$Organism done"
 ```
 
 ```
