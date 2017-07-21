@@ -785,7 +785,7 @@ Required programs:
 SigP
 biopython
 
-####A.1) Signal peptide prediction using SignalP 2.0
+####A.1) Signal peptide prediction using SignalP 2.0 & SignalP4.1
 
 Proteins that were predicted to contain signal peptides were identified using the following commands:
 
