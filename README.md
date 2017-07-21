@@ -1034,32 +1034,30 @@ the number of SigP-RxLR-EER genes are:	171
 ####G) From Secreted gene models - Hmm evidence of RxLR effectors
 
 ```bash
-for Assembler in discovar spades
+for Strain in SCRP249 SCRP324 SCRP333
 do
-    echo $Assembler
-    for Strain in SCRP249 SCRP324 SCRP333
+    for Proteome in $(ls gene_pred/codingquarry/*/$Strain/final/final_genes_combined.pep.fasta)
     do
-        for Proteome in $(ls gene_pred/braker/$Assembler/*/"$Strain"_braker/*/augustus.aa)
-        do
-            ProgDir=/home/adamst/git_repos/scripts/phytophthora/pathogen/hmmer
-            HmmModel=/home/armita/git_repos/emr_repos/SI_Whisson_et_al_2007/cropped.hmm
-            Organism=$(echo $Proteome | rev | cut -f4 -d '/' | rev)
-            OutDir=analysis/RxLR_effectors/hmmer_RxLR/$Assembler/$Organism/$Strain
-            mkdir -p $OutDir
-            HmmResults="$Strain"_RxLR_hmmer.txt
-            hmmsearch -T 0 $HmmModel $Proteome > $OutDir/$HmmResults
-            echo "$Organism $Strain"
-            cat $OutDir/$HmmResults | grep 'Initial search space'
-            cat $OutDir/$HmmResults | grep 'number of targets reported over threshold'
-            HmmFasta="$Strain"_RxLR_hmmer.fa
-            $ProgDir/hmmer2fasta.pl $OutDir/$HmmResults $Proteome > $OutDir/$HmmFasta
-            Headers="$Strain"_RxLR_hmmer_headers.txt
-            cat $OutDir/$HmmFasta | grep '>' | cut -f1 | tr -d '>' | sed -r 's/\.t.*//' | tr -d ' ' | sort | uniq > $OutDir/$Headers
-            Gff=$(ls gene_pred/braker/$Assembler/$Organism/"$Strain"_braker/*/augustus_extracted.gff)
-            cat $Gff | grep -w -f $OutDir/$Headers > $OutDir/"$Strain"_Aug_RxLR_regex.gff3
-        done
+        ProgDir=/home/adamst/git_repos/scripts/phytophthora/pathogen/hmmer
+        HmmModel=/home/armita/git_repos/emr_repos/SI_Whisson_et_al_2007/cropped.hmm
+        Organism=$(echo $Proteome | rev | cut -f4 -d '/' | rev)
+        OutDir=analysis/RxLR_effectors/hmmer_RxLR/$Organism/$Strain
+        mkdir -p $OutDir
+        HmmResults="$Strain"_RxLR_hmmer.txt
+        hmmsearch -T 0 $HmmModel $Proteome > $OutDir/$HmmResults
+        echo "$Organism $Strain" >> report.txt
+        cat $OutDir/$HmmResults | grep 'Initial search space' >> report.txt
+        cat $OutDir/$HmmResults | grep 'number of targets reported over threshold' >> report.txt
+        HmmFasta="$Strain"_RxLR_hmmer.fa
+        $ProgDir/hmmer2fasta.pl $OutDir/$HmmResults $Proteome > $OutDir/$HmmFasta
+        Headers="$Strain"_RxLR_hmmer_headers.txt
+        cat $OutDir/$HmmFasta | grep '>' | cut -f1 | tr -d '>' | sed -r 's/\.t.*//' | tr -d ' ' | sort | uniq > $OutDir/$Headers
+        Gff=$(ls gene_pred/codingquarry/$Organism/$Strain/final/final_genes_appended.gff3)
+        cat $Gff | grep -w -f $OutDir/$Headers > $OutDir/"$Strain"_Aug_RxLR_regex.gff3
     done
+    echo "$Strain complete"
 done
+echo "$Organism complete"
 ```
 
 ```
