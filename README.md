@@ -500,54 +500,6 @@ do
 done
 ```
 
-Outputs were summarised using the commands:
-
-```bash
-for Assembler in discovar spades
-do
-    for Strain in SCRP249 SCRP324 SCRP333
-    do
-        for File in $(ls gene_pred/cegma/$Strain/*/*_dna_cegma.completeness_report)
-        do
-            Strain=$(echo $File | rev | cut -f2 -d '/' | rev)
-            Species=$(echo $File | rev | cut -f3 -d '/' | rev)
-            printf "$Species\t$Strain\n"
-            cat $File | head -n18 | tail -n+4;printf "\n"
-        done
-    done
-done >> gene_pred/cegma/$Assembler/cegma_results_dna_summary.txt
-
-less gene_pred/cegma/$Assembler/cegma_results_dna_summary.txt
-```
-
-**Discovar:
-
-SCRP249:
-Complete: 93.55%
-Partial: 96.37%
-
-SCRP324:
-Complete: 94.76%
-Partial: 97.58%
-
-SCRP333:
-Complete: 94.35%
-Partial: 96.77%
-
-SPAdes:
-
-SCRP249:
-Complete: 93.95%
-Partial: 96.77%
-
-SCRP324:
-Complete: 95.56%
-Partial: 97.98%
-
-SCRP333:
-Complete: 94.35%
-Partial: 96.77%**
-
 #Gene prediction
 Gene prediction was performed for the P. rubi genomes. Two gene prediction approaches were used:
 
