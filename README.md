@@ -1361,16 +1361,16 @@ E.2) Prediction using Phobius
 Secreted proteins were also predicted using Phobius
 
 ```bash
-for Proteome in $(ls gene_pred/ORF_finder/*/P.*/*/*.aa_cat.fa)
+for Proteome in $(ls gene_pred/ORF_finder/P.*/*/*.aa_cat.fa)
 do
     Strain=$(echo $Proteome | rev | cut -f2 -d '/' | rev)
     Organism=$(echo $Proteome | rev | cut -f3 -d '/' | rev)
-    Assembler=$(echo $Proteome | rev | cut -f4 -d '/' | rev)
     echo "$Organism - $Strain"
-    OutDir=analysis/phobius/$Assembler/$Organism/$Strain
+    OutDir=analysis/phobius_ORF/$Organism/$Strain
     mkdir -p $OutDir
-    phobius.pl $Proteome > $OutDir/"$Strain"_phobius_ORF.txt
-    cat $OutDir/"$Strain"_phobius_ORF.txt | grep -B1 'SIGNAL' | grep 'ID' | sed s'/ID.*g/g/g' > $OutDir/"$Strain"_phobius_headers_ORF.txt
+    phobius.pl $Proteome > $OutDir/"$Strain"_phobius.txt
+    ProgDir=/home/adamst/git_repos/tools/seq_tools/feature_annotation/signal_peptides
+    $ProgDir/phobius_parser.py --inp_fasta $Proteome --phobius_txt $OutDir/"$Strain"_phobius.txt --out_fasta $OutDir/"$Strain"_phobius.fa
 done
 ```
 
