@@ -894,41 +894,41 @@ done
 ```
 
 ```
-discovar
+discovar:
 
 P.rubi - SCRP249
 The following number of sequences were predicted as secreted:
-10696
+10,696
 This represented the following number of unique genes:
-3748
+3,748
 P.rubi - SCRP324
 The following number of sequences were predicted as secreted:
-12476
+12,476
 This represented the following number of unique genes:
-4434
+4,434
 P.rubi - SCRP333
 The following number of sequences were predicted as secreted:
-10397
+10,397
 This represented the following number of unique genes:
-3714
+3,714
 
-spades
+SPAdes:
 
 P.rubi - SCRP249
 The following number of sequences were predicted as secreted:
-10174
+10,174
 This represented the following number of unique genes:
-3546
+3,546
 P.rubi - SCRP324
 The following number of sequences were predicted as secreted:
-12309
+12,309
 This represented the following number of unique genes:
-4347
+4,347
 P.rubi - SCRP333
 The following number of sequences were predicted as secreted:
-9722
+9,722
 This represented the following number of unique genes:
-3451
+3,451
 ```
 
 The regular expression R.LR.{,40}[ED][ED][KR] has previously been used to identify RxLR effectors. The addition of an EER motif is significant as it has been shown as required for host uptake of the protein.
