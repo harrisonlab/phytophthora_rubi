@@ -648,7 +648,8 @@ done
 ```
 
 ```
-discovar - P.rubi - SCRP249
+discovar:
+P.rubi - SCRP249
 Braker:
 33629
 CodingQuarry:
@@ -656,7 +657,7 @@ CodingQuarry:
 Total:
 36119
 
-discovar - P.rubi - SCRP324
+P.rubi - SCRP324
 Braker:
 39285
 CodingQuarry:
@@ -664,7 +665,7 @@ CodingQuarry:
 Total:
 42194
 
-discovar - P.rubi - SCRP333
+P.rubi - SCRP333
 Braker:
 34276
 CodingQuarry:
@@ -672,7 +673,9 @@ CodingQuarry:
 Total:
 37512
 
-spades - P.rubi - SCRP249
+
+SPAdes:
+P.rubi - SCRP249
 Braker:
 29919
 CodingQuarry:
@@ -680,7 +683,7 @@ CodingQuarry:
 Total:
 31866
 
-spades - P.rubi - SCRP324
+P.rubi - SCRP324
 Braker:
 34668
 CodingQuarry:
@@ -688,7 +691,7 @@ CodingQuarry:
 Total:
 37021
 
-spades - P.rubi - SCRP333
+P.rubi - SCRP333
 Braker:
 29669
 CodingQuarry:
