@@ -364,7 +364,7 @@ Repeat masking was performed and used the following programs: Repeatmasker Repea
 
 The best assemblies were used to perform repeatmasking
 
-for discovar assembly:
+<!-- for discovar assembly:
 
 ```bash
 ProgDir=/home/adamst/git_repos/tools/seq_tools/repeat_masking
@@ -376,7 +376,7 @@ do
         qsub $ProgDir/transposonPSI.sh $BestAss
     done
 done
-```
+``` -->
 
 for SPAdes assembly:
 
