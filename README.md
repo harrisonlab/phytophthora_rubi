@@ -414,31 +414,31 @@ done
 ```
 discovar:
 P.rubi	SCRP249
-The number of bases masked by RepeatMasker:	31215924
-The number of bases masked by TransposonPSI:	7577505
-The total number of masked bases are:	33062283
+The number of bases masked by RepeatMasker:	31,215,924
+The number of bases masked by TransposonPSI:	7,577,505
+The total number of masked bases are:	33,062,283
 P.rubi	SCRP324
-The number of bases masked by RepeatMasker:	31949318
-The number of bases masked by TransposonPSI:	7607213
-The total number of masked bases are:	33859484
+The number of bases masked by RepeatMasker:	31,949,318
+The number of bases masked by TransposonPSI:	7,607,213
+The total number of masked bases are:	33,859,484
 P.rubi	SCRP333
-The number of bases masked by RepeatMasker:	31597333
-The number of bases masked by TransposonPSI:	7644529
-The total number of masked bases are:	33426973
+The number of bases masked by RepeatMasker:	31,597,333
+The number of bases masked by TransposonPSI:	7,644,529
+The total number of masked bases are:	33,426,973
 
 SPAdes:
 P.rubi	SCRP249
-The number of bases masked by RepeatMasker:	23482028
-The number of bases masked by TransposonPSI:	5953026
-The total number of masked bases are:	25419316
+The number of bases masked by RepeatMasker:	23,482,028
+The number of bases masked by TransposonPSI:	5,953,026
+The total number of masked bases are:	2,5419,316
 P.rubi	SCRP324
-The number of bases masked by RepeatMasker:	23613201
-The number of bases masked by TransposonPSI:	5940852
+The number of bases masked by RepeatMasker:	23,613,201
+The number of bases masked by TransposonPSI:	5,940,852
 The total number of masked bases are:	25417379
 P.rubi	SCRP333
-The number of bases masked by RepeatMasker:	23158566
-The number of bases masked by TransposonPSI:	5961557
-The total number of masked bases are:	25028389
+The number of bases masked by RepeatMasker:	23,158,566
+The number of bases masked by TransposonPSI:	5,961,557
+The total number of masked bases are:	25,028,389
 ```
 
 #Merging RepeatMasker and TransposonPSI outputs
