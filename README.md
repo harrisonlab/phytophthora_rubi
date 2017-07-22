@@ -395,7 +395,7 @@ done
 The number of bases masked by transposonPSI and Repeatmasker were summarised using the following commands:
 
 ```bash
-for RepDir in $(ls -d repeat_masked/spades/P.*/*/filtered_contigs_repmask)
+for RepDir in $(ls -d repeat_masked/P.*/*/deconseq_Paen_repmask)
 do
     Strain=$(echo $RepDir | rev | cut -f2 -d '/' | rev)
     Organism=$(echo $RepDir | rev | cut -f3 -d '/' | rev)  
