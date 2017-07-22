@@ -475,6 +475,28 @@ do
 done
 ```
 
+```
+Of 303 BUSCOs searched:
+
+SCRP249:
+Complete and single-copy BUSCOs: 271
+Complete and duplicated BUSCOs: 8
+Fragmented BUSCOs: 4
+Missing BUSCOs: 20
+
+SCRP324:
+Complete and single-copy BUSCOs: 272
+Complete and duplicated BUSCOs: 8
+Fragmented BUSCOs: 3
+Missing BUSCOs: 20
+
+SCRP333:
+Complete and single-copy BUSCOs: 273
+Complete and duplicated BUSCOs: 7
+Fragmented BUSCOs: 3
+Missing BUSCOs: 20
+```
+
 #Gene prediction
 Gene prediction was performed for the P. rubi genomes. Two gene prediction approaches were used:
 
