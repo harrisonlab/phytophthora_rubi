@@ -448,10 +448,8 @@ for File in $(ls -d repeat_masked/P.*/*/deconseq_Paen_repmask/*_contigs_softmask
 do
     OutDir=$(dirname $File)
     TPSI=$(ls $OutDir/*_contigs_unmasked.fa.TPSI.allHits.chains.gff3)
-    Assembler=$(echo $File | rev | cut -f5 -d '/' | rev)
     OutFile=$(echo $File | sed 's/_contigs_softmasked.fa/_contigs_softmasked_repeatmasker_TPSI_appended.fa/g')
     bedtools maskfasta -soft -fi $File -bed $TPSI -fo $OutFile
-    echo $Assembler
     echo "$OutFile"
     echo "Number of masked bases:"
     cat $OutFile | grep -v '>' | tr -d '\n' | awk '{print $0, gsub("[a-z]", ".")}' | cut -f2 -d ' '
