@@ -513,7 +513,7 @@ RNAseq data was obtained from the phytophthora sequencing consortium - Nick Grü
 RNA-Seq data aligned using STAR
 
 ```bash
-for Assembly in $(ls repeat_masked/P.rubi/*/deconseq_Paen_repmask/"$Strain"_contigs_softmasked_repeatmasker_TPSI_appended.fa)
+for Assembly in $(ls repeat_masked/P.rubi/*/deconseq_Paen_repmask/*_contigs_softmasked_repeatmasker_TPSI_appended.fa)
 do
     Strain=$(echo $Assembly | rev | cut -d '/' -f3 | rev)
     Organism=$(echo $Assembly | rev | cut -d '/' -f4 | rev)
