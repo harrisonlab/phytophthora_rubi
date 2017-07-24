@@ -557,8 +557,8 @@ do
     echo "$Organism - $Strain"
     mkdir -p alignment/$Assembler/$Organism/$Strain/concatenated
     samtools merge -f alignment/star/$Organism/$Strain/concatenated/concatenated.bam \
-    alignment/star/$Organism/$Strain/4671V8/accepted_hits.bam \
-    alignment/star/$Organism/$Strain/Pr4671PB/accepted_hits.bam \
+    alignment/star/$Organism/$Strain/4671V8/star_aligmentAligned.sortedByCoord.out.bam \
+    alignment/star/$Organism/$Strain/Pr4671PB/star_aligmentAligned.sortedByCoord.out.bam \
     OutDir=gene_pred/braker/$Organism/"$Strain"_braker
     AcceptedHits=alignment/star/$Organism/$Strain/concatenated/concatenated.bam
     GeneModelName="$Organism"_"$Strain"_braker
