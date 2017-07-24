@@ -542,7 +542,7 @@ done
 #Braker prediction
 
 ```bash
-for Assembly in $(ls repeat_masked/spades/P.rubi/*/deconseq_Paen_repmask/*_contigs_softmasked_repeatmasker_TPSI_appended.fa)
+for Assembly in $(ls repeat_masked/P.rubi/*/deconseq_Paen_repmask/*_contigs_softmasked_repeatmasker_TPSI_appended.fa)
 do
     Jobs=$(qstat | grep 'braker' | grep -w 'r' | wc -l)
     while [ $Jobs -gt 1 ]
