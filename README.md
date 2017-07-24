@@ -584,7 +584,7 @@ do
     echo "$Organism - $Strain"
     OutDir=gene_pred/cufflinks/$Organism/$Strain/concatenated
     mkdir -p $OutDir
-    AcceptedHits=alignment/$Organism/$Strain/concatenated/concatenated.bam
+    AcceptedHits=alignment/star/$Organism/$Strain/concatenated/concatenated.bam
     ProgDir=/home/adamst/git_repos/tools/seq_tools/RNAseq
     qsub $ProgDir/sub_cufflinks.sh $AcceptedHits $OutDir
 done
