@@ -555,7 +555,7 @@ do
     Strain=$(echo $Assembly| rev | cut -d '/' -f3 | rev)
     Organism=$(echo $Assembly | rev | cut -d '/' -f4 | rev)
     echo "$Organism - $Strain"
-    mkdir -p alignment/$Assembler/$Organism/$Strain/concatenated
+    mkdir -p alignment/$Organism/$Strain/concatenated
     samtools merge -f alignment/star/$Organism/$Strain/concatenated/concatenated.bam \
     alignment/star/$Organism/$Strain/4671V8/star_aligmentAligned.sortedByCoord.out.bam \
     alignment/star/$Organism/$Strain/Pr4671PB/star_aligmentAligned.sortedByCoord.out.bam
