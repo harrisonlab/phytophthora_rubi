@@ -1248,28 +1248,28 @@ Initial search space (Z):              36843  [actual number of targets]
 Domain search space  (domZ):             136  [number of targets reported over threshold]
 Identify the genes detected in both models:     123
 
-spades
+SPAdes:
 
 P.rubi - SCRP249
-Initial search space (Z):              32541  [actual number of targets]
-Domain search space  (domZ):             149  [number of targets reported over threshold]
-Initial search space (Z):              32541  [actual number of targets]
-Domain search space  (domZ):             137  [number of targets reported over threshold]
-Identify the genes detected in both models:     126
+Initial search space (Z):             32,194  [actual number of targets]
+Domain search space  (domZ):             157  [number of targets reported over threshold]
+Initial search space (Z):             32,194  [actual number of targets]
+Domain search space  (domZ):             143  [number of targets reported over threshold]
+Identify the genes detected in both models:     129
 
 P.rubi - SCRP324
-Initial search space (Z):              38842  [actual number of targets]
-Domain search space  (domZ):             154  [number of targets reported over threshold]
-Initial search space (Z):              38842  [actual number of targets]
+Initial search space (Z):             33,392  [actual number of targets]
+Domain search space  (domZ):             157  [number of targets reported over threshold]
+Initial search space (Z):             33,392  [actual number of targets]
 Domain search space  (domZ):             140  [number of targets reported over threshold]
-Identify the genes detected in both models:     124
+Identify the genes detected in both models:     127
 
 P.rubi - SCRP333
-Initial search space (Z):              32562  [actual number of targets]
-Domain search space  (domZ):             141  [number of targets reported over threshold]
-Initial search space (Z):              32562  [actual number of targets]
-Domain search space  (domZ):             136  [number of targets reported over threshold]
-Identify the genes detected in both models:     121
+Initial search space (Z):             32,942  [actual number of targets]
+Domain search space  (domZ):             155  [number of targets reported over threshold]
+Initial search space (Z):             32,942  [actual number of targets]
+Domain search space  (domZ):             142  [number of targets reported over threshold]
+Identify the genes detected in both models:     126
 ```
 
 Extract gff annotations for Crinklers:
