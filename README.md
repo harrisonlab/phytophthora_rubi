@@ -935,19 +935,19 @@ SPAdes:
 
 P.rubi - SCRP249
 The following number of sequences were predicted as secreted:
-10,174
+10,664
 This represented the following number of unique genes:
-3,546
+3,656
 P.rubi - SCRP324
 The following number of sequences were predicted as secreted:
-12,309
+11,045
 This represented the following number of unique genes:
-4,347
+3,813
 P.rubi - SCRP333
 The following number of sequences were predicted as secreted:
-9,722
+10,781
 This represented the following number of unique genes:
-3,451
+3,726
 ```
 
 ####A.3The regular expression R.LR.{,40}[ED][ED][KR] has previously been used to identify RxLR effectors. The addition of an EER motif is significant as it has been shown as required for host uptake of the protein.
