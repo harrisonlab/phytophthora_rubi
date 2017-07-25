@@ -697,27 +697,27 @@ Total:
 SPAdes:
 P.rubi - SCRP249
 Braker:
-29919
+30,289
 CodingQuarry:
-1947
+1,905
 Total:
-31866
+32,194
 
 P.rubi - SCRP324
 Braker:
-34668
+30,527
 CodingQuarry:
-2353
+2,865
 Total:
-37021
+33,392
 
 P.rubi - SCRP333
 Braker:
-29669
+29,713
 CodingQuarry:
-2069
+3,229
 Total:
-31738
+32,942
 ```
 
 #Gene prediction 2 - atg.pl prediction of ORFs
