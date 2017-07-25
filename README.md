@@ -751,7 +751,7 @@ The final number of genes per isolate were determined using
 ```bash
 for Strain in SCRP249 SCRP324 SCRP333
 do
-    for DirPath in $(ls -d gene_pred/ORF_finder/*/$Strain)
+    for DirPath in $(ls -d gene_pred/ORF_finder/P.rubi/$Strain)
     do
         echo $DirPath
         cat $DirPath/"$Strain".aa_cat.fa | grep '>' | wc -l
