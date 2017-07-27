@@ -1704,28 +1704,31 @@ done
 ```
 
 ```
-discovar P.rubi SCRP249
-Initial search space (Z):              81145  [actual number of targets]
+Discovar:
+P.rubi SCRP249
+Initial search space (Z):             81,145  [actual number of targets]
 Domain search space  (domZ):             703  [number of targets reported over threshold]
 Merged RxLR-EER Hmm proteins:   50
-discovar P.rubi SCRP324
-Initial search space (Z):              89423  [actual number of targets]
+P.rubi SCRP324
+Initial search space (Z):             89,423  [actual number of targets]
 Domain search space  (domZ):             696  [number of targets reported over threshold]
 Merged RxLR-EER Hmm proteins:   217
-discovar P.rubi SCRP333
-Initial search space (Z):              81434  [actual number of targets]
+P.rubi SCRP333
+Initial search space (Z):             81,434  [actual number of targets]
 Domain search space  (domZ):             668  [number of targets reported over threshold]
 Merged RxLR-EER Hmm proteins:   208
-spades P.rubi SCRP249
-Initial search space (Z):              74633  [actual number of targets]
+
+SPAdes:
+P.rubi SCRP249
+Initial search space (Z):             74,620  [actual number of targets]
 Domain search space  (domZ):             682  [number of targets reported over threshold]
 Merged RxLR-EER Hmm proteins:   211
-spades P.rubi SCRP324
-Initial search space (Z):              83177  [actual number of targets]
+P.rubi SCRP324
+Initial search space (Z):             75,263  [actual number of targets]
 Domain search space  (domZ):             681  [number of targets reported over threshold]
 Merged RxLR-EER Hmm proteins:   212
-spades P.rubi SCRP333
-Initial search space (Z):              74477  [actual number of targets]
+P.rubi SCRP333
+Initial search space (Z):             74,464  [actual number of targets]
 Domain search space  (domZ):             662  [number of targets reported over threshold]
 Merged RxLR-EER Hmm proteins:   206
 ```
