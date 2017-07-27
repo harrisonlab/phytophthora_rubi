@@ -1427,36 +1427,39 @@ done
 ``` -->
 
 ```
-discovar - P.rubi - SCRP249
+Discovar:
+P.rubi - SCRP249
 The following number of sequences were predicted as secreted:
-81145
+81,145
 This represented the following number of unique genes:
-38987
-discovar - P.rubi - SCRP324
+38,987
+P.rubi - SCRP324
 The following number of sequences were predicted as secreted:
-89423
+89,423
 This represented the following number of unique genes:
-42890
-discovar - P.rubi - SCRP333
+42,890
+P.rubi - SCRP333
 The following number of sequences were predicted as secreted:
-81434
+81,434
 This represented the following number of unique genes:
-39145
-spades - P.rubi - SCRP249
+39,145
+
+SPAdes:
+P.rubi - SCRP249
 The following number of sequences were predicted as secreted:
-74633
+74,620
 This represented the following number of unique genes:
-35754
-spades - P.rubi - SCRP324
+35,747
+P.rubi - SCRP324
 The following number of sequences were predicted as secreted:
-83177
+75,263
 This represented the following number of unique genes:
-39827
-spades - P.rubi - SCRP333
+36,104
+P.rubi - SCRP333
 The following number of sequences were predicted as secreted:
-74477
+74,464
 This represented the following number of unique genes:
-35686
+35,679
 ```
 
 E.3) Prediction of RxLRs
