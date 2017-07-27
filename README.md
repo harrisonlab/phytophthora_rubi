@@ -1615,7 +1615,7 @@ E5) From ORF gene models - Hmm evidence of WY domains
 Hmm models for the WY domain contained in many RxLRs were used to search ORFs predicted with atg.pl. These were run with the following commands:
 
 ```bash
-for Secretome in $(ls gene_pred/combined_sigP_ORF/*/*/*_all_secreted.fa)
+for Secretome in $(ls gene_pred/combined_sigP_ORF/P.rubi/*/*_all_secreted.fa)
 do
     ProgDir=/home/adamst/git_repos/scripts/phytophthora/pathogen/hmmer
     HmmModel=/home/adamst/git_repos/scripts/phytophthora/pathogen/hmmer/WY_motif.hmm
