@@ -1835,7 +1835,7 @@ Intersection between the coodinates of putative RxLRs from gene models and ORFs 
 The RxLR effectors from both Gene models and ORF finding approaches were combined into a single file.
 
 ```bash
-for MergeDir in $(ls -d analysis/RxLR_effectors/combined_evidence/*/*)
+for MergeDir in $(ls -d analysis/RxLR_effectors/combined_evidence/P.rubi/*)
 do
     Strain=$(echo "$MergeDir" | rev | cut -f1 -d '/' | rev)
     Species=$(echo "$MergeDir" | rev | cut -f2 -d '/' | rev)
