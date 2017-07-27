@@ -2103,7 +2103,7 @@ Number of CRN ORFs after merging:
 Extract crinklers from published gene models
 
 ```bash
-for MergeDir in $(ls -d analysis/CRN_effectors/hmmer_CRN/*/*)
+for MergeDir in $(ls -d analysis/CRN_effectors/hmmer_CRN/P.rubi/*)
 do
     Strain=$(echo "$MergeDir" | rev | cut -f1 -d '/' | rev)
     Species=$(echo "$MergeDir" | rev | cut -f2 -d '/' | rev)
