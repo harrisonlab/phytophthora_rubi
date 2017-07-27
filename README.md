@@ -2100,7 +2100,7 @@ Number of CRN ORFs after merging:
 129
 ```
 
-Extract crinklers from published gene models
+Merge CRNs from ORF fragments and Augustus gene models
 
 ```bash
 for MergeDir in $(ls -d analysis/CRN_effectors/hmmer_CRN/P.rubi/*)
@@ -2150,7 +2150,8 @@ echo "$Organism done"
 ```
 
 ```
-discovar - P.rubi - SCRP249
+Discovar:
+P.rubi - SCRP249
 The number of ORF CRNs overlapping Augustus CRNs:
 132
 The number of Augustus CRNs overlapping ORF CRNs:
@@ -2161,7 +2162,7 @@ The number of CRNs unique to Augustus models:
 3
 The number of sequences extracted is
 132
-discovar - P.rubi - SCRP324
+P.rubi - SCRP324
 The number of ORF CRNs overlapping Augustus CRNs:
 132
 The number of Augustus CRNs overlapping ORF CRNs:
@@ -2172,7 +2173,7 @@ The number of CRNs unique to Augustus models:
 3
 The number of sequences extracted is
 133
-discovar - P.rubi - SCRP333
+P.rubi - SCRP333
 The number of ORF CRNs overlapping Augustus CRNs:
 121
 The number of Augustus CRNs overlapping ORF CRNs:
@@ -2183,39 +2184,41 @@ The number of CRNs unique to Augustus models:
 2
 The number of sequences extracted is
 129
-spades - P.rubi - SCRP249
+
+SPAdes:
+P.rubi - SCRP249
 The number of ORF CRNs overlapping Augustus CRNs:
-123
+122
 The number of Augustus CRNs overlapping ORF CRNs:
-123
-The number of CRNs unique to ORF models:
-8
-The number of CRNs unique to Augustus models:
-3
-The number of sequences extracted is
-126
-spades - P.rubi - SCRP324
-The number of ORF CRNs overlapping Augustus CRNs:
-120
-The number of Augustus CRNs overlapping ORF CRNs:
-120
-The number of CRNs unique to ORF models:
-6
-The number of CRNs unique to Augustus models:
-4
-The number of sequences extracted is
-117
-spades - P.rubi - SCRP333
-The number of ORF CRNs overlapping Augustus CRNs:
-120
-The number of Augustus CRNs overlapping ORF CRNs:
-120
+125
 The number of CRNs unique to ORF models:
 9
 The number of CRNs unique to Augustus models:
-1
+6
 The number of sequences extracted is
+140
+P.rubi - SCRP324
+The number of ORF CRNs overlapping Augustus CRNs:
 119
+The number of Augustus CRNs overlapping ORF CRNs:
+120
+The number of CRNs unique to ORF models:
+7
+The number of CRNs unique to Augustus models:
+7
+The number of sequences extracted is
+134
+P.rubi - SCRP333
+The number of ORF CRNs overlapping Augustus CRNs:
+117
+The number of Augustus CRNs overlapping ORF CRNs:
+119
+The number of CRNs unique to ORF models:
+12
+The number of CRNs unique to Augustus models:
+8
+The number of sequences extracted is
+139
 ```
 
 #Functional annotation
