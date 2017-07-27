@@ -1331,7 +1331,7 @@ done
 The batch files of predicted secreted proteins needed to be combined into a single file for each strain. This was done with the following commands:
 
 ```bash
-for SplitDir in $(ls -d gene_pred/ORF_split/*/*)
+for SplitDir in $(ls -d gene_pred/ORF_split/*/P.rubi)
 do
     Strain=$(echo $SplitDir | cut -d '/' -f4)
     Organism=$(echo $SplitDir | cut -d '/' -f3)
