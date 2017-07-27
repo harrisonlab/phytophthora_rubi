@@ -1975,7 +1975,7 @@ H) From ORF gene models - Hmm evidence of CRN effectors
 A hmm model relating to crinkler domains was used to identify putative crinklers in ORF gene models. This was done with the following commands:
 
 ```bash
-for Proteome in $(ls gene_pred/ORF_finder/*/*/*.aa_cat.fa)
+for Proteome in $(ls gene_pred/ORF_finder/P.rubi/*/*.aa_cat.fa)
 do
     # Setting variables
     Strain=$(echo $Proteome | rev | cut -f2 -d '/' | rev)
