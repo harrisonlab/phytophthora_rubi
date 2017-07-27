@@ -2035,61 +2035,64 @@ echo "$Organism done"
 ```
 
 ```
+Discovar:
 Searching for LFLAK domains in: P.rubi SCRP249
-Initial search space (Z):             716788  [actual number of targets]
+Initial search space (Z):            716,788  [actual number of targets]
 Domain search space  (domZ):             311  [number of targets reported over threshold]
 Searching for DWL domains in: P.rubi SCRP249
-Initial search space (Z):             716788  [actual number of targets]
+Initial search space (Z):            716,788  [actual number of targets]
 Domain search space  (domZ):             512  [number of targets reported over threshold]
 The number of CRNs common to both models are:
 233
 Number of CRN ORFs after merging:
 141
 Searching for LFLAK domains in: P.rubi SCRP324
-Initial search space (Z):             795934  [actual number of targets]
+Initial search space (Z):            795,934  [actual number of targets]
 Domain search space  (domZ):             316  [number of targets reported over threshold]
 Searching for DWL domains in: P.rubi SCRP324
-Initial search space (Z):             795934  [actual number of targets]
+Initial search space (Z):            795,934  [actual number of targets]
 Domain search space  (domZ):             517  [number of targets reported over threshold]
 The number of CRNs common to both models are:
 234
 Number of CRN ORFs after merging:
 140
 Searching for LFLAK domains in: P.rubi SCRP333
-Initial search space (Z):             720807  [actual number of targets]
+Initial search space (Z):            720,807  [actual number of targets]
 Domain search space  (domZ):             301  [number of targets reported over threshold]
 Searching for DWL domains in: P.rubi SCRP333
-Initial search space (Z):             720807  [actual number of targets]
+Initial search space (Z):            720,807  [actual number of targets]
 Domain search space  (domZ):             468  [number of targets reported over threshold]
 The number of CRNs common to both models are:
 222
 Number of CRN ORFs after merging:
 132
+
+SPAdes:
 Searching for LFLAK domains in: P.rubi SCRP249
-Initial search space (Z):             645937  [actual number of targets]
+Initial search space (Z):            645,852  [actual number of targets]
 Domain search space  (domZ):             301  [number of targets reported over threshold]
 Searching for DWL domains in: P.rubi SCRP249
-Initial search space (Z):             645937  [actual number of targets]
+Initial search space (Z):            645,852  [actual number of targets]
 Domain search space  (domZ):             452  [number of targets reported over threshold]
 The number of CRNs common to both models are:
 226
 Number of CRN ORFs after merging:
 131
 Searching for LFLAK domains in: P.rubi SCRP324
-Initial search space (Z):             725179  [actual number of targets]
+Initial search space (Z):            651,594  [actual number of targets]
 Domain search space  (domZ):             294  [number of targets reported over threshold]
 Searching for DWL domains in: P.rubi SCRP324
-Initial search space (Z):             725179  [actual number of targets]
+Initial search space (Z):            651,594  [actual number of targets]
 Domain search space  (domZ):             440  [number of targets reported over threshold]
 The number of CRNs common to both models are:
 217
 Number of CRN ORFs after merging:
 126
 Searching for LFLAK domains in: P.rubi SCRP333
-Initial search space (Z):             646243  [actual number of targets]
+Initial search space (Z):            646,159  [actual number of targets]
 Domain search space  (domZ):             293  [number of targets reported over threshold]
 Searching for DWL domains in: P.rubi SCRP333
-Initial search space (Z):             646243  [actual number of targets]
+Initial search space (Z):            646,159  [actual number of targets]
 Domain search space  (domZ):             438  [number of targets reported over threshold]
 The number of CRNs common to both models are:
 220
