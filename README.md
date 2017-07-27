@@ -1532,7 +1532,7 @@ The regular expression R.LR.{,40}[ED][ED][KR] has previously been used to identi
 The RxLR_EER_regex_finder.py script was used to search for this regular expression and annotate the EER domain where present.
 
 ```bash
-for Secretome in $(ls gene_pred/combined_sigP_ORF/*/*/*_all_secreted.fa)
+for Secretome in $(ls gene_pred/combined_sigP_ORF/P.rubi/*/*_all_secreted.fa)
 do
     ProgDir=/home/adamst/git_repos/tools/pathogen/RxLR_effectors
     Strain=$(echo $Secretome | rev | cut -d '/' -f2 | rev)
