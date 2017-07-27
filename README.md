@@ -2227,9 +2227,9 @@ The number of sequences extracted is
 for GeneGff in $(ls gene_pred/codingquarry/*/*/final/final_genes_appended.gff3)
 do
     Strain=$(echo $GeneGff | rev | cut -d '/' -f3 | rev)
-    GffOrfRxLR=$(ls analysis/RxLR_effectors/combined_evidence/P.rubi/$Strain/*_ORFsUniq_RxLR_EER_motif_hmm.gff)
-    GffOrfCRN=$(ls analysis/CRN_effectors/hmmer_CRN/P.rubi/$Strain/*_ORFsUniq_CRN_hmmer.bed)
-    Assembly=$(ls repeat_masked/P.rubi/$Strain/*/*_contigs_softmasked.fa)
+    GffOrfRxLR=$(ls analysis/RxLR_effectors/combined_evidence/P.rubi/$Strain/"$Strain"_ORFsUniq_RxLR_EER_motif_hmm.gff)
+    GffOrfCRN=$(ls analysis/CRN_effectors/hmmer_CRN/P.rubi/$Strain/"$Strain"_ORFsUniq_CRN_hmmer.bed)
+    Assembly=$(ls repeat_masked/P.rubi/$Strain/deconseq_Paen_repmask/"$Strain"_contigs_softmasked.fa)
     OutDir=gene_pred/annotation/P.fragariae/$Strain
     mkdir -p $OutDir
     ProgDir=/home/adamst/git_repos/tools/gene_prediction/augustus
