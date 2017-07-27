@@ -1495,7 +1495,7 @@ Due to the nature of predicting ORFs, some features overlapped with one another.
 ```bash
 for Strain in SCRP249 SCRP324 SCRP333
 do
-    for ORF_Gff in $(ls gene_pred/ORF_finder/*/$Strain/"$Strain"_ORF.gff3)
+    for ORF_Gff in $(ls gene_pred/ORF_finder/P.rubi/$Strain/"$Strain"_ORF.gff3)
     do
         Organism=$(echo $ORF_Gff | rev |  cut -d '/' -f3 | rev)
         OutDir=$(ls -d gene_pred/combined_sigP_ORF/$Organism/$Strain)
