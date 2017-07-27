@@ -2224,7 +2224,7 @@ The number of sequences extracted is
 #Making a combined file of Braker and CodingQuary genes with additional ORF effector candidates
 
 ```bash
-for GeneGff in $(ls gene_pred/codingquarry/*/*/final/final_genes_appended.gff3)
+for GeneGff in $(ls gene_pred/codingquarry/P.rubi/*/final/final_genes_appended.gff3)
 do
     Strain=$(echo $GeneGff | rev | cut -d '/' -f3 | rev)
     GffOrfRxLR=$(ls analysis/RxLR_effectors/combined_evidence/P.rubi/$Strain/"$Strain"_ORFsUniq_RxLR_EER_motif_hmm.gff)
