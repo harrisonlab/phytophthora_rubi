@@ -1467,7 +1467,7 @@ E.3) Prediction of RxLRs
 Names of ORFs containing signal peptides were extracted from fasta files. This included information on the position and hmm score of RxLRs.
 
 ```bash
-for FastaFile in $(ls gene_pred/combined_sigP_ORF/*/*/*_all_secreted.fa)
+for FastaFile in $(ls gene_pred/combined_sigP_ORF/P.rubi/*/*_all_secreted.fa)
 do
     Strain=$(echo $FastaFile | rev | cut -f2 -d '/' | rev)
     Organism=$(echo $FastaFile | rev | cut -f3 -d '/' | rev)
