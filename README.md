@@ -1571,38 +1571,40 @@ echo "$Organism done"
 ```
 
 ```
-assembler: discovar     strain: SCRP249 species: P.rubi
+Discovar:
+strain: SCRP249 species: P.rubi
 the number of SigP genes is:    81145
 the number of SigP-RxLR genes are:      2481
 the number of SigP-RxLR-EER genes are:  311
 Merged RxLR-EER regex proteins: 74
 
-assembler: discovar     strain: SCRP324 species: P.rubi
+strain: SCRP324 species: P.rubi
 the number of SigP genes is:    89423
 the number of SigP-RxLR genes are:      2583
 the number of SigP-RxLR-EER genes are:  304
 Merged RxLR-EER regex proteins: 276
 
-assembler: discovar     strain: SCRP333 species: P.rubi
+strain: SCRP333 species: P.rubi
 the number of SigP genes is:    81434
 the number of SigP-RxLR genes are:      2471
 the number of SigP-RxLR-EER genes are:  298
 Merged RxLR-EER regex proteins: 270
 
-assembler: spades       strain: SCRP249 species: P.rubi
-the number of SigP genes is:    74633
-the number of SigP-RxLR genes are:      2303
+SPAdes:
+strain: SCRP249 species: P.rubi
+the number of SigP genes is:    74,620
+the number of SigP-RxLR genes are:      2,303
 the number of SigP-RxLR-EER genes are:  300
 Merged RxLR-EER regex proteins: 270
 
-assembler: spades       strain: SCRP324 species: P.rubi
-the number of SigP genes is:    83177
-the number of SigP-RxLR genes are:      2402
+strain: SCRP324 species: P.rubi
+the number of SigP genes is:    75,263
+the number of SigP-RxLR genes are:      2,313
 the number of SigP-RxLR-EER genes are:  294
 Merged RxLR-EER regex proteins: 266
 
-assembler: spades       strain: SCRP333 species: P.rubi
-the number of SigP genes is:    74477
+strain: SCRP333 species: P.rubi
+the number of SigP genes is:    74,464
 the number of SigP-RxLR genes are:      2279
 the number of SigP-RxLR-EER genes are:  290
 Merged RxLR-EER regex proteins: 264
