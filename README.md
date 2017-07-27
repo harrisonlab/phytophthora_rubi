@@ -1765,7 +1765,8 @@ done
 ```
 
 ```
-discovar - P.rubi - SCRP249
+Discovar:
+P.rubi - SCRP249
 Number of RxLRs identified by Regex:
 74
 Number of RxLRs identified by Hmm:
@@ -1775,7 +1776,7 @@ Number of RxLRs in combined dataset:
 Number of genes in the extracted gff file:
 84
 
-discovar - P.rubi - SCRP324
+P.rubi - SCRP324
 Number of RxLRs identified by Regex:
 276
 Number of RxLRs identified by Hmm:
@@ -1785,7 +1786,7 @@ Number of RxLRs in combined dataset:
 Number of genes in the extracted gff file:
 309
 
-discovar - P.rubi - SCRP333
+P.rubi - SCRP333
 Number of RxLRs identified by Regex:
 270
 Number of RxLRs identified by Hmm:
@@ -1795,7 +1796,8 @@ Number of RxLRs in combined dataset:
 Number of genes in the extracted gff file:
 298
 
-spades - P.rubi - SCRP249
+SPAdes:
+P.rubi - SCRP249
 Number of RxLRs identified by Regex:
 270
 Number of RxLRs identified by Hmm:
@@ -1805,7 +1807,7 @@ Number of RxLRs in combined dataset:
 Number of genes in the extracted gff file:
 300
 
-spades - P.rubi - SCRP324
+P.rubi - SCRP324
 Number of RxLRs identified by Regex:
 266
 Number of RxLRs identified by Hmm:
@@ -1815,7 +1817,7 @@ Number of RxLRs in combined dataset:
 Number of genes in the extracted gff file:
 299
 
-spades - P.rubi - SCRP333
+P.rubi - SCRP333
 Number of RxLRs identified by Regex:
 264
 Number of RxLRs identified by Hmm:
