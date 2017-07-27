@@ -1738,7 +1738,7 @@ E7) Combining RxLRs from Regex and hmm searches
 The total RxLRs are
 
 ```bash
-for RegexRxLR in $(ls analysis/RxLR_effectors/RxLR_EER_regex_finder/*/*/*_ORF_RxLR_EER_regex_merged.txt)
+for RegexRxLR in $(ls analysis/RxLR_effectors/RxLR_EER_regex_finder/P.rubi/*/*_ORF_RxLR_EER_regex_merged.txt)
 do
     Organism=$(echo $RegexRxLR | rev |  cut -d '/' -f3 | rev)
     Strain=$(echo $RegexRxLR | rev | cut -d '/' -f2 | rev)
