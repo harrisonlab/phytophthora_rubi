@@ -2318,8 +2318,8 @@ Following this, split files were combined as follows:
 ProgDir=/home/adamst/git_repos/tools/seq_tools/feature_annotation/interproscan
 for Proteome in $(ls gene_pred/annotation/P.rubi/*/*_genes_incl_ORFeffectors.pep.fasta)
 do
-    Strain=$(echo $Proteome | rev | cut -d '/' -f3 | rev)
-    Organism=$(echo $Proteome | rev | cut -d '/' -f4 | rev)
+    Strain=$(echo $Proteome | rev | cut -d '/' -f2 | rev)
+    Organism=$(echo $Proteome | rev | cut -d '/' -f3 | rev)
     echo "$Organism - $Strain"
     echo $Strain
     InterProRaw=gene_pred/interproscan/$Organism/$Strain/raw
