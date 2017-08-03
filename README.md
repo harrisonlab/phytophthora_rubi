@@ -2330,10 +2330,10 @@ done
 ##B)Swissprot
 
 ```bash
-for Proteome in $(ls gene_pred/codingquarry/P.rubi/*/final/final_genes_combined.pep.fasta)
+for Proteome in $(ls gene_pred/annotation/P.rubi/*/*_genes_incl_ORFeffectors.pep.fasta)
 do
-    Strain=$(echo $Proteome | rev | cut -f3 -d '/' | rev)
-    Organism=$(echo $Proteome | rev | cut -f4 -d '/' | rev)
+    Strain=$(echo $Proteome | rev | cut -f2 -d '/' | rev)
+    Organism=$(echo $Proteome | rev | cut -f3 -d '/' | rev)
     OutDir=gene_pred/swissprot/$Organism/$Strain
     SwissDbDir=../../uniprot/swissprot
     SwissDbName=uniprot_sprot
