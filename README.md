@@ -2431,10 +2431,10 @@ Proteins were identified by submitting the combined protein file to webserver at
 Output directory made
 
 ```bash
-for Proteome in $(ls gene_pred/codingquarry/P.rubi/*/final/final_genes_combined.gene.fasta)
+for Proteome in $(ls gene_pred/annotation/P.rubi/*/*_genes_incl_ORFeffectors.pep.fasta)
 do
-    Strain=$(echo $Proteome | rev | cut -f3 -d '/' | rev)
-    Organism=$(echo $Proteome | rev | cut -f4 -d '/' | rev)
+    Strain=$(echo $Proteome | rev | cut -f2 -d '/' | rev)
+    Organism=$(echo $Proteome | rev | cut -f3 -d '/' | rev)
     echo "$Organism - $Strain"
     OutDir=gene_pred/trans_mem/$Organism/$Strain/GPIsom
     mkdir -p $OutDir
