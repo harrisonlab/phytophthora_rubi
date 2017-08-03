@@ -2316,7 +2316,7 @@ Following this, split files were combined as follows:
 
 ```bash
 ProgDir=/home/adamst/git_repos/tools/seq_tools/feature_annotation/interproscan
-for Proteome in $(ls gene_pred/codingquarry/P.rubi/*/final/final_genes_combined.pep.fasta)
+for Proteome in $(ls gene_pred/annotation/P.rubi/*/*_genes_incl_ORFeffectors.pep.fasta)
 do
     Strain=$(echo $Proteome | rev | cut -d '/' -f3 | rev)
     Organism=$(echo $Proteome | rev | cut -d '/' -f4 | rev)
