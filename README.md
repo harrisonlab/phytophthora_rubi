@@ -2221,6 +2221,16 @@ The number of sequences extracted is
 139
 ```
 
+Due to an unknown error, the softmasked files for SCRP249 and SCRP324 do not read into the hash table in the add_ORF_features.pl script. Wrapping the unmasked file every 60 characters provides an assembly file that does work.
+
+```bash
+for Strain in SCRP249 SCRP324
+do
+    Assembly=repeat_masked/P.rubi/$Strain/deconseq_Paen_repmask/"$Strain"_contigs_unmasked.fa
+    fold -w 60 $Assembly > "$Strain"_contigs_unmasked_wrapped.fa
+done
+```
+
 #Making a combined file of Braker and CodingQuary genes with additional ORF effector candidates
 
 ```bash
