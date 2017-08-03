@@ -2227,7 +2227,7 @@ Due to an unknown error, the softmasked files for SCRP249 and SCRP324 do not rea
 for Strain in SCRP249 SCRP324
 do
     Assembly=repeat_masked/P.rubi/$Strain/deconseq_Paen_repmask/"$Strain"_contigs_unmasked.fa
-    fold -w 60 $Assembly > "$Strain"_contigs_unmasked_wrapped.fa
+    fold -w 60 $Assembly > repeat_masked/P.rubi/$Strain/deconseq_Paen_repmask/"$Strain"_contigs_unmasked_wrapped.fa
 done
 ```
 
