@@ -2369,49 +2369,7 @@ done
 ```
 
 ```
-A4
-The number of proteins scoring positive for a transmembrane helix is:
-4,260
 
-Bc16
-The number of proteins scoring positive for a transmembrane helix is:
-4,268
-
-Bc1
-The number of proteins scoring positive for a transmembrane helix is:
-4,252
-
-Bc23
-The number of proteins scoring positive for a transmembrane helix is:
-4,261
-
-Nov27
-The number of proteins scoring positive for a transmembrane helix is:
-4,270
-
-Nov5
-The number of proteins scoring positive for a transmembrane helix is:
-4,313
-
-Nov71
-The number of proteins scoring positive for a transmembrane helix is:
-4,272
-
-Nov77
-The number of proteins scoring positive for a transmembrane helix is:
-4,266
-
-Nov9
-The number of proteins scoring positive for a transmembrane helix is:
-4,250
-
-ONT3
-The number of proteins scoring positive for a transmembrane helix is:
-6,035
-
-SCRP245_v2
-The number of proteins scoring positive for a transmembrane helix is:
-5,248
 ```
 
 Create a headers file
@@ -2473,47 +2431,5 @@ done
 ```
 
 ```
-A4
-The number of proteins scoring positive for being GPI anchored is:
-574
 
-Bc16
-The number of proteins scoring positive for being GPI anchored is:
-598
-
-Bc1
-The number of proteins scoring positive for being GPI anchored is:
-554
-
-Bc23
-The number of proteins scoring positive for being GPI anchored is:
-575
-
-Nov27
-The number of proteins scoring positive for being GPI anchored is:
-569
-
-Nov5
-The number of proteins scoring positive for being GPI anchored is:
-561
-
-Nov71
-The number of proteins scoring positive for being GPI anchored is:
-583
-
-Nov77
-The number of proteins scoring positive for being GPI anchored is:
-563
-
-Nov9
-The number of proteins scoring positive for being GPI anchored is:
-590
-
-ONT3
-The number of proteins scoring positive for being GPI anchored is:
-687
-
-SCRP245_v2
-The number of proteins scoring positive for being GPI anchored is:
-614
 ```
