@@ -2268,7 +2268,7 @@ done
 Using wrapped unmasked assemblies to work around the error
 
 ```bash
-for GeneGff in $(ls gene_pred/codingquarry/P.rubi/*/final/final_genes_appended.gff3)
+for GeneGff in $(ls gene_pred/codingquarry/P.rubi/*/final/final_genes_appended.gff3 | grep -v "SCRP333")
 do
     Strain=$(echo $GeneGff | rev | cut -d '/' -f3 | rev)
     GffOrfRxLR=$(ls analysis/RxLR_effectors/combined_evidence/P.rubi/$Strain/"$Strain"_ORFsUniq_RxLR_EER_motif_hmm.gff)
