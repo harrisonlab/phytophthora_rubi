@@ -428,13 +428,13 @@ The total number of masked bases are:	33,426,973
 
 SPAdes:
 P.rubi	SCRP249
-The number of bases masked by RepeatMasker:	23,155,822
+The number of bases masked by RepeatMasker:	23,906,929
 The number of bases masked by TransposonPSI:	5,953,026
-The total number of masked bases are:	24,989,572
+The total number of masked bases are:	25,659,011
 P.rubi	SCRP324
-The number of bases masked by RepeatMasker:	23,674,487
+The number of bases masked by RepeatMasker:	23,752,742
 The number of bases masked by TransposonPSI:	5,940,402
-The total number of masked bases are:	25,336,244
+The total number of masked bases are:	25,433,846
 P.rubi	SCRP333
 The number of bases masked by RepeatMasker:	23,126,516
 The number of bases masked by TransposonPSI:	5,961,557
