@@ -1121,6 +1121,7 @@ echo "$Organism complete"
 ```
 
 ```
+With EER:
 discovar:
 
 P.rubi - SCRP249
@@ -1184,6 +1185,55 @@ Number of RxLRs in combined dataset:
 241
 Number of genes in the extracted gff file:
 241
+
+Without EER:
+Last login: Fri Aug  4 13:35:29 on ttys000
+toms-macbook-3:~ adamst$ ssh cluster
+adamst@149.155.34.72's password:
+Warning: untrusted X11 forwarding setup failed: xauth key data not generated
+Linux bio72 3.2.0-4-amd64 #1 SMP Debian 3.2.84-1 x86_64
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+Last login: Fri Aug  4 13:35:57 2017 from toms-macbook-3.emr.ac.uk
+adamst@bio72:~$ cd /home/groups/harrisonlab/project_files/phytophthora_rubi/
+adamst@bio72:/home/groups/harrisonlab/project_files/phytophthora_rubi$ screen -a
+[screen is terminating]
+adamst@bio72:/home/groups/harrisonlab/project_files/phytophthora_rubi$ less report.txt
+
+
+
+
+
+
+
+199
+Number of RxLRs in combined dataset:
+401
+Number of genes in the extracted gff file:
+401
+P.rubi - SCRP324
+Number of RxLRs identified by Regex:
+365
+Number of RxLRs identified by Hmm:
+204
+Number of RxLRs in combined dataset:
+409
+Number of genes in the extracted gff file:
+409
+P.rubi - SCRP333
+Number of RxLRs identified by Regex:
+355
+Number of RxLRs identified by Hmm:
+205
+Number of RxLRs in combined dataset:
+402
+Number of genes in the extracted gff file:
+402
 ```
 
 ####D) From Augustus gene models - Hmm evidence of CRN effectors
