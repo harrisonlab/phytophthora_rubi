@@ -1975,6 +1975,7 @@ echo "$Organism done"
 ```
 
 ```
+With EER:
 Discovar:
 P.rubi - SCRP249
 The number of ORF RxLRs overlapping Augustus RxLRs:
@@ -2056,6 +2057,47 @@ The total number of putative RxLRs are:
 326
 The number of sequences extracted is
 326
+
+Without EER:
+P.rubi - SCRP249
+The number of ORF RxLRs overlapping Augustus RxLRs:
+320
+The number of Augustus RxLRs overlapping ORF RxLRs:
+315
+The number of RxLRs unique to ORF models:
+1615
+The number of RxLRs unique to Augustus models:
+88
+The total number of putative RxLRs are:
+2019
+The number of sequences extracted is
+2019
+P.rubi - SCRP324
+The number of ORF RxLRs overlapping Augustus RxLRs:
+333
+The number of Augustus RxLRs overlapping ORF RxLRs:
+328
+The number of RxLRs unique to ORF models:
+1613
+The number of RxLRs unique to Augustus models:
+83
+The total number of putative RxLRs are:
+2024
+The number of sequences extracted is
+2024
+P.rubi - SCRP333
+The number of ORF RxLRs overlapping Augustus RxLRs:
+319
+The number of Augustus RxLRs overlapping ORF RxLRs:
+311
+The number of RxLRs unique to ORF models:
+1598
+The number of RxLRs unique to Augustus models:
+94
+The total number of putative RxLRs are:
+2003
+The number of sequences extracted is
+2003
 ```
 
 H) From ORF gene models - Hmm evidence of CRN effectors
