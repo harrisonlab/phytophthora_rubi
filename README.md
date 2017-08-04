@@ -1625,6 +1625,7 @@ echo "$Organism done"
 ```
 
 ```
+With EER:
 Discovar:
 strain: SCRP249 species: P.rubi
 the number of SigP genes is:    81145
@@ -1662,6 +1663,27 @@ the number of SigP genes is:    74,464
 the number of SigP-RxLR genes are:      2279
 the number of SigP-RxLR-EER genes are:  290
 Merged RxLR-EER regex proteins: 264
+
+Without EER:
+strain: SCRP249 species: P.rubi
+the number of SigP gene is:     74620
+the number of SigP-RxLR genes are:      2303
+the number of SigP-RxLR-EER genes are:  300
+Merged RxLR-EER regex proteins: 1920
+
+
+strain: SCRP324 species: P.rubi
+the number of SigP gene is:     75263
+the number of SigP-RxLR genes are:      2313
+the number of SigP-RxLR-EER genes are:  294
+Merged RxLR-EER regex proteins: 1930
+
+
+strain: SCRP333 species: P.rubi
+the number of SigP gene is:     74464
+the number of SigP-RxLR genes are:      2279
+the number of SigP-RxLR-EER genes are:  290
+Merged RxLR-EER regex proteins: 1904
 ```
 
 E5) From ORF gene models - Hmm evidence of WY domains
