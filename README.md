@@ -1091,6 +1091,7 @@ Domain search space  (domZ):             205  [number of targets reported over t
 ####A.5) Combining RxLRs from Regex and hmm searches
 
 ```bash
+echo "Without EER" >> report.txt
 for RegexRxLR in $(ls analysis/RxLR_effectors/RxLR_EER_regex_finder/*/*/*_RxLR_regex.txt)
 do
     Organism=$(echo $RegexRxLR | rev |  cut -d '/' -f3 | rev)
@@ -1116,9 +1117,37 @@ do
     cat $Gff | grep -w -f $OutDir/"$Strain"_total_RxLR_headers.txt > $OutDir/"$Strain"_total_RxLR.gff
     echo "Number of genes in the extracted gff file:" >> report.txt
     cat $OutDir/"$Strain"_total_RxLR.gff | grep -w 'gene' | wc -l >> report.txt
-    echo "$Strain complete"
+    echo "$Strain complete without EER"
 done
-echo "$Organism complete"
+
+echo "With EER" >> report.txt
+for RegexRxLR in $(ls analysis/RxLR_effectors/RxLR_EER_regex_finder/*/*/*_RxLR_EER_regex.txt)
+do
+    Organism=$(echo $RegexRxLR | rev |  cut -d '/' -f3 | rev)
+    Strain=$(echo $RegexRxLR | rev | cut -d '/' -f2 | rev)
+    Gff=$(ls gene_pred/codingquarry/$Organism/$Strain/final/final_genes_appended.gff3)
+    Proteome=$(ls gene_pred/codingquarry/$Organism/$Strain/final/final_genes_combined.pep.fasta)
+    HmmRxLR=analysis/RxLR_effectors/hmmer_RxLR/$Organism/$Strain/*_RxLR_EER_hmmer_headers.txt
+    echo "$Organism - $Strain" >> report.txt
+    echo "Number of RxLRs identified by Regex:" >> report.txt
+    cat $RegexRxLR | sort | uniq | wc -l >> report.txt
+    echo "Number of RxLRs identified by Hmm:" >> report.txt
+    cat $HmmRxLR | sort | uniq | wc -l >> report.txt
+    echo "Number of RxLRs in combined dataset:" >> report.txt
+    cat $RegexRxLR $HmmRxLR | sort | uniq | wc -l >> report.txt
+    # echo "Number of RxLRs in both datasets:"
+    # cat $RegexRxLR $HmmRxLR | sort | uniq -d | wc -l
+    echo ""
+    # echo "Extracting RxLRs from datasets"
+    OutDir=analysis/RxLR_effectors/combined_evidence/$Organism/$Strain
+    mkdir -p $OutDir
+    cat $RegexRxLR $HmmRxLR | sort | uniq > $OutDir/"$Strain"_total_RxLR_EER_headers.txt
+    Gff=$(ls gene_pred/codingquarry/$Organism/$Strain/final/final_genes_appended.gff3)
+    cat $Gff | grep -w -f $OutDir/"$Strain"_total_RxLR_EER_headers.txt > $OutDir/"$Strain"_total_RxLR_EER.gff
+    echo "Number of genes in the extracted gff file:" >> report.txt
+    cat $OutDir/"$Strain"_total_RxLR_EER.gff | grep -w 'gene' | wc -l >> report.txt
+    echo "$Strain complete with EER"
+done
 ```
 
 ```
