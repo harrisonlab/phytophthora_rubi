@@ -2481,13 +2481,15 @@ done
 #Making a combined file of Braker and CodingQuary genes with additional ORF effector candidates
 
 ```bash
-for GeneGff in $(ls gene_pred/codingquarry/P.rubi/*/final/final_genes_appended.gff3)
+#Without EER discrimination
+for GeneGff in $(ls gene_pred/codingquarry/*/*/final/final_genes_appended.gff3)
 do
     Strain=$(echo $GeneGff | rev | cut -d '/' -f3 | rev)
-    GffOrfRxLR=$(ls analysis/RxLR_effectors/combined_evidence/P.rubi/$Strain/"$Strain"_ORFsUniq_RxLR_motif_hmm.gff)
-    GffOrfCRN=$(ls analysis/CRN_effectors/hmmer_CRN/P.rubi/$Strain/"$Strain"_ORFsUniq_CRN_hmmer.bed)
-    Assembly=$(ls repeat_masked/P.rubi/$Strain/deconseq_Paen_repmask/"$Strain"_contigs_softmasked.fa)
-    OutDir=gene_pred/annotation/P.rubi/$Strain
+    echo $Strain
+    GffOrfRxLR=$(ls analysis/RxLR_effectors/combined_evidence/P.fragariae/$Strain/"$Strain"_ORFsUniq_RxLR_motif_hmm.gff)
+    GffOrfCRN=$(ls analysis/CRN_effectors/hmmer_CRN/P.fragariae/$Strain/"$Strain"_ORFsUniq_CRN_hmmer.bed)
+    Assembly=$(ls repeat_masked/*/$Strain/*/*_contigs_softmasked.fa)
+    OutDir=gene_pred/annotation/P.fragariae/$Strain
     mkdir -p $OutDir
     ProgDir=/home/adamst/git_repos/tools/gene_prediction/augustus
     $ProgDir/aug_gff_add_exon.py --inp_gff $GeneGff  \
@@ -2510,18 +2512,16 @@ do
     $ProgDir/gff2fasta.pl $Assembly $OutDir/"$Strain"_genes_incl_ORFeffectors.gff3 $OutDir/"$Strain"_genes_incl_ORFeffectors
     # Note - these fasta files have not been validated - do not use
 done
-```
 
-Using wrapped unmasked assemblies to work around the error
-
-```bash
-for GeneGff in $(ls gene_pred/codingquarry/P.rubi/*/final/final_genes_appended.gff3 | grep -v "SCRP333")
+#With EER discrimination
+for GeneGff in $(ls gene_pred/codingquarry/*/*/final/final_genes_appended.gff3)
 do
     Strain=$(echo $GeneGff | rev | cut -d '/' -f3 | rev)
-    GffOrfRxLR=$(ls analysis/RxLR_effectors/combined_evidence/P.rubi/$Strain/"$Strain"_ORFsUniq_RxLR_EER_motif_hmm.gff)
-    GffOrfCRN=$(ls analysis/CRN_effectors/hmmer_CRN/P.rubi/$Strain/"$Strain"_ORFsUniq_CRN_hmmer.bed)
-    Assembly=$(ls repeat_masked/P.rubi/$Strain/deconseq_Paen_repmask/"$Strain"_contigs_unmasked_wrapped.fa)
-    OutDir=gene_pred/annotation/P.rubi/$Strain
+    echo $Strain
+    GffOrfRxLR=$(ls analysis/RxLR_effectors/combined_evidence/P.fragariae/$Strain/"$Strain"_ORFsUniq_RxLR_EER_motif_hmm.gff)
+    GffOrfCRN=$(ls analysis/CRN_effectors/hmmer_CRN/P.fragariae/$Strain/"$Strain"_ORFsUniq_CRN_hmmer.bed)
+    Assembly=$(ls repeat_masked/*/$Strain/*/*_contigs_softmasked.fa)
+    OutDir=gene_pred/annotation/P.fragariae/$Strain
     mkdir -p $OutDir
     ProgDir=/home/adamst/git_repos/tools/gene_prediction/augustus
     $ProgDir/aug_gff_add_exon.py --inp_gff $GeneGff  \
@@ -2530,18 +2530,18 @@ do
     	| sed 's/transcript_id "/ID=/g' | sed 's/";/;/g' | sed 's/ gene_id "/Parent=/g' \
     	| sed -r "s/\tg/\tID=g/g" | sed 's/ID=gene/gene/g' | sed -r "s/;$//g" \
     	| sed "s/\ttranscript\t.*ID=\(.*\).t.*$/\0;Parent=\1/" \
-    	> $OutDir/"$Strain"_genes_incl_ORFeffectors.gff3
+    	> $OutDir/"$Strain"_genes_incl_ORFeffectors_conservative.gff3
     # cat $GeneGff > $OutDir/10300_genes_incl_ORFeffectors.gff3
     ProgDir=/home/adamst/git_repos/scripts/phytophthora/10300_analysis
-    $ProgDir/gff_name2id.py --gff $GffOrfRxLR > $OutDir/ORF_RxLR_parsed.gff3
+    $ProgDir/gff_name2id.py --gff $GffOrfRxLR > $OutDir/ORF_RxLR_EER_parsed.gff3
     $ProgDir/gff_name2id.py --gff $GffOrfCRN > $OutDir/ORF_CRN_parsed.gff3
 
     ProgDir=/home/adamst/git_repos/tools/gene_prediction/ORF_finder
-    $ProgDir/add_ORF_features.pl $OutDir/ORF_RxLR_parsed.gff3 $Assembly >> $OutDir/"$Strain"_genes_incl_ORFeffectors.gff3
-    $ProgDir/add_ORF_features.pl $OutDir/ORF_CRN_parsed.gff3 $Assembly >> $OutDir/"$Strain"_genes_incl_ORFeffectors.gff3
+    $ProgDir/add_ORF_features.pl $OutDir/ORF_RxLR_EER_parsed.gff3 $Assembly >> $OutDir/"$Strain"_genes_incl_ORFeffectors_conservative.gff3
+    $ProgDir/add_ORF_features.pl $OutDir/ORF_CRN_parsed.gff3 $Assembly >> $OutDir/"$Strain"_genes_incl_ORFeffectors_conservative.gff3
     # Make gene models from gff files.
     ProgDir=/home/adamst/git_repos/tools/gene_prediction/codingquary
-    $ProgDir/gff2fasta.pl $Assembly $OutDir/"$Strain"_genes_incl_ORFeffectors.gff3 $OutDir/"$Strain"_genes_incl_ORFeffectors
+    $ProgDir/gff2fasta.pl $Assembly $OutDir/"$Strain"_genes_incl_ORFeffectors_conservative.gff3 $OutDir/"$Strain"_genes_incl_ORFeffectors_conservative
     # Note - these fasta files have not been validated - do not use
 done
 ```
