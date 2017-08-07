@@ -1014,22 +1014,22 @@ the number of SigP-RxLR-EER genes are:	179
 SPAdes:
 
 strain: SCRP249	species: P.rubi
-the total number of SigP gene is:	10,664
-the number of unique SigP gene is:	3,656
-the number of SigP-RxLR genes are:	361
-the number of SigP-RxLR-EER genes are:	189
-
-strain: SCRP324	species: P.rubi
-the total number of SigP gene is:	11,045
-the number of unique SigP gene is:	3,813
-the number of SigP-RxLR genes are:	366
+the total number of SigP gene is:	11,129
+the number of unique SigP gene is:	3,726
+the number of SigP-RxLR genes are:	367
 the number of SigP-RxLR-EER genes are:	190
 
+strain: SCRP324	species: P.rubi
+the total number of SigP gene is:	11,549
+the number of unique SigP gene is:	3,903
+the number of SigP-RxLR genes are:	372
+the number of SigP-RxLR-EER genes are:	191
+
 strain: SCRP333	species: P.rubi
-the total number of SigP gene is:	10,781
-the number of unique SigP gene is:	3,726
-the number of SigP-RxLR genes are:	357
-the number of SigP-RxLR-EER genes are:	189
+the total number of SigP gene is:	11,296
+the number of unique SigP gene is:	3,811
+the number of SigP-RxLR genes are:	363
+the number of SigP-RxLR-EER genes are:	190
 ```
 
 ####A.4) From Secreted gene models - HMM evidence of RxLR effectors
