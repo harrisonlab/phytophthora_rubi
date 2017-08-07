@@ -1279,7 +1279,6 @@ do
     cat $OutDir/"$Strain"_pub_CRN_LFLAK_DWL.txt | wc -l >> report.txt
     echo "$Strain done"
 done
-echo "$Organism done"
 ```
 
 ```
