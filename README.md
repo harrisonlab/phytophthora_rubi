@@ -1058,7 +1058,6 @@ do
     done
     echo "$Strain complete"
 done
-echo "$Organism complete"
 ```
 
 ```
