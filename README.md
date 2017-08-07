@@ -1582,7 +1582,6 @@ do
     done
     echo "$Strain complete"
 done
-echo "$Organism complete"
 ```
 
 The regular expression R.LR.{,40}[ED][ED][KR] has previously been used to identify RxLR effectors. The addition of an EER motif is significant as it has been shown as required for host uptake of the protein.
