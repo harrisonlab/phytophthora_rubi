@@ -1186,62 +1186,62 @@ SPAdes:
 
 P.rubi - SCRP249
 Number of RxLRs identified by Regex:
-189
+190
 Number of RxLRs identified by Hmm:
 199
 Number of RxLRs in combined dataset:
-237
+238
 Number of genes in the extracted gff file:
-237
+238
 
 P.rubi - SCRP324
 Number of RxLRs identified by Regex:
-190
+191
 Number of RxLRs identified by Hmm:
 204
 Number of RxLRs in combined dataset:
-242
+243
 Number of genes in the extracted gff file:
-242
+243
 
 P.rubi - SCRP333
 Number of RxLRs identified by Regex:
-189
+190
 Number of RxLRs identified by Hmm:
 205
 Number of RxLRs in combined dataset:
-241
+242
 Number of genes in the extracted gff file:
-241
+242
 
 Without EER:
 P.rubi - SCRP249
 Number of RxLRs identified by Regex:
-360
+366
 Number of RxLRs identified by Hmm:
 199
 Number of RxLRs in combined dataset:
-401
+407
 Number of genes in the extracted gff file:
-401
+407
 P.rubi - SCRP324
 Number of RxLRs identified by Regex:
-365
+371
 Number of RxLRs identified by Hmm:
 204
 Number of RxLRs in combined dataset:
-409
+415
 Number of genes in the extracted gff file:
-409
+415
 P.rubi - SCRP333
 Number of RxLRs identified by Regex:
-355
+361
 Number of RxLRs identified by Hmm:
 205
 Number of RxLRs in combined dataset:
-402
+408
 Number of genes in the extracted gff file:
-402
+408
 ```
 
 ####D) From Augustus gene models - Hmm evidence of CRN effectors
