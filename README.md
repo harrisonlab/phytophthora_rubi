@@ -988,7 +988,6 @@ do
     cat $Gff | grep -w -f $OutDir/"$Strain"_RxLR_EER_regex.txt > $OutDir/"$Strain"_RxLR_EER_regex.gff3
     echo "$Strain complete"
 done
-echo "$Organism complete"
 ```
 
 ```
