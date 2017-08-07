@@ -520,12 +520,12 @@ do
     echo "$Organism - $Strain"
     for FileF in $(ls qc_rna/qc_rna/raw_rna/consortium/P.rubi/F/*_trim.fq.gz)
     do
-        Jobs=$(qstat | grep 'sub_sta' | grep 'qw'| wc -l)
+        Jobs=$(qstat | grep 'sub_sta' | grep 'qw' | wc -l)
         while [ $Jobs -gt 1 ]
         do
             sleep 1m
             printf "."
-            Jobs=$(qstat | grep 'sub_sta' | grep 'qw'| wc -l)
+            Jobs=$(qstat | grep 'sub_sta' | grep 'qw' | wc -l)
         done
         printf "\n"
         FileR=$(echo $FileF | sed 's&/F/&/R/&g'| sed 's/_1/_2/g')
