@@ -1711,7 +1711,6 @@ do
     $ProgDir/gene_list_to_gff.pl $OutDir/$Headers $SigP_Merged_Gff $HmmModel Name Augustus > $OutDir/"$Strain"_ORF_WY_hmmer.gff
     echo "$Strain done"
 done
-echo "$Organism done"
 ```
 
 ```
