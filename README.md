@@ -2255,7 +2255,6 @@ do
     cat $CRN_Merged_Gff | grep 'gene' | wc -l >> report.txt
     echo "$Strain done"
 done
-echo "$Organism done"
 ```
 
 ```
