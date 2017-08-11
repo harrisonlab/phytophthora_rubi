@@ -1642,7 +1642,6 @@ done
 ```
 
 ```
-With EER:
 Discovar:
 strain: SCRP249 species: P.rubi
 the number of SigP genes is:    81145
@@ -1664,43 +1663,25 @@ Merged RxLR-EER regex proteins: 270
 
 SPAdes:
 strain: SCRP249 species: P.rubi
-the number of SigP genes is:    74,620
-the number of SigP-RxLR genes are:      2,303
-the number of SigP-RxLR-EER genes are:  300
-Merged RxLR-EER regex proteins: 270
+the number of SigP genes is:    82,268
+the number of SigP-RxLR genes are:      2,616
+the number of SigP-RxLR-EER genes are:  308
+Merged RxLR regex proteins: 2,158
+Merged RxLR-EER regex proteins: 277
 
 strain: SCRP324 species: P.rubi
-the number of SigP genes is:    75,263
-the number of SigP-RxLR genes are:      2,313
-the number of SigP-RxLR-EER genes are:  294
-Merged RxLR-EER regex proteins: 266
+the number of SigP genes is:    83,068
+the number of SigP-RxLR genes are:      2,628
+the number of SigP-RxLR-EER genes are:  302
+Merged RxLR regex proteins: 2,167
+Merged RxLR-EER regex proteins: 273
 
 strain: SCRP333 species: P.rubi
-the number of SigP genes is:    74,464
-the number of SigP-RxLR genes are:      2279
-the number of SigP-RxLR-EER genes are:  290
-Merged RxLR-EER regex proteins: 264
-
-Without EER:
-strain: SCRP249 species: P.rubi
-the number of SigP gene is:     74620
-the number of SigP-RxLR genes are:      2303
-the number of SigP-RxLR-EER genes are:  300
-Merged RxLR-EER regex proteins: 1920
-
-
-strain: SCRP324 species: P.rubi
-the number of SigP gene is:     75263
-the number of SigP-RxLR genes are:      2313
-the number of SigP-RxLR-EER genes are:  294
-Merged RxLR-EER regex proteins: 1930
-
-
-strain: SCRP333 species: P.rubi
-the number of SigP gene is:     74464
-the number of SigP-RxLR genes are:      2279
-the number of SigP-RxLR-EER genes are:  290
-Merged RxLR-EER regex proteins: 1904
+the number of SigP genes is:    82,140
+the number of SigP-RxLR genes are:      2,594
+the number of SigP-RxLR-EER genes are:  299
+Merged RxLR regex proteins: 2,141
+Merged RxLR-EER regex proteins: 272
 ```
 
 E5) From ORF gene models - Hmm evidence of WY domains
