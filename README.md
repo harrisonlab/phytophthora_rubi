@@ -1900,64 +1900,64 @@ Number of genes in the extracted gff file:
 SPAdes:
 P.rubi - SCRP249
 Number of RxLRs identified by Regex:
-270
+277
 Number of RxLRs identified by Hmm:
 211
 Number of RxLRs in combined dataset:
-300
+306
 Number of genes in the extracted gff file:
-300
+306
 
 P.rubi - SCRP324
 Number of RxLRs identified by Regex:
-266
+273
 Number of RxLRs identified by Hmm:
 212
 Number of RxLRs in combined dataset:
-299
+305
 Number of genes in the extracted gff file:
-299
+305
 
 P.rubi - SCRP333
 Number of RxLRs identified by Regex:
-264
+272
 Number of RxLRs identified by Hmm:
 206
 Number of RxLRs in combined dataset:
-292
+299
 Number of genes in the extracted gff file:
-292
+299
 
 Without EER:
 P.rubi - SCRP249
 Number of RxLRs identified by Regex:
-1920
+2,158
 Number of RxLRs identified by Hmm:
 211
 Number of RxLRs in combined dataset:
-1935
+2,172
 Number of genes in the extracted gff file:
-1935
+2,172
 
 P.rubi - SCRP324
 Number of RxLRs identified by Regex:
-1930
+2,167
 Number of RxLRs identified by Hmm:
 212
 Number of RxLRs in combined dataset:
-1946
+2,182
 Number of genes in the extracted gff file:
-1946
+2,182
 
 P.rubi - SCRP333
 Number of RxLRs identified by Regex:
-1904
+2,141
 Number of RxLRs identified by Hmm:
 206
 Number of RxLRs in combined dataset:
-1917
+2,153
 Number of genes in the extracted gff file:
-1917
+2,153
 ```
 
 4.2.c Analysis of RxLR effectors - merger of Augustus / published genes with ORFs
