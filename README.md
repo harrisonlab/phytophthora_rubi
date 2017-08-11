@@ -2369,7 +2369,6 @@ do
     cat $CRNsFa | grep '>' | wc -l >> report.txt
     echo "$Strain done"
 done
-echo "$Organism done"
 ```
 
 ```
