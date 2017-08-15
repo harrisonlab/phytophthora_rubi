@@ -2670,9 +2670,12 @@ done
 Results were parsed to the file
 
 ```bash
-nano gene_pred/trans_mem/P.rubi/SCRP249/GPIsom/GPI_pos.fa
-nano gene_pred/trans_mem/P.rubi/SCRP324/GPIsom/GPI_pos.fa
-nano gene_pred/trans_mem/P.rubi/SCRP333/GPIsom/GPI_pos.fa
+nano gene_pred/trans_mem/P.rubi/SCRP249/GPIsom/greedy/GPI_pos.fa
+nano gene_pred/trans_mem/P.rubi/SCRP324/GPIsom/greedy/GPI_pos.fa
+nano gene_pred/trans_mem/P.rubi/SCRP333/GPIsom/greedy/GPI_pos.fa
+nano gene_pred/trans_mem/P.rubi/SCRP249/GPIsom/conservative/GPI_pos.fa
+nano gene_pred/trans_mem/P.rubi/SCRP324/GPIsom/conservative/GPI_pos.fa
+nano gene_pred/trans_mem/P.rubi/SCRP333/GPIsom/conservative/GPI_pos.fa
 ```
 
 Create a file just listing gene names
