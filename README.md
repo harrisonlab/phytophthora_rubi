@@ -2694,7 +2694,7 @@ Summarise numbers of GPI Proteins
 for GPI in $(ls gene_pred/trans_mem/P.rubi/*/GPIsom/*/*.txt)
 do
     Strain=$(echo $GPI | rev | cut -f4 -d '/' | rev)
-    Tpye=$(echo $GPI | rev | cut -f3 -d '/' | rev)
+    Type=$(echo $GPI | rev | cut -f3 -d '/' | rev)
     echo "$Strain - $Type"
     echo "The number of proteins scoring positive for being GPI anchored is:"
     cat $GPI | wc -l
