@@ -2532,6 +2532,12 @@ for Genes in $(ls gene_pred/annotation/P.rubi/*/*_genes_incl_ORFeffectors.pep.fa
 do
     $ProgDir/sub_interproscan.sh $Genes
 done
+
+ProgDir=/home/adamst/git_repos/tools/seq_tools/feature_annotation/interproscan/
+for Genes in $(ls gene_pred/annotation/P.rubi/*/*_genes_incl_ORFeffectors_conservative.pep.fasta)
+do
+    $ProgDir/sub_interproscan2.sh $Genes
+done
 ```
 
 Following this, split files were combined as follows:
