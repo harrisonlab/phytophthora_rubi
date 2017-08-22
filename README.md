@@ -2628,7 +2628,29 @@ done
 ```
 
 ```
+SCRP249 - conservative
+The number of proteins scoring positive for a transmembrane helix is:
+4,185
 
+SCRP249 - greedy
+The number of proteins scoring positive for a transmembrane helix is:
+4,481
+
+SCRP324 - conservative
+The number of proteins scoring positive for a transmembrane helix is:
+4,329
+
+SCRP324 - greedy
+The number of proteins scoring positive for a transmembrane helix is:
+4,629
+
+SCRP333 - conservative
+The number of proteins scoring positive for a transmembrane helix is:
+4,208
+
+SCRP333 - greedy
+The number of proteins scoring positive for a transmembrane helix is:
+4,503
 ```
 
 Create a headers file
