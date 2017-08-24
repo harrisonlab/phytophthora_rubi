@@ -106,6 +106,32 @@ SCRP333: 27 **
 Target coverage is 20.
 The ones at value 5 are errors from filtering of error kmers, estimate from plots follow in ().
 
+##Coverage assessed using count_nucl.pl
+
+```bash
+for DataDir in $(ls -d qc_dna/paired/P.rubi/*)
+do
+    F_Read=$(ls $DataDir/F/*.gz)
+    R_Read=$(ls $DataDir/R/*.gz)
+    Strain=$(echo $DataDir | rev | cut -f1 -d '/' | rev)
+    Organism=$(echo $DataDir | rev | cut -f2 -d '/' | rev)
+    WorkDir=tmp_dir/$Strain
+    mkdir -p $WorkDir
+    cp -r $F_Read $WorkDir
+    cp -r $R_Read $WorkDir
+    cd $WorkDir
+    Read1=*R1*
+    Read2=*R2*
+    gunzip $Read1
+    gunzip $Read2
+    Sub1=*R1*.fq
+    Sub2=*R2*.fq
+    echo "$Organism - $Strain"
+    count_nucl.pl -i $Sub1 -i $Sub2 -g 96
+    cd /home/groups/harrisonlab/project_files/rubi
+done
+```
+
 # Assembly
 Assembly was performed using: Spades and Discovar
 
