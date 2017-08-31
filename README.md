@@ -314,6 +314,8 @@ SCRP324: 9,081
 SCRP333: 8,985
 ```
 
+Extra corrections for submitting to genbank performed in Genbank_corrections.md
+
 <!-- ##Discovar
 
 ```bash
