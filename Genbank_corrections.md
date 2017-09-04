@@ -38,3 +38,9 @@ do
     printf "$Name\t$Good\t$Both\t$Bad\n"
 done
 ```
+
+```
+SCRP249	14020	3	0
+SCRP324	13945	1	1
+SCRP333	13678	1	0
+```
