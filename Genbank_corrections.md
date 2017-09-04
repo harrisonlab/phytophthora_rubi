@@ -102,12 +102,15 @@ do
 done
 ```
 
-###Assembly statistics were summarised using
+Summary statistics
 
-```bash
-for File in $(ls assembly/spades/P.*/*/ncbi_edits/report.tsv)
-do
-    echo "$File" | rev | cut -f3 -d '/' | rev
-    cat $File | cut -f2
-done
+```
+Number of contigs > 1kb:
+SCRP324: 9,081 (No change)
+
+N50:
+SCRP324: 17,037 (No change)
+
+L50:
+SCRP324: 1,209 (No change)
 ```
