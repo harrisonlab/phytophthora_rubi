@@ -44,3 +44,9 @@ SCRP249	14020	3	0
 SCRP324	13945	1	1
 SCRP333	13678	1	0
 ```
+
+Contaminant organisms identified by NCBI BLAST
+
+```
+Only contig identified as a contaminent here BLASTs to a Phytophthora genome, do not believe this. The false positive rate is too high.
+```
