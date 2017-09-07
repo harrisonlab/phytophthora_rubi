@@ -634,6 +634,35 @@ do
 done
 ```
 
+Repeat for assemblies cleaned for ncbi
+
+```bash
+for Assembly in $(ls repeat_masked/P.rubi/*/deconseq_Paen_repmask/*_contigs_softmasked_repeatmasker_TPSI_appended.fa)
+do
+    Strain=$(echo $Assembly | rev | cut -d '/' -f3 | rev)
+    Organism=$(echo $Assembly | rev | cut -d '/' -f4 | rev)
+    echo "$Organism - $Strain"
+    for FileF in $(ls qc_rna/qc_rna/raw_rna/consortium/P.rubi/F/*_trim.fq.gz)
+    do
+        Jobs=$(qstat | grep 'sub_sta' | grep 'qw' | wc -l)
+        while [ $Jobs -gt 1 ]
+        do
+            sleep 1m
+            printf "."
+            Jobs=$(qstat | grep 'sub_sta' | grep 'qw' | wc -l)
+        done
+        printf "\n"
+        FileR=$(echo $FileF | sed 's&/F/&/R/&g'| sed 's/_1/_2/g')
+        echo $FileF
+        echo $FileR
+        Sample_Name=$(echo $FileF | rev | cut -d '/' -f1 | rev | sed 's/_1_trim.fq.gz//g')
+        OutDir=alignment/star/$Organism/$Strain/$Sample_Name
+        ProgDir=/home/adamst/git_repos/tools/seq_tools/RNAseq
+        qsub $ProgDir/sub_star.sh $Assembly $FileF $FileR $OutDir
+    done
+done
+```
+
 #Braker prediction
 
 ```bash
