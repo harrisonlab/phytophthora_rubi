@@ -558,6 +558,18 @@ do
 done
 ```
 
+```bash
+for Assembly in $(ls assembly/spades/P.rubi/*/ncbi_edits/contigs_min_500bp_renamed.fasta)
+do
+    Strain=$(echo $Assembly | rev | cut -d '/' -f3 | rev)
+    echo "$Strain"
+    ProgDir=/home/adamst/git_repos/tools/gene_prediction/busco
+    BuscoDB=Eukaryotic
+    OutDir=assembly/spades/P.rubi/$Strain/deconseq_Paen/
+    qsub $ProgDir/sub_busco2.sh $Assembly $BuscoDB $OutDir
+done
+```
+
 ```
 Of 303 BUSCOs searched:
 
