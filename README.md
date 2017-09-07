@@ -524,6 +524,21 @@ do
 done
 ```
 
+For assemblies cleaned for NCBI
+
+```bash
+for File in $(ls -d repeat_masked/P.*/*/ncbi_edits_repmask/*_contigs_softmasked.fa)
+do
+    OutDir=$(dirname $File)
+    TPSI=$(ls $OutDir/*_contigs_unmasked.fa.TPSI.allHits.chains.gff3)
+    OutFile=$(echo $File | sed 's/_contigs_softmasked.fa/_contigs_softmasked_repeatmasker_TPSI_appended.fa/g')
+    bedtools maskfasta -soft -fi $File -bed $TPSI -fo $OutFile
+    echo "$OutFile"
+    echo "Number of masked bases:"
+    cat $OutFile | grep -v '>' | tr -d '\n' | awk '{print $0, gsub("[a-z]", ".")}' | cut -f2 -d ' '
+done
+```
+
 #Gene Prediction
 Gene prediction followed three steps: Pre-gene prediction - Quality of genome assemblies were assessed using BUSOC to see how many eukaryotic single copy orthologs are present, and quantify levels of duplication in the assembly. Gene model training - Gene models were trained using assembled RNAseq data as part of the Braker1 pipeline Gene prediction - Gene models were used to predict genes in genomes as part of the the Braker1 pipeline. This used RNAseq data as hints for gene models.
 
