@@ -580,10 +580,10 @@ Fragmented BUSCOs: 4
 Missing BUSCOs: 20
 
 SCRP324:
-Complete and single-copy BUSCOs: 272
+Complete and single-copy BUSCOs: 274
 Complete and duplicated BUSCOs: 8
 Fragmented BUSCOs: 3
-Missing BUSCOs: 20
+Missing BUSCOs: 18
 
 SCRP333:
 Complete and single-copy BUSCOs: 273
