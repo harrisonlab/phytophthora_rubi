@@ -692,6 +692,35 @@ do
 done
 ```
 
+Repeat for assemblies cleaned for NCBI
+
+```bash
+for Assembly in $(ls repeat_masked/P.rubi/*/ncbi_edits_repmask/*_contigs_softmasked_repeatmasker_TPSI_appended.fa)
+do
+    Jobs=$(qstat | grep 'braker' | grep -w 'r' | wc -l)
+    while [ $Jobs -gt 1 ]
+    do
+        sleep 10
+        printf "."
+        Jobs=$(qstat | grep 'braker' | grep -w 'r' | wc -l)
+    done
+    printf "\n"
+    Strain=$(echo $Assembly| rev | cut -d '/' -f3 | rev)
+    Organism=$(echo $Assembly | rev | cut -d '/' -f4 | rev)
+    echo "$Organism - $Strain"
+    mkdir -p alignment/star/$Organism/$Strain/concatenated
+    samtools merge -f alignment/star/$Organism/$Strain/concatenated/concatenated.bam \
+    alignment/star/$Organism/$Strain/4671V8/star_aligmentAligned.sortedByCoord.out.bam \
+    alignment/star/$Organism/$Strain/Pr4671PB/star_aligmentAligned.sortedByCoord.out.bam
+    OutDir=gene_pred/braker/$Organism/"$Strain"_braker
+    AcceptedHits=alignment/star/$Organism/$Strain/concatenated/concatenated.bam
+    GeneModelName="$Organism"_"$Strain"_braker
+    rm -r /home/armita/prog/augustus-3.1/config/species/"$Organism"_"$Strain"_braker
+    ProgDir=/home/adamst/git_repos/tools/gene_prediction/braker1
+    qsub $ProgDir/sub_braker_fungi.sh $Assembly $OutDir $AcceptedHits $GeneModelName
+done
+```
+
 #Supplementing Braker gene models with CodingQuarry genes
 
 Additional genes were added to Braker gene predictions, using CodingQuarry in pathogen mode to predict additional regions.
