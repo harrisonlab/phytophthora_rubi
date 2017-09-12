@@ -743,6 +743,22 @@ do
 done
 ```
 
+Repeat for assemblies cleaned for NCBI
+
+```bash
+for Assembly in $(ls repeat_masked/*/*/deconseq_Paen_repmask/*_contigs_unmasked.fa | grep -e 'SCRP324')
+do
+    Strain=$(echo $Assembly| rev | cut -d '/' -f3 | rev)
+    Organism=$(echo $Assembly | rev | cut -d '/' -f4 | rev)
+    echo "$Organism - $Strain"
+    OutDir=gene_pred/cufflinks/$Organism/$Strain/concatenated
+    mkdir -p $OutDir
+    AcceptedHits=alignment/star/$Organism/$Strain/concatenated/concatenated.bam
+    ProgDir=/home/adamst/git_repos/tools/seq_tools/RNAseq
+    qsub $ProgDir/sub_cufflinks.sh $AcceptedHits $OutDir
+done
+```
+
 Secondly, genes were predicted using CodingQuarry:
 
 ```bash
