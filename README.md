@@ -964,6 +964,17 @@ do
 done
 ```
 
+Repeat for assemblies cleaned for NCBI
+
+```bash
+ProgDir=/home/adamst/git_repos/tools/gene_prediction/ORF_finder
+for Genome in $(ls repeat_masked/P.*/*/ncbi_edits_repmask/*_contigs_softmasked_repeatmasker_TPSI_appended.fa | grep -e 'SCRP324')
+do
+    echo "$Genome"
+    qsub $ProgDir/run_ORF_finder.sh $Genome
+done
+```
+
 The Gff files from the the ORF finder are not in true Gff3 format. These were corrected using the following commands:
 
 ```bash
