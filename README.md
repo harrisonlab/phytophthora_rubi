@@ -881,7 +881,7 @@ done
 The final number of genes per isolate was observed using:
 
 ```bash
-for DirPath in $(ls -d gene_pred/codingquarry/P.*/*/final)
+for DirPath in $(ls -d gene_pred/final/P.*/*/final)
 do
     echo $DirPath
     echo Braker:
@@ -934,9 +934,9 @@ P.rubi - SCRP324
 Braker:
 30,440
 CodingQuarry:
-2,582
+2,580
 Total:
-33,022
+33,020
 
 P.rubi - SCRP333
 Braker:
