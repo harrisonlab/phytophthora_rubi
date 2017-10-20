@@ -792,7 +792,7 @@ done
 Then, additional transcripts were added to Braker1 gene models, when CodingQuarry genes were predicted in regions of the genome, not containing Braker1 gene models:
 
 ```bash
-for BrakerGff in $(ls gene_pred/braker/*/*_braker/*/augustus.gff3)
+for BrakerGff in $(ls gene_pred/braker/P.rubi/*_braker/*/augustus.gff3)
 do
     Strain=$(echo $BrakerGff| rev | cut -d '/' -f3 | rev | sed 's/_braker//g')
     Organism=$(echo $BrakerGff | rev | cut -d '/' -f4 | rev)
