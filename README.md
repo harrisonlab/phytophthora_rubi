@@ -574,10 +574,10 @@ done
 Of 303 BUSCOs searched:
 
 SCRP249:
-Complete and single-copy BUSCOs: 271
+Complete and single-copy BUSCOs: 273
 Complete and duplicated BUSCOs: 8
-Fragmented BUSCOs: 4
-Missing BUSCOs: 20
+Fragmented BUSCOs: 3
+Missing BUSCOs: 19
 
 SCRP324:
 Complete and single-copy BUSCOs: 274
@@ -586,10 +586,10 @@ Fragmented BUSCOs: 3
 Missing BUSCOs: 18
 
 SCRP333:
-Complete and single-copy BUSCOs: 273
+Complete and single-copy BUSCOs: 275
 Complete and duplicated BUSCOs: 7
 Fragmented BUSCOs: 3
-Missing BUSCOs: 20
+Missing BUSCOs: 18
 ```
 
 #Gene prediction
@@ -961,6 +961,28 @@ do
     qsub $ProgDir/sub_busco3.sh $Transcriptome $BuscoDB $OutDir
 done
 ```
+
+```
+SCRP249
+Complete and single copy genes: 267
+Complete and duplicated genes: 9
+Fragmented genes: 10
+Missing genes: 17
+
+SCRP324
+Complete and single copy genes: 268
+Complete and duplicated genes: 10
+Fragmented genes: 8
+Missing genes: 17
+
+SCRP333
+Complete and single copy genes: 268
+Complete and duplicated genes: 9
+Fragmented genes: 9
+Missing genes: 17
+```
+
+Changes with respect to genome sequence
 
 ```
 SCRP249
