@@ -547,26 +547,26 @@ Gene prediction followed three steps: Pre-gene prediction - Quality of genome as
 Quality of genome assemblies was assessed by looking for the gene space in the assemblies.
 
 ```bash
-for Assembly in $(ls assembly/spades/P.rubi/*/deconseq_Paen/contigs_min_500bp_filtered_renamed.fasta)
+for Strain in SCRP249 SCRP324 SCRP333
 do
-    Strain=$(echo $Assembly | rev | cut -d '/' -f3 | rev)
-    echo "$Strain"
+    Organism=P.rubi
+    if [ -f repeat_masked/$Organism/$Strain/ncbi_edits_repmask/*_softmasked_repeatmasker_TPSI_appended.fa ]
+    then
+        Assembly=$(ls repeat_masked/$Organism/$Strain/ncbi_edits_repmask/*_softmasked_repeatmasker_TPSI_appended.fa)
+        echo $Assembly
+    elif [ -f repeat_masked/$Organism/$Strain/deconseq_Paen_repmask/*_softmasked_repeatmasker_TPSI_appended.fa ]
+    then
+        Assembly=$(ls repeat_masked/$Organism/$Strain/deconseq_Paen_repmask/*_softmasked_repeatmasker_TPSI_appended.fa)
+        echo $Assembly
+    else
+        Assembly=$(ls repeat_masked/quiver_results/Bc16/filtered_contigs_repmask/*_softmasked_repeatmasker_TPSI_appended.fa)
+        echo $Assembly
+    fi
     ProgDir=/home/adamst/git_repos/tools/gene_prediction/busco
     BuscoDB=Eukaryotic
-    OutDir=assembly/spades/P.rubi/$Strain/deconseq_Paen/
-    qsub $ProgDir/sub_busco2.sh $Assembly $BuscoDB $OutDir
-done
-```
-
-```bash
-for Assembly in $(ls assembly/spades/P.rubi/*/ncbi_edits/contigs_min_500bp_renamed.fasta)
-do
-    Strain=$(echo $Assembly | rev | cut -d '/' -f3 | rev)
-    echo "$Strain"
-    ProgDir=/home/adamst/git_repos/tools/gene_prediction/busco
-    BuscoDB=Eukaryotic
-    OutDir=assembly/spades/P.rubi/$Strain/deconseq_Paen/
-    qsub $ProgDir/sub_busco2.sh $Assembly $BuscoDB $OutDir
+    OutDir=assembly/spades/P.rubi/$Strain/Busco
+    mkdir -p $OutDir
+    qsub $ProgDir/sub_busco3.sh $Assembly $BuscoDB $OutDir
 done
 ```
 
