@@ -988,22 +988,23 @@ Open reading frame predictions were made using the atg.pl script as part of the 
 
 
 ```bash
-ProgDir=/home/adamst/git_repos/tools/gene_prediction/ORF_finder
-for Genome in $(ls repeat_masked/P.*/*/deconseq_Paen_repmask/*_contigs_softmasked_repeatmasker_TPSI_appended.fa)
+for Strain in SCRP249 SCRP324 SCRP333
 do
-    echo "$Genome"
-    qsub $ProgDir/run_ORF_finder.sh $Genome
-done
-```
-
-Repeat for assemblies cleaned for NCBI
-
-```bash
-ProgDir=/home/adamst/git_repos/tools/gene_prediction/ORF_finder
-for Genome in $(ls repeat_masked/P.*/*/ncbi_edits_repmask/*_contigs_softmasked_repeatmasker_TPSI_appended.fa | grep -e 'SCRP324')
-do
-    echo "$Genome"
-    qsub $ProgDir/run_ORF_finder.sh $Genome
+    Organism=P.rubi
+    if [ -f repeat_masked/$Organism/$Strain/ncbi_edits_repmask/*_unmasked.fa ]
+    then
+        Assembly=$(ls repeat_masked/$Organism/$Strain/ncbi_edits_repmask/*_unmasked.fa)
+        echo $Assembly
+    elif [ -f repeat_masked/$Organism/$Strain/deconseq_Paen_repmask/*_unmasked.fa ]
+    then
+        Assembly=$(ls repeat_masked/$Organism/$Strain/deconseq_Paen_repmask/*_unmasked.fa)
+        echo $Assembly
+    else
+        Assembly=$(ls repeat_masked/quiver_results/Bc16/filtered_contigs_repmask/*_unmasked.fa)
+        echo $Assembly
+    fi
+    ProgDir=/home/adamst/git_repos/tools/gene_prediction/ORF_finder
+    qsub $ProgDir/run_ORF_finder.sh $Assembly
 done
 ```
 
