@@ -1097,7 +1097,7 @@ Proteins that were predicted to contain signal peptides were identified using th
 ```bash
 for Strain in SCRP249 SCRP324 SCRP333
 do
-    for Proteome in $(ls gene_pred/codingquarry/*/$Strain/final/final_genes_combined.pep.fasta)
+    for Proteome in $(ls gene_pred/final/*/$Strain/final/final_genes_combined.pep.fasta)
     do
         SplitfileDir=/home/adamst/git_repos/tools/seq_tools/feature_annotation/signal_peptides
         ProgDir=/home/adamst/git_repos/tools/seq_tools/feature_annotation/signal_peptides
