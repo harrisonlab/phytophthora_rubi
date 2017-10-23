@@ -962,6 +962,26 @@ do
 done
 ```
 
+```
+SCRP249
+Complete and single copy genes: 267
+Complete and duplicated genes: 9
+Fragmented genes: 10
+Missing genes: 17
+
+SCRP324
+Complete and single copy genes: 268
+Complete and duplicated genes: 10
+Fragmented genes: 8
+Missing genes: 17
+
+SCRP333
+Complete and single copy genes: 268
+Complete and duplicated genes: 9
+Fragmented genes: 9
+Missing genes: 17
+```
+
 #Gene prediction 2 - atg.pl prediction of ORFs
 
 Open reading frame predictions were made using the atg.pl script as part of the path_pipe.sh pipeline. This pipeline also identifies open reading frames containing Signal peptide sequences and RxLRs. This pipeline was run with the following commands:
