@@ -1042,18 +1042,6 @@ do
 done
 ```
 
-Repeat for assemblies cleaned for NCBI
-
-```bash
-ProgDir=/home/adamst/git_repos/tools/seq_tools/feature_annotation
-for OrfGff in $(ls gene_pred/ORF_finder/P.*/*/*_ORF.gff | grep -v 'atg' | grep -e 'SCRP324')
-do
-    echo "$OrfGff"
-    OrfGffMod=$(echo $OrfGff | sed 's/.gff/.gff3/g')
-    $ProgDir/gff_corrector.pl $OrfGff > $OrfGffMod
-done
-```
-
 The final number of genes per isolate were determined using
 
 ```bash
