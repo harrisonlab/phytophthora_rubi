@@ -1163,7 +1163,7 @@ Secreted proteins were also predicted using Phobius
 ```bash
 for Strain in SCRP249 SCRP324 SCRP333
 do
-    for Proteome in $(ls gene_pred/codingquarry/*/$Strain/final/final_genes_combined.pep.fasta)
+    for Proteome in $(ls gene_pred/final/*/$Strain/final/final_genes_combined.pep.fasta)
     do
         Organism=P.rubi
         echo "$Organism - $Strain"
