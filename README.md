@@ -1316,10 +1316,10 @@ the number of SigP-RxLR genes are:	367
 the number of SigP-RxLR-EER genes are:	190
 
 strain: SCRP324	species: P.rubi
-the total number of SigP gene is:	11,635
-the number of unique SigP gene is:	3,929
-the number of SigP-RxLR genes are:	383
-the number of SigP-RxLR-EER genes are:	199
+the total number of SigP gene is:	11,350
+the number of unique SigP gene is:	3,816
+the number of SigP-RxLR genes are:	371
+the number of SigP-RxLR-EER genes are:	190
 
 strain: SCRP333	species: P.rubi
 the total number of SigP gene is:	11,296
@@ -1375,7 +1375,7 @@ P.rubi SCRP249
 Initial search space (Z):             32,194  [actual number of targets]
 Domain search space  (domZ):             199  [number of targets reported over threshold]
 P.rubi SCRP324
-Initial search space (Z):             33,022  [actual number of targets]
+Initial search space (Z):             33,020  [actual number of targets]
 Domain search space  (domZ):             204  [number of targets reported over threshold]
 P.rubi SCRP333
 Initial search space (Z):             32,942  [actual number of targets]
@@ -1611,10 +1611,10 @@ Domain search space  (domZ):             143  [number of targets reported over t
 Identify the genes detected in both models:     129
 
 P.rubi - SCRP324
-Initial search space (Z):             33,392  [actual number of targets]
-Domain search space  (domZ):             157  [number of targets reported over threshold]
-Initial search space (Z):             33,392  [actual number of targets]
-Domain search space  (domZ):             140  [number of targets reported over threshold]
+Initial search space (Z):             33,020  [actual number of targets]
+Domain search space  (domZ):             154  [number of targets reported over threshold]
+Initial search space (Z):             33,020  [actual number of targets]
+Domain search space  (domZ):             142  [number of targets reported over threshold]
 Identify the genes detected in both models:     127
 
 P.rubi - SCRP333
