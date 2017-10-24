@@ -1333,7 +1333,7 @@ the number of SigP-RxLR-EER genes are:	190
 ```bash
 for Strain in SCRP249 SCRP324 SCRP333
 do
-    for Proteome in $(ls gene_pred/codingquarry/*/$Strain/final/final_genes_combined.pep.fasta)
+    for Proteome in $(ls gene_pred/final/*/$Strain/final/final_genes_combined.pep.fasta)
     do
         ProgDir=/home/adamst/git_repos/scripts/phytophthora/pathogen/hmmer
         HmmModel=/home/armita/git_repos/emr_repos/SI_Whisson_et_al_2007/cropped.hmm
@@ -1342,9 +1342,9 @@ do
         mkdir -p $OutDir
         HmmResults="$Strain"_RxLR_hmmer.txt
         hmmsearch -T 0 $HmmModel $Proteome > $OutDir/$HmmResults
-        echo "$Organism $Strain" >> report.txt
-        cat $OutDir/$HmmResults | grep 'Initial search space' >> report.txt
-        cat $OutDir/$HmmResults | grep 'number of targets reported over threshold' >> report.txt
+        echo "$Organism $Strain"
+        cat $OutDir/$HmmResults | grep 'Initial search space'
+        cat $OutDir/$HmmResults | grep 'number of targets reported over threshold'
         HmmFasta="$Strain"_RxLR_hmmer.fa
         $ProgDir/hmmer2fasta.pl $OutDir/$HmmResults $Proteome > $OutDir/$HmmFasta
         Headers="$Strain"_RxLR_hmmer_headers.txt
