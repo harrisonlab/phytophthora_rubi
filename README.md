@@ -1480,6 +1480,7 @@ Number of genes in the extracted gff file:
 
 SPAdes:
 
+With EER:
 P.rubi - SCRP249
 Number of RxLRs identified by Regex:
 190
@@ -1492,11 +1493,11 @@ Number of genes in the extracted gff file:
 
 P.rubi - SCRP324
 Number of RxLRs identified by Regex:
-199
+190
 Number of RxLRs identified by Hmm:
 204
 Number of RxLRs in combined dataset:
-250
+241
 Number of genes in the extracted gff file:
 241
 
@@ -1522,11 +1523,11 @@ Number of genes in the extracted gff file:
 407
 P.rubi - SCRP324
 Number of RxLRs identified by Regex:
-382
+370
 Number of RxLRs identified by Hmm:
 204
 Number of RxLRs in combined dataset:
-426
+414
 Number of genes in the extracted gff file:
 414
 P.rubi - SCRP333
@@ -1634,7 +1635,7 @@ do
     Organism=$(echo $CRNlist | rev | cut -f3 -d '/' | rev)
     OutName=$(echo $CRNlist | sed 's/.txt/.gff/g')
     echo "$Organism - $Strain"
-    Gff=$(ls gene_pred/codingquarry/$Organism/$Strain/final/final_genes_appended.gff3)
+    Gff=$(ls gene_pred/final/$Organism/$Strain/final/final_genes_appended.gff3)
     cat $CRNlist | sed -r 's/\.t.$//g' > tmp.txt
     cat $Gff | grep -w -f tmp.txt > $OutName
     rm tmp.txt
