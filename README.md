@@ -1967,14 +1967,14 @@ Merged RxLR regex proteins: 2,158
 Merged RxLR-EER regex proteins: 277
 
 strain: SCRP324 species: P.rubi
-the number of SigP genes is:    83,068
+the number of SigP genes is:    83,047
 the number of SigP-RxLR genes are:      2,628
 the number of SigP-RxLR-EER genes are:  302
 Merged RxLR regex proteins: 2,167
 Merged RxLR-EER regex proteins: 273
 
 strain: SCRP333 species: P.rubi
-the number of SigP genes is:    82,140
+the number of SigP genes is:    82,132
 the number of SigP-RxLR genes are:      2,594
 the number of SigP-RxLR-EER genes are:  299
 Merged RxLR regex proteins: 2,141
