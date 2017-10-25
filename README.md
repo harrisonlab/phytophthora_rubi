@@ -2761,7 +2761,7 @@ do
     GffOrfRxLR=$(ls analysis/RxLR_effectors/combined_evidence/P.rubi/$Strain/"$Strain"_ORFsUniq_RxLR_motif_hmm.gff)
     GffOrfCRN=$(ls analysis/CRN_effectors/hmmer_CRN/P.rubi/$Strain/"$Strain"_ORFsUniq_CRN_hmmer.bed)
     Assembly=$(ls repeat_masked/*/$Strain/*/*_contigs_softmasked.fa)
-    OutDir=gene_pred/annotation/P.fragariae/$Strain
+    OutDir=gene_pred/annotation/P.rubi/$Strain
     mkdir -p $OutDir
     ProgDir=/home/adamst/git_repos/tools/gene_prediction/augustus
     $ProgDir/aug_gff_add_exon.py --inp_gff $GeneGff  \
