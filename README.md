@@ -2027,11 +2027,11 @@ P.rubi SCRP249
 Initial search space (Z):             82,268  [actual number of targets]
 Domain search space  (domZ):             402  [number of targets reported over threshold]
 P.rubi SCRP324
-Initial search space (Z):             83,068  [actual number of targets]
+Initial search space (Z):             83,047  [actual number of targets]
 Domain search space  (domZ):             411  [number of targets reported over threshold]
 P.rubi SCRP333
-Initial search space (Z):             82,140  [actual number of targets]
-Domain search space  (domZ):             389  [number of targets reported over threshold]
+Initial search space (Z):             82,132  [actual number of targets]
+Domain search space  (domZ):             388  [number of targets reported over threshold]
 ```
 
 E6) From ORF gene models - Hmm evidence of RxLR effectors
