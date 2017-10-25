@@ -2994,7 +2994,7 @@ do
     Strain=$(echo $Proteome | rev | cut -f2 -d '/' | rev)
     Organism=$(echo $Proteome | rev | cut -f3 -d '/' | rev)
     echo "$Organism - $Strain"
-    OutDir=gene_pred/trans_mem/$Organism/$Strain/GPIsom/greedy
+    OutDir=gene_pred/GPIsom/$Organism/$Strain/greedy
     mkdir -p $OutDir
 done
 
@@ -3003,7 +3003,7 @@ do
     Strain=$(echo $Proteome | rev | cut -f2 -d '/' | rev)
     Organism=$(echo $Proteome | rev | cut -f3 -d '/' | rev)
     echo "$Organism - $Strain"
-    OutDir=gene_pred/trans_mem/$Organism/$Strain/GPIsom/conservative
+    OutDir=gene_pred/GPIsom/$Organism/$Strain/conservative
     mkdir -p $OutDir
 done
 ```
@@ -3011,18 +3011,18 @@ done
 Results were parsed to the file
 
 ```bash
-nano gene_pred/trans_mem/P.rubi/SCRP249/GPIsom/greedy/GPI_pos.fa
-nano gene_pred/trans_mem/P.rubi/SCRP324/GPIsom/greedy/GPI_pos.fa
-nano gene_pred/trans_mem/P.rubi/SCRP333/GPIsom/greedy/GPI_pos.fa
-nano gene_pred/trans_mem/P.rubi/SCRP249/GPIsom/conservative/GPI_pos.fa
-nano gene_pred/trans_mem/P.rubi/SCRP324/GPIsom/conservative/GPI_pos.fa
-nano gene_pred/trans_mem/P.rubi/SCRP333/GPIsom/conservative/GPI_pos.fa
+nano gene_pred/GPIsom/P.rubi/SCRP249/greedy/GPI_pos.fa
+nano gene_pred/GPIsom/P.rubi/SCRP324/greedy/GPI_pos.fa
+nano gene_pred/GPIsom/P.rubi/SCRP333/greedy/GPI_pos.fa
+nano gene_pred/GPIsom/P.rubi/SCRP249/conservative/GPI_pos.fa
+nano gene_pred/GPIsom/P.rubi/SCRP324/conservative/GPI_pos.fa
+nano gene_pred/GPIsom/P.rubi/SCRP333/conservative/GPI_pos.fa
 ```
 
 Create a file just listing gene names
 
 ```bash
-for PosFile in $(ls gene_pred/trans_mem/*/*/GPIsom/*/GPI_pos.fa)
+for PosFile in $(ls gene_pred/GPIsom/*/*/*/GPI_pos.fa)
 do
     GPIHeaders=$(echo $PosFile | sed 's/.fa/.txt/g')
     cat $PosFile | grep -e ">" | cut -f1 -d ' ' | sed 's/>//g' > $GPIHeaders
@@ -3032,7 +3032,7 @@ done
 Summarise numbers of GPI Proteins
 
 ```bash
-for GPI in $(ls gene_pred/trans_mem/P.rubi/*/GPIsom/*/*.txt)
+for GPI in $(ls gene_pred/GPIsom/P.rubi/*/*/*.txt)
 do
     Strain=$(echo $GPI | rev | cut -f4 -d '/' | rev)
     Type=$(echo $GPI | rev | cut -f3 -d '/' | rev)
