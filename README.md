@@ -2957,7 +2957,7 @@ The number of proteins scoring positive for a transmembrane helix is:
 
 SCRP324 - conservative
 The number of proteins scoring positive for a transmembrane helix is:
-4,329
+4,283
 
 SCRP324 - greedy
 The number of proteins scoring positive for a transmembrane helix is:
