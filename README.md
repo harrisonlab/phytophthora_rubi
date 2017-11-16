@@ -730,12 +730,12 @@ Firstly, aligned RNAseq data was assembled into transcripts using Cufflinks.
 Note - cufflinks doesn't always predict direction of a transcript and therefore features can not be restricted by strand when they are intersected.
 
 ```bash
-for Assembly in $(ls repeat_masked/*/*/deconseq_Paen_repmask/*_contigs_unmasked.fa)
+for Assembly in $(ls repeat_masked/*/*/deconseq_Paen_repmask/*_contigs_unmasked.fa | grep -v 'SCRP324')
 do
     Strain=$(echo $Assembly| rev | cut -d '/' -f3 | rev)
     Organism=$(echo $Assembly | rev | cut -d '/' -f4 | rev)
     echo "$Organism - $Strain"
-    OutDir=gene_pred/cufflinks/$Organism/$Strain/concatenated
+    OutDir=gene_pred/star/cufflinks/$Organism/$Strain/concatenated
     mkdir -p $OutDir
     AcceptedHits=alignment/star/$Organism/$Strain/concatenated/concatenated.bam
     ProgDir=/home/adamst/git_repos/tools/seq_tools/RNAseq
@@ -751,7 +751,7 @@ do
     Strain=$(echo $Assembly| rev | cut -d '/' -f3 | rev)
     Organism=$(echo $Assembly | rev | cut -d '/' -f4 | rev)
     echo "$Organism - $Strain"
-    OutDir=gene_pred/cufflinks/$Organism/$Strain/concatenated
+    OutDir=gene_pred/star/cufflinks/$Organism/$Strain/concatenated
     mkdir -p $OutDir
     AcceptedHits=alignment/star/$Organism/$Strain/concatenated/concatenated.bam
     ProgDir=/home/adamst/git_repos/tools/seq_tools/RNAseq
@@ -762,13 +762,13 @@ done
 Secondly, genes were predicted using CodingQuarry:
 
 ```bash
-for Assembly in $(ls repeat_masked/*/*/*/*_contigs_softmasked_repeatmasker_TPSI_appended.fa)
+for Assembly in $(ls repeat_masked/*/*/deconseq_Paen_repmask/*_contigs_softmasked_repeatmasker_TPSI_appended.fa | grep -v 'SCRP324')
 do
     Strain=$(echo $Assembly| rev | cut -d '/' -f3 | rev)
     Organism=$(echo $Assembly | rev | cut -d '/' -f4 | rev)
     echo "$Organism - $Strain"
     OutDir=gene_pred/codingquarry/$Organism/$Strain
-    CufflinksGTF=gene_pred/cufflinks/$Organism/$Strain/concatenated/transcripts.gtf
+    CufflinksGTF=gene_pred/star/cufflinks/$Organism/$Strain/concatenated/transcripts.gtf
     ProgDir=/home/adamst/git_repos/tools/gene_prediction/codingquary
     qsub $ProgDir/sub_CodingQuary.sh $Assembly $CufflinksGTF $OutDir
 done
@@ -783,7 +783,7 @@ do
     Organism=$(echo $Assembly | rev | cut -d '/' -f4 | rev)
     echo "$Organism - $Strain"
     OutDir=gene_pred/codingquarry/$Organism/$Strain
-    CufflinksGTF=gene_pred/cufflinks/$Organism/$Strain/concatenated/transcripts.gtf
+    CufflinksGTF=gene_pred/star/cufflinks/$Organism/$Strain/concatenated/transcripts.gtf
     ProgDir=/home/adamst/git_repos/tools/gene_prediction/codingquary
     qsub $ProgDir/sub_CodingQuary.sh $Assembly $CufflinksGTF $OutDir
 done
