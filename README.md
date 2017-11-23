@@ -921,27 +921,27 @@ Total:
 SPAdes:
 P.rubi - SCRP249
 Braker:
-30,289
+29,583
 CodingQuarry:
-1,916
+2,225
 Total:
-32,205
+31,808
 
 P.rubi - SCRP324
 Braker:
-30,440
+30,129
 CodingQuarry:
-2,580
+2,596
 Total:
-33,020
+32,725
 
 P.rubi - SCRP333
 Braker:
-29,713
+29,696
 CodingQuarry:
-3,229
+3,250
 Total:
-32,942
+32,946
 ```
 
 ##Predicted gene set assessed using BUSCO to assess completeness
