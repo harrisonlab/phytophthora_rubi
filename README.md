@@ -983,22 +983,22 @@ Changes with respect to genome sequence
 
 ```
 SCRP249
-Complete and single copy genes: -6
+Complete and single copy genes: -4
 Complete and duplicated genes: +1
-Fragmented genes: +7
+Fragmented genes: +5
 Missing genes: -2
 
 SCRP324
-Complete and single copy genes: -6
+Complete and single copy genes: -5
 Complete and duplicated genes: +2
-Fragmented genes: +5
+Fragmented genes: +4
 Missing genes: -1
 
 SCRP333
-Complete and single copy genes: -7
-Complete and duplicated genes: +2
-Fragmented genes: +6
-Missing genes: -1
+Complete and single copy genes: -5
+Complete and duplicated genes: +3
+Fragmented genes: +4
+Missing genes: -2
 ```
 
 #Gene prediction 2 - atg.pl prediction of ORFs
