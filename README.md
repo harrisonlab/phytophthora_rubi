@@ -961,22 +961,22 @@ done
 
 ```
 SCRP249
-Complete and single copy genes: 267
+Complete and single copy genes: 269
 Complete and duplicated genes: 9
-Fragmented genes: 10
-Missing genes: 17
-
-SCRP324
-Complete and single copy genes: 268
-Complete and duplicated genes: 10
 Fragmented genes: 8
 Missing genes: 17
 
-SCRP333
-Complete and single copy genes: 268
-Complete and duplicated genes: 9
-Fragmented genes: 9
+SCRP324
+Complete and single copy genes: 269
+Complete and duplicated genes: 10
+Fragmented genes: 7
 Missing genes: 17
+
+SCRP333
+Complete and single copy genes: 270
+Complete and duplicated genes: 10
+Fragmented genes: 7
+Missing genes: 16
 ```
 
 Changes with respect to genome sequence
