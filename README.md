@@ -1480,9 +1480,9 @@ SPAdes:
 With EER:
 P.rubi - SCRP249
 Number of RxLRs identified by Regex:
-190
+188
 Number of RxLRs identified by Hmm:
-199
+197
 Number of RxLRs in combined dataset:
 238
 Number of genes in the extracted gff file:
@@ -1490,23 +1490,23 @@ Number of genes in the extracted gff file:
 
 P.rubi - SCRP324
 Number of RxLRs identified by Regex:
-190
+192
 Number of RxLRs identified by Hmm:
-204
+206
 Number of RxLRs in combined dataset:
-241
+244
 Number of genes in the extracted gff file:
-241
+244
 
 P.rubi - SCRP333
 Number of RxLRs identified by Regex:
-190
+188
 Number of RxLRs identified by Hmm:
-205
+207
 Number of RxLRs in combined dataset:
-242
+244
 Number of genes in the extracted gff file:
-242
+244
 
 Without EER:
 P.rubi - SCRP249
