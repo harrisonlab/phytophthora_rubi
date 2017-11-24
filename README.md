@@ -1369,14 +1369,14 @@ Domain search space  (domZ):             189  [number of targets reported over t
 SPAdes:
 
 P.rubi SCRP249
-Initial search space (Z):             32,194  [actual number of targets]
-Domain search space  (domZ):             199  [number of targets reported over threshold]
+Initial search space (Z):             31,808  [actual number of targets]
+Domain search space  (domZ):             197  [number of targets reported over threshold]
 P.rubi SCRP324
-Initial search space (Z):             33,020  [actual number of targets]
-Domain search space  (domZ):             204  [number of targets reported over threshold]
+Initial search space (Z):             32,725  [actual number of targets]
+Domain search space  (domZ):             206  [number of targets reported over threshold]
 P.rubi SCRP333
-Initial search space (Z):             32,942  [actual number of targets]
-Domain search space  (domZ):             205  [number of targets reported over threshold]
+Initial search space (Z):             32,946  [actual number of targets]
+Domain search space  (domZ):             207  [number of targets reported over threshold]
 ```
 
 ####A.5) Combining RxLRs from Regex and hmm searches
