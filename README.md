@@ -1382,7 +1382,7 @@ Domain search space  (domZ):             207  [number of targets reported over t
 ####A.5) Combining RxLRs from Regex and hmm searches
 
 ```bash
-echo "Without EER"
+#Without EER
 for RegexRxLR in $(ls analysis/RxLR_effectors/RxLR_EER_regex_finder/*/*/*_RxLR_regex.txt)
 do
     Organism=$(echo $RegexRxLR | rev |  cut -d '/' -f3 | rev)
@@ -1411,7 +1411,7 @@ do
     echo "$Strain complete without EER"
 done
 
-echo "With EER"
+#With EER
 for RegexRxLR in $(ls analysis/RxLR_effectors/RxLR_EER_regex_finder/*/*/*_RxLR_EER_regex.txt)
 do
     Organism=$(echo $RegexRxLR | rev |  cut -d '/' -f3 | rev)
