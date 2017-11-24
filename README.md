@@ -3043,15 +3043,15 @@ done
 ```
 SCRP249 - conservative
 The number of proteins scoring positive for being GPI anchored is:
-603
+594
 
 SCRP249 - greedy
 The number of proteins scoring positive for being GPI anchored is:
-855
+846
 
 SCRP324 - conservative
 The number of proteins scoring positive for being GPI anchored is:
-621
+620
 
 SCRP324 - greedy
 The number of proteins scoring positive for being GPI anchored is:
@@ -3059,11 +3059,11 @@ The number of proteins scoring positive for being GPI anchored is:
 
 SCRP333 - conservative
 The number of proteins scoring positive for being GPI anchored is:
-627
+638
 
 SCRP333 - greedy
 The number of proteins scoring positive for being GPI anchored is:
-880
+890
 ```
 
 Further downstream analysis done in Whole_Genome_Orthology.md and SNP_analysis.md
