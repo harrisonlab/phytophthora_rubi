@@ -2706,13 +2706,13 @@ P.rubi - SCRP249
 The number of ORF CRNs overlapping Augustus CRNs:
 122
 The number of Augustus CRNs overlapping ORF CRNs:
-125
+122
 The number of CRNs unique to ORF models:
 9
 The number of CRNs unique to Augustus models:
-6
+7
 The number of sequences extracted is
-140
+138
 P.rubi - SCRP324
 The number of ORF CRNs overlapping Augustus CRNs:
 119
@@ -2721,20 +2721,20 @@ The number of Augustus CRNs overlapping ORF CRNs:
 The number of CRNs unique to ORF models:
 7
 The number of CRNs unique to Augustus models:
-7
+6
 The number of sequences extracted is
-134
+133
 P.rubi - SCRP333
 The number of ORF CRNs overlapping Augustus CRNs:
-117
+121
 The number of Augustus CRNs overlapping ORF CRNs:
-119
+123
 The number of CRNs unique to ORF models:
-12
-The number of CRNs unique to Augustus models:
 8
+The number of CRNs unique to Augustus models:
+6
 The number of sequences extracted is
-139
+137
 ```
 
 <!-- Due to an unknown error, the softmasked files for SCRP249 and SCRP324 do not read into the hash table in the add_ORF_features.pl script. Wrapping the unmasked file every 60 characters provides an assembly file that does work.
