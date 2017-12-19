@@ -2805,6 +2805,121 @@ The number of sequences extracted is
 137
 ```
 
+####J) From ORF fragments - ApoplastP prediction of apoplastic effectors
+
+```bash
+for Secretome in $(ls gene_pred/combined_sigP_ORF/*/*/*_all_secreted.fa)
+do
+    Strain=$(echo $Secretome | rev | cut -f2 -d '/' | rev)
+    Organism=$(echo $Secretome | rev | cut -f3 -d '/' | rev)
+    BaseName="$Organism"_"$Strain"_ApoplastP_ORF
+    echo "$Organism - $Strain"
+    OutDir=analysis/ApoplastP/$Organism/$Strain
+    ProgDir=/home/adamst/git_repos/tools/seq_tools/apoplastic_effectors
+    qsub $ProgDir/pred_apoplastP.sh $Secretome $BaseName $OutDir
+done
+```
+
+TEMPORARY COMMANDS FOR RUNNING ON HEAD NODE
+
+```bash
+for Secretome in $(ls gene_pred/combined_sigP_ORF/*/*/*_all_secreted.fa)
+do
+    Strain=$(echo $Secretome | rev | cut -f2 -d "/" | rev)
+    Organism=$(echo $Secretome | rev | cut -f3 -d "/" | rev)
+    echo "$Organism - $Strain"
+    BaseName="$Organism"_"$Strain"_ApoplastP_ORF
+    OutDir=analysis/ApoplastP/$Organism/$Strain
+    mkdir -p $OutDir
+    ApoplastP.py -o "$OutDir"/"$BaseName".txt -A "$OutDir"/"$BaseName".fa -i $Secretome
+done
+```
+
+The number of proteins predicted as being apoplastic effectors were summarised using the following commands
+
+```bash
+for File in $(ls analysis/ApoplastP/*/*/*_ApoplastP_ORF.txt)
+do
+    Strain=$(echo $File | rev | cut -f2 -d '/' | rev)
+    Organism=$(echo $File | rev | cut -f3 -d '/' | rev)
+    echo "$Organism - $Strain"
+    Headers=$(echo $File | sed 's/_ApoplastP_ORF.txt/_ApoplastP_headers_ORF.txt/g')
+    echo "Creating Headers file"
+    cat $File | grep 'Apoplastic' | cut -f1 > $Headers
+    echo "The number of genes predicted as Apoplastic effectors is:"
+    cat $Headers | wc -l
+    echo "Creating GFF3 file"
+    Gff=$(ls gene_pred/ORF_finder/$Organism/$Strain/"$Strain"_ORF.gff3)
+    OutName=$(echo $File | sed 's/.txt/.gff3/g')
+    cat $File | sed -r 's/\.t.$//g' > tmp.txt
+    cat $Gff | grep -w -f tmp.txt > $OutName
+    rm tmp.txt
+    echo "Creating Fasta files"
+    if [ -f repeat_masked/$Organism/$Strain/ncbi_edits_repmask/*_softmasked.fa ]
+    then
+        Assembly=$(ls repeat_masked/$Organism/$Strain/ncbi_edits_repmask/*_softmasked.fa)
+        echo $Assembly
+    elif [ -f repeat_masked/$Organism/$Strain/deconseq_Paen_repmask/*_softmasked.fa ]
+    then
+        Assembly=$(ls repeat_masked/$Organism/$Strain/deconseq_Paen_repmask/*_softmasked.fa)
+        echo $Assembly
+    else
+        Assembly=$(ls repeat_masked/quiver_results/polished/filtered_contigs_repmask/*_softmasked.fa)
+        echo $Assembly
+    fi
+    OutDir=analysis/ApoplastP/$Organism/$Strain
+    $ProgDir/gff2fasta.pl $Assembly $OutName $OutDir/"$Strain"_ApoplastP_ORF
+done
+```
+
+####Merge apoplastic effectors from augustus models and ORF fragments
+
+```bash
+for MergeDir in $(ls -d analysis/ApoplastP/*/*)
+do
+    Strain=$(echo "$MergeDir" | rev | cut -f1 -d '/' | rev)
+    Species=$(echo "$MergeDir" | rev | cut -f2 -d '/' | rev)
+    AugGff=$(ls $MergeDir/"$Strain"_ApoplastP.gff)
+    AugFa=$(ls gene_pred/final/"$Species"/"$Strain"/final/final_genes_combined.pep.fasta)
+    ORFsFa=$(ls gene_pred/ORF_finder/*/"$Strain"/"$Strain".aa_cat.fa)
+    ORFGff=$(ls$MergeDir/"$Strain"_ApoplastP_ORF.gff3)
+    ORFsInAug=$MergeDir/"$Strain"_ORFsInAug_ApoplastP.bed
+    AugInORFs=$MergeDir/"$Strain"_AugInORFs_ApoplastP.bed
+    ORFsUniq=$MergeDir/"$Strain"_ORFsUniq_ApoplastP.bed
+    AugUniq=$MergeDir/"$Strain"_Aug_Uniq_ApoplastP.bed
+    TotalApoplastPTxt=$MergeDir/"$Strain"_final_ApoplastP.txt
+    TotalApoplastPGff=$MergeDir/"$Strain"_final_ApoplastP.gff3
+    TotalApoplastPHeaders=$MergeDir/"$Strain"_Total_ApoplastP_headers.txt
+    bedtools intersect -wa -u -a $ORFGff -b $AugGff > $ORFsInAug
+    bedtools intersect -wa -u -a $AugGff -b $ORFGff > $AugInORFs
+    bedtools intersect -v -wa -a $ORFGff -b $AugGff > $ORFsUniq
+    bedtools intersect -v -wa -a $AugGff -b $ORFGff > $AugUniq
+    echo "$Species - $Strain"
+
+    echo "The number of ORF apoplastic effectors overlapping Augustus apoplastic effectors:"
+    cat $ORFsInAug | grep -w -e 'transcript' -e 'mRNA' | wc -l
+    echo "The number of Augustus apoplastic effectors overlapping ORF apoplastic effectors:"
+    cat $AugInORFs | grep -w -e 'transcript' -e 'mRNA' | wc -l
+    cat $AugInORFs | grep -w -e 'transcript' -e 'mRNA'  | cut -f9 | cut -f1 -d ';' | cut -f2 -d '=' > $TotalApoplastPTxt
+    echo "The number of apoplastic effectors unique to ORF models:"
+    cat $ORFsUniq | grep -w 'transcript'| grep -w -e 'transcript' -e 'mRNA'  | cut -f9 | cut -f4 -d ';' | cut -f2 -d '=' | wc -l
+    cat $ORFsUniq | grep -w 'transcript'| grep -w -e 'transcript' -e 'mRNA'  | cut -f9 | cut -f4 -d ';' | cut -f2 -d '=' >> $TotalApoplastPTxt
+    echo "The number of apoplastic effectors unique to Augustus models:"
+    cat $AugUniq | grep -w -e 'transcript' -e 'mRNA' | wc -l
+    cat $AugUniq | grep -w -e 'transcript' -e 'mRNA'  | cut -f9 | cut -f1 -d ';' | cut -f2 -d '=' >> $TotalApoplastPTxt
+
+    cat $AugInORFs $AugUniq $ORFsUniq | grep -w -f $TotalApoplastPTxt > $TotalApoplastPGff
+
+    ApoplastPFa=$MergeDir/"$Strain"_final_ApoplastP.fa
+    ProgDir=/home/adamst/git_repos/tools/gene_prediction/ORF_finder
+    $ProgDir/extract_from_fasta.py --fasta $AugFa --headers $TotalApoplastPTxt > $ApoplastPFa
+    $ProgDir/extract_from_fasta.py --fasta $ORFsFa --headers $TotalApoplastPTxt >> $ApoplastPFa
+    echo "The number of sequences extracted is"
+    cat $ApoplastPFa | grep '>' | wc -l
+    echo "$Strain done"
+done
+```
+
 <!-- Due to an unknown error, the softmasked files for SCRP249 and SCRP324 do not read into the hash table in the add_ORF_features.pl script. Wrapping the unmasked file every 60 characters provides an assembly file that does work.
 
 ```bash
