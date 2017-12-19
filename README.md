@@ -1681,18 +1681,8 @@ do
     Strain=$(echo $File | rev | cut -f2 -d '/' | rev)
     Organism=$(echo $File | rev | cut -f3 -d '/' | rev)
     echo "$Organism - $Strain"
-    Headers=$(echo $File | sed 's/_ApoplastP.txt/_ApoplastP_headers.txt/g')
-    echo "Creating Headers file"
-    cat $File | grep 'Apoplastic' | cut -f1 > $Headers
-    echo "The number of genes predicted as Apoplastic effectors is:"
-    cat $Headers | wc -l
-    echo "Creating GFF3 file"
+    Headers=$(echo $File | sed 's/_ApoplastP_ORF.txt/_ApoplastP_headers.txt/g')
     Gff=$(ls gene_pred/final/$Organism/$Strain/final/final_genes_appended_renamed.gff3)
-    OutName=$(echo $File | sed 's/.txt/.gff3/g')
-    cat $File | sed -r 's/\.t.$//g' > tmp.txt
-    cat $Gff | grep -w -f tmp.txt > $OutName
-    rm tmp.txt
-    echo "Creating Fasta files"
     if [ -f repeat_masked/$Organism/$Strain/ncbi_edits_repmask/*_softmasked.fa ]
     then
         Assembly=$(ls repeat_masked/$Organism/$Strain/ncbi_edits_repmask/*_softmasked.fa)
@@ -1702,8 +1692,9 @@ do
         Assembly=$(ls repeat_masked/$Organism/$Strain/deconseq_Paen_repmask/*_softmasked.fa)
         echo $Assembly
     fi
-    OutDir=analysis/ApoplastP/$Organism/$Strain
-    $ProgDir/gff2fasta.pl $Assembly $OutName $OutDir/"$Strain"_ApoplastP
+    Output=analysis/ApoplastP/$Organism/$Strain/"$Strain"_ApoplastP
+    ProgDir=/home/adamst/git_repos/tools/seq_tools/apoplastic_effectors
+    qsub $ProgDir/parse_apoplastP.sh $File $Headers $Gff $Assembly $Output
 done
 ```
 
@@ -2844,17 +2835,7 @@ do
     Organism=$(echo $File | rev | cut -f3 -d '/' | rev)
     echo "$Organism - $Strain"
     Headers=$(echo $File | sed 's/_ApoplastP_ORF.txt/_ApoplastP_headers_ORF.txt/g')
-    echo "Creating Headers file"
-    cat $File | grep 'Apoplastic' | cut -f1 > $Headers
-    echo "The number of genes predicted as Apoplastic effectors is:"
-    cat $Headers | wc -l
-    echo "Creating GFF3 file"
     Gff=$(ls gene_pred/ORF_finder/$Organism/$Strain/"$Strain"_ORF.gff3)
-    OutName=$(echo $File | sed 's/.txt/.gff3/g')
-    cat $File | sed -r 's/\.t.$//g' > tmp.txt
-    cat $Gff | grep -w -f tmp.txt > $OutName
-    rm tmp.txt
-    echo "Creating Fasta files"
     if [ -f repeat_masked/$Organism/$Strain/ncbi_edits_repmask/*_softmasked.fa ]
     then
         Assembly=$(ls repeat_masked/$Organism/$Strain/ncbi_edits_repmask/*_softmasked.fa)
@@ -2863,12 +2844,10 @@ do
     then
         Assembly=$(ls repeat_masked/$Organism/$Strain/deconseq_Paen_repmask/*_softmasked.fa)
         echo $Assembly
-    else
-        Assembly=$(ls repeat_masked/quiver_results/polished/filtered_contigs_repmask/*_softmasked.fa)
-        echo $Assembly
     fi
-    OutDir=analysis/ApoplastP/$Organism/$Strain
-    $ProgDir/gff2fasta.pl $Assembly $OutName $OutDir/"$Strain"_ApoplastP_ORF
+    Output=analysis/ApoplastP/$Organism/$Strain/"$Strain"_ApoplastP_ORF
+    ProgDir=/home/adamst/git_repos/tools/seq_tools/apoplastic_effectors
+    qsub $ProgDir/parse_apoplastP.sh $File $Headers $Gff $Assembly $Output
 done
 ```
 
