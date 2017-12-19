@@ -1083,12 +1083,16 @@ SCRP333
 
 Putative effector genes were identified within Augustus gene models and ORF fragments using a number of approaches:
 
-A) From Augustus gene models - Signal peptide & RxLR motif Regex search
-B) From Augustus gene models - HMM evidence of RxLR effectors
-C) From Augustus gene models - HMM evidence of CRN effectors
-D) From ORF fragments - Signal peptide & RxLR motif Regex search
-E) From ORF fragments - HMM evidence of RxLR effectors
-F) From ORF fragments - HMM evidence of CRN effectors
+A) From Augustus gene models - Signal peptides
+B) From Augustus gene models - Regex evidence of RxLRs
+C) From Augustus gene models - Hmm evidence of RxLR effectors
+D) From Augustus gene models - Hmm evidence of CRN effectors
+E) From Augustus gene models - ApoplastP prediction of apoplastic effectors
+F) From ORF fragments - Signal peptides
+G) From ORF fragments - Regex evidence of RxLRs
+H) From ORF fragments - Hmm evidence of RxLR effectors
+I) From ORF fragments - Hmm evidence of CRN effectors
+J) From ORF fragments - ApoplastP prediction of apoplastic effectors
 
 ##A) From Augustus gene models - Signal peptide & RxLR motif
 
