@@ -1248,7 +1248,7 @@ This represented the following number of unique genes:
 3,832
 ```
 
-####A.3The regular expression R.LR.{,40}[ED][ED][KR] has previously been used to identify RxLR effectors. The addition of an EER motif is significant as it has been shown as required for host uptake of the protein.
+####B) The regular expression R.LR.{,40}[ED][ED][KR] has previously been used to identify RxLR effectors. The addition of an EER motif is significant as it has been shown as required for host uptake of the protein.
 
 The RxLR_EER_regex_finder.py script was used to search for this regular expression and annotate the EER domain where present.
 
@@ -1329,7 +1329,7 @@ the number of SigP-RxLR genes are:	359
 the number of SigP-RxLR-EER genes are:	188
 ```
 
-####A.4) From Secreted gene models - HMM evidence of RxLR effectors
+####C) From Secreted gene models - HMM evidence of RxLR effectors
 
 ```bash
 for Strain in SCRP249 SCRP324 SCRP333
@@ -1383,7 +1383,7 @@ Initial search space (Z):             32,946  [actual number of targets]
 Domain search space  (domZ):             207  [number of targets reported over threshold]
 ```
 
-####A.5) Combining RxLRs from Regex and hmm searches
+####Combining RxLRs from Regex and hmm searches
 
 ```bash
 #Without EER
@@ -1640,6 +1640,70 @@ do
     cat $CRNlist | sed -r 's/\.t.$//g' > tmp.txt
     cat $Gff | grep -w -f tmp.txt > $OutName
     rm tmp.txt
+done
+```
+
+####E) From Augustus gene models - ApoplastP prediction of apoplastic effectors
+
+```bash
+for Secretome in $(ls gene_pred/combined_sigP_CQ/*/*/*_all_secreted.fa)
+do
+    Strain=$(echo $Secretome | rev | cut -f2 -d '/' | rev)
+    Organism=$(echo $Secretome | rev | cut -f3 -d '/' | rev)
+    echo "$Organism - $Strain"
+    BaseName="$Organism"_"$Strain"_ApoplastP
+    OutDir=analysis/ApoplastP/$Organism/$Strain
+    ProgDir=/home/adamst/git_repos/tools/seq_tools/apoplastic_effectors
+    qsub $ProgDir/pred_apoplastP.sh $Secretome $BaseName $OutDir
+done
+```
+
+TEMPORARY COMMANDS TO RUN ON THE HEAD NODE
+
+```bash
+for Secretome in $(ls gene_pred/combined_sigP_CQ/*/*/*_all_secreted.fa)
+do
+    Strain=$(echo $Secretome | rev | cut -f2 -d '/' | rev)
+    Organism=$(echo $Secretome | rev | cut -f3 -d '/' | rev)
+    echo "$Organism - $Strain"
+    BaseName="$Organism"_"$Strain"_ApoplastP
+    OutDir=analysis/ApoplastP/$Organism/$Strain
+    mkdir -p $OutDir
+    ApoplastP.py -o "$OutDir"/"$BaseName".txt -A "$OutDir"/"$BaseName".fa -i $Secretome
+done
+```
+
+The number of proteins predicted as being apoplastic effectors were summarised using the following commands
+
+```bash
+for File in $(ls analysis/ApoplastP/*/*/*_ApoplastP.txt)
+do
+    Strain=$(echo $File | rev | cut -f2 '/' | rev)
+    Organism=$(echo $File | rev | cut -f3 '/' | rev)
+    echo "$Organism - $Strain"
+    Headers=$(echo $File | sed 's/_ApoplastP.txt/_ApoplastP_headers.txt/g')
+    echo "Creating Headers file"
+    cat $File | grep 'Apoplastic' | cut -f1 > $Headers
+    echo "The number of genes predicted as Apoplastic effectors is:"
+    cat $Headers | wc -l
+    echo "Creating GFF3 file"
+    Gff=$(ls gene_pred/final/$Organism/$Strain/final/final_genes_appended_renamed.gff3)
+    OutName=$(echo $File | sed 's/.txt/.gff3/g')
+    cat $File | sed -r 's/\.t.$//g' > tmp.txt
+    cat $Gff | grep -w -f tmp.txt > $OutName
+    rm tmp.txt
+    echo "Creating Fasta files"
+    if [ -f repeat_masked/$Organism/$Strain/ncbi_edits_repmask/*_softmasked.fa ]
+    then
+        Assembly=$(ls repeat_masked/$Organism/$Strain/ncbi_edits_repmask/*_softmasked.fa)
+        echo $Assembly
+    elif [ -f repeat_masked/$Organism/$Strain/deconseq_Paen_repmask/*_softmasked.fa ]
+    then
+        Assembly=$(ls repeat_masked/$Organism/$Strain/deconseq_Paen_repmask/*_softmasked.fa)
+        echo $Assembly
+    fi
+    OutDir=analysis/ApoplastP/$Organism/$Strain
+    $ProgDir/gff2fasta.pl $Assembly $OutName $OutDir/"$Strain"_ApoplastP
 done
 ```
 
