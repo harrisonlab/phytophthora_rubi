@@ -1707,7 +1707,7 @@ do
 done
 ```
 
-####E) From ORF gene models - Signal peptide & RxLR motif
+####F) From ORF gene models - Signal peptides
 
 Required programs:
 
