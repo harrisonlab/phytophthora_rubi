@@ -1094,7 +1094,7 @@ H) From ORF fragments - Hmm evidence of RxLR effectors
 I) From ORF fragments - Hmm evidence of CRN effectors
 J) From ORF fragments - ApoplastP prediction of apoplastic effectors
 
-##A) From Augustus gene models - Signal peptide & RxLR motif
+###A) From Augustus gene models - Signal peptide
 
 Required programs:
 
