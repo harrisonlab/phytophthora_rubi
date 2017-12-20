@@ -1698,6 +1698,20 @@ do
 done
 ```
 
+```
+P.rubi - SCRP249
+The number of genes predicted as Apoplastic effectors is:
+3,610
+
+P.rubi - SCRP324
+The number of genes predicted as Apoplastic effectors is:
+3,780
+
+P.rubi - SCRP333
+The number of genes predicted as Apoplastic effectors is:
+3,789
+```
+
 ####F) From ORF gene models - Signal peptides
 
 Required programs:
