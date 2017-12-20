@@ -2851,6 +2851,20 @@ do
 done
 ```
 
+```
+P.rubi - SCRP249
+The number of genes predicted as Apoplastic effectors is:
+20,608
+
+P.rubi - SCRP324
+The number of genes predicted as Apoplastic effectors is:
+20,733
+
+P.rubi - SCRP333
+The number of genes predicted as Apoplastic effectors is:
+20,562
+```
+
 ####Merge apoplastic effectors from augustus models and ORF fragments
 
 ```bash
