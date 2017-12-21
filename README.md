@@ -1691,7 +1691,7 @@ do
     OutName=$(echo $File | sed 's/.fa/.gff/g')
     cat $Gff | grep -w -f $Headers > $OutName
     echo "Number of genes extracted into GFF3 file is:"
-    cat $OutName | grep -w 'gene' | wc -l
+    cat $OutName | grep -w 'start_codon' | wc -l
 done
 ```
 
@@ -2855,7 +2855,7 @@ do
     OutName=$(echo $File | sed 's/.fa/.gff/g')
     cat $Gff | grep -w -f $Headers > $OutName
     echo "Number of genes extracted into GFF3 file is:"
-    cat $OutName | grep -w 'gene' | wc -l
+    cat $OutName | grep -w 'start_codon' | wc -l
 done
 ```
 
