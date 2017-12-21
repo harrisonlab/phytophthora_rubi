@@ -1192,7 +1192,7 @@ Secreted proteins from different sources were combined into a single file:
 ```bash
 for Strain in SCRP249 SCRP324 SCRP333
 do
-    for Proteome in $(ls gene_pred/final/*/$Strain/final/final_genes_combined.pep.fasta)
+    for Proteome in $(ls gene_pred/final/*/$Strain/final/final_genes_appended_renamed.pep.fasta)
     do
         Organism=$(echo $Proteome | rev | cut -f4 -d '/' | rev)
         echo "$Organism - $Strain"
