@@ -2828,7 +2828,7 @@ done
 TEMPORARY COMMANDS FOR RUNNING ON HEAD NODE
 
 ```bash
-for Secretome in $(ls gene_pred/combined_sigP_ORF/*/*/*_all_secreted_merged.aa)
+for Secretome in $(ls gene_pred/combined_sigP_ORF/*/*/*_all_secreted.fa)
 do
     Strain=$(echo $Secretome | rev | cut -f2 -d "/" | rev)
     Organism=$(echo $Secretome | rev | cut -f3 -d "/" | rev)
@@ -2836,7 +2836,7 @@ do
     BaseName="$Organism"_"$Strain"_ApoplastP_ORF
     OutDir=analysis/ApoplastP/$Organism/$Strain
     mkdir -p $OutDir
-    ApoplastP.py -o "$OutDir"/"$BaseName".txt -A "$OutDir"/"$BaseName".fa -i $Secretome
+    ApoplastP.py -o "$OutDir"/"$BaseName".txt -A "$OutDir"/"$BaseName"_unmerged.fa -i $Secretome
 done
 ```
 
