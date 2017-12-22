@@ -2866,9 +2866,11 @@ do
     echo "$Organism - $Strain"
     Headers=$(echo $File | sed 's/_ApoplastP_unmerged.fa/_ApoplastP_unmerged_headers.txt/g')
     Gff=$(echo $File | sed 's/_ApoplastP_unmerged.fa/_ApoplastP_unmerged.gff3/g')
-    cat $File | grep '>' | sed 's/>//g' | cut -f1 > $Headers
+    echo "Creating Headers file"
+    cat $File | grep '>' | cut -f1 | tr -d '>' | sed -r 's/\.t.*$//' | tr -d ' ' > $Headers
     SigP_Gff=gene_pred/combined_sigP_ORF/$Organism/$Strain/"$Strain"_all_secreted_unmerged.gff
-    ProgDir=/home/adamst/git_repos/tools/seq_tools/feature_annotation
+    ORF_fasta=$(ls gene_pred/ORF_finder/*/$Strain/"$Strain".aa_cat.fa)
+    ProgDir=/home/adamst/git_repos/seq_tools/feature_annotation
     $ProgDir/gene_list_to_gff.pl $Headers $SigP_Gff ApoplastP_ORF Name Augustus > $Gff
     Apo_Merged_Gff=analysis/ApoplastP/$Organism/$Strain/"$Strain"_ApoplastP_ORF_merged.gff
     Apo_Merged_txt=analysis/ApoplastP/$Organism/$Strain/"$Strain"_ApoplastP_ORF_merged_headers.txt
@@ -2880,8 +2882,12 @@ do
     cat $Apo_Merged_Gff | grep 'transcript' | rev | cut -f1 -d '=' | rev > $Apo_Merged_txt
     echo "The number of genes predicted as Apoplastic effectors is:"
     cat $Apo_Merged_txt | wc -l
+    echo "The number of genes extracted to the GFF is:"
+    cat $Apo_Merged_Gff | grep 'transcript' | wc -l
     ORF_fasta=gene_pred/ORF_finder/$Organism/$Strain/"$Strain".aa_cat.fa
     $ProgDir/extract_from_fasta.py --fasta $ORF_fasta --headers $Apo_Merged_txt > $Apo_Merged_AA
+    echo "The number of genes extracted to the FASTA is:"
+    cat $Apo_Merged_AA | grep '>' | wc -l
 done
 ```
 
