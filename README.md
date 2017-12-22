@@ -2840,7 +2840,7 @@ do
 done
 ```
 
-The number of proteins predicted as being apoplastic effectors were summarised using the following commands
+The number of proteins predicted as being apoplastic effectors were summarised using the following commands, run in qlogin
 
 ```bash
 for File in $(ls analysis/ApoplastP/*/*/*_ApoplastP_ORF_unmerged.fa)
