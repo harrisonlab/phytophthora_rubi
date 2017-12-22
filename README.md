@@ -1685,17 +1685,14 @@ do
     Gff=$(ls gene_pred/final/$Organism/$Strain/final/final_genes_appended_renamed.gff3)
     Fasta=$(ls gene_pred/final/$Organism/$Strain/final/final_genes_appended_renamed.pep.fasta)
     echo "Creating Headers file"
-    cat $File | grep '>' | sed 's/>//g' | cut -f1 | tr -d '>' | tr -d ' ' | sort -g | uniq > $Headers
+    cat $File | grep '>' | cut -f1 | tr -d '>' | tr -d ' ' | sort -g | uniq > $Headers
     echo "The number of genes predicted as Apoplastic effectors is:"
     cat $Headers | wc -l
     echo "Creating GFF3 file"
-    OutName=$(echo $File | sed 's/.fa/.gff/g')
-    Test=analysis/ApoplastP/$Organism/$Strain/tmp.txt
-    cat $Headers | sed 's/\..*$//g' > $Test
-    cat $Gff | grep -w -f $Test > $OutName
-    rm $Test
+    OutName=$(echo $File | sed 's/_raw.fa/.gff/g')
+    cat $Gff | grep -w -f $Headers > $OutName
     echo "Number of genes extracted into GFF3 file is:"
-    cat $OutName | grep -w 'gene' | wc -l
+    cat $OutName | grep -w 'mRNA' | cut -f9 | cut -f1 -d ';' | cut -f2 -d '=' | wc -l
     echo "Creating parsed fasta file"
     Parsed_Fasta=$(echo $File | sed 's/_ApoplastP_raw.fa/_ApoplastP.fa/g')
     ProgDir=/home/adamst/git_repos/tools/gene_prediction/ORF_finder
@@ -1708,7 +1705,11 @@ done
 ```
 P.rubi - SCRP249
 The number of genes predicted as Apoplastic effectors is:
-3,610
+1,017
+Number of genes extracted into GFF file is:
+1,017
+Number of genes extracted to Fasta file is:
+1,017
 
 P.rubi - SCRP324
 The number of genes predicted as Apoplastic effectors is:
