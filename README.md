@@ -1713,11 +1713,19 @@ Number of genes extracted to Fasta file is:
 
 P.rubi - SCRP324
 The number of genes predicted as Apoplastic effectors is:
-3,780
+1,068
+Number of genes extracted into GFF file is:
+1,068
+Number of genes extracted to Fasta file is:
+1,068
 
 P.rubi - SCRP333
 The number of genes predicted as Apoplastic effectors is:
-3,789
+1,090
+Number of genes extracted into GFF file is:
+1,090
+Number of genes extracted to Fasta file is:
+1,090
 ```
 
 ####F) From ORF gene models - Signal peptides
