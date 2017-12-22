@@ -2852,7 +2852,7 @@ do
     Gff=$(echo $File | sed 's/_ApoplastP_unmerged.fa/_ApoplastP_unmerged.gff3/g')
     cat $File | grep '>' | sed 's/>//g' | cut -f1 > $Headers
     SigP_Gff=gene_pred/combined_sigP_ORF/$Organism/$Strain/"$Strain"_all_secreted_unmerged.gff
-    ProgDir=/home/adamst/git_repos/seq_tools/feature_annotation
+    ProgDir=/home/adamst/git_repos/tools/seq_tools/feature_annotation
     $ProgDir/gene_list_to_gff.pl $Headers $SigP_Gff ApoplastP_ORF Name Augustus > $Gff
     Apo_Merged_Gff=analysis/ApoplastP/$Organism/$Strain/"$Strain"_ApoplastP_ORF_merged.gff
     Apo_Merged_txt=analysis/ApoplastP/$Organism/$Strain/"$Strain"_ApoplastP_ORF_merged_headers.txt
