@@ -1685,14 +1685,17 @@ do
     Gff=$(ls gene_pred/final/$Organism/$Strain/final/final_genes_appended_renamed.gff3)
     Fasta=$(ls gene_pred/final/$Organism/$Strain/final/final_genes_appended_renamed.pep.fasta)
     echo "Creating Headers file"
-    cat $File | grep '>' | cut -f1 | tr -d '>' | tr -d ' ' | sort -g | uniq > $Headers
+    cat $File | grep '>' | sed 's/>//g' | cut -f1 | tr -d '>' | tr -d ' ' | sort -g | uniq > $Headers
     echo "The number of genes predicted as Apoplastic effectors is:"
     cat $Headers | wc -l
     echo "Creating GFF3 file"
-    OutName=$(echo $File | sed 's/_raw.fa/.gff/g')
-    cat $Gff | grep -w -f $Headers > $OutName
+    OutName=$(echo $File | sed 's/.fa/.gff/g')
+    Test=analysis/ApoplastP/$Organism/$Strain/tmp.txt
+    cat $Headers | sed 's/\..*$//g' > $Test
+    cat $Gff | grep -w -f $Test > $OutName
+    rm $Test
     echo "Number of genes extracted into GFF3 file is:"
-    cat $OutName | grep -w 'mRNA' | cut -f9 | cut -f1 -d ';' | cut -f2 -d '=' | wc -l
+    cat $OutName | grep -w 'gene' | wc -l
     echo "Creating parsed fasta file"
     Parsed_Fasta=$(echo $File | sed 's/_ApoplastP_raw.fa/_ApoplastP.fa/g')
     ProgDir=/home/adamst/git_repos/tools/gene_prediction/ORF_finder
@@ -2864,13 +2867,13 @@ do
     Strain=$(echo $File | rev | cut -f2 -d '/' | rev)
     Organism=$(echo $File | rev | cut -f3 -d '/' | rev)
     echo "$Organism - $Strain"
-    Headers=$(echo $File | sed 's/_ApoplastP_unmerged.fa/_ApoplastP_unmerged_headers.txt/g')
-    Gff=$(echo $File | sed 's/_ApoplastP_unmerged.fa/_ApoplastP_unmerged.gff3/g')
+    Headers=$(echo $File | sed 's/_ApoplastP_ORF_unmerged.fa/_ApoplastP_ORF_unmerged_headers.txt/g')
+    Gff=$(echo $File | sed 's/_ApoplastP_ORF_unmerged.fa/_ApoplastP_ORF_unmerged.gff3/g')
     echo "Creating Headers file"
     cat $File | grep '>' | cut -f1 | tr -d '>' | sed -r 's/\.t.*$//' | tr -d ' ' > $Headers
     SigP_Gff=gene_pred/combined_sigP_ORF/$Organism/$Strain/"$Strain"_all_secreted_unmerged.gff
     ORF_fasta=$(ls gene_pred/ORF_finder/*/$Strain/"$Strain".aa_cat.fa)
-    ProgDir=/home/adamst/git_repos/seq_tools/feature_annotation
+    ProgDir=/home/adamst/git_repos/tools/seq_tools/feature_annotation
     $ProgDir/gene_list_to_gff.pl $Headers $SigP_Gff ApoplastP_ORF Name Augustus > $Gff
     Apo_Merged_Gff=analysis/ApoplastP/$Organism/$Strain/"$Strain"_ApoplastP_ORF_merged.gff
     Apo_Merged_txt=analysis/ApoplastP/$Organism/$Strain/"$Strain"_ApoplastP_ORF_merged_headers.txt
@@ -2894,15 +2897,27 @@ done
 ```
 P.rubi - SCRP249
 The number of genes predicted as Apoplastic effectors is:
-20,608
+10,617
+The number of genes extracted to the GFF is:
+10,617
+The number of genes extracted to the FASTA is:
+10,617
 
 P.rubi - SCRP324
 The number of genes predicted as Apoplastic effectors is:
-20,733
+10,669
+The number of genes extracted to the GFF is:
+10,669
+The number of genes extracted to the FASTA is:
+10,669
 
 P.rubi - SCRP333
 The number of genes predicted as Apoplastic effectors is:
-20,562
+10,621
+The number of genes extracted to the GFF is:
+10,621
+The number of genes extracted to the FASTA is:
+10,621
 ```
 
 ####Merge apoplastic effectors from augustus models and ORF fragments
