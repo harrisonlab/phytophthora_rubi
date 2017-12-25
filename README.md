@@ -3230,6 +3230,7 @@ for Genes in $(ls gene_pred/annotation/P.rubi/*/*_genes_incl_ORFeffectors_conser
 do
     $ProgDir/sub_interproscan2.sh $Genes
 done
+
 ProgDir=/home/adamst/git_repos/tools/seq_tools/feature_annotation/interproscan/
 for Genes in $(ls gene_pred/annotation/P.rubi/*/*_genes_incl_ORFeffectors_noApoP.pep.fasta)
 do
