@@ -2982,6 +2982,7 @@ The total number of putative apoplastic effectors are:
 10,647
 The number of sequences extracted is
 10,647
+
 P.rubi - SCRP324
 The number of ORF apoplastic effectors overlapping Augustus apoplastic effectors:
 1,031
@@ -2995,6 +2996,7 @@ The total number of putative apoplastic effectors are:
 10,706
 The number of sequences extracted is
 10,706
+
 P.rubi - SCRP333
 The number of ORF apoplastic effectors overlapping Augustus apoplastic effectors:
 1,031
