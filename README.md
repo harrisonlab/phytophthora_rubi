@@ -3315,6 +3315,28 @@ do
     ProgDir=/home/adamst/git_repos/tools/seq_tools/feature_annotation/swissprot
     qsub $ProgDir/sub_swissprot.sh $Proteome $OutDir $SwissDbDir $SwissDbName
 done
+
+for Proteome in $(ls gene_pred/annotation/P.rubi/*/*_genes_incl_ORFeffectors_noApoP.pep.fasta)
+do
+    Strain=$(echo $Proteome | rev | cut -f2 -d '/' | rev)
+    Organism=$(echo $Proteome | rev | cut -f3 -d '/' | rev)
+    OutDir=gene_pred/swissprot/$Organism/$Strain/greedy_noApoP
+    SwissDbDir=../../uniprot/swissprot
+    SwissDbName=uniprot_sprot
+    ProgDir=/home/adamst/git_repos/tools/seq_tools/feature_annotation/swissprot
+    qsub $ProgDir/sub_swissprot.sh $Proteome $OutDir $SwissDbDir $SwissDbName
+done
+
+for Proteome in $(ls gene_pred/annotation/P.rubi/*/*_genes_incl_ORFeffectors_conservative_noApoP.pep.fasta)
+do
+    Strain=$(echo $Proteome | rev | cut -f2 -d '/' | rev)
+    Organism=$(echo $Proteome | rev | cut -f3 -d '/' | rev)
+    OutDir=gene_pred/swissprot/$Organism/$Strain/conservative_noApoP
+    SwissDbDir=../../uniprot/swissprot
+    SwissDbName=uniprot_sprot
+    ProgDir=/home/adamst/git_repos/tools/seq_tools/feature_annotation/swissprot
+    qsub $ProgDir/sub_swissprot.sh $Proteome $OutDir $SwissDbDir $SwissDbName
+done
 ```
 
 ##C)Identify genes with transmembrane domains
