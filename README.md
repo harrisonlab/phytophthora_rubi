@@ -3033,9 +3033,9 @@ do
         Strain=$(echo $GeneGff | rev | cut -d '/' -f3 | rev)
         Organism=$(echo $GeneGff | rev | cut -d '/' -f4 | rev)
         echo "$Strain - $Organism"
-        GffOrfRxLR=$(ls analysis/RxLR_effectors/combined_evidence/P.fragariae/$Strain/"$Strain"_ORFsUniq_RxLR_motif_hmm.gff)
-        GffOrfCRN=$(ls analysis/CRN_effectors/hmmer_CRN/P.fragariae/$Strain/"$Strain"_ORFsUniq_CRN_hmmer.bed)
-        GffOrfApo=$(ls analysis/ApoplastP/P.fragariae/$Strain/"$Strain"_ORFsUniq_ApoplastP.gff)
+        GffOrfRxLR=$(ls analysis/RxLR_effectors/combined_evidence/P.rubi/$Strain/"$Strain"_ORFsUniq_RxLR_motif_hmm.gff)
+        GffOrfCRN=$(ls analysis/CRN_effectors/hmmer_CRN/P.rubi/$Strain/"$Strain"_ORFsUniq_CRN_hmmer.bed)
+        GffOrfApo=$(ls analysis/ApoplastP/P.rubi/$Strain/"$Strain"_ORFsUniq_ApoplastP.gff)
         if [ -f repeat_masked/$Organism/$Strain/ncbi_edits_repmask/*_softmasked.fa ]
         then
             Assembly=$(ls repeat_masked/$Organism/$Strain/ncbi_edits_repmask/*_softmasked.fa)
@@ -3048,7 +3048,7 @@ do
             Assembly=$(ls repeat_masked/quiver_results/polished/filtered_contigs_repmask/*_softmasked.fa)
             echo $Assembly
         fi
-        OutDir=gene_pred/annotation/P.fragariae/$Strain
+        OutDir=gene_pred/annotation/P.rubi/$Strain
         mkdir -p $OutDir
         ProgDir=/home/adamst/git_repos/tools/gene_prediction/augustus
         $ProgDir/aug_gff_add_exon.py --inp_gff $GeneGff  \
@@ -3080,9 +3080,9 @@ do
         Strain=$(echo $GeneGff | rev | cut -d '/' -f3 | rev)
         Organism=$(echo $GeneGff | rev | cut -d '/' -f4 | rev)
         echo "$Strain - $Organism"
-        GffOrfRxLR=$(ls analysis/RxLR_effectors/combined_evidence/P.fragariae/$Strain/"$Strain"_ORFsUniq_RxLR_EER_motif_hmm.gff)
-        GffOrfCRN=$(ls analysis/CRN_effectors/hmmer_CRN/P.fragariae/$Strain/"$Strain"_ORFsUniq_CRN_hmmer.bed)
-        GffOrfApo=$(ls analysis/ApoplastP/P.fragariae/$Strain/"$Strain"_ORFsUniq_ApoplastP.gff)
+        GffOrfRxLR=$(ls analysis/RxLR_effectors/combined_evidence/P.rubi/$Strain/"$Strain"_ORFsUniq_RxLR_EER_motif_hmm.gff)
+        GffOrfCRN=$(ls analysis/CRN_effectors/hmmer_CRN/P.rubi/$Strain/"$Strain"_ORFsUniq_CRN_hmmer.bed)
+        GffOrfApo=$(ls analysis/ApoplastP/P.rubi/$Strain/"$Strain"_ORFsUniq_ApoplastP.gff)
         if [ -f repeat_masked/$Organism/$Strain/ncbi_edits_repmask/*_softmasked.fa ]
         then
             Assembly=$(ls repeat_masked/$Organism/$Strain/ncbi_edits_repmask/*_softmasked.fa)
@@ -3095,7 +3095,7 @@ do
             Assembly=$(ls repeat_masked/quiver_results/polished/filtered_contigs_repmask/*_softmasked.fa)
             echo $Assembly
         fi
-        OutDir=gene_pred/annotation/P.fragariae/$Strain
+        OutDir=gene_pred/annotation/P.rubi/$Strain
         mkdir -p $OutDir
         ProgDir=/home/adamst/git_repos/tools/gene_prediction/augustus
         $ProgDir/aug_gff_add_exon.py --inp_gff $GeneGff  \
@@ -3127,8 +3127,8 @@ do
         Strain=$(echo $GeneGff | rev | cut -d '/' -f3 | rev)
         Organism=$(echo $GeneGff | rev | cut -d '/' -f4 | rev)
         echo "$Strain - $Organism"
-        GffOrfRxLR=$(ls analysis/RxLR_effectors/combined_evidence/P.fragariae/$Strain/"$Strain"_ORFsUniq_RxLR_motif_hmm.gff)
-        GffOrfCRN=$(ls analysis/CRN_effectors/hmmer_CRN/P.fragariae/$Strain/"$Strain"_ORFsUniq_CRN_hmmer.bed)
+        GffOrfRxLR=$(ls analysis/RxLR_effectors/combined_evidence/P.rubi/$Strain/"$Strain"_ORFsUniq_RxLR_motif_hmm.gff)
+        GffOrfCRN=$(ls analysis/CRN_effectors/hmmer_CRN/P.rubi/$Strain/"$Strain"_ORFsUniq_CRN_hmmer.bed)
         if [ -f repeat_masked/$Organism/$Strain/ncbi_edits_repmask/*_softmasked.fa ]
         then
             Assembly=$(ls repeat_masked/$Organism/$Strain/ncbi_edits_repmask/*_softmasked.fa)
@@ -3141,7 +3141,7 @@ do
             Assembly=$(ls repeat_masked/quiver_results/polished/filtered_contigs_repmask/*_softmasked.fa)
             echo $Assembly
         fi
-        OutDir=gene_pred/annotation/P.fragariae/$Strain
+        OutDir=gene_pred/annotation/P.rubi/$Strain
         mkdir -p $OutDir
         ProgDir=/home/adamst/git_repos/tools/gene_prediction/augustus
         $ProgDir/aug_gff_add_exon.py --inp_gff $GeneGff  \
@@ -3171,8 +3171,8 @@ do
         Strain=$(echo $GeneGff | rev | cut -d '/' -f3 | rev)
         Organism=$(echo $GeneGff | rev | cut -d '/' -f4 | rev)
         echo "$Strain - $Organism"
-        GffOrfRxLR=$(ls analysis/RxLR_effectors/combined_evidence/P.fragariae/$Strain/"$Strain"_ORFsUniq_RxLR_EER_motif_hmm.gff)
-        GffOrfCRN=$(ls analysis/CRN_effectors/hmmer_CRN/P.fragariae/$Strain/"$Strain"_ORFsUniq_CRN_hmmer.bed)
+        GffOrfRxLR=$(ls analysis/RxLR_effectors/combined_evidence/P.rubi/$Strain/"$Strain"_ORFsUniq_RxLR_EER_motif_hmm.gff)
+        GffOrfCRN=$(ls analysis/CRN_effectors/hmmer_CRN/P.rubi/$Strain/"$Strain"_ORFsUniq_CRN_hmmer.bed)
         if [ -f repeat_masked/$Organism/$Strain/ncbi_edits_repmask/*_softmasked.fa ]
         then
             Assembly=$(ls repeat_masked/$Organism/$Strain/ncbi_edits_repmask/*_softmasked.fa)
@@ -3185,7 +3185,7 @@ do
             Assembly=$(ls repeat_masked/quiver_results/polished/filtered_contigs_repmask/*_softmasked.fa)
             echo $Assembly
         fi
-        OutDir=gene_pred/annotation/P.fragariae/$Strain
+        OutDir=gene_pred/annotation/P.rubi/$Strain
         mkdir -p $OutDir
         ProgDir=/home/adamst/git_repos/tools/gene_prediction/augustus
         $ProgDir/aug_gff_add_exon.py --inp_gff $GeneGff  \
