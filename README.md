@@ -3549,6 +3549,62 @@ do
 done
 ```
 
+Split fasta files into files no larger than 39,000 sequences
+
+```bash
+#Greedy
+for file in $(ls gene_pred/annotation/P.rubi/*/*effectors.pep.fasta)
+do
+    Strain=$(echo $file | rev | cut -f2 -d "/" | rev)
+    OutDir=split_files/P.rubi/$Strain
+    mkdir -p $OutDir
+    awk 'BEGIN {n_seq=0;} /^>/ {if(n_seq%39000==0){file=sprintf("greedy%d.fa",n_seq);} print >> file; n_seq++; next;} { print >> file; }' < $file
+    for output in $(ls *.fa | grep -v 'expression')
+    do
+    mv $output $OutDir/.
+    done
+done
+
+#Conservative
+for file in $(ls gene_pred/annotation/P.rubi/*/*conservative.pep.fasta)
+do
+    Strain=$(echo $file | rev | cut -f2 -d "/" | rev)
+    OutDir=split_files/P.rubi/$Strain
+    mkdir -p $OutDir
+    awk 'BEGIN {n_seq=0;} /^>/ {if(n_seq%39000==0){file=sprintf("conservative%d.fa",n_seq);} print >> file; n_seq++; next;} { print >> file; }' < $file
+    for output in $(ls *.fa | grep -v 'expression')
+    do
+    mv $output $OutDir/.
+    done
+done
+
+#Greedy_noApoP
+for file in $(ls gene_pred/annotation/P.rubi/*/*effectors_noApoP.pep.fasta)
+do
+    Strain=$(echo $file | rev | cut -f2 -d "/" | rev)
+    OutDir=split_files/P.rubi/$Strain
+    mkdir -p $OutDir
+    awk 'BEGIN {n_seq=0;} /^>/ {if(n_seq%39000==0){file=sprintf("greedy_noApoP%d.fa",n_seq);} print >> file; n_seq++; next;} { print >> file; }' < $file
+    for output in $(ls *.fa | grep -v 'expression')
+    do
+    mv $output $OutDir/.
+    done
+done
+
+#Conservative_noApoP
+for file in $(ls gene_pred/annotation/P.rubi/*/*conservative_noApoP.pep.fasta)
+do
+    Strain=$(echo $file | rev | cut -f2 -d "/" | rev)
+    OutDir=split_files/P.rubi/$Strain
+    mkdir -p $OutDir
+    awk 'BEGIN {n_seq=0;} /^>/ {if(n_seq%39000==0){file=sprintf("conservative_noApoP%d.fa",n_seq);} print >> file; n_seq++; next;} { print >> file; }' < $file
+    for output in $(ls *.fa | grep -v 'expression')
+    do
+    mv $output $OutDir/.
+    done
+done
+```
+
 Results were parsed to the file
 
 ```bash
