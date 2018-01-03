@@ -3274,7 +3274,7 @@ do
     Organism=$(echo $Proteome | rev | cut -d '/' -f3 | rev)
     echo "$Organism - $Strain"
     echo $Strain
-    InterProRaw=gene_pred/interproscan/$Organism/$Strain/greedy/raw
+    InterProRaw=gene_pred/interproscan/$Organism/$Strain/greedy_noApoP/raw
     $ProgDir/append_interpro_3.sh $Proteome $InterProRaw
 done
 
@@ -3285,7 +3285,7 @@ do
     Organism=$(echo $Proteome | rev | cut -d '/' -f3 | rev)
     echo "$Organism - $Strain"
     echo $Strain
-    InterProRaw=gene_pred/interproscan/$Organism/$Strain/conservative/raw
+    InterProRaw=gene_pred/interproscan/$Organism/$Strain/conservative_noApoP/raw
     $ProgDir/append_interpro_4.sh $Proteome $InterProRaw
 done
 ```
