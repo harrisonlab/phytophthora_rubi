@@ -3108,11 +3108,11 @@ The number of CRNs that also hit ApoplastP is:
 1
 The number of ApoplastP hits that are not RxLRs or CRNs is:
 9,047
-The number of RxLRs with an EER domain not hit by ApoplastP is:
+The number of RxLRs, with an EER domain, not hit by ApoplastP is:
 93
-The number of RxLRs with an EER domain also hit by ApoplastP is:
+The number of RxLRs, with an EER domain, also hit by ApoplastP is:
 10
-The number of ApoplastP hits that are not RxLRs with an EER domain or CRNs is:
+The number of ApoplastP hits that are not RxLRs, with an EER domain, or CRNs is:
 9,616
 
 P.rubi - SCRP324
@@ -3126,11 +3126,11 @@ The number of CRNs that also hit ApoplastP is:
 0
 The number of ApoplastP hits that are not RxLRs or CRNs is:
 9,060
-The number of RxLRs with an EER domain not hit by ApoplastP is:
+The number of RxLRs, with an EER domain, not hit by ApoplastP is:
 81
-The number of RxLRs with an EER domain also hit by ApoplastP is:
+The number of RxLRs, with an EER domain, also hit by ApoplastP is:
 10
-The number of ApoplastP hits that are not RxLRs with an EER domain or CRNs is:
+The number of ApoplastP hits that are not RxLRs, with an EER domain, or CRNs is:
 9,625
 
 P.rubi - SCRP333
@@ -3144,11 +3144,11 @@ The number of CRNs that also hit ApoplastP is:
 0
 The number of ApoplastP hits that are not RxLRs or CRNs is:
 9,012
-The number of RxLRs with an EER domain not hit by ApoplastP is:
+The number of RxLRs, with an EER domain, not hit by ApoplastP is:
 80
-The number of RxLRs with an EER domain also hit by ApoplastP is:
+The number of RxLRs, with an EER domain, also hit by ApoplastP is:
 10
-The number of ApoplastP hits that are not RxLRs with an EER domain or CRNs is:
+The number of ApoplastP hits that are not RxLRs, with an EER domain, or CRNs is:
 9,577
 ```
 
