@@ -3397,6 +3397,9 @@ do
 done
 ```
 
+Additional Gff clean up performed in the phytophthora_fragariae repository in
+Annotation&Short_Read_submissions.md
+
 #Functional annotation
 
 ##A)Interproscan
