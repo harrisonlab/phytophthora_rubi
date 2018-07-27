@@ -2952,7 +2952,7 @@ do
     echo "$Species - $Strain"
     echo "The number of ORF apoplastic effectors overlapping Augustus effectors:"
     cat $ORFsInAug | grep -w 'gene' | wc -l
-    echo "The number of Augustus apoplastic effectors overlapping ORF apoplastic effectors:"
+    echo "The number of Augustus effectors overlapping ORF apoplastic effectors:"
     cat $AugInORFs | grep -w 'gene' | wc -l
     echo "The number of apoplastic effectors unique to ORF models:"
     cat $ORFsUniq | grep -w 'transcript' | cut -f9 | cut -f1 -d ';' | cut -f2 -d '=' | wc -l
@@ -2976,46 +2976,46 @@ done
 
 ```
 P.rubi - SCRP249
-The number of ORF apoplastic effectors overlapping Augustus apoplastic effectors:
-987
-The number of Augustus apoplastic effectors overlapping ORF apoplastic effectors:
+The number of ORF apoplastic effectors overlapping Augustus effectors:
+1,050
+The number of Augustus effectors overlapping ORF apoplastic effectors:
 0
 The number of apoplastic effectors unique to ORF models:
-9,630
+9,567
 The number of apoplastic effectors unique to Augustus models:
 142
 The total number of putative apoplastic effectors are:
-10,647
+10,584
 The number of sequences extracted is
-10,647
+10,584
 
 P.rubi - SCRP324
 The number of ORF apoplastic effectors overlapping Augustus apoplastic effectors:
-1,031
+1,090
 The number of Augustus apoplastic effectors overlapping ORF apoplastic effectors:
 0
 The number of apoplastic effectors unique to ORF models:
-9,638
+9,579
 The number of apoplastic effectors unique to Augustus models:
 154
 The total number of putative apoplastic effectors are:
-10,706
+10,647
 The number of sequences extracted is
-10,706
+10,647
 
 P.rubi - SCRP333
 The number of ORF apoplastic effectors overlapping Augustus apoplastic effectors:
-1,031
+1,093
 The number of Augustus apoplastic effectors overlapping ORF apoplastic effectors:
 0
 The number of apoplastic effectors unique to ORF models:
-9,590
+9,528
 The number of apoplastic effectors unique to Augustus models:
 171
 The total number of putative apoplastic effectors are:
-10,680
+10,618
 The number of sequences extracted is
-10,680
+10,618
 ```
 
 <!-- Due to an unknown error, the softmasked files for SCRP249 and SCRP324 do not read into the hash table in the add_ORF_features.pl script. Wrapping the unmasked file every 60 characters provides an assembly file that does work.
