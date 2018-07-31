@@ -3585,15 +3585,6 @@ Results were parsed to the file
 nano gene_pred/GPIsom/P.rubi/SCRP249/greedy/GPI_pos.fa
 nano gene_pred/GPIsom/P.rubi/SCRP324/greedy/GPI_pos.fa
 nano gene_pred/GPIsom/P.rubi/SCRP333/greedy/GPI_pos.fa
-nano gene_pred/GPIsom/P.rubi/SCRP249/conservative/GPI_pos.fa
-nano gene_pred/GPIsom/P.rubi/SCRP324/conservative/GPI_pos.fa
-nano gene_pred/GPIsom/P.rubi/SCRP333/conservative/GPI_pos.fa
-nano gene_pred/GPIsom/P.rubi/SCRP249/greedy_noApoP/GPI_pos.fa
-nano gene_pred/GPIsom/P.rubi/SCRP324/greedy_noApoP/GPI_pos.fa
-nano gene_pred/GPIsom/P.rubi/SCRP333/greedy_noApoP/GPI_pos.fa
-nano gene_pred/GPIsom/P.rubi/SCRP249/conservative_noApoP/GPI_pos.fa
-nano gene_pred/GPIsom/P.rubi/SCRP324/conservative_noApoP/GPI_pos.fa
-nano gene_pred/GPIsom/P.rubi/SCRP333/conservative_noApoP/GPI_pos.fa
 ```
 
 Create a file just listing gene names
