@@ -3480,7 +3480,7 @@ do
 done
 ```
 
-##B)Swissprot
+### B)Swissprot
 
 ```bash
 for Proteome in $(ls gene_pred/annotation/P.rubi/*/*_genes_incl_ORFeffectors.pep.fasta)
@@ -3556,7 +3556,8 @@ do
 done
 ```
 
-##C)Identify genes with transmembrane domains
+### C)Identify genes with transmembrane domains
+
 WARNING: This has a high false positive rate - modified from the base script to allow greedy/conservative
 
 ```bash
@@ -3695,7 +3696,7 @@ do
 done
 ```
 
-##D)Identify genes with GPI anchors
+### D)Identify genes with GPI anchors
 
 Proteins were identified by submitting the combined protein file to webserver at http://gpi.unibe.ch
 
