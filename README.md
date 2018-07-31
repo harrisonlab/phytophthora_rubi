@@ -3626,4 +3626,36 @@ The number of proteins scoring positive for being GPI anchored is:
 1,367
 ```
 
+## Genes with transcription factor annotations
+
+Identify TFs & TRs in gene set
+Run in a qlogin session with a screen session
+
+```bash
+# greedy ApoP
+screen -a
+qlogin
+cd /home/groups/harrisonlab/project_files/phytophthora_rubi/
+for Proteome in $(ls gene_pred/annotation/P.rubi/*/*_genes_incl_ORFeffectors_renamed.pep.fasta)
+do
+    Strain=$(echo $Proteome | rev | cut -f2 -d '/' | rev)
+    Organism=$(echo $Proteome | rev | cut -f3 -d '/' | rev)
+    ProgDir=/home/adamst/git_repos/scripts/phytophthora/pathogen/hmmer
+    HMMModel=/home/adamst/TF_TR_Buitrago-Florez.hmm
+    OutDir=analysis/transcription_factors/$Organism/$Strain/greedy
+    mkdir -p $OutDir
+    HMMResults="$Strain"_TF_TR_hmmer.txt
+    hmmsearch -T 0 $HMMModel $Proteome > $OutDir/$HMMResults
+    echo "$Organism - $Strain:"
+    ProgDir=/home/adamst/git_repos/tools/seq_tools/transcription_factors
+    python $ProgDir/parse_hmmer_TF_TR.py --HMM_results $OutDir/$HMMResults --outdir $OutDir --Isolate $Strain
+    cat $OutDir/*TF_TR_Headers.txt | wc -l
+    HMMFasta="$Strain"_TF_TR_hmmer.fa
+    ProgDir=/home/adamst/git_repos/tools/gene_prediction/ORF_finder
+    $ProgDir/extract_from_fasta.py --fasta $Proteome --headers $OutDir/*TF_TR_Headers.txt > $OutDir/"$Strain"_TF_TR_hmmer.fa
+    Gff=$(ls gene_pred/annotation/$Organism/$Strain/*_genes_incl_ORFeffectors_renamed.gff3)
+    cat $Gff | grep -w -f $OutDir/*TF_TR_Headers.txt > $OutDir/"$Strain"_TF_TR.gff3
+done
+```
+
 Further downstream analysis done in Whole_Genome_Orthology.md and SNP_analysis.md
