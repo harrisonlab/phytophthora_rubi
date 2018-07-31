@@ -3400,9 +3400,10 @@ done
 Additional Gff clean up performed in the phytophthora_fragariae repository in
 Annotation&Short_Read_submissions.md
 
-#Functional annotation
+## Functional annotation
 
-##A)Interproscan
+### A)Interproscan
+
 Interproscan was used to give gene models functional annotations.
 
 ```bash
