@@ -3658,4 +3658,5 @@ do
 done
 ```
 
-Further downstream analysis done in Whole_Genome_Orthology.md and SNP_analysis.md
+Further downstream analysis done in OrthoFinder.md and SNP_analysis.md in
+phytophthora_fragariae repository
