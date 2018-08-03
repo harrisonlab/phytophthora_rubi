@@ -3657,9 +3657,9 @@ done
 ## Rename predicted effectors to allow further analysis with gene models on NCBI
 
 ```bash
-for Isolate in A4 Bc1 Bc16 Bc23 Nov27 Nov5 Nov71 Nov77 Nov9 ONT3 SCRP245_v2
+for Isolate in SCRP249 SCRP324 SCRP333
 do
-    Species=P.fragariae
+    Species=P.rubi
     RxLR_IDs=analysis/RxLR_effectors/combined_evidence/$Species/$Isolate/"$Isolate"_Total_RxLR_motif_hmm.txt
     RxLR_EER_IDs=analysis/RxLR_effectors/combined_evidence/$Species/$Isolate/"$Isolate"_Total_RxLR_EER_motif_hmm.txt
     CRN_IDs=analysis/CRN_effectors/hmmer_CRN/$Species/$Isolate/"$Isolate"_final_CRN.txt
@@ -3680,6 +3680,8 @@ do
     Phobius_Headers=analysis/phobius_CQ/$Species/$Isolate/"$Isolate"_phobius_Headers.txt
     Phobius_ORF_AA=analysis/phobius_ORF/$Species/$Isolate/"$Isolate"_phobius.aa
     Phobius_ORF_Headers=analysis/phobius_ORF/$Species/$Isolate/"$Isolate"_phobius_Headers.txt
+    Aug_Secreted=gene_pred/combined_sigP_CQ/$Species/$Isolate/"$Isolate"_secreted.txt
+    ORF_Secreted=gene_pred/combined_sigP_ORF/$Species/$Isolate/"$Isolate"_all_secreted_merged.txt
     cat $SigP2_AA | grep '>' | cut -f1 | tr -d '>' > $SigP2_Headers
     cat $SigP2_ORF_AA | grep '>' | cut -f1 | tr -d '>' > $SigP2_ORF_Headers
     cat $SigP3_AA | grep '>' | cut -f1 | tr -d '>' > $SigP3_Headers
@@ -3700,6 +3702,8 @@ do
     SigP4_ORF_Headers_renamed=gene_pred/ORF_signalp-4.1/$Species/$Isolate/"$Isolate"_aug_sp_Headers_renamed.txt
     Phobius_Headers_renamed=analysis/phobius_CQ/$Species/$Isolate/"$Isolate"_phobius_Headers_renamed.txt
     Phobius_ORF_Headers_renamed=analysis/phobius_ORF/$Species/$Isolate/"$Isolate"_phobius_ORF_Headers_renamed.txt
+    Aug_Secreted_renamed=gene_pred/combined_sigP_CQ/$Species/$Isolate/"$Isolate"_secreted_renamed.txt
+    ORF_Secreted_renamed=gene_pred/combined_sigP_ORF/$Species/$Isolate/"$Isolate"_all_secreted_merged_renamed.txt
     Log_file=gene_pred/annotation/$Species/$Isolate/Renaming_log.log
 
     ProgDir=/home/adamst/git_repos/scripts/phytophthora_fragariae
@@ -3715,6 +3719,64 @@ do
     python $ProgDir/Rename_Effectors.py --Feature_File $SigP4_ORF_Headers --Conversion_File $Log_file --Out_File $SigP4_ORF_Headers_renamed
     python $ProgDir/Rename_Effectors.py --Feature_File $Phobius_Headers --Conversion_File $Log_file --Out_File $Phobius_Headers_renamed
     python $ProgDir/Rename_Effectors.py --Feature_File $Phobius_ORF_Headers --Conversion_File $Log_file --Out_File $Phobius_ORF_Headers_renamed
+    python $ProgDir/Rename_Effectors.py --Feature_File $Aug_Secreted --Conversion_File $Log_file --Out_File $Aug_Secreted_renamed
+    python $ProgDir/Rename_Effectors.py --Feature_File $ORF_Secreted --Conversion_File $Log_file --Out_File $ORF_Secreted_renamed
+done
+```
+
+### Extract fasta files with renamed gene IDs for features
+
+```bash
+for Isolate in SCRP249 SCRP324 SCRP333
+do
+    Species=P.rubi
+    RxLR_IDs_renamed=analysis/RxLR_effectors/combined_evidence/$Species/$Isolate/"$Isolate"_Total_RxLR_motif_hmm_renamed.txt
+    RxLR_EER_IDs_renamed=analysis/RxLR_effectors/combined_evidence/$Species/$Isolate/"$Isolate"_Total_RxLR_EER_motif_hmm_renamed.txt
+    CRN_IDs_renamed=analysis/CRN_effectors/hmmer_CRN/$Species/$Isolate/"$Isolate"_final_CRN_renamed.txt
+    ApoP_IDs_renamed=analysis/ApoplastP/$Species/$Isolate/"$Isolate"_Total_ApoplastP_renamed.txt
+    SigP2_Headers_renamed=gene_pred/final_sigP/$Species/$Isolate/"$Isolate"_aug_sp_Headers_renamed.txt
+    SigP2_ORF_Headers_renamed=gene_pred/ORF_sigP/$Species/$Isolate/"$Isolate"_aug_sp_Headers_renamed.txt
+    SigP3_Headers_renamed=gene_pred/final_signalp-3.0/$Species/$Isolate/"$Isolate"_aug_sp_Headers_renamed.txt
+    SigP3_ORF_Headers_renamed=gene_pred/ORF_signalp-3.0/$Species/$Isolate/"$Isolate"_aug_sp_Headers_renamed.txt
+    SigP4_Headers_renamed=gene_pred/final_signalp-4.1/$Species/$Isolate/"$Isolate"_aug_sp_Headers_renamed.txt
+    SigP4_ORF_Headers_renamed=gene_pred/ORF_signalp-4.1/$Species/$Isolate/"$Isolate"_aug_sp_Headers_renamed.txt
+    Phobius_Headers_renamed=analysis/phobius_CQ/$Species/$Isolate/"$Isolate"_phobius_Headers_renamed.txt
+    Phobius_ORF_Headers_renamed=analysis/phobius_ORF/$Species/$Isolate/"$Isolate"_phobius_ORF_Headers_renamed.txt
+    Aug_Secreted_renamed=gene_pred/combined_sigP_CQ/$Species/$Isolate/"$Isolate"_secreted_renamed.txt
+    ORF_Secreted_renamed=gene_pred/combined_sigP_ORF/$Species/$Isolate/"$Isolate"_all_secreted_merged_renamed.txt
+
+    Proteome=gene_prediction/annotation/$Species/$Isolate/"$Isolate"_genes_incl_ORFeffectors_renamed.pep.fasta
+
+    RxLR_renamed_seqs=analysis/RxLR_effectors/combined_evidence/$Species/$Isolate/"$Isolate"_Total_RxLR_motif_hmm_renamed.fa
+    RxLR_EER_renamed_seqs=analysis/RxLR_effectors/combined_evidence/$Species/$Isolate/"$Isolate"_Total_RxLR_EER_motif_hmm_renamed.fa
+    CRN_renamed_seqs=analysis/CRN_effectors/hmmer_CRN/$Species/$Isolate/"$Isolate"_final_CRN_renamed.fa
+    ApoP_renamed_seqs=analysis/ApoplastP/$Species/$Isolate/"$Isolate"_Total_ApoplastP_renamed.fa
+    SigP2_renamed_seqs=gene_pred/final_sigP/$Species/$Isolate/"$Isolate"_aug_sp_Headers_renamed.fa
+    SigP2_ORF_renamed_seqs=gene_pred/ORF_sigP/$Species/$Isolate/"$Isolate"_aug_sp_Headers_renamed.fa
+    SigP3_renamed_seqs=gene_pred/final_signalp-3.0/$Species/$Isolate/"$Isolate"_aug_sp_Headers_renamed.fa
+    SigP3_ORF_renamed_seqs=gene_pred/ORF_signalp-3.0/$Species/$Isolate/"$Isolate"_aug_sp_Headers_renamed.fa
+    SigP4_renamed_seqs=gene_pred/final_signalp-4.1/$Species/$Isolate/"$Isolate"_aug_sp_Headers_renamed.fa
+    SigP4_ORF_renamed_seqs=gene_pred/ORF_signalp-4.1/$Species/$Isolate/"$Isolate"_aug_sp_Headers_renamed.fa
+    Phobius_renamed_seqs=analysis/phobius_CQ/$Species/$Isolate/"$Isolate"_phobius_Headers_renamed.fa
+    Phobius_ORF_renamed_seqs=analysis/phobius_ORF/$Species/$Isolate/"$Isolate"_phobius_ORF_Headers_renamed.fa
+    Aug_Secreted_renamed_seqs=gene_pred/combined_sigP_CQ/$Species/$Isolate/"$Isolate"_secreted_renamed.fa
+    ORF_Secreted_renamed_seqs=gene_pred/combined_sigP_ORF/$Species/$Isolate/"$Isolate"_all_secreted_merged_renamed.fa
+
+    ProgDir=/home/adamst/git_repos/tools/gene_prediction/ORF_finder
+    $ProgDir/extract_from_fasta.py --fasta $Proteome --headers $RxLR_IDs_renamed > $RxLR_renamed_seqs
+    $ProgDir/extract_from_fasta.py --fasta $Proteome --headers $RxLR_EER_IDs_renamed > $RxLR_EER_renamed_seqs
+    $ProgDir/extract_from_fasta.py --fasta $Proteome --headers $CRN_IDs_renamed > $CRN_renamed_seqs
+    $ProgDir/extract_from_fasta.py --fasta $Proteome --headers $ApoP_IDs_renamed > $ApoP_renamed_seqs
+    $ProgDir/extract_from_fasta.py --fasta $Proteome --headers $SigP2_Headers_renamed > $SigP2_renamed_seqs
+    $ProgDir/extract_from_fasta.py --fasta $Proteome --headers $SigP2_ORF_Headers_renamed > $SigP2_ORF_renamed_seqs
+    $ProgDir/extract_from_fasta.py --fasta $Proteome --headers $SigP3_Headers_renamed > $SigP3_renamed_seqs
+    $ProgDir/extract_from_fasta.py --fasta $Proteome --headers $SigP3_ORF_Headers_renamed > $SigP3_ORF_renamed_seqs
+    $ProgDir/extract_from_fasta.py --fasta $Proteome --headers $SigP4_Headers_renamed > $SigP4_renamed_seqs
+    $ProgDir/extract_from_fasta.py --fasta $Proteome --headers $SigP4_ORF_Headers_renamed > $SigP4_ORF_renamed_seqs
+    $ProgDir/extract_from_fasta.py --fasta $Proteome --headers $Phobius_Headers_renamed > $Phobius_renamed_seqs
+    $ProgDir/extract_from_fasta.py --fasta $Proteome --headers $Phobius_ORF_Headers_renamed > $Phobius_ORF_renamed_seqs
+    $ProgDir/extract_from_fasta.py --fasta $Proteome --headers $Aug_Secreted_renamed > $Aug_Secreted_renamed_seqs
+    $ProgDir/extract_from_fasta.py --fasta $Proteome --headers $ORF_Secreted_renamed > $ORF_Secreted_renamed_seqs
 done
 ```
 
