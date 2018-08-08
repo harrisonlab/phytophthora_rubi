@@ -2875,19 +2875,36 @@ do
     ORF_fasta=$(ls gene_pred/ORF_finder/*/$Strain/"$Strain".aa_cat.fa)
     ProgDir=/home/adamst/git_repos/tools/seq_tools/feature_annotation
     $ProgDir/gene_list_to_gff.pl $Headers $SigP_Gff ApoplastP_ORF Name Augustus > $Gff
-    Apo_Merged_Gff=analysis/ApoplastP/$Organism/$Strain/"$Strain"_ApoplastP_ORF_merged.gff
+    Apo_Merged_Gff_1_strand=analysis/ApoplastP/$Organism/$Strain/"$Strain"_ApoplastP_ORF_merged_1_strand.gff
     Apo_Merged_txt=analysis/ApoplastP/$Organism/$Strain/"$Strain"_ApoplastP_ORF_merged_headers.txt
     Apo_Merged_AA=analysis/ApoplastP/$Organism/$Strain/"$Strain"_ApoplastP_ORF_merged.aa
+    Apo_Merged_Gff=analysis/ApoplastP/$Organism/$Strain/"$Strain"_ApoplastP_ORF_merged.gff
+    Apo_Merged_Gff_no_strands=analysis/ApoplastP/$Organism/$Strain/"$Strain"_ApoplastP_ORF_merged_no_strands.gff
+    # Remove features on the same strand
     ProgDir=/home/adamst/git_repos/scripts/phytophthora/pathogen/merge_gff
     $ProgDir/make_gff_database.py --inp $Gff --db sigP_ORF_ApoP.db
+    echo "First database made"
     ProgDir=/home/adamst/git_repos/tools/gene_prediction/ORF_finder
-    $ProgDir/merge_sigP_ORFs.py --inp sigP_ORF_ApoP.db --id sigP_ORF_ApoplastP --out sigP_ORF_ApoP_merged.db --gff > $Apo_Merged_Gff
-    cat $Apo_Merged_Gff | grep 'transcript' | rev | cut -f1 -d '=' | rev > $Apo_Merged_txt
+    $ProgDir/merge_sigP_ORFs.py --inp sigP_ORF_ApoP.db --id sigP_ORF_ApoplastP --out sigP_ORF_ApoP_merged.db --gff > $Apo_Merged_Gff_1_strand
+    echo "Overlapping features on the same strand removed"
+    # Modify Gff to remove all strand specification
+    Gff_no_strands=analysis/ApoplastP/$Organism/$Strain/"$Strain"_ORF_ApoplastP_no_strands.gff3
+    cat $Gff | sed 's/+/./g' | sed 's/-/./g' > $Gff_no_strands
+    ProgDir=/home/adamst/git_repos/scripts/phytophthora/pathogen/merge_gff
+    $ProgDir/make_gff_database.py --inp $Gff_no_strands --db sigP_ORF_ApoP_mod.db
+    echo "Second database made"
+    ProgDir=/home/adamst/git_repos/tools/gene_prediction/ORF_finder
+    $ProgDir/merge_sigP_ORFs.py --inp sigP_ORF_ApoP_mod.db --id sigP_ORF_ApoplastP --out sigP_ORF_ApoP_merged_mod.db --gff > $Apo_Merged_Gff_no_strands
+    echo "Overlapping features on opposite strands removed"
+    cat $Apo_Merged_Gff_no_strands | grep 'transcript' | rev | cut -f1 -d '=' | rev > $Apo_Merged_txt
+    ProgDir=/home/adamst/git_repos/tools/seq_tools/feature_annotation
+    $ProgDir/gene_list_to_gff.pl $Apo_Merged_txt $Gff ApoplastP_ORF Name Augustus > $Apo_Merged_Gff
     echo "The number of genes predicted as Apoplastic effectors is:"
     cat $Apo_Merged_txt | wc -l
     echo "The number of genes extracted to the GFF is:"
     cat $Apo_Merged_Gff | grep 'transcript' | wc -l
     ORF_fasta=gene_pred/ORF_finder/$Organism/$Strain/"$Strain".aa_cat.fa
+    ProgDir=/home/adamst/git_repos/tools/gene_prediction/ORF_finder
     $ProgDir/extract_from_fasta.py --fasta $ORF_fasta --headers $Apo_Merged_txt > $Apo_Merged_AA
     echo "The number of genes extracted to the FASTA is:"
     cat $Apo_Merged_AA | grep '>' | wc -l
