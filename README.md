@@ -2914,27 +2914,27 @@ done
 ```
 P.rubi - SCRP249
 The number of genes predicted as Apoplastic effectors is:
-10,617
+10,341
 The number of genes extracted to the GFF is:
-10,617
+10,341
 The number of genes extracted to the FASTA is:
-10,617
+10,341
 
 P.rubi - SCRP324
 The number of genes predicted as Apoplastic effectors is:
-10,669
+10,403
 The number of genes extracted to the GFF is:
-10,669
+10,403
 The number of genes extracted to the FASTA is:
-10,669
+10,403
 
 P.rubi - SCRP333
 The number of genes predicted as Apoplastic effectors is:
-10,621
+10,354
 The number of genes extracted to the GFF is:
-10,621
+10,354
 The number of genes extracted to the FASTA is:
-10,621
+10,354
 ```
 
 ####Merge apoplastic effectors from augustus models and ORF fragments
