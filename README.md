@@ -3142,13 +3142,13 @@ The number of CRNs not hit by ApoplastP is:
 The number of CRNs that also hit ApoplastP is:
 1
 The number of ApoplastP hits that are not RxLRs or CRNs is:
-8,985
+8,817
 The number of RxLRs, with an EER domain, not hit by ApoplastP is:
 93
 The number of RxLRs, with an EER domain, also hit by ApoplastP is:
 10
 The number of ApoplastP hits that are not RxLRs, with an EER domain, or CRNs is:
-9,553
+9,371
 
 P.rubi - SCRP324
 The number of RxLRs not hit by ApoplastP is:
@@ -3160,13 +3160,13 @@ The number of CRNs not hit by ApoplastP is:
 The number of CRNs that also hit ApoplastP is:
 0
 The number of ApoplastP hits that are not RxLRs or CRNs is:
-9,002
+8,848
 The number of RxLRs, with an EER domain, not hit by ApoplastP is:
 81
 The number of RxLRs, with an EER domain, also hit by ApoplastP is:
 10
 The number of ApoplastP hits that are not RxLRs, with an EER domain, or CRNs is:
-9,566
+9,397
 
 P.rubi - SCRP333
 The number of RxLRs not hit by ApoplastP is:
@@ -3178,13 +3178,13 @@ The number of CRNs not hit by ApoplastP is:
 The number of CRNs that also hit ApoplastP is:
 0
 The number of ApoplastP hits that are not RxLRs or CRNs is:
-8,950
+8,793
 The number of RxLRs, with an EER domain, not hit by ApoplastP is:
 80
 The number of RxLRs, with an EER domain, also hit by ApoplastP is:
 10
 The number of ApoplastP hits that are not RxLRs, with an EER domain, or CRNs is:
-9,515
+9,344
 ```
 
 ## Making a combined file of Braker and CodingQuary genes with additional ORF effector candidates
