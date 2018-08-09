@@ -3006,45 +3006,45 @@ done
 ```
 P.rubi - SCRP249
 The number of ORF apoplastic effectors overlapping Augustus effectors:
-1,050
+958
 The number of Augustus effectors overlapping ORF apoplastic effectors:
 0
 The number of apoplastic effectors unique to ORF models:
-9,567
+9,383
 The number of apoplastic effectors unique to Augustus models:
 142
 The total number of putative apoplastic effectors are:
-10,584
+10,400
 The number of sequences extracted is
-10,584
+10,400
 
 P.rubi - SCRP324
 The number of ORF apoplastic effectors overlapping Augustus apoplastic effectors:
-1,090
+995
 The number of Augustus apoplastic effectors overlapping ORF apoplastic effectors:
 0
 The number of apoplastic effectors unique to ORF models:
-9,579
+9,408
 The number of apoplastic effectors unique to Augustus models:
 154
 The total number of putative apoplastic effectors are:
-10,647
+10,476
 The number of sequences extracted is
-10,647
+10,476
 
 P.rubi - SCRP333
 The number of ORF apoplastic effectors overlapping Augustus apoplastic effectors:
-1,093
+999
 The number of Augustus apoplastic effectors overlapping ORF apoplastic effectors:
 0
 The number of apoplastic effectors unique to ORF models:
-9,528
+9,355
 The number of apoplastic effectors unique to Augustus models:
 171
 The total number of putative apoplastic effectors are:
-10,618
+10,445
 The number of sequences extracted is
-10,618
+10,445
 ```
 
 <!-- Due to an unknown error, the softmasked files for SCRP249 and SCRP324 do not read into the hash table in the add_ORF_features.pl script. Wrapping the unmasked file every 60 characters provides an assembly file that does work.
