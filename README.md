@@ -3435,7 +3435,7 @@ Interproscan was used to give gene models functional annotations.
 ProgDir=/home/adamst/git_repos/tools/seq_tools/feature_annotation/interproscan/
 for Genes in $(ls gene_pred/annotation/P.rubi/*/*_genes_incl_ORFeffectors_renamed.pep.fasta)
 do
-    $ProgDir/sub_interproscan.sh $Genes
+    $ProgDir/sub_interproscan_TA.sh $Genes
 done
 ```
 
@@ -3450,7 +3450,7 @@ do
     echo "$Organism - $Strain"
     echo $Strain
     InterProRaw=gene_pred/interproscan/$Organism/$Strain/raw
-    $ProgDir/append_interpro.sh $Proteome $InterProRaw
+    $ProgDir/append_interpro_TA.sh $Proteome $InterProRaw
 done
 ```
 
