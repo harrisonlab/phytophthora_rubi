@@ -427,7 +427,7 @@ do
 done   
 ```
 
-For assemblies cleaned after NCBI detection of contaminants
+For manually cleaned assemblies
 
 ```bash
 ProgDir=/home/adamst/git_repos/tools/seq_tools/repeat_masking
