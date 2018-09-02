@@ -116,7 +116,8 @@ SCRP324: 1,209 (No change)
 ```
 
 Contig 1 of SCRP324 is a paenibacillus genome, no other contigs hit to it.
-Remove this single contig
+
+## Remove this single contig
 
 ```bash
 for Assembly in $(ls assembly/spades/P.*/*/ncbi_edits/contigs_min_500bp_renamed.fasta)
@@ -137,5 +138,20 @@ do
     ProgDir=/home/adamst/git_repos/tools/seq_tools/assemblers/assembly_qc/remove_contaminants
     $ProgDir/remove_contaminants.py --inp $Assembly --out $OutDir/contigs_min_500bp_renamed.fasta --coord_file $NCBI_report > $OutDir/log.txt
     # $ProgDir/remove_contaminants.py --keep_mitochondria --inp $Assembly --out $OutDir/contigs_min_500bp_renamed.fasta --coord_file $NCBI_report > $OutDir/log.txt
+done
+```
+
+### Summarise with QUAST
+
+```bash
+for Assembly in $(ls assembly/spades/*/*/manual_edits/contigs_min_500bp_renamed.fasta)
+do
+    Kmer=$(echo $Assembly | rev | cut -f2 -d '/' | rev)
+    Strain=$(echo $Assembly | rev | cut -f3 -d '/' | rev)
+    Organism=$(echo $Assembly | rev | cut -f4 -d '/' | rev)
+    # OutDir=assembly/spades/$Organism/$Strain/filtered_contigs
+    OutDir=$(dirname $Assembly)
+    ProgDir=/home/adamst/git_repos/tools/seq_tools/assemblers/assembly_qc/quast
+    qsub $ProgDir/sub_quast.sh $Assembly $OutDir
 done
 ```
