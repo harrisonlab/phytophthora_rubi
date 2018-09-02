@@ -438,7 +438,7 @@ do
         qsub $ProgDir/rep_modeling.sh $BestAss
         qsub $ProgDir/transposonPSI.sh $BestAss
     done
-done   
+done
 ```
 
 The number of bases masked by transposonPSI and Repeatmasker were summarised using the following commands:
