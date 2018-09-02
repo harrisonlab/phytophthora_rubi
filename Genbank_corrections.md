@@ -155,3 +155,14 @@ do
     qsub $ProgDir/sub_quast.sh $Assembly $OutDir
 done
 ```
+
+```
+Number of contigs > 1kb:
+SCRP324: 9,080 (No change)
+
+N50:
+SCRP324: 16,934 (No change)
+
+L50:
+SCRP324: 1,218 (No change)
+```
