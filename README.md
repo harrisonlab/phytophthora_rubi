@@ -1138,9 +1138,9 @@ do
             done  
             printf "\n"
             echo $File
-            qsub $ProgDir/pred_sigP.sh $File
-            qsub $ProgDir/pred_sigP.sh $File signalp-3.0
-            qsub $ProgDir/pred_sigP.sh $File signalp-4.1
+            qsub $ProgDir/pred_sigP_modified.sh $File
+            qsub $ProgDir/pred_sigP_modified.sh $File signalp-3.0
+            qsub $ProgDir/pred_sigP_modified.sh $File signalp-4.1
         done
     done
 done
