@@ -524,10 +524,10 @@ do
 done
 ```
 
-For assemblies cleaned for NCBI
+For manually cleaned assemblies
 
 ```bash
-for File in $(ls -d repeat_masked/P.*/*/ncbi_edits_repmask/*_contigs_softmasked.fa)
+for File in $(ls -d repeat_masked/P.*/*/manual_edits_repmask/*_contigs_softmasked.fa)
 do
     OutDir=$(dirname $File)
     TPSI=$(ls $OutDir/*_contigs_unmasked.fa.TPSI.allHits.chains.gff3)
