@@ -976,9 +976,9 @@ Fragmented genes: 8
 Missing genes: 17
 
 SCRP324
-Complete and single copy genes: 269
-Complete and duplicated genes: 10
-Fragmented genes: 7
+Complete and single copy genes: 265
+Complete and duplicated genes: 11
+Fragmented genes: 10
 Missing genes: 17
 
 SCRP333
