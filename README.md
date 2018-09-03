@@ -938,11 +938,11 @@ Total:
 
 P.rubi - SCRP324
 Braker:
-30,129
+20,707
 CodingQuarry:
-2,596
+10,524
 Total:
-32,725
+31,231
 
 P.rubi - SCRP333
 Braker:
