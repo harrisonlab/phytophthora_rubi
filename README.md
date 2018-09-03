@@ -2690,10 +2690,10 @@ The number of CRNs common to both models are:
 Number of CRN ORFs after merging:
 131
 Searching for LFLAK domains in: P.rubi SCRP324
-Initial search space (Z):             651,364  [actual number of targets]
+Initial search space (Z):             647,415  [actual number of targets]
 Domain search space  (domZ):             294  [number of targets reported over threshold]
 Searching for DWL domains in: P.rubi SCRP324
-Initial search space (Z):             651,364  [actual number of targets]
+Initial search space (Z):             647,415  [actual number of targets]
 Domain search space  (domZ):             440  [number of targets reported over threshold]
 The number of CRNs common to both models are:
 217
