@@ -744,10 +744,10 @@ do
 done
 ```
 
-Repeat for assemblies cleaned for NCBI
+Repeat for manually cleaned assemblies
 
 ```bash
-for Assembly in $(ls repeat_masked/*/*/ncbi_edits_repmask/*_contigs_unmasked.fa | grep -e 'SCRP324')
+for Assembly in $(ls repeat_masked/*/*/manual_edits_repmask/*_contigs_unmasked.fa)
 do
     Strain=$(echo $Assembly| rev | cut -d '/' -f3 | rev)
     Organism=$(echo $Assembly | rev | cut -d '/' -f4 | rev)
