@@ -460,10 +460,10 @@ do
 done
 ```
 
-For assemblies cleaned for ncbi
+For manualy cleaned assemblies
 
 ```bash
-for RepDir in $(ls -d repeat_masked/P.*/*/ncbi_edits_repmask)
+for RepDir in $(ls -d repeat_masked/P.*/*/manual_edits_repmask)
 do
     Strain=$(echo $RepDir | rev | cut -f2 -d '/' | rev)
     Organism=$(echo $RepDir | rev | cut -f3 -d '/' | rev)  
