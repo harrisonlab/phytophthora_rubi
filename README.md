@@ -2936,11 +2936,11 @@ The number of genes extracted to the FASTA is:
 
 P.rubi - SCRP324
 The number of genes predicted as Apoplastic effectors is:
-10,403
+10,280
 The number of genes extracted to the GFF is:
-10,403
+10,280
 The number of genes extracted to the FASTA is:
-10,403
+10,280
 
 P.rubi - SCRP333
 The number of genes predicted as Apoplastic effectors is:
