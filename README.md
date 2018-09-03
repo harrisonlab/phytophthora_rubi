@@ -550,16 +550,17 @@ Quality of genome assemblies was assessed by looking for the gene space in the a
 for Strain in SCRP249 SCRP324 SCRP333
 do
     Organism=P.rubi
-    if [ -f repeat_masked/$Organism/$Strain/ncbi_edits_repmask/*_softmasked_repeatmasker_TPSI_appended.fa ]
+    if [ -f repeat_masked/$Organism/$Strain/manualedits_repmask/*_softmasked_repeatmasker_TPSI_appended.fa ]
+    then
+        Assembly=$(ls repeat_masked/$Organism/$Strain/manual_edits_repmask/*_softmasked_repeatmasker_TPSI_appended.fa)
+        echo $Assembly
+    elif [ -f repeat_masked/$Organism/$Strain/ncbi_edits_repmask/*_softmasked_repeatmasker_TPSI_appended.fa ]
     then
         Assembly=$(ls repeat_masked/$Organism/$Strain/ncbi_edits_repmask/*_softmasked_repeatmasker_TPSI_appended.fa)
         echo $Assembly
     elif [ -f repeat_masked/$Organism/$Strain/deconseq_Paen_repmask/*_softmasked_repeatmasker_TPSI_appended.fa ]
     then
         Assembly=$(ls repeat_masked/$Organism/$Strain/deconseq_Paen_repmask/*_softmasked_repeatmasker_TPSI_appended.fa)
-        echo $Assembly
-    else
-        Assembly=$(ls repeat_masked/quiver_results/Bc16/filtered_contigs_repmask/*_softmasked_repeatmasker_TPSI_appended.fa)
         echo $Assembly
     fi
     ProgDir=/home/adamst/git_repos/tools/gene_prediction/busco
