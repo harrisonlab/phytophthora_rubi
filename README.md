@@ -1011,16 +1011,17 @@ Open reading frame predictions were made using the atg.pl script as part of the 
 for Strain in SCRP249 SCRP324 SCRP333
 do
     Organism=P.rubi
-    if [ -f repeat_masked/$Organism/$Strain/ncbi_edits_repmask/*_unmasked.fa ]
+    if [ -f repeat_masked/$Organism/$Strain/manual_edits_repmask/*_unmasked.fa ]
+    then
+        Assembly=$(ls repeat_masked/$Organism/$Strain/manual_edits_repmask/*_unmasked.fa)
+        echo $Assembly
+    elif [ -f repeat_masked/$Organism/$Strain/ncbi_edits_repmask/*_unmasked.fa ]
     then
         Assembly=$(ls repeat_masked/$Organism/$Strain/ncbi_edits_repmask/*_unmasked.fa)
         echo $Assembly
     elif [ -f repeat_masked/$Organism/$Strain/deconseq_Paen_repmask/*_unmasked.fa ]
     then
         Assembly=$(ls repeat_masked/$Organism/$Strain/deconseq_Paen_repmask/*_unmasked.fa)
-        echo $Assembly
-    else
-        Assembly=$(ls repeat_masked/quiver_results/Bc16/filtered_contigs_repmask/*_unmasked.fa)
         echo $Assembly
     fi
     ProgDir=/home/adamst/git_repos/tools/gene_prediction/ORF_finder
