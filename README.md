@@ -3216,7 +3216,11 @@ do
         CRN_No_ApoP=$MergeDir/"$Strain"_CRN_No_ApoP_ORFs.gff
         CRN_Plus_ApoP=$MergeDir/"$Strain"_CRN_Plus_ApoP_ORFs.gff
         ApoP_No_RxLR_CRN=$MergeDir/"$Strain"_ApoP_No_RxLR_CRN_ORFs.gff
-        if [ -f repeat_masked/$Organism/$Strain/ncbi_edits_repmask/*_softmasked.fa ]
+        if [ -f repeat_masked/$Organism/$Strain/manual_edits_repmask/*_softmasked.fa ]
+        then
+            Assembly=$(ls repeat_masked/$Organism/$Strain/manual_edits_repmask/*_softmasked.fa)
+            echo $Assembly
+        elif [ -f repeat_masked/$Organism/$Strain/ncbi_edits_repmask/*_softmasked.fa ]
         then
             Assembly=$(ls repeat_masked/$Organism/$Strain/ncbi_edits_repmask/*_softmasked.fa)
             echo $Assembly
@@ -3285,7 +3289,11 @@ do
         CRN_No_ApoP=$MergeDir/"$Strain"_CRN_No_ApoP_ORFs.gff
         CRN_Plus_ApoP=$MergeDir/"$Strain"_CRN_Plus_ApoP_ORFs.gff
         ApoP_No_RxLR_EER_CRN=$MergeDir/"$Strain"_ApoP_No_RxLR_EER_CRN_ORFs.gff
-        if [ -f repeat_masked/$Organism/$Strain/ncbi_edits_repmask/*_softmasked.fa ]
+        if [ -f repeat_masked/$Organism/$Strain/manual_edits_repmask/*_softmasked.fa ]
+        then
+            Assembly=$(ls repeat_masked/$Organism/$Strain/manual_edits_repmask/*_softmasked.fa)
+            echo $Assembly
+        elif [ -f repeat_masked/$Organism/$Strain/ncbi_edits_repmask/*_softmasked.fa ]
         then
             Assembly=$(ls repeat_masked/$Organism/$Strain/ncbi_edits_repmask/*_softmasked.fa)
             echo $Assembly
@@ -3350,7 +3358,11 @@ do
         echo "$Strain - $Organism"
         GffOrfRxLR=$(ls analysis/RxLR_effectors/combined_evidence/P.rubi/$Strain/"$Strain"_ORFsUniq_RxLR_motif_hmm.gff)
         GffOrfCRN=$(ls analysis/CRN_effectors/hmmer_CRN/P.rubi/$Strain/"$Strain"_ORFsUniq_CRN_hmmer.bed)
-        if [ -f repeat_masked/$Organism/$Strain/ncbi_edits_repmask/*_softmasked.fa ]
+        if [ -f repeat_masked/$Organism/$Strain/manual_edits_repmask/*_softmasked.fa ]
+        then
+            Assembly=$(ls repeat_masked/$Organism/$Strain/manual_edits_repmask/*_softmasked.fa)
+            echo $Assembly
+        elif [ -f repeat_masked/$Organism/$Strain/ncbi_edits_repmask/*_softmasked.fa ]
         then
             Assembly=$(ls repeat_masked/$Organism/$Strain/ncbi_edits_repmask/*_softmasked.fa)
             echo $Assembly
@@ -3394,7 +3406,11 @@ do
         echo "$Strain - $Organism"
         GffOrfRxLR=$(ls analysis/RxLR_effectors/combined_evidence/P.rubi/$Strain/"$Strain"_ORFsUniq_RxLR_EER_motif_hmm.gff)
         GffOrfCRN=$(ls analysis/CRN_effectors/hmmer_CRN/P.rubi/$Strain/"$Strain"_ORFsUniq_CRN_hmmer.bed)
-        if [ -f repeat_masked/$Organism/$Strain/ncbi_edits_repmask/*_softmasked.fa ]
+        if [ -f repeat_masked/$Organism/$Strain/manual_edits_repmask/*_softmasked.fa ]
+        then
+            Assembly=$(ls repeat_masked/$Organism/$Strain/manual_edits_repmask/*_softmasked.fa)
+            echo $Assembly
+        elif [ -f repeat_masked/$Organism/$Strain/ncbi_edits_repmask/*_softmasked.fa ]
         then
             Assembly=$(ls repeat_masked/$Organism/$Strain/ncbi_edits_repmask/*_softmasked.fa)
             echo $Assembly
