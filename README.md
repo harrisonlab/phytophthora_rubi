@@ -1699,7 +1699,7 @@ do
     echo "The number of genes predicted as Apoplastic effectors is:"
     cat $Headers | wc -l
     echo "Creating GFF3 file"
-    OutName=$(echo $File | sed 's/.fa/.gff/g')
+    OutName=$(echo $File | sed 's/_raw.fa/.gff/g')
     Test=analysis/ApoplastP/$Organism/$Strain/tmp.txt
     cat $Headers | sed 's/\..*$//g' > $Test
     cat $Gff | grep -w -f $Test > $OutName
