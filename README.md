@@ -3881,5 +3881,73 @@ do
 done
 ```
 
+```
+P.rubi - SCRP249
+The number of predicted RxLRs is:
+839
+The number of predicted RxLRs with fasta sequences is:
+839
+The number of high-confidence predicted RxLRs is:
+279
+The number of high-confidence predicted RxLRs with fasta sequences is:
+279
+The number of predicted CRN effectors is:
+133
+The number of predicted CRN effectors with fasta sequences is:
+133
+The number of predicted Apoplastic effectors is:
+3,343
+The number of predicted Apoplastic effectors with fasta sequences is:
+3,343
+The number of predicted secreted proteins is:
+6,262
+The number of predicted secreted proteins with fasta sequences is:
+6,262
+
+P.rubi - SCRP324
+The number of predicted RxLRs is:
+874
+The number of predicted RxLRs with fasta sequences is:
+874
+The number of high-confidence predicted RxLRs is:
+267
+The number of high-confidence predicted RxLRs with fasta sequences is:
+267
+The number of predicted CRN effectors is:
+87
+The number of predicted CRN effectors with fasta sequences is:
+87
+The number of predicted Apoplastic effectors is:
+3,673
+The number of predicted Apoplastic effectors with fasta sequences is:
+3,673
+The number of predicted secreted proteins is:
+6,566
+The number of predicted secreted proteins with fasta sequences is:
+6,566
+
+P.rubi - SCRP333
+The number of predicted RxLRs is:
+827
+The number of predicted RxLRs with fasta sequences is:
+827
+The number of high-confidence predicted RxLRs is:
+275
+The number of high-confidence predicted RxLRs with fasta sequences is:
+275
+The number of predicted CRN effectors is:
+135
+The number of predicted CRN effectors with fasta sequences is:
+135
+The number of predicted Apoplastic effectors is:
+3,340
+The number of predicted Apoplastic effectors with fasta sequences is:
+3,340
+The number of predicted secreted proteins is:
+6,309
+The number of predicted secreted proteins with fasta sequences is:
+6,309
+```
+
 Further downstream analysis done in OrthoFinder.md and SNP_analysis.md in
 phytophthora_fragariae repository
