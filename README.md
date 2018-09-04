@@ -2817,15 +2817,15 @@ The number of sequences extracted is
 138
 P.rubi - SCRP324
 The number of ORF CRNs overlapping Augustus CRNs:
-119
+66
 The number of Augustus CRNs overlapping ORF CRNs:
-120
+68
 The number of CRNs unique to ORF models:
-7
+60
 The number of CRNs unique to Augustus models:
-6
+2
 The number of sequences extracted is
-133
+130
 P.rubi - SCRP333
 The number of ORF CRNs overlapping Augustus CRNs:
 121
