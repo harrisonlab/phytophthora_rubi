@@ -2523,17 +2523,17 @@ The number of sequences extracted is
 341
 P.rubi - SCRP324
 The number of ORF RxLRs overlapping Augustus RxLRs:
-214
+201
 The number of Augustus RxLRs overlapping ORF RxLRs:
-213
+199
 The number of RxLRs unique to ORF models:
-91
+101
 The number of RxLRs unique to Augustus models:
 31
 The total number of putative RxLRs are:
-335
+331
 The number of sequences extracted is
-335
+331
 P.rubi - SCRP333
 The number of ORF RxLRs overlapping Augustus RxLRs:
 209
@@ -2564,17 +2564,17 @@ The number of sequences extracted is
 2,261
 P.rubi - SCRP324
 The number of ORF RxLRs overlapping Augustus RxLRs:
-337
+321
 The number of Augustus RxLRs overlapping ORF RxLRs:
-332
+315
 The number of RxLRs unique to ORF models:
-1,845
+1,850
 The number of RxLRs unique to Augustus models:
-85
+82
 The total number of putative RxLRs are:
-2,264
+2,247
 The number of sequences extracted is
-2,264
+2,247
 P.rubi - SCRP333
 The number of ORF RxLRs overlapping Augustus RxLRs:
 330
