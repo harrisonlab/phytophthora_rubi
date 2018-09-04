@@ -1623,11 +1623,11 @@ Domain search space  (domZ):             139  [number of targets reported over t
 Identify the genes detected in both models:     128
 
 P.rubi - SCRP324
-Initial search space (Z):             32,725  [actual number of targets]
-Domain search space  (domZ):             155  [number of targets reported over threshold]
-Initial search space (Z):             32,725  [actual number of targets]
-Domain search space  (domZ):             139  [number of targets reported over threshold]
-Identify the genes detected in both models:     126
+Initial search space (Z):             31,231  [actual number of targets]
+Domain search space  (domZ):              90  [number of targets reported over threshold]
+Initial search space (Z):             31,231  [actual number of targets]
+Domain search space  (domZ):             100  [number of targets reported over threshold]
+Identify the genes detected in both models:     69
 
 P.rubi - SCRP333
 Initial search space (Z):             32,946  [actual number of targets]
