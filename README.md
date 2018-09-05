@@ -3526,9 +3526,9 @@ done
 Summarise numbers of TM Proteins
 
 ```bash
-for TM in $(ls gene_pred/trans_mem/P.rubi/*/*/*_TM_genes_pos.txt)
+for TM in $(ls gene_pred/trans_mem/P.rubi/*/*_TM_genes_pos.txt)
 do
-    Strain=$(echo $TM | rev | cut -f3 -d '/' | rev)
+    Strain=$(echo $TM | rev | cut -f2 -d '/' | rev)
     echo "$Strain"
     echo "The number of proteins scoring positive for a transmembrane helix is:"
     cat $TM | wc -l
@@ -3537,53 +3537,6 @@ done
 ```
 
 ```
-SCRP249 - conservative_noApoP
-The number of proteins scoring positive for a transmembrane helix is:
-4,180
-
-SCRP249 - conservative
-The number of proteins scoring positive for a transmembrane helix is:
-5,427
-
-SCRP249 - greedy_noApoP
-The number of proteins scoring positive for a transmembrane helix is:
-4,510
-
-SCRP249 - greedy
-The number of proteins scoring positive for a transmembrane helix is:
-5,757
-
-SCRP324 - conservative_noApoP
-The number of proteins scoring positive for a transmembrane helix is:
-4,272
-
-SCRP324 - conservative
-The number of proteins scoring positive for a transmembrane helix is:
-5,529
-
-SCRP324 - greedy_noApoP
-The number of proteins scoring positive for a transmembrane helix is:
-4,610
-
-SCRP324 - greedy
-The number of proteins scoring positive for a transmembrane helix is:
-5,867
-
-SCRP333 - conservative_noApoP
-The number of proteins scoring positive for a transmembrane helix is:
-4,213
-
-SCRP333 - conservative
-The number of proteins scoring positive for a transmembrane helix is:
-5,442
-
-SCRP333 - greedy_noApoP
-The number of proteins scoring positive for a transmembrane helix is:
-4,541
-
-SCRP333 - greedy
-The number of proteins scoring positive for a transmembrane helix is:
-5,770
 ```
 
 Create a headers file
