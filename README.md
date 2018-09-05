@@ -956,7 +956,7 @@ Total:
 ##Predicted gene set assessed using BUSCO to assess completeness
 
 ```bash
-for Transcriptome in $(ls gene_pred/final/*/*/final/final_genes_appended_renamed.gene.fasta )
+for Transcriptome in $(ls gene_pred/annotation/P.rubi/*/*_genes_incl_ORFeffectors_renamed.gene.fasta)
 do
     Strain=$(echo $Transcriptome| rev | cut -d '/' -f3 | rev)
     Organism=$(echo $Transcriptome | rev | cut -d '/' -f4 | rev)
