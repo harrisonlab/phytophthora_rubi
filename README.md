@@ -998,9 +998,9 @@ Fragmented genes: +5
 Missing genes: -2
 
 SCRP324
-Complete and single copy genes: -5
-Complete and duplicated genes: +2
-Fragmented genes: +4
+Complete and single copy genes: -9
+Complete and duplicated genes: +3
+Fragmented genes: +7
 Missing genes: -1
 
 SCRP333
