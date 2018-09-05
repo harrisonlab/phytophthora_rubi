@@ -3707,6 +3707,17 @@ do
 done
 ```
 
+```
+P.rubi - SCRP249:
+246
+
+P.rubi - SCRP324:
+247
+
+P.rubi - SCRP333:
+247
+```
+
 ## Rename predicted effectors to allow further analysis with gene models on NCBI
 
 ```bash
