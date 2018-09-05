@@ -3661,20 +3661,18 @@ do
 done
 ```
 
-Only greedy run due to the webserver crashing and dependencies for a local install no longer being available.
-
 ```
 SCRP249 - greedy
 The number of proteins scoring positive for being GPI anchored is:
-2,096
+910
 
 SCRP324 - greedy
 The number of proteins scoring positive for being GPI anchored is:
-1,436
+961
 
 SCRP333 - greedy
 The number of proteins scoring positive for being GPI anchored is:
-1,367
+626
 ```
 
 ## Genes with transcription factor annotations
