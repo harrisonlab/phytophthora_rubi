@@ -957,7 +957,6 @@ Total:
 
 Open reading frame predictions were made using the atg.pl script as part of the path_pipe.sh pipeline. This pipeline also identifies open reading frames containing Signal peptide sequences and RxLRs. This pipeline was run with the following commands:
 
-
 ```bash
 for Strain in SCRP249 SCRP324 SCRP333
 do
