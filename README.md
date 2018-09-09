@@ -953,63 +953,6 @@ Total:
 32,946
 ```
 
-##Predicted gene set assessed using BUSCO to assess completeness
-
-```bash
-for Transcriptome in $(ls gene_pred/annotation/P.rubi/*/*_genes_incl_ORFeffectors_renamed.gene.fasta)
-do
-    Strain=$(echo $Transcriptome| rev | cut -d '/' -f3 | rev)
-    Organism=$(echo $Transcriptome | rev | cut -d '/' -f4 | rev)
-    echo "$Organism - $Strain"
-    ProgDir=/home/adamst/git_repos/tools/gene_prediction/busco
-    BuscoDB=Eukaryotic
-    OutDir=gene_pred/busco/$Organism/$Strain/
-    qsub $ProgDir/sub_busco3.sh $Transcriptome $BuscoDB $OutDir
-done
-```
-
-```
-SCRP249
-Complete and single copy genes: 269
-Complete and duplicated genes: 9
-Fragmented genes: 8
-Missing genes: 17
-
-SCRP324
-Complete and single copy genes: 265
-Complete and duplicated genes: 11
-Fragmented genes: 10
-Missing genes: 17
-
-SCRP333
-Complete and single copy genes: 270
-Complete and duplicated genes: 10
-Fragmented genes: 7
-Missing genes: 16
-```
-
-Changes with respect to genome sequence
-
-```
-SCRP249
-Complete and single copy genes: -4
-Complete and duplicated genes: +1
-Fragmented genes: +5
-Missing genes: -2
-
-SCRP324
-Complete and single copy genes: -9
-Complete and duplicated genes: +3
-Fragmented genes: +7
-Missing genes: -1
-
-SCRP333
-Complete and single copy genes: -5
-Complete and duplicated genes: +3
-Fragmented genes: +4
-Missing genes: -2
-```
-
 #Gene prediction 2 - atg.pl prediction of ORFs
 
 Open reading frame predictions were made using the atg.pl script as part of the path_pipe.sh pipeline. This pipeline also identifies open reading frames containing Signal peptide sequences and RxLRs. This pipeline was run with the following commands:
@@ -3500,6 +3443,63 @@ do
     done
     qsub $ProgDir/sub_swissprot.sh $Proteome $OutDir $SwissDbDir $SwissDbName
 done
+```
+
+##Predicted gene set assessed using BUSCO to assess completeness
+
+```bash
+for Transcriptome in $(ls gene_pred/annotation/P.rubi/*/*_genes_incl_ORFeffectors_renamed.gene.fasta)
+do
+    Strain=$(echo $Transcriptome| rev | cut -d '/' -f3 | rev)
+    Organism=$(echo $Transcriptome | rev | cut -d '/' -f4 | rev)
+    echo "$Organism - $Strain"
+    ProgDir=/home/adamst/git_repos/tools/gene_prediction/busco
+    BuscoDB=Eukaryotic
+    OutDir=gene_pred/busco/$Organism/$Strain/
+    qsub $ProgDir/sub_busco3.sh $Transcriptome $BuscoDB $OutDir
+done
+```
+
+```
+SCRP249
+Complete and single copy genes: 269
+Complete and duplicated genes: 9
+Fragmented genes: 8
+Missing genes: 17
+
+SCRP324
+Complete and single copy genes: 265
+Complete and duplicated genes: 11
+Fragmented genes: 10
+Missing genes: 17
+
+SCRP333
+Complete and single copy genes: 270
+Complete and duplicated genes: 10
+Fragmented genes: 7
+Missing genes: 16
+```
+
+Changes with respect to genome sequence
+
+```
+SCRP249
+Complete and single copy genes: -4
+Complete and duplicated genes: +1
+Fragmented genes: +5
+Missing genes: -2
+
+SCRP324
+Complete and single copy genes: -9
+Complete and duplicated genes: +3
+Fragmented genes: +7
+Missing genes: -1
+
+SCRP333
+Complete and single copy genes: -5
+Complete and duplicated genes: +3
+Fragmented genes: +4
+Missing genes: -2
 ```
 
 ### C)Identify genes with transmembrane domains
