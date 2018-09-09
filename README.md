@@ -2068,7 +2068,7 @@ P.rubi SCRP249
 Initial search space (Z):             82,268  [actual number of targets]
 Domain search space  (domZ):             402  [number of targets reported over threshold]
 P.rubi SCRP324
-Initial search space (Z):             82,082  [actual number of targets]
+Initial search space (Z):             82,075  [actual number of targets]
 Domain search space  (domZ):             410  [number of targets reported over threshold]
 P.rubi SCRP333
 Initial search space (Z):             82,132  [actual number of targets]
