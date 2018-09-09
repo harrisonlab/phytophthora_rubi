@@ -2135,7 +2135,7 @@ Initial search space (Z):             82,268  [actual number of targets]
 Domain search space  (domZ):             684  [number of targets reported over threshold]
 Merged RxLR-EER Hmm proteins:   211
 P.rubi SCRP324
-Initial search space (Z):             82,082  [actual number of targets]
+Initial search space (Z):             82,075  [actual number of targets]
 Domain search space  (domZ):             682  [number of targets reported over threshold]
 Merged RxLR-EER Hmm proteins:   212
 P.rubi SCRP333
