@@ -2972,17 +2972,17 @@ The number of sequences extracted is
 
 P.rubi - SCRP324
 The number of ORF apoplastic effectors overlapping Augustus apoplastic effectors:
-979
+967
 The number of Augustus apoplastic effectors overlapping ORF apoplastic effectors:
-896
+888
 The number of apoplastic effectors unique to ORF models:
-9,301
+9,313
 The number of apoplastic effectors unique to Augustus models:
-169
+167
 The total number of putative apoplastic effectors are:
-10,373
+10,374
 The number of sequences extracted is
-10,373
+10,374
 
 P.rubi - SCRP333
 The number of ORF apoplastic effectors overlapping Augustus apoplastic effectors:
