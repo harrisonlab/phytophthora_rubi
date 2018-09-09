@@ -2356,7 +2356,7 @@ do
 done
 
 #With EER
-for MergeDir in $(ls -d analysis/RxLR_effectors/combined_evidence/*/*)
+for MergeDir in $(ls -d analysis/RxLR_effectors/combined_evidence/*/* | grep -e "SCRP324")
 do
     Strain=$(echo "$MergeDir" | rev | cut -f1 -d '/' | rev)
     Species=$(echo "$MergeDir" | rev | cut -f2 -d '/' | rev)
@@ -2465,17 +2465,17 @@ The number of sequences extracted is
 341
 P.rubi - SCRP324
 The number of ORF RxLRs overlapping Augustus RxLRs:
-201
+204
 The number of Augustus RxLRs overlapping ORF RxLRs:
-199
+203
 The number of RxLRs unique to ORF models:
-101
+98
 The number of RxLRs unique to Augustus models:
-31
+29
 The total number of putative RxLRs are:
-331
+330
 The number of sequences extracted is
-331
+330
 P.rubi - SCRP333
 The number of ORF RxLRs overlapping Augustus RxLRs:
 209
@@ -2508,15 +2508,15 @@ P.rubi - SCRP324
 The number of ORF RxLRs overlapping Augustus RxLRs:
 321
 The number of Augustus RxLRs overlapping ORF RxLRs:
-315
+316
 The number of RxLRs unique to ORF models:
 1,850
 The number of RxLRs unique to Augustus models:
-82
+83
 The total number of putative RxLRs are:
-2,247
+2,249
 The number of sequences extracted is
-2,247
+2,249
 P.rubi - SCRP333
 The number of ORF RxLRs overlapping Augustus RxLRs:
 330
