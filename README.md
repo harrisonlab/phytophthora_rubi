@@ -1446,13 +1446,13 @@ Number of genes in the extracted gff file:
 
 P.rubi - SCRP324
 Number of RxLRs identified by Regex:
-174
+176
 Number of RxLRs identified by Hmm:
-193
+194
 Number of RxLRs in combined dataset:
-229
+231
 Number of genes in the extracted gff file:
-229
+231
 
 P.rubi - SCRP333
 Number of RxLRs identified by Regex:
@@ -1476,13 +1476,13 @@ Number of genes in the extracted gff file:
 407
 P.rubi - SCRP324
 Number of RxLRs identified by Regex:
-346
+348
 Number of RxLRs identified by Hmm:
-193
+194
 Number of RxLRs in combined dataset:
-393
+395
 Number of genes in the extracted gff file:
-393
+395
 P.rubi - SCRP333
 Number of RxLRs identified by Regex:
 359
