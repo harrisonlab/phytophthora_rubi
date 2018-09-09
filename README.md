@@ -1190,9 +1190,9 @@ This represented the following number of unique genes:
 3,697
 P.rubi - SCRP324
 The following number of sequences were predicted as secreted:
-10,995
+10,914
 This represented the following number of unique genes:
-3,706
+3,683
 P.rubi - SCRP333
 The following number of sequences were predicted as secreted:
 11,358
