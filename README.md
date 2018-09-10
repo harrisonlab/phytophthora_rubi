@@ -3086,7 +3086,7 @@ done
 ```
 P.rubi - SCRP249
 The number of RxLRs not hit by ApoplastP is:
-1,287
+1,286
 The number of RxLRs that also hit ApoplastP is:
 564
 The number of CRNs not hit by ApoplastP is:
