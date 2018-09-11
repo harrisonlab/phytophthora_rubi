@@ -2283,9 +2283,9 @@ Number of RxLRs identified by Regex:
 Number of RxLRs identified by Hmm:
 212
 Number of RxLRs in combined dataset:
-2,171
+2,170
 Number of genes in the extracted gff file:
-2,171
+2,170
 
 P.rubi - SCRP333
 Number of RxLRs identified by Regex:
