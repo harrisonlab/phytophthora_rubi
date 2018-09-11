@@ -2510,13 +2510,13 @@ The number of ORF RxLRs overlapping Augustus RxLRs:
 The number of Augustus RxLRs overlapping ORF RxLRs:
 316
 The number of RxLRs unique to ORF models:
-1,850
+1,849
 The number of RxLRs unique to Augustus models:
 83
 The total number of putative RxLRs are:
-2,249
+2,248
 The number of sequences extracted is
-2,249
+2,248
 P.rubi - SCRP333
 The number of ORF RxLRs overlapping Augustus RxLRs:
 330
