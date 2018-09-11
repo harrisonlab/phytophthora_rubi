@@ -3104,7 +3104,7 @@ The number of ApoplastP hits that are not RxLRs, with an EER domain, or CRNs is:
 
 P.rubi - SCRP324
 The number of RxLRs not hit by ApoplastP is:
-1,294
+1,293
 The number of RxLRs that also hit ApoplastP is:
 556
 The number of CRNs not hit by ApoplastP is:
