@@ -3631,11 +3631,11 @@ The number of proteins scoring positive for being GPI anchored is:
 
 SCRP324 - greedy
 The number of proteins scoring positive for being GPI anchored is:
-961
+972
 
 SCRP333 - greedy
 The number of proteins scoring positive for being GPI anchored is:
-626
+950
 ```
 
 ## Genes with transcription factor annotations
