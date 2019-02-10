@@ -3,6 +3,8 @@ Commands used in the analysis of *P. rubi* genomes
 SCRP249 SCRP324 SCRP333
 ====================
 
+Some scripts used do not feature in this Github repo. Please navigate to the harrisonlab or eastmallingresearch organisations to find these scripts.
+
 Commands used during analysis of *Phytophthora rubi* genomes. Note - all this work was performed in the directory: /home/groups/harrisonlab/project_files/phytophthora_rubi
 
 The following is a summary of the work presented in this Readme:
